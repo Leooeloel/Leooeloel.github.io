@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Archives | Leo</title>
+  <title>汇编语言 1~7章知识点总结 | Leo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leo">
-<meta property="og:url" content="http://leo.dropsec.xyz/archives/index.html">
+  <meta name="description" content="王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…">
+<meta name="keywords" content="Assembiy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编语言 1~7章知识点总结">
+<meta property="og:url" content="http://leo.dropsec.xyz/2017/07/15/汇编语言-1-7章知识点总结/index.html">
 <meta property="og:site_name" content="Leo">
+<meta property="og:description" content="王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…">
+<meta property="og:updated_time" content="2017-07-15T13:28:07.328Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leo">
+<meta name="twitter:title" content="汇编语言 1~7章知识点总结">
+<meta name="twitter:description" content="王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -145,36 +150,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-汇编语言-1-7章知识点总结" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/15/汇编语言-1-7章知识点总结/" class="archive-article-date">
-  	<time datetime="2017-07-15T12:04:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/15/汇编语言-1-7章知识点总结/">汇编语言 1~7章知识点总结</a>
+    <h1 class="article-title" itemprop="name">
+      汇编语言 1~7章知识点总结
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/07/15/汇编语言-1-7章知识点总结/" class="archive-article-date">
+  	<time datetime="2017-07-15T12:04:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…<a id="more"></a></p>
+<h2 id="第一章-基础知识"><a href="#第一章-基础知识" class="headerlink" title="第一章 基础知识"></a>第一章 基础知识</h2><p>1.存储单元为1Byte，即字节。微小信息单位为1bit，其中1Byte=8bit。<br>（一个存储单元可以存储8个bit，即8位二进制数。）<br> 1GB=1024MB  1MB=1024KB  1KB=1024B  1B=8bit<br>2.存储单元从零开始顺序编号。</p>
+<h2 id="第二章-寄存器"><a href="#第二章-寄存器" class="headerlink" title="第二章 寄存器"></a>第二章 寄存器</h2><p>3.8086CPU有14个寄存器，AX(accumulate) BX(base) CX(count) DX(data) SI DI<br>指针寄存器：SP BP IP<br>段寄存器：CS SS DS ES<br>标志寄存器：PSW<br>4.AX可分为AH(高8位）和AL(低8位)，均可以当做独立寄存器使用，互不影响。<br>5.对于实验中溢出的数据，由PSW寄存器保存溢出值。<br>6.8086CPU采用段地址和偏移地址，通过地址加法器来合成物理地址<br>物理地址=段地址x 16 + 偏移地址（段的大小=偏移地址的长度）<br>7.偏移地址16位，其变化范围为0—FFFFH；仅用偏移地址来寻址最多可寻64KB个内存单元。</p>
+<h2 id="第三章-寄存器（内存访问）"><a href="#第三章-寄存器（内存访问）" class="headerlink" title="第三章 寄存器（内存访问）"></a>第三章 寄存器（内存访问）</h2><p>8.字单元：存放一个字型数据（16位）的内存单元，由两个地址连续的内存单元，将起始地址为N的字单元简称为N地址字单元。<br>9.<strong><em>8086CPU不支持数据直接入段寄存器</em></strong><br>10.栈：LIFO（后进先出） 8086CPU入栈（PUSH）和出栈（POP）以字为单位；<br>11.SS：SP 任意时刻始终指向栈顶元素，PUSH AX由下面两步构成：<br>（1）SP=SP-2，SS：SP指向当前栈顶前面的单元，以当前栈顶前面的单元作为新的栈顶；<br>（2）将AX中的内容送入SS：SP指向的内存单元处，SS：SP此时指向新栈顶.<br>  （栈顶指针指向的元素最终都是有效的）<br>12.8086CPU入栈时，栈顶从高地址向低地址方向移动，栈为空的时候，SS：SP指向最底部的字单元的偏移地址+2。<br>13.出栈后，SS：SP指向新的栈顶，但之间栈顶的元素还在，只是不在栈中，在之后PUSH移动至此后，此数据将会被覆盖。</p>
+<h2 id="第4章-第一个程序"><a href="#第4章-第一个程序" class="headerlink" title="第4章 第一个程序"></a>第4章 第一个程序</h2><p>14.一个汇编程序由多个段组成，这些段分别用来存放代码，数据，后者当做栈空间，一个有意义的汇编程序中至少有一个段，这个段用来存放代码。</p>
+<h2 id="第5章-【bx】和loop指令"><a href="#第5章-【bx】和loop指令" class="headerlink" title="第5章 【bx】和loop指令"></a>第5章 【bx】和loop指令</h2><p>15.① 【 】表示偏移地址，也表示一个内存单元<br>   ②（ ）表示“一个寄存器或一个内存单元中的内容”<br>   ③ Idata表示常量<br>16.Loop指令的格式：<br>loop 标号<br>①（CX）＝（CX）- 1；<br>②（CX）≠0，则转至标号处循环执行（CX）＝0，则继续向下执行</p>
+<h2 id="第7章-更灵活的定位内存地址的方法"><a href="#第7章-更灵活的定位内存地址的方法" class="headerlink" title="第7章 更灵活的定位内存地址的方法"></a>第7章 更灵活的定位内存地址的方法</h2><p>17.在汇编程序中，数据不能以字母开头(+0)<br>18.伪指令：<br>dw 定义字型数据；<br>db 定义字节型数据；<br>dd 定义双字型数据<br>19.Si和Di不能够分成两个8位寄存器，功能和BX相近。<br>20.大小写的转化方法：<br>and al，11011111 b（大写）<br>or al，00100000 b (小写)</p>
+<h5 id="lt-未完待续-gt"><a href="#lt-未完待续-gt" class="headerlink" title="###  &lt;未完待续&gt;"></a>### <center> &lt;未完待续&gt;</center></h5>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -186,247 +227,89 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2017/07/15/汇编语言-1-7章知识点总结/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/14/所谓的废纸篓/" class="archive-article-date">
-  	<time datetime="2017-07-14T02:11:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/14/所谓的废纸篓/">所谓的废纸篓</a>
-    </h1>
+  
+    <a href="/2017/07/14/所谓的废纸篓/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">所谓的废纸篓</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">废纸篓</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/11/Summer-第一周/" class="archive-article-date">
-  	<time datetime="2017-07-11T09:07:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/11/Summer-第一周/">Summer  第一周</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/08/年少无为，卖马为生/" class="archive-article-date">
-  	<time datetime="2017-07-08T12:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/08/年少无为，卖马为生/">年少无为，卖马为生</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/08/搭建博客后的资源整合/" class="archive-article-date">
-  	<time datetime="2017-07-08T05:14:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/08/搭建博客后的资源整合/">搭建博客后的资源整合</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件入门</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/06/Markdown 使用语法/" class="archive-article-date">
-  	<time datetime="2017-07-06T12:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/06/Markdown 使用语法/">Markdown 使用语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">软件入门</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/04/Hello-Word/" class="archive-article-date">
-  	<time datetime="2017-07-04T13:53:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/04/Hello-Word/">Hello Word</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -449,8 +332,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
