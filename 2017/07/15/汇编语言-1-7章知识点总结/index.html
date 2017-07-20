@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://leo.dropsec.xyz/2017/07/15/汇编语言-1-7章知识点总结/index.html">
 <meta property="og:site_name" content="Leo">
 <meta property="og:description" content="王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…">
-<meta property="og:updated_time" content="2017-07-15T13:28:07.328Z">
+<meta property="og:updated_time" content="2017-07-20T08:33:14.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="汇编语言 1~7章知识点总结">
 <meta name="twitter:description" content="王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…">
@@ -177,7 +177,7 @@
 <h2 id="第4章-第一个程序"><a href="#第4章-第一个程序" class="headerlink" title="第4章 第一个程序"></a>第4章 第一个程序</h2><p>14.一个汇编程序由多个段组成，这些段分别用来存放代码，数据，后者当做栈空间，一个有意义的汇编程序中至少有一个段，这个段用来存放代码。</p>
 <h2 id="第5章-【bx】和loop指令"><a href="#第5章-【bx】和loop指令" class="headerlink" title="第5章 【bx】和loop指令"></a>第5章 【bx】和loop指令</h2><p>15.① 【 】表示偏移地址，也表示一个内存单元<br>   ②（ ）表示“一个寄存器或一个内存单元中的内容”<br>   ③ Idata表示常量<br>16.Loop指令的格式：<br>loop 标号<br>①（CX）＝（CX）- 1；<br>②（CX）≠0，则转至标号处循环执行（CX）＝0，则继续向下执行</p>
 <h2 id="第7章-更灵活的定位内存地址的方法"><a href="#第7章-更灵活的定位内存地址的方法" class="headerlink" title="第7章 更灵活的定位内存地址的方法"></a>第7章 更灵活的定位内存地址的方法</h2><p>17.在汇编程序中，数据不能以字母开头(+0)<br>18.伪指令：<br>dw 定义字型数据；<br>db 定义字节型数据；<br>dd 定义双字型数据<br>19.Si和Di不能够分成两个8位寄存器，功能和BX相近。<br>20.大小写的转化方法：<br>and al，11011111 b（大写）<br>or al，00100000 b (小写)</p>
-<h5 id="lt-未完待续-gt"><a href="#lt-未完待续-gt" class="headerlink" title="###  &lt;未完待续&gt;"></a>### <center> &lt;未完待续&gt;</center></h5>
+<h5 id="lt-未完待续-gt"><a href="#lt-未完待续-gt" class="headerlink" title=" &lt;未完待续&gt;"></a><center> &lt;未完待续&gt;</center></h5>
       
 
       
@@ -290,6 +290,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/07/20/暑假一练-WriteUp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          暑假一练 WriteUp
+        
+      </div>
+    </a>
   
   
     <a href="/2017/07/14/所谓的废纸篓/" id="article-nav-older" class="article-nav-link-wrap">
@@ -407,23 +416,15 @@ MathJax.Hub.Queue(function() {
         <ul class="search-ul">
           
             <li class="search-li">
+              <a href="http://010.dropsec.xyz" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>0 1 0</a>
+            </li>
+          
+            <li class="search-li">
               <a href="http://www.dropsec.xyz" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Drops</a>
             </li>
           
             <li class="search-li">
               <a href="http://blog.dropsec.xyz" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Drops blog</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://blog.csdn.net/f_zyj" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>逐梦者</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://010.dropsec.xyz" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>我同哥</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://blog.csdn.net/zhembrace" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>逐鹿中原</a>
             </li>
           
             <li class="search-li">
@@ -444,6 +445,14 @@ MathJax.Hub.Queue(function() {
           
             <li class="search-li">
               <a href="http://www.codertian.com" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>dalao two</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://blog.csdn.net/f_zyj" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>逐梦者</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://blog.csdn.net/zhembrace" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>逐鹿中原</a>
             </li>
           
         </ul>
