@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://leo.dropsec.xyz/2017/07/15/汇编语言-1-7章知识点总结/index.html">
 <meta property="og:site_name" content="Leo">
 <meta property="og:description" content="王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…">
-<meta property="og:updated_time" content="2017-07-20T11:17:27.655Z">
+<meta property="og:updated_time" content="2017-07-22T15:59:02.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="汇编语言 1~7章知识点总结">
 <meta name="twitter:description" content="王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…">
@@ -177,7 +177,18 @@
 <h2 id="第4章-第一个程序"><a href="#第4章-第一个程序" class="headerlink" title="第4章 第一个程序"></a>第4章 第一个程序</h2><p>14.一个汇编程序由多个段组成，这些段分别用来存放代码，数据，后者当做栈空间，一个有意义的汇编程序中至少有一个段，这个段用来存放代码。</p>
 <h2 id="第5章-【bx】和loop指令"><a href="#第5章-【bx】和loop指令" class="headerlink" title="第5章 【bx】和loop指令"></a>第5章 【bx】和loop指令</h2><p>15.① 【 】表示偏移地址，也表示一个内存单元<br>   ②（ ）表示“一个寄存器或一个内存单元中的内容”<br>   ③ Idata表示常量<br>16.Loop指令的格式：<br>loop 标号<br>①（CX）＝（CX）- 1；<br>②（CX）≠0，则转至标号处循环执行（CX）＝0，则继续向下执行</p>
 <h2 id="第7章-更灵活的定位内存地址的方法"><a href="#第7章-更灵活的定位内存地址的方法" class="headerlink" title="第7章 更灵活的定位内存地址的方法"></a>第7章 更灵活的定位内存地址的方法</h2><p>17.在汇编程序中，数据不能以字母开头(+0)<br>18.伪指令：<br>dw 定义字型数据；<br>db 定义字节型数据；<br>dd 定义双字型数据<br>19.Si和Di不能够分成两个8位寄存器，功能和BX相近。<br>20.大小写的转化方法：<br>and al，11011111 b（大写）<br>or al，00100000 b (小写)</p>
-<h5 id="lt-未完待续-gt"><a href="#lt-未完待续-gt" class="headerlink" title=" &lt;未完待续&gt;"></a><center> &lt;未完待续&gt;</center></h5>
+<h2 id="第8章-数据处理的两个基本问题"><a href="#第8章-数据处理的两个基本问题" class="headerlink" title="第8章 数据处理的两个基本问题"></a>第8章 数据处理的两个基本问题</h2><p>21.Reg（寄存器）：AX，BX，CX，DX（及其8位高低寄存器），SP，BP，Si, Di<br>Sreg（段寄存器）：DS，SS，CS，ES<br>8086CPU只有BX，Si，Di, BP可以用【】来进行内存单元寻址，可以单独出现，或BXBX BPBP SiDi SiDi 组合出现<br>22.在【】中使用BP，如果指令没有显性给出段地址，默认在SS中<br>23.指令在执行前，所要处理的数据可以在3个地方：CPU内部，内存，端口<br>24.div指令（除法指令）<br>8位除数              16位除数<br>16位被除数           32位被除数{ AX （低16位）DX（高16位）}<br>AL（商）AH（余数）    AX（商）DX（余数）<br>25.伪指令dup<br>db/dw/dd 重复次数 dup（重复的字节/字型/双字型）<br>dw 0, 0, 0, 0, 0, 0 ,0, 0  =  dw 8 dup（0）</p>
+<h2 id="第9章-转移指令的原理"><a href="#第9章-转移指令的原理" class="headerlink" title="第9章 转移指令的原理"></a>第9章 转移指令的原理</h2><p>26.转移指令：可以修改IP，或同时修改CS和IP的指令。<br>8086CPU的转移行为：<br>段间转移（修改CS：IP）<br>段内转移（只修改IP）短转移：IP修改范围-128—127<br>                     近转移：IP修改范围 -32768—32767<br>27.offset 取得标号处的偏移地址<br>nop 空指令（占位置/用于程序对齐/设标号/延时）<br>28.jmp指令</p>
+<h3 id="依据位移转移的jmp指令（CPU在执行jmp指令的时候不要需要转移的目的地址）"><a href="#依据位移转移的jmp指令（CPU在执行jmp指令的时候不要需要转移的目的地址）" class="headerlink" title="依据位移转移的jmp指令（CPU在执行jmp指令的时候不要需要转移的目的地址）"></a>依据位移转移的jmp指令（CPU在执行jmp指令的时候不要需要转移的目的地址）</h3><p>jmp short 标号 段内短转移 功能：IP=IP+8位位移（标号处地址-jmp指令后第一个字节地址）<br>jmp near ptr 标号 段内近转移 功能：IP=IP+16位位移</p>
+<h3 id="转移的目的地址在指令中的jmp指令"><a href="#转移的目的地址在指令中的jmp指令" class="headerlink" title="转移的目的地址在指令中的jmp指令"></a>转移的目的地址在指令中的jmp指令</h3><p>jmp far ptr 标号 段间转移 功能：CS=标号所在段的段地址，IP=标号在段中的偏移地址</p>
+<h3 id="转移地址在寄存器中的jmp指令"><a href="#转移地址在寄存器中的jmp指令" class="headerlink" title="转移地址在寄存器中的jmp指令"></a>转移地址在寄存器中的jmp指令</h3><p>jmp 16位reg 功能：IP=（16位reg）</p>
+<h3 id="转移地址在内存中的jmp指令"><a href="#转移地址在内存中的jmp指令" class="headerlink" title="转移地址在内存中的jmp指令"></a>转移地址在内存中的jmp指令</h3><p>Jmp word ptr 内存单元地址（段内转移）功能：转移的偏移地址是内存单元中的内容<br>Jmp dword ptr 内存单元地址（段间转移）功能：内存单元中的高地址处为转移的段                                                                          地址，低地址处是转移的目的偏移地址<br>29.jcxz指令<br>jcxz 标号  功能：相当于if(（cx）==0）jmp short 标号<br>30.loop指令<br>loop 标号  功能：相当于（cx）– ；   if（（cx）!=0）jmp short 标号</p>
+<h2 id="第10章-CAll和RET指令"><a href="#第10章-CAll和RET指令" class="headerlink" title="第10章 CAll和RET指令"></a>第10章 CAll和RET指令</h2><p>31.<strong>call指令（和jmp指令进行比较）</strong></p>
+<h3 id="依据位移转移的call指令（CPU在执行call指令的时候不要需要转移的目的地址）"><a href="#依据位移转移的call指令（CPU在执行call指令的时候不要需要转移的目的地址）" class="headerlink" title="依据位移转移的call指令（CPU在执行call指令的时候不要需要转移的目的地址）"></a>依据位移转移的call指令（CPU在执行call指令的时候不要需要转移的目的地址）</h3><p>call 标号 相当于push IP /jmp near ptr 标号；</p>
+<h3 id="转移的目的地址在指令中的call指令"><a href="#转移的目的地址在指令中的call指令" class="headerlink" title="转移的目的地址在指令中的call指令"></a>转移的目的地址在指令中的call指令</h3><p>call far ptr 标号 相当于push CS / push IP / jmp far ptr 标号</p>
+<h3 id="转移目的地址在寄存器中的call指令"><a href="#转移目的地址在寄存器中的call指令" class="headerlink" title="转移目的地址在寄存器中的call指令"></a>转移目的地址在寄存器中的call指令</h3><p>call 16位reg 相当于push IP / jmp 16位reg；</p>
+<h3 id="转移地址在内存中的call指令"><a href="#转移地址在内存中的call指令" class="headerlink" title="转移地址在内存中的call指令"></a>转移地址在内存中的call指令</h3><p>call word ptr 内存单元地址 相当于push IP / jmp word ptr 内存单元地址；<br>call dword ptr 内存单元地址 相当于push CS / push IP /jmp dword ptr 标号<br>32.ret和retf指令<br>ret指令用栈中的数据，修改IP的内容，从而实现近转移，相当于pop IP；<br>retf指令用栈中的数据，修改CS和IP中的内容，从而实现远转移；相当于pop IP/pop CS<br>33.mul指令<br>格式：mul reg 或者mul 内存单元；<br>结果：8位乘法，结果放在AX中，16位乘法，则高位放在DX中，低位放在AX中</p>
+<h3 id="敬请期待接下来的更新…"><a href="#敬请期待接下来的更新…" class="headerlink" title="敬请期待接下来的更新…"></a><center>敬请期待接下来的更新…</center></h3>
       
 
       
