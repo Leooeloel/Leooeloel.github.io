@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://leo.dropsec.xyz/2017/07/15/汇编语言-1-7章知识点总结/index.html">
 <meta property="og:site_name" content="Leo">
 <meta property="og:description" content="王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…">
-<meta property="og:updated_time" content="2017-07-22T15:59:02.474Z">
+<meta property="og:updated_time" content="2017-07-23T03:03:23.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="汇编语言 1~7章知识点总结">
 <meta name="twitter:description" content="王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…">
@@ -183,7 +183,7 @@
 <h3 id="转移的目的地址在指令中的jmp指令"><a href="#转移的目的地址在指令中的jmp指令" class="headerlink" title="转移的目的地址在指令中的jmp指令"></a>转移的目的地址在指令中的jmp指令</h3><p>jmp far ptr 标号 段间转移 功能：CS=标号所在段的段地址，IP=标号在段中的偏移地址</p>
 <h3 id="转移地址在寄存器中的jmp指令"><a href="#转移地址在寄存器中的jmp指令" class="headerlink" title="转移地址在寄存器中的jmp指令"></a>转移地址在寄存器中的jmp指令</h3><p>jmp 16位reg 功能：IP=（16位reg）</p>
 <h3 id="转移地址在内存中的jmp指令"><a href="#转移地址在内存中的jmp指令" class="headerlink" title="转移地址在内存中的jmp指令"></a>转移地址在内存中的jmp指令</h3><p>Jmp word ptr 内存单元地址（段内转移）功能：转移的偏移地址是内存单元中的内容<br>Jmp dword ptr 内存单元地址（段间转移）功能：内存单元中的高地址处为转移的段                                                                          地址，低地址处是转移的目的偏移地址<br>29.jcxz指令<br>jcxz 标号  功能：相当于if(（cx）==0）jmp short 标号<br>30.loop指令<br>loop 标号  功能：相当于（cx）– ；   if（（cx）!=0）jmp short 标号</p>
-<h2 id="第10章-CAll和RET指令"><a href="#第10章-CAll和RET指令" class="headerlink" title="第10章 CAll和RET指令"></a>第10章 CAll和RET指令</h2><p>31.<strong>call指令（和jmp指令进行比较）</strong></p>
+<h2 id="第10章-CAll和RET指令"><a href="#第10章-CAll和RET指令" class="headerlink" title="第10章 CAll和RET指令"></a>第10章 CAll和RET指令</h2><p>31.call指令（和jmp指令进行比较）</p>
 <h3 id="依据位移转移的call指令（CPU在执行call指令的时候不要需要转移的目的地址）"><a href="#依据位移转移的call指令（CPU在执行call指令的时候不要需要转移的目的地址）" class="headerlink" title="依据位移转移的call指令（CPU在执行call指令的时候不要需要转移的目的地址）"></a>依据位移转移的call指令（CPU在执行call指令的时候不要需要转移的目的地址）</h3><p>call 标号 相当于push IP /jmp near ptr 标号；</p>
 <h3 id="转移的目的地址在指令中的call指令"><a href="#转移的目的地址在指令中的call指令" class="headerlink" title="转移的目的地址在指令中的call指令"></a>转移的目的地址在指令中的call指令</h3><p>call far ptr 标号 相当于push CS / push IP / jmp far ptr 标号</p>
 <h3 id="转移目的地址在寄存器中的call指令"><a href="#转移目的地址在寄存器中的call指令" class="headerlink" title="转移目的地址在寄存器中的call指令"></a>转移目的地址在寄存器中的call指令</h3><p>call 16位reg 相当于push IP / jmp 16位reg；</p>
