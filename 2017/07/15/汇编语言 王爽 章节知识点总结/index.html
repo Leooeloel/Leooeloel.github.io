@@ -12,13 +12,17 @@
 <meta name="keywords" content="Assembly">
 <meta property="og:type" content="article">
 <meta property="og:title" content="汇编语言 王爽 章节知识点总结">
-<meta property="og:url" content="http://leo.dropsec.xyz/2017/07/15/汇编语言-1-7章知识点总结/index.html">
+<meta property="og:url" content="http://leo.dropsec.xyz/2017/07/15/汇编语言 王爽 章节知识点总结/index.html">
 <meta property="og:site_name" content="Leo">
 <meta property="og:description" content="王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…">
-<meta property="og:updated_time" content="2017-08-08T02:54:15.040Z">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/07/15/汇编语言%20王爽%20章节知识点总结/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/07/15/汇编语言%20王爽%20章节知识点总结/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/07/15/汇编语言%20王爽%20章节知识点总结/03.png">
+<meta property="og:updated_time" content="2017-08-09T07:32:30.948Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="汇编语言 王爽 章节知识点总结">
 <meta name="twitter:description" content="王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/07/15/汇编语言%20王爽%20章节知识点总结/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -150,7 +154,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-汇编语言-1-7章知识点总结" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-汇编语言 王爽 章节知识点总结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -162,7 +166,7 @@
   
 
         
-        <a href="/2017/07/15/汇编语言-1-7章知识点总结/" class="archive-article-date">
+        <a href="/2017/07/15/汇编语言 王爽 章节知识点总结/" class="archive-article-date">
   	<time datetime="2017-07-15T12:04:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
 </a>
         
@@ -188,7 +192,38 @@
 <h3 id="转移的目的地址在指令中的call指令"><a href="#转移的目的地址在指令中的call指令" class="headerlink" title="转移的目的地址在指令中的call指令"></a>转移的目的地址在指令中的call指令</h3><p>call far ptr 标号 相当于push CS / push IP / jmp far ptr 标号</p>
 <h3 id="转移目的地址在寄存器中的call指令"><a href="#转移目的地址在寄存器中的call指令" class="headerlink" title="转移目的地址在寄存器中的call指令"></a>转移目的地址在寄存器中的call指令</h3><p>call 16位reg 相当于push IP / jmp 16位reg；</p>
 <h3 id="转移地址在内存中的call指令"><a href="#转移地址在内存中的call指令" class="headerlink" title="转移地址在内存中的call指令"></a>转移地址在内存中的call指令</h3><p>call word ptr 内存单元地址 相当于push IP / jmp word ptr 内存单元地址；<br>call dword ptr 内存单元地址 相当于push CS / push IP /jmp dword ptr 标号<br>32.ret和retf指令<br>ret指令用栈中的数据，修改IP的内容，从而实现近转移，相当于pop IP；<br>retf指令用栈中的数据，修改CS和IP中的内容，从而实现远转移；相当于pop IP/pop CS<br>33.mul指令<br>格式：mul reg 或者mul 内存单元；<br>结果：8位乘法，结果放在AX中，16位乘法，则高位放在DX中，低位放在AX中</p>
-<h3 id="敬请期待接下来的更新…"><a href="#敬请期待接下来的更新…" class="headerlink" title="敬请期待接下来的更新…"></a><center>敬请期待接下来的更新…</center></h3>
+<h2 id="第11章-标志寄存器"><a href="#第11章-标志寄存器" class="headerlink" title="第11章 标志寄存器"></a>第11章 标志寄存器</h2><p>34.8086CPU的flag寄存器的结构<br><img src="/2017/07/15/汇编语言 王爽 章节知识点总结/01.png" alt=""><br>35.adc指令（带进位的加法指令）<br>格式：adc 操作对象1 操作对象2<br>功能：操作对象1=操作对象1 + 操作对象2 + CF<br>36.sbb指令（带借位的减法指令）<br>格式：sbb 操作对象1 操作对象2<br>功能：操作对象1=操作对象1 - 操作对象2 - CF<br>37.cmp指令 （比较指令，不保存结果，影响相关标志位的值）<br>格式：cmp 操作对象1 操作对象2<br>功能： 操作对象1 - 操作对象2<br>38.检验比较结果的条件转移指令 （e:equal ；a:above ；b:below；）<br><img src="/2017/07/15/汇编语言 王爽 章节知识点总结/02.png" alt=""><br>39.rep movsb相当于：</p>
+<blockquote>
+<p>s:movsb<br>  loop s</p>
+</blockquote>
+<p>rep的作用是根据CX的值，重复执行后面的穿传送指令。由于每执行一次movsb指令si和di都会递增或递减指向后一个单元或前一个单元，则rep movsb就可以循环实现(CX)个字符的传送。<br>执行movsb相当于进行以下几步操作：</p>
+<blockquote>
+<ol>
+<li>((es)<em>16+(di))=((ds)</em>16+(si))</li>
+<li>如果df=0  则si=si+1  di=di+1<br>如果df=1  则si=si-1  di=di-1</li>
+</ol>
+</blockquote>
+<p>40.cld 将标志寄存器的DF置0，正向<br>std 将标志寄存器的DF置1，逆向<br>pushf 将标志寄存器入栈<br>popf 将标志寄存器出栈</p>
+<h2 id="第12章-内中断"><a href="#第12章-内中断" class="headerlink" title="第12章 内中断"></a>第12章 内中断</h2><p>41.内中断就是CPU不再处理执行中的指令，而是转去处理这个特殊的信息</p>
+<blockquote>
+<p>内中断的产生包括以下几个：<br>除法错误（div指令产生的除法溢出） 中断类型码：0<br>单步执行                       中断类型码：1<br>执行into指令                   中断类型码：4<br>执行int指令                    中断类型码：n  （int n）</p>
+</blockquote>
+<p>42.关于中断过程<br>CPU收到中断信息—生成中断类型码—查找中断向量表—找到中断处理程序入口（设置段地址和偏移地址）<br>对于8086CPU，中断向量表存在于内存0000:0000—0000:03FF的1024个单元中，由于其中有一些空白的地方，所以我们一般将自己编写的中断程序放在0000:0020—0000:02FF的256个字节空间里。<br>PC机的中断例程是由CPU硬件完成，在接受到中断信息后，会执行一下操作：<br>① 产生中断类型码<br>② 标志寄存器的值入栈（pushf）<br>③ 设置标志寄存器中的IF和TF的值为0（原因在书P250和P273）<br>④ CS内容入栈 （push CS）<br>⑤ IP内容入栈 （push IP）<br>⑥ IP=中断类型码<em>4 （N</em>4）<br>⑦ CS=中断类型码<em>4+2 （N</em>4+2）<br>43.编写中断处理程序的步骤<br>① 保存用到的寄存器<br>② 处理中断<br>③ 恢复用到的寄存器<br>④ 用iret指令返回<br>44.Iret指令的功能用汇编语言描述为： </p>
+<blockquote>
+<p>POP IP<br>POP CS<br>popf </p>
+<h2 id="第13章-int指令"><a href="#第13章-int指令" class="headerlink" title="第13章 int指令"></a>第13章 int指令</h2><p>45.int指令引发的中断（int n）<br>过程：<br>1.取得中断类型码n<br>2.标志寄存器入栈，IF，TF设置为0<br>3.CS，IP入栈<br>4.（IP）=（n <em> 4），（CS）=（n </em> 4 + 2）</p>
+</blockquote>
+<p>46.BIOS中主要包含的内容 </p>
+<blockquote>
+<p>硬件系统的检测和初始化程序<br>外部中断和内部中断的中断例程<br>用于对硬件设备进行的I/O操作的中断例程<br>其他和硬件系统相关的中断例程  </p>
+</blockquote>
+<h2 id="第14章-端口"><a href="#第14章-端口" class="headerlink" title="第14章 端口"></a>第14章 端口</h2><p>47.shl（左移）和shr（右移）指令<br>将一个寄存器或内存单元中的数据向左（向右）移位<br>将最后移出的一位写入CF中<br>最低位（最高位）用0补充 </p>
+<h2 id="第15章-外中断"><a href="#第15章-外中断" class="headerlink" title="第15章 外中断"></a>第15章 外中断</h2><p>48.外中断：对外部设备进行控制<br>外放的输入—相关接口芯片的端口—CPU内存<br><img src="/2017/07/15/汇编语言 王爽 章节知识点总结/03.png" alt=""><br>……………………………………………………..</p>
+<h2 id="指令系统总结"><a href="#指令系统总结" class="headerlink" title="指令系统总结"></a>指令系统总结</h2><blockquote>
+<p>8086CPU 提供以下几大类指令：<br>1、数据传送指令<br>比如：mov、push、pop、pushf、popf、xchg等都是数据传送指令，这些指令实现寄存器和内存、寄存器和寄存器之间的单个数据传送。<br>2、算术运算指令<br>比如：add、sub、adc、sbb、inc、dec、cmp、imul、idiv、aaa等都是算术运算指令，这些指令实现寄存器和内存中的数据的算数运算。<br>它们的执行结果影响标志寄存器的：sf、zf、of、cf、pf、af位。<br>3、逻辑指令<br>比如：and、or、not、xor、test、shl、shr、sal、sar、rol、ror、rcl、rcr 等都是逻辑指令。<br>除了not指令外，它们的执行结果都影响标志寄存器的相关标志位。<br>4、转移指令<br>可以修改IP ，或同时修改CS 和IP 的指令统称为转移指令。转移指令分为以下几类：<br>（1）无条件转移指令，比如：jmp；<br>（2）条件转移指令，比如：jcxz、je、jb、ja、jnb、jna等；<br>（3）循环指令，比如：loop；<br>（4）过程，比如：call、ret、retf；<br>（5）中断，比如int、iret。<br>5、处理机控制指令<br>这些指令对标志寄存器或其他处理机状态进行设置，比如：cld、std、cli、sti、nop、clc、cmc、stc、hlt、wait、esc、lock等都是处理机控制指令。<br>6、串处理指令<br>这些指令对内存中的批量数据进行处理<br>比如：movsb、movsw、cmps、scas、lods、stos等。<br>若要使用这些指令方便地进行批量数据的处理，则需要和rep、repe、repne等前缀指令配合使用。</p>
+</blockquote>
+<p><center> end</center></p>
+
       
 
       
@@ -288,7 +323,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2017/07/15/汇编语言-1-7章知识点总结/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2017/07/15/汇编语言 王爽 章节知识点总结/" alt="微信分享二维码">
     </div>
 </div>
 
