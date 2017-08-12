@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/10.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/11.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/12.png">
-<meta property="og:updated_time" content="2017-08-12T10:26:02.665Z">
+<meta property="og:updated_time" content="2017-08-12T12:47:13.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="合天 CTF-REVERSE练习之算法分析1 WP">
 <meta name="twitter:description" content="有点伤心、有的无奈，实验指导书中并不是全部步骤都十分理解，但是我还是需要尝试着写一下，万一再琢磨一下就懂了呢？">
@@ -188,12 +188,19 @@
 <h3 id="二、IDA重命名等功能"><a href="#二、IDA重命名等功能" class="headerlink" title="二、IDA重命名等功能"></a>二、IDA重命名等功能</h3><p>在IDA中，我们可以通过按下N键来对一个变量/函数/标记等进行重命名操作，函数和变量命名对于帮主我们理解程序的内部逻辑非常重要，就好比我们在编程的时候，培养良好的编程风格非常重要一样。<br>比如如果函数sub_4012E0经过我们分析之后，确定其功能为将传入的字符串转为大写形式，那么我们可以选中sub_4012E0后按下N键对其进行重命名（将函数名命名为fnStringToUpper）：<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/03.png" alt=""><br>IDA通过还可以给汇编指令或者伪代码来添加注释。如果要对某一条汇编指令添加注释，只需要在汇编指令所在行按下封号（即;）即可弹出对话框来接收注释；如果要给伪代码添加注释，则只需在伪代码所在行按下斜杠（即/）即可弹出对话框来接收注释。<br>OD也可以给汇编指令添加注释，只需要在汇编指令所在行后一列的空白处双击鼠标左键即可，如图所示：<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/04.png" alt=""></p>
 <h2 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h2><h3 id="通过API交叉引用快速定位关键代码"><a href="#通过API交叉引用快速定位关键代码" class="headerlink" title="通过API交叉引用快速定位关键代码"></a>通过API交叉引用快速定位关键代码</h3><p>观察程序，运行这个程序后要求输入一个用户名和密码进行注册，当注册失败的时候，程序将弹出一个消息框提示不正确，如图所示：<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/05.png" alt=""><br>那么我们可以通过IDA的交叉引用功能来定位这一块的代码。使用IDA载入CrackMe4.exe程序，待分析结束后，通过Imports TAB页面找到MessageBoxA，双击来到反汇编视图，在MessageBoxA按下X按键对其进行交叉引用查找，经过一个一个进行分析，我们发现sub_4016B0就是我们所要找的关键函数，我们通过F5得到这个函数的伪代码。通过对伪代码添加注释，以及对变量进行重命名操作，我们得到如下的代码片段：<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/06.png" alt=""><br>上面的伪代码有两个错误，就是在第一个if语句中会判断密码的长度是否为33，如果不是33就弹出错误提示。其实这里是32（而用户名的长度则不能大于10）只是Hex-Rays Decompiler这个插件生成伪代码时出错了，所以需要记住，F5生成的伪代码并不保证完全正确。32这个长度对应汇编指令中的代码片段如下：<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/07.png" alt=""><br>通过上面的伪代码的分析，我们发现只有sub_401510这个函数的功能并不清楚，通过双击sub_401510查看对应的伪代码，发现有点复杂，暂时无法理解，不过这并不要紧。</p>
 <h3 id="使用PEiD的Krypto-ANALyzer识别算法"><a href="#使用PEiD的Krypto-ANALyzer识别算法" class="headerlink" title="使用PEiD的Krypto ANALyzer识别算法"></a>使用PEiD的Krypto ANALyzer识别算法</h3><p>如果程序使用了标准算法进行处理，那么可以使用PEiD的Krypto ANALyzer进行快速识别，将CrackMe4.exe载入PEiD，点击PEiD主界面右下角的“=&gt;”按钮，选择“插件”菜单项，然后选择“Krypto ANALyzer”，就可以弹出Krypto ANALyzer插件了，Krypto ANALyzer提示程序使用了MD5算法，如下图所示：<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/08.png" alt=""><br>我们记住00401E5C这个地址，在IDA的反汇编指令视图（IDA View）中按下G键，输入00401E5C，就会自动跳转到计算MD5的函数代码中，如图所示：<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/09.png" alt=""><br>从这里并不能得到什么有用的信息，我们需要通过不断的回溯来理解程序的代码逻辑。通过往上查阅代码，我们知道00401E5C 位于函数sub_401D10之中，我们对sub_401D10进行交叉引用查找，如图所示：<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/10.png" alt=""><br>可以从sub_401D10回溯到sub_4026F0，继续通过交叉引用往上回溯，依次为sub_4027B0、sub_401C00、sub_401BB0、sub_401510，而sub_401510就是我们在实验步骤一种为一个暂时不理解的函数。那么我们可以猜测sub_401510这个函数就是用来计算用户名的MD5值的，我们可以通过OD动态调试来验证我们的想法。<br>通过阅读IDA中的反汇编代码，我们知道在00401752处调用了sub_401510这个函数<br>现在OD载入CrackMe4.exe程序，在00401752处设置一个断点，然后按F9运行程序，用户名输入test，密码输入一个32个字符的任意字符串，单击“注册”按钮，程序便会自动断下，断下后按F8进行单步跟踪，执行sub_401510这个函数后，我们看到eax寄存器的值为098F6BCD4621D373CADE4E832627B4F6，这个恰好就是test的MD5值。<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/11.png" alt=""></p>
-<h3 id="编写注册机"><a href="#编写注册机" class="headerlink" title="编写注册机"></a>编写注册机</h3><p>现在我们已经将程序的注册算法分析清楚了，下面就可以编写一个注册机了。程序的注册算法为：将用户名进行MD5计算得到一个哈希值，将哈希值转换为大写字符串即可，其中用户名的长度在1~10之间，不能超过10.Python内置了MD5算法，可以非常方便的计算MD5值，我们编写这样一段脚本即可：<br><code>import hashlib
-while True:
+<h3 id="编写注册机"><a href="#编写注册机" class="headerlink" title="编写注册机"></a>编写注册机</h3><p>现在我们已经将程序的注册算法分析清楚了，下面就可以编写一个注册机了。程序的注册算法为：将用户名进行MD5计算得到一个哈希值，将哈希值转换为大写字符串即可，其中用户名的长度在1~10之间，不能超过10.Python内置了MD5算法，可以非常方便的计算MD5值，我们编写这样一段脚本即可：</p>
+<pre><code>import hashlib
+
+  while True:
+
 username = raw_input(&quot;input username:&quot;)
+
 md5 = hashlib.md5(username).hexdigest().upper()
+
 serial = md5[::-1]  # 翻转字符串
-print &quot;serial: %s&quot; % serial</code><br>我们输入用户名Wins0n，就可以得到注册码为51F561458ADAEEBA43A57CF7E59F6CC4，输入程序可以成功注册，如图所示：<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/12.png" alt=""></p>
+
+print &quot;serial: %s&quot; % serial
+</code></pre><p>我们输入用户名Wins0n，就可以得到注册码为51F561458ADAEEBA43A57CF7E59F6CC4，输入程序可以成功注册，如图所示：<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/12.png" alt=""></p>
 <p>“抄”完的我快难受死了….</p>
 
       
@@ -308,6 +315,15 @@ print &quot;serial: %s&quot; % serial</code><br>我们输入用户名Wins0n，�
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          合天 CTF-REVERSE练习之算法分析2 WP
+        
+      </div>
+    </a>
   
   
     <a href="/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/" id="article-nav-older" class="article-nav-link-wrap">

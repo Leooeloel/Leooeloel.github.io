@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Tag: 二进制逆向 | Leo</title>
+  <title>合天 CTF-REVERSE练习之算法分析2 WP | Leo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leo">
-<meta property="og:url" content="http://leo.dropsec.xyz/tags/二进制逆向/index.html">
+  <meta name="description" content="本实验以自定义算法为例，讲解如何编写一个注册机。 积累经验喽…">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="合天 CTF-REVERSE练习之算法分析2 WP">
+<meta property="og:url" content="http://leo.dropsec.xyz/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/index.html">
 <meta property="og:site_name" content="Leo">
+<meta property="og:description" content="本实验以自定义算法为例，讲解如何编写一个注册机。 积累经验喽…">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/02.png">
+<meta property="og:updated_time" content="2017-08-12T13:49:40.426Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leo">
+<meta name="twitter:title" content="合天 CTF-REVERSE练习之算法分析2 WP">
+<meta name="twitter:description" content="本实验以自定义算法为例，讲解如何编写一个注册机。 积累经验喽…">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/02.png">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -145,36 +152,98 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-合天-CTF-REVERSE练习之算法分析2-WP" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      合天 CTF-REVERSE练习之算法分析2 WP
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/" class="archive-article-date">
+
+        
+        <a href="/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/" class="archive-article-date">
   	<time datetime="2017-08-12T13:27:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-12</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/">合天 CTF-REVERSE练习之算法分析2 WP</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本实验以自定义算法为例，讲解如何编写一个注册机。 积累经验喽…<a id="more"></a><br>本题的核心在于分析自定义算法，进而写出注册机，所以这里直接看关键代码。<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/02.png" alt=""><br>长方形括住的的是核心代码，简化为<br>    szUsername[v1] ^ byte_423678[v1] == szPassword[v1]<br>根据异或运算的性质，上述条件可以转换为<br>    szPassword [v1] ^ byte_423678[v1] == szUsername [v1]<br>我们需要把byte_423678的内容提取出来，为：</p>
+<pre><code>1, 2, 3, 4, 1, 5, 1, 5, 1, 3, 6, 5, 4, 8, 5, 3,
+1, 2, 3, 4, 5, 3, 5, 7, 2, 3, 2, 4, 8, 2, 5, 6, 4
+</code></pre><p>这就是我们找到的XOR密钥数组。<br>程序的注册算法为：<strong>将用户名的每一个字符与XOR密钥数组中的对应下标的字符进行异或运算，产生注册码字符串对应的字符</strong>。</p>
+<p>我们编写这样一段Python脚本即可：</p>
+<pre><code>def crack(username):
 
-        <div class="article-info info-on-right">
-          
+      key = [1, 2, 3, 4, 1, 5, 1, 5, 1, 3, 6, 5,
+
+             4, 8, 5, 3, 1, 2, 3, 4, 5, 3, 5, 7,
+
+             2, 3, 2, 4, 8, 2, 5, 6, 4]
+
+      pwd = []
+
+      for i in xrange(0, len(username)):
+
+          pwd.append(chr(ord(username[i]) ^ key[i]))
+
+      return &quot;&quot;.join(pwd)
+
+
+
+  if __name__ == &quot;__main__&quot;:
+
+      while True:
+
+          username = raw_input(&quot;input username:&quot;)
+
+          serial = crack(username)
+
+          print &quot;serial: %s&quot; % serial
+</code></pre><p>我们输入用户名Wins0n，就可以得到注册码为Vkmw1k，输入程序可以成功注册</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -186,247 +255,89 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/" class="archive-article-date">
-  	<time datetime="2017-08-12T09:48:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-12</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/">合天 CTF-REVERSE练习之算法分析1 WP</a>
-    </h1>
+  
+    <a href="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">合天 CTF-REVERSE练习之算法分析1 WP</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/" class="archive-article-date">
-  	<time datetime="2017-08-12T06:28:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/">合天 CTF-REVERSE练习之API断点 WP</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/11/合天-CTF-REVERSE练习之API定位-WP/" class="archive-article-date">
-  	<time datetime="2017-08-11T08:56:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/11/合天-CTF-REVERSE练习之API定位-WP/">合天 CTF REVERSE练习之API定位 WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/11/合天-CTF-REVERSSE练习之逆向初探-WP/" class="archive-article-date">
-  	<time datetime="2017-08-11T06:31:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/11/合天-CTF-REVERSSE练习之逆向初探-WP/">合天 CTF-REVERSSE练习之逆向初探 WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/10/壳与ESP定律/" class="archive-article-date">
-  	<time datetime="2017-08-10T12:58:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/10/壳与ESP定律/">壳与ESP定律</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/20/暑假一练-WriteUp/" class="archive-article-date">
-  	<time datetime="2017-07-20T07:36:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/20/暑假一练-WriteUp/">暑假一练 WriteUp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -449,9 +360,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",
