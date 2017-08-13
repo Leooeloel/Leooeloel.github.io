@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Leo">
 <meta property="og:description" content="本实验以自定义算法为例，讲解如何编写一个注册机。 积累经验喽…">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/02.png">
-<meta property="og:updated_time" content="2017-08-12T13:49:40.426Z">
+<meta property="og:updated_time" content="2017-08-13T10:55:35.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="合天 CTF-REVERSE练习之算法分析2 WP">
 <meta name="twitter:description" content="本实验以自定义算法为例，讲解如何编写一个注册机。 积累经验喽…">
@@ -172,7 +172,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本实验以自定义算法为例，讲解如何编写一个注册机。 积累经验喽…<a id="more"></a><br>本题的核心在于分析自定义算法，进而写出注册机，所以这里直接看关键代码。<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/02.png" alt=""><br>长方形括住的的是核心代码，简化为<br>    szUsername[v1] ^ byte_423678[v1] == szPassword[v1]<br>根据异或运算的性质，上述条件可以转换为<br>    szPassword [v1] ^ byte_423678[v1] == szUsername [v1]<br>我们需要把byte_423678的内容提取出来，为：</p>
+        <p>本实验以自定义算法为例，讲解如何编写一个注册机。 积累经验喽…<br><a id="more"></a><br>本题的核心在于分析自定义算法，进而写出注册机，所以这里直接看关键代码。<br><img src="/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/02.png" alt=""><br>长方形括住的的是核心代码，简化为<br>    szUsername[v1] ^ byte_423678[v1] == szPassword[v1]<br>根据异或运算的性质，上述条件可以转换为<br>    szPassword [v1] ^ byte_423678[v1] == szUsername [v1]<br>我们需要把byte_423678的内容提取出来，为：</p>
 <pre><code>1, 2, 3, 4, 1, 5, 1, 5, 1, 3, 6, 5, 4, 8, 5, 3,
 1, 2, 3, 4, 5, 3, 5, 7, 2, 3, 2, 4, 8, 2, 5, 6, 4
 </code></pre><p>这就是我们找到的XOR密钥数组。<br>程序的注册算法为：<strong>将用户名的每一个字符与XOR密钥数组中的对应下标的字符进行异或运算，产生注册码字符串对应的字符</strong>。</p>

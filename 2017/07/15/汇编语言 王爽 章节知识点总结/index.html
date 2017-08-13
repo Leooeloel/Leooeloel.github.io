@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/07/15/汇编语言%20王爽%20章节知识点总结/01.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/07/15/汇编语言%20王爽%20章节知识点总结/02.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/07/15/汇编语言%20王爽%20章节知识点总结/03.png">
-<meta property="og:updated_time" content="2017-08-09T07:32:30.948Z">
+<meta property="og:updated_time" content="2017-08-13T10:56:22.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="汇编语言 王爽 章节知识点总结">
 <meta name="twitter:description" content="王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…">
@@ -174,7 +174,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…<a id="more"></a></p>
+        <p>王爽老师的书差不多看了一半，听很多人说这位老师的书写的很不错，为了看完之后不至于很容易的忘记，故结合前人笔记草草回顾一遍…<br><a id="more"></a></p>
 <h2 id="第一章-基础知识"><a href="#第一章-基础知识" class="headerlink" title="第一章 基础知识"></a>第一章 基础知识</h2><p>1.存储单元为1Byte，即字节。微小信息单位为1bit，其中1Byte=8bit。<br>（一个存储单元可以存储8个bit，即8位二进制数。）<br> 1GB=1024MB  1MB=1024KB  1KB=1024B  1B=8bit<br>2.存储单元从零开始顺序编号。</p>
 <h2 id="第二章-寄存器"><a href="#第二章-寄存器" class="headerlink" title="第二章 寄存器"></a>第二章 寄存器</h2><p>3.8086CPU有14个寄存器，AX(accumulate) BX(base) CX(count) DX(data) SI DI<br>指针寄存器：SP BP IP<br>段寄存器：CS SS DS ES<br>标志寄存器：PSW<br>4.AX可分为AH(高8位）和AL(低8位)，均可以当做独立寄存器使用，互不影响。<br>5.对于实验中溢出的数据，由PSW寄存器保存溢出值。<br>6.8086CPU采用段地址和偏移地址，通过地址加法器来合成物理地址<br>物理地址=段地址x 16 + 偏移地址（段的大小=偏移地址的长度）<br>7.偏移地址16位，其变化范围为0—FFFFH；仅用偏移地址来寻址最多可寻64KB个内存单元。</p>
 <h2 id="第三章-寄存器（内存访问）"><a href="#第三章-寄存器（内存访问）" class="headerlink" title="第三章 寄存器（内存访问）"></a>第三章 寄存器（内存访问）</h2><p>8.字单元：存放一个字型数据（16位）的内存单元，由两个地址连续的内存单元，将起始地址为N的字单元简称为N地址字单元。<br>9.<strong><em>8086CPU不支持数据直接入段寄存器</em></strong><br>10.栈：LIFO（后进先出） 8086CPU入栈（PUSH）和出栈（POP）以字为单位；<br>11.SS：SP 任意时刻始终指向栈顶元素，PUSH AX由下面两步构成：<br>（1）SP=SP-2，SS：SP指向当前栈顶前面的单元，以当前栈顶前面的单元作为新的栈顶；<br>（2）将AX中的内容送入SS：SP指向的内存单元处，SS：SP此时指向新栈顶.<br>  （栈顶指针指向的元素最终都是有效的）<br>12.8086CPU入栈时，栈顶从高地址向低地址方向移动，栈为空的时候，SS：SP指向最底部的字单元的偏移地址+2。<br>13.出栈后，SS：SP指向新的栈顶，但之间栈顶的元素还在，只是不在栈中，在之后PUSH移动至此后，此数据将会被覆盖。</p>

@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/10/壳与ESP定律/08.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/10/壳与ESP定律/10.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/10/壳与ESP定律/11.png">
-<meta property="og:updated_time" content="2017-08-11T10:25:25.603Z">
+<meta property="og:updated_time" content="2017-08-13T10:56:33.168Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="壳与ESP定律">
 <meta name="twitter:description" content="好不容易略懂了一点ESP…">
@@ -182,7 +182,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>好不容易略懂了一点ESP…<a id="more"></a></p>
+        <p>好不容易略懂了一点ESP…<br><a id="more"></a></p>
 <h2 id="一：知识准备"><a href="#一：知识准备" class="headerlink" title="一：知识准备"></a>一：知识准备</h2><ol>
 <li>通过前面的学习，学会了利用暴力破解达到绕过注册机制和追踪注册码来达到“合法”用软件的方法，但是我们往往会遇到代码经过混淆器混淆的程序，此类混淆器可以称之为壳，壳又可分为压缩壳（常见的有UPX、北斗、ASDPack、Npack、PECompact等）和保护壳（如强壳Safengine、VMprotect、winlicense、Themida等），压缩壳作用是把程序进行体积缩小化处理，保护壳主要作用是混淆或加密代码防止他人进行逆向程序、破解程序。我们可以通过一些侦壳程序进行识别，但有些壳会采用伪装技术来混淆侦壳程序。</li>
 <li>ESP定律的原理：<br>堆栈平衡原理。ESP定律是堆栈平衡原理在实践中的一个应用。所谓堆栈平衡原理，即加壳程序运行时，需要先保存原程序的初始现场，将现场状态压入堆栈，待壳运行完毕后，将原程序的现场状态出栈，此时开始运行原程序。在具体应用时，通过记录堆栈寄存器存储原程序初始现场状态的地址，并使程序在为将初始状态出栈而访问以记录的地址时中断，程序中断处便在OEP附近。</li>

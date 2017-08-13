@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/06.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/07.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/08.png">
-<meta property="og:updated_time" content="2017-08-12T07:27:14.137Z">
+<meta property="og:updated_time" content="2017-08-13T10:55:05.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="合天 CTF-REVERSE练习之API断点 WP">
 <meta name="twitter:description" content="通过OD的API参考断点以及IDA中针对API的交叉引用查找功能，可以快速定位到调用特定API的位置。但通过API动态调用技术，可以有效对抗这种逆向分析方法。本实验通过对API直接设置断点以及利用MessageBox的阻塞特性，介绍了针对API动态调用的逆向分析方法。">
@@ -179,7 +179,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>通过OD的API参考断点以及IDA中针对API的交叉引用查找功能，可以快速定位到调用特定API的位置。但通过<strong>API动态调用技术</strong>，可以有效对抗这种逆向分析方法。本实验通过<em>对API直接设置断点以及利用MessageBox的阻塞特性，介绍了针对API动态调用的逆向分析方法。</em><a id="more"></a><br>这个程序基本上和前两个是一样的马甲，但是如果你尝试用之前的方法来找到密码，是很难行的通的。<br>so,我们来学习新东西…</p>
+        <p>通过OD的API参考断点以及IDA中针对API的交叉引用查找功能，可以快速定位到调用特定API的位置。但通过<strong>API动态调用技术</strong>，可以有效对抗这种逆向分析方法。本实验通过<em>对API直接设置断点以及利用MessageBox的阻塞特性，介绍了针对API动态调用的逆向分析方法。</em><br><a id="more"></a><br>这个程序基本上和前两个是一样的马甲，但是如果你尝试用之前的方法来找到密码，是很难行的通的。<br>so,我们来学习新东西…</p>
 <h2 id="一：利用API断点跟踪关键函数代码"><a href="#一：利用API断点跟踪关键函数代码" class="headerlink" title="一：利用API断点跟踪关键函数代码"></a>一：利用API断点跟踪关键函数代码</h2><p>该程序外形和之前的一样，再次不在赘述，直接OD载入，Ctrl+G,在窗口中输入MessageBoxA,确定,<br>来到MessageBoxA的调用点，F2下断点<br><img src="/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/01.png" alt=""><br>F9运行，在弹出窗口输入test，确定。程序在MessageBoxA的第一条指令断下，点击菜单栏调试-&gt;执行到用户代码，这时候CrackMe的错误提示消息框将会弹出来，我们点击消息框的“确定”按钮，程序在OD中会再次断下。这次是因为点击了“执行到用户代码”的原因，OD会在调用了MessageBoxA的下一条指令自动断下，如图所示：<br><img src="/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/02.png" alt=""><br>可以知道004015F6处的call就是调用了MessageBoxA函数<br><img src="/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/03.png" alt=""><br>F8单步跟踪，消息框中出现字符串，它就是我们想要的密码<br><img src="/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/04.png" alt=""><br>……………………………………………………<br> 在上面步骤中，我们在MessageBoxA断下后，通过“执行到用户代码”回到CrackMe空间的代码，通过简单的F8单步跟踪，就很幸运的看到了过关密码。<strong>然而在实际调试过程中，可能需要跟踪很久才能发现一点蛛丝马迹，那么我们可以结合IDA的静态分析功能来加速我们的逆向过程。</strong><br>在前面的分析中，我们知道在004015F6这个地址调用了MessageBoxA函数，现在使用IDA载入CrackMe3.exe，待分析结束后按下G，然后输入“004015F6”后点击OK按钮，就会自动跳转到004015F6这个地方了，如图所示：<br><img src="/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/05.png" alt=""><br>F5查看伪代码，很容易发现密码<br><img src="/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/06.png" alt=""></p>
 <blockquote>
 <p>实际逆向过程中，要学会OD与IDA熟练结合使用。扬长避短。</p>
