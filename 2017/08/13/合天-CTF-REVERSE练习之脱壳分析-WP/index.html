@@ -22,7 +22,11 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/05.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/06.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/07.jpg">
-<meta property="og:updated_time" content="2017-08-13T06:57:23.552Z">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/08.jpg">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/09.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/10.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/11.png">
+<meta property="og:updated_time" content="2017-08-15T04:26:37.565Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="合天 CTF-REVERSE练习之脱壳分析 WP">
 <meta name="twitter:description" content="这个脱壳分析实验和之前写的“壳与ESP定律“内容有些是重复的，因为这个实验就使用了ESP定律来脱壳的，但是这个实验在某些方面比较详细，是一个不错的补充，特别是脱壳后对软件的修复…">
@@ -180,8 +184,12 @@
       
         <p>这个脱壳分析实验和之前写的“壳与ESP定律“内容有些是重复的，因为这个实验就使用了ESP定律来脱壳的，但是这个实验在某些方面比较详细，是一个不错的补充，特别是脱壳后对软件的修复…</p>
 <a id="more"></a>
-<p>运行这个软件是这样的<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/01.png" alt=""><br>用PEID查壳，发现是UPS壳<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/02.png" alt=""><br>这个时候如果拖进IDA去分析的话会弹出一些提示<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/03.png" alt=""><br>意味着程序经过加壳处理，最好不要用IDA去进行分析，因为加壳后的程序很难通过IDA的静态分析来理解程序的内部执行逻辑。<br>所以我们用OD打开，接下来就是运用ESP定律来脱壳了<br>F8单步，发现只有ESP、EIP寄存器变红的时候就可以用ESP了<br>然后选择ESP的内容，右键-&gt;数据窗口中跟随，然后在数据窗口中选中对应数据 ，右键，断点-&gt;硬件访问-&gt;对应字节。然后就设置好硬件断点了。F9运行到断点<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/04.png" alt=""><br>然后就可以删除断点了 ，调试-&gt;硬件断点-&gt;删除。<br>F7单步，会有一个循环很烦人，所以选中循环下的语句，F4直接运行到这里<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/05.png" alt=""><br>F8单步到004094F8，这就是OEP，右键选择用OD脱壳<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/06.png" alt=""><br>注意94F8才是程序入口。然后脱壳输入文件名保存。<br><strong>现在请不要关闭OD，后面还需要进行修复操作。对UPX脱壳而言，进行到这一步就可以了，但是如果是另外一些壳，可能还需要<em>对程序的输入表进行修复操作</em>。</strong></p>
-<h2 id="修复脱壳后的程序"><a href="#修复脱壳后的程序" class="headerlink" title="修复脱壳后的程序"></a>修复脱壳后的程序</h2><p>注意在继续进行实验之前，请确保你停留在实验步骤二中最后的一步。现在打开桌面上的ImportREC程序，首先在进程列表中选择C:\Reverse\6\crackme6.exe，然后在OEP中填入94F8（也就是在OD中找到的一个信息），然后点击“IAT AutoSearch”按钮，接着点击“GetImports”按钮，就可以看到程序的输入表信息了。<br>点击右侧的“Show Invalid”按钮，看看是否存在无效的输入表项目。无效的输入表项目前面带有问号（？），如果有可以使用右键菜单删除。这里没有无效的输入表项目，所以选择“Fix Dump”按钮，对我们的dumped.exe进行修复，得到dumped<em>.exe程序。<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/07.jpg" alt=""><br>现在对程序的脱壳以及修复操作已经全部完成，使用PEiD对dumped</em>.exe程序查壳，可以看到提示“Microsoft Visual C++ 6.0”信息，dumped_.exe程序也可以正常运行，至此脱壳完成。</p>
+<p>运行这个软件是这样的<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/01.png" alt=""><br>用PEID查壳，发现是UPX壳<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/02.png" alt=""><br>这个时候如果拖进IDA去分析的话会弹出一些提示<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/03.png" alt=""><br>意味着程序经过加壳处理，最好不要用IDA去进行分析，因为加壳后的程序很难通过IDA的静态分析来理解程序的内部执行逻辑。<br>所以我们用OD打开，接下来就是运用ESP定律来脱壳了<br>F8单步，发现只有ESP、EIP寄存器变红的时候就可以用ESP了<br>然后选择ESP的内容，右键-&gt;数据窗口中跟随，然后在数据窗口中选中对应数据 ，右键，断点-&gt;硬件访问-&gt;对应字节。然后就设置好硬件断点了。F9运行到断点<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/04.png" alt=""><br>然后就可以删除断点了 ，调试-&gt;硬件断点-&gt;删除。<br>F7单步，会有一个循环很烦人，所以选中循环下的语句，F4直接运行到这里<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/05.png" alt=""><br>F8单步到004094F8，这就是OEP，右键选择用OD脱壳<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/06.png" alt=""><br>注意94F8才是程序入口。然后脱壳输入文件名保存。<br><strong>现在请不要关闭OD，后面还需要进行修复操作。对UPX脱壳而言，进行到这一步就可以了，但是如果是另外一些壳，可能还需要<em>对程序的输入表进行修复操作</em>。</strong></p>
+<h2 id="修复脱壳后的程序"><a href="#修复脱壳后的程序" class="headerlink" title="修复脱壳后的程序"></a>修复脱壳后的程序</h2><p>注意在继续进行实验之前，请确保你停留在实验步骤二中最后的一步。现在打开桌面上的ImportREC程序，首先在进程列表中选择C:\Reverse\6\crackme6.exe，然后在OEP中填入94F8（也就是在OD中找到的一个信息），然后点击“IAT AutoSearch”按钮，接着点击“GetImports”按钮，就可以看到程序的输入表信息了。<br>点击右侧的“Show Invalid”按钮，看看是否存在无效的输入表项目。无效的输入表项目前面带有问号（？），如果有可以使用右键菜单删除。这里没有无效的输入表项目，所以选择“Fix Dump”按钮，对我们的dumped.exe进行修复，得到dumped<em>.exe程序。<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/07.jpg" alt=""><br>现在对程序的脱壳以及修复操作已经全部完成，使用PEiD对dumped</em>.exe程序查壳，可以看到提示“Microsoft Visual C++ 6.0”信息，dumped_.exe程序也可以正常运行，至此脱壳完成。<br><strong>…………………………………………………………………………………………………………………………..</strong><br>以上是合天的一个实验指导，当我在实验吧看到一个类似的实验时，发现实验吧对这个类似题目处理的步骤增多了，下面简单补充：</p>
+<ol>
+<li>在用OD的脱壳工具查看OEP之后，发送到LordPE软件，选择带脱壳的软件，右键选择“修正镜像大小”，单机确定按钮；然后再次选择带脱壳软件，右键选择“完整保存”，保存即可。</li>
+<li>然后将它发送到ImportREC软件，下拉对话框中选择程序，输入OEP，单击IAT自动查找，然后单击获取导入表，然后单击显示无效函数，有的话右键删除，没有就单击修正转存，保存即可。（完成脱壳）<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/08.jpg" alt=""><br><strong>…………………………………………………………………………………………………………………………..</strong><br>以上两步应该算是软件的修复吧，有些软件还需要去除软件大小自校验<br>将脱壳后的软件发送到OD，菜单栏选择插件-&gt;APId断点设置工具-&gt;常用断点设置，弹出窗口选择文件处理-&gt;GetFileSize,F9运行，断点处暂停<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/09.png" alt=""><br>单击堆栈窗口，右键选择在反汇编窗口中跟随<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/10.png" alt=""><br>单击反汇编窗口调用函数的代码行，F2，然后切换到断点窗口（B），删除GetFileSize断点 ，程序中的GetFileSize函数获取了脱壳后程序的大小，然后利用命令cmp eax,0xc6c8命令比较，不相等则跳转 ，脱壳后程序要比源程序大，所以跳转退出程序。。<br><img src="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/11.png" alt=""><br>把两个Ja的命令NOP掉，去除软件大小限制，然后选择所以修改保存即可。<br>然后运行程序发现可以正常运行了…<br>(有些软件以上三步缺一步就不可以正常 运行…)</li>
+</ol>
 
       
 
