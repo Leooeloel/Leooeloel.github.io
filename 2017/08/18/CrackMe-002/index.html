@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/18/CrackMe-002/02.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/18/CrackMe-002/03.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/08/18/CrackMe-002/04.png">
-<meta property="og:updated_time" content="2017-08-18T14:18:19.258Z">
+<meta property="og:updated_time" content="2017-08-19T07:14:05.105Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CrackMe 002">
 <meta name="twitter:description" content="直接转入正题…">
@@ -394,8 +394,10 @@
 00402588   .  8945 B4       mov dword ptr ss:[ebp-0x4C],eax
 0040258B   .  74 58         je short Afkayas_.004025E5
 </code></pre><p>分析可得：<br> Name/Serial关系为：<br>     _res = strlen(Name)* 0x17CFB +Name[0]<br>     Serial = “AKA-_res”</p>
-<p>python脚本如下：<br>    name = raw_input(‘please input name:’)</p>
-<pre><code>serial = len(name)*int(&apos;17cfb&apos;,16) + ord(name[0])
+<p>python脚本如下：</p>
+<pre><code>name = raw_input(&apos;please input name:&apos;)
+
+serial = len(name)*int(&apos;17cfb&apos;,16) + ord(name[0])
 
 print &apos;AKA-%d&apos;%serial
 </code></pre><p>测试几组数据，正确.</p>
@@ -512,6 +514,15 @@ print &apos;AKA-%d&apos;%serial
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/08/19/CrackMe-003/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CrackMe 003
+        
+      </div>
+    </a>
   
   
     <a href="/2017/08/18/点滴算法/" id="article-nav-older" class="article-nav-link-wrap">

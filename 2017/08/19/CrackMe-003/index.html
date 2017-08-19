@@ -6,14 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Leo</title>
+  <title>CrackMe 003 | Leo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leo">
-<meta property="og:url" content="http://leo.dropsec.xyz/page/3/index.html">
+  <meta name="description" content="算法部分又出新花样，在第二题之上加入了浮点运算，加上战线拉的长，需要耐心分析方可得出Key… en,最后再加个解除延时…   [多看看浮点汇编运算]">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CrackMe 003">
+<meta property="og:url" content="http://leo.dropsec.xyz/2017/08/19/CrackMe-003/index.html">
 <meta property="og:site_name" content="Leo">
+<meta property="og:description" content="算法部分又出新花样，在第二题之上加入了浮点运算，加上战线拉的长，需要耐心分析方可得出Key… en,最后再加个解除延时…   [多看看浮点汇编运算]">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/19/CrackMe-003/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/19/CrackMe-003/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/19/CrackMe-003/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/19/CrackMe-003/04.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/19/CrackMe-003/05.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/19/CrackMe-003/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/19/CrackMe-003/06.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/19/CrackMe-003/07.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/19/CrackMe-003/08.png">
+<meta property="og:updated_time" content="2017-08-19T09:11:48.526Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leo">
+<meta name="twitter:title" content="CrackMe 003">
+<meta name="twitter:description" content="算法部分又出新花样，在第二题之上加入了浮点运算，加上战线拉的长，需要耐心分析方可得出Key… en,最后再加个解除延时…   [多看看浮点汇编运算]">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/08/19/CrackMe-003/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -145,35 +160,158 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-年少无为，卖马为生" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-CrackMe-003" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/08/年少无为，卖马为生/">年少无为，卖马为生</a>
+    <h1 class="article-title" itemprop="name">
+      CrackMe 003
     </h1>
   
 
         
-        <a href="/2017/07/08/年少无为，卖马为生/" class="archive-article-date">
-  	<time datetime="2017-07-08T12:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
+        <a href="/2017/08/19/CrackMe-003/" class="archive-article-date">
+  	<time datetime="2017-08-19T07:13:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/2017/07/08/年少无为，卖马为生/1.jpg" alt=""></p>
-<p>前几天在浏览博客的时候无意间看到有人用“年少无为，卖马为生”来介绍自己，顿时心里五味陈杂…<br></p>
-        
-          <a class="article-more-a" href="/2017/07/08/年少无为，卖马为生/#more">more >></a>
-        
+        <p>算法部分又出新花样，在第二题之上加入了浮点运算，加上战线拉的长，需要耐心分析方可得出Key… en,最后再加个解除延时…   [多看看浮点汇编运算]<br><a id="more"></a></p>
+<h2 id="观察"><a href="#观察" class="headerlink" title="观察"></a>观察</h2><p>运行程序<br><img src="/2017/08/19/CrackMe-003/01.png" alt=""><br>ei？这里好像有一个延时吖，嗯，是的。<br><img src="/2017/08/19/CrackMe-003/02.png" alt=""><br>输入test 1234<br><img src="/2017/08/19/CrackMe-003/03.png" alt=""></p>
+<h2 id="确定目标"><a href="#确定目标" class="headerlink" title="确定目标"></a>确定目标</h2><p>一.找到注册机<br>二.解除延时</p>
+<h2 id="一-找到注册机"><a href="#一-找到注册机" class="headerlink" title="一.找到注册机"></a>一.找到注册机</h2><p>加载进入OD，查找错误提示字符串，找到对应汇编代码<br><img src="/2017/08/19/CrackMe-003/04.png" alt=""><br>查看上面相关代码，很容易找到关键跳<br><img src="/2017/08/19/CrackMe-003/05.png" alt=""><br>然后就开始分析算法了…<br>找到这个函数开始，下断，然后F9，一步步找到有用代码<br>函数开始到关键跳代码比较冗长，只跳关键部分进行重点分析<br>第一部分：</p>
+<pre><code>004081E3    FF15 18B14000   call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaHresu&gt;; **get input name
+004081E9    8B95 50FFFFFF   mov edx,dword ptr ss:[ebp-0xB0]
+004081EF    8B45 E4         mov eax,dword ptr ss:[ebp-0x1C]          ; **eax=name
+004081F2    50              push eax
+004081F3    8B1A            mov ebx,dword ptr ds:[edx]
+004081F5    FF15 F8B04000   call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaLenBs&gt;; **get length of name
+004081FB    8BF8            mov edi,eax                              ; **edi=name length
+004081FD    8B4D E8         mov ecx,dword ptr ss:[ebp-0x18]          ; **ecx=name
+00408200    69FF 385B0100   imul edi,edi,0x15B38                     ; **edi*=0x15B38
+00408206    51              push ecx
+00408207    0F80 B7050000   jo AfKayAs_.004087C4                     ; *jump overflow
+0040820D    FF15 0CB14000   call dword ptr ds:[&lt;&amp;MSVBVM50.#516&gt;]     ; **get name[0]
+00408213    0FBFD0          movsx edx,ax                             ; **edx=name[0]  计算第一个字符的ASCII码值
+00408216    03FA            add edi,edx                              ; **edi+=name[0]
+00408218    0F80 A6050000   jo AfKayAs_.004087C4                     ; *jump overflow
+0040821E    57              push edi
+0040821F    FF15 F4B04000   call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaStrI4&gt;; **hex-&gt;dec EDI结果转成10进制数
+00408225    8BD0            mov edx,eax
+00408227    8D4D E0         lea ecx,dword ptr ss:[ebp-0x20]
+</code></pre><p>这段汇编代码与CrackMe2中的代码的流程是一样的，算法就是（name的长度）*0x15B38+第一个字符的ASCII码值，转成10进制字符串，这个简单。<br>之后，我们再向后看，肯定有不同的位置，发现出现了浮点数运算:<br>我们继续对代码进行分析，到跳转条件前一共主要出现了四段浮点数的汇编部分:<br>第二部分：</p>
+<pre><code>004082E7    8B19            mov ebx,dword ptr ds:[ecx]               
+004082E9    FF15 74B14000   call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaR8Str&gt;; name转换成浮点数,结果在浮点寄存器里
+004082EF    D905 08104000   fld dword ptr ds:[0x401008]              ; **将0401008中的硬编码实型存入st0
+004082F5    833D 00904000 0&gt;cmp dword ptr ds:[0x409000],0x0
+004082FC    75 08           jnz short AfKayAs_.00408306
+004082FE    D835 0C104000   fdiv dword ptr ds:[0x40100C]
+00408304    EB 0B           jmp short AfKayAs_.00408311
+00408306    FF35 0C104000   push dword ptr ds:[0x40100C]
+0040830C    E8 578DFFFF     call &lt;jmp.&amp;MSVBVM50._adj_fdiv_m32&gt;
+00408311    83EC 08         sub esp,0x8
+00408314    DFE0            fstsw ax                                 ; **将st0中的值复制到ax中
+00408316    A8 0D           test al,0xD
+00408318    0F85 A1040000   jnz AfKayAs_.004087BF
+0040831E    DEC1            faddp st(1),st                           ; **将st(num)和st相加，用和来替换st(num),将st出栈
+00408320    DFE0            fstsw ax
+00408322    A8 0D           test al,0xD
+00408324    0F85 95040000   jnz AfKayAs_.004087BF
+0040832A    DD1C24          fstp qword ptr ss:[esp]
+0040832D    FF15 48B14000   call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaStrR8&gt;
+00408333    8BD0            mov edx,eax
+</code></pre><p>其实这部分并没有做什么实质上的工作，不过通过浮点数运算对内存中的数据进行改动(我们后面会发现这些内存地址都用了，但我们并不需要考虑这些，直接当做硬编码处理就可以了)。<br>第三部分：</p>
+<pre><code>004083F3    8B19            mov ebx,dword ptr ds:[ecx]               
+004083F5    FF15 74B14000   call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaR8Str&gt;
+004083FB    DC0D 10104000   fmul qword ptr ds:[0x401010]             ; **name=name*3
+00408401    83EC 08         sub esp,0x8
+00408404    DC25 18104000   fsub qword ptr ds:[0x401018]             ; **name=name-2
+0040840A    DFE0            fstsw ax
+0040840C    A8 0D           test al,0xD
+0040840E    0F85 AB030000   jnz AfKayAs_.004087BF
+00408414    DD1C24          fstp qword ptr ss:[esp]                  ; **结果存入堆栈
+00408417    FF15 48B14000   call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaStrR8&gt;
+0040841D    8BD0            mov edx,eax
+</code></pre><p>可以看到，这部分对输入的name进行了简单的浮点运算:name=name*3-2<br>第四部分：</p>
+<pre><code>004084DD    8B19            mov ebx,dword ptr ds:[ecx]               
+004084DF    FF15 74B14000   call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaR8Str&gt;
+004084E5    DC25 20104000   fsub qword ptr ds:[0x401020]             ; **str-(-15)
+004084EB    83EC 08         sub esp,0x8
+004084EE    DFE0            fstsw ax
+004084F0    A8 0D           test al,0xD
+004084F2    0F85 C7020000   jnz AfKayAs_.004087BF
+004084F8    DD1C24          fstp qword ptr ss:[esp]
+004084FB    FF15 48B14000   call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaStrR8&gt;
+00408501    8BD0            mov edx,eax
+</code></pre><p>又对name进行了简单的操作，name=name-(-0x15);<br>第五部分：</p>
+<pre><code>004085C8    FF15 18B14000   call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaHresu&gt;
+004085CE    8B45 E8         mov eax,dword ptr ss:[ebp-0x18]          ; **eax=input serial
+004085D1    50              push eax                                 ; **serial转换成浮点数
+004085D2    FF15 74B14000   call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaR8Str&gt;; 
+004085D8    8B4D E4         mov ecx,dword ptr ss:[ebp-0x1C]
+004085DB    DD9D 1CFFFFFF   fstp qword ptr ss:[ebp-0xE4]
+004085E1    51              push ecx                                 ; **我们输入的serila转化成浮点数
+004085E2    FF15 74B14000   call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaR8Str&gt;
+004085E8    833D 00904000 0&gt;cmp dword ptr ds:[0x409000],0x0
+004085EF    75 08           jnz short AfKayAs_.004085F9
+004085F1    DCBD 1CFFFFFF   fdivr qword ptr ss:[ebp-0xE4]            ; **name/serial值存入st0
+004085F7    EB 11           jmp short AfKayAs_.0040860A
+004085F9    FFB5 20FFFFFF   push dword ptr ss:[ebp-0xE0]
+004085FF    FFB5 1CFFFFFF   push dword ptr ss:[ebp-0xE4]
+00408605    E8 888AFFFF     call &lt;jmp.&amp;MSVBVM50._adj_fdivr_m64&gt;
+0040860A    DFE0            fstsw ax
+0040860C    A8 0D           test al,0xD
+0040860E    0F85 AB010000   jnz AfKayAs_.004087BF
+00408614    FF15 34B14000   call dword ptr ds:[&lt;&amp;MSVBVM50.__vbaFpR8&gt;&gt;
+0040861A    DC1D 28104000   fcomp qword ptr ds:[0x401028]            ; **判断name/serial==1？
+00408620    DFE0            fstsw ax
+00408622    F6C4 40         test ah,0x40
+00408625    74 07           je short AfKayAs_.0040862E
+</code></pre><p>这一部分实现的就是上面步骤生成的serial与我们输入的serial进行比较，只不过利用了有一点迷糊性质的浮点数除法，判断结果是否等于1而已。<br>我们在总结一下算法，Name/Serial关系为：<br>    Serial = (strlen(Name)<em>0x15B38+Name[0]+2.0)</em>3.0-2.0+15<br>写出注册机:（python）</p>
+<pre><code># coding=utf8
+s = raw_input(&quot;name:&quot;)
+print &quot;password:&quot;+str((len(s)*0x15B38+ord(s[:1])+2)*3-2+15)
+</code></pre><p>最后总结一下，其实算法很简单，不过用浮点数汇编来迷惑罢了。</p>
+<h2 id="二-解除延时"><a href="#二-解除延时" class="headerlink" title="二.解除延时"></a>二.解除延时</h2><p>打开程序，首先会出现如下界面<br><img src="/2017/08/19/CrackMe-003/01.png" alt=""><br>程序会停在该界面若干秒，然后才进入主界面，我们要去掉这个延时界面。<br>使用OllyDbg工具打开程序，进入调试运行，程序首先断在系统领空<br>右键-&gt;查找-&gt;所以模块中的名称，在弹出的All names窗口中找到SetTimer<br><img src="/2017/08/19/CrackMe-003/06.png" alt=""><br>双击SetTimer代码所在位置，然后设置断点<br>调试运行，程序断在刚才设置的断点处，此时查看堆栈：<br><img src="/2017/08/19/CrackMe-003/07.png" alt=""><br>可知延时界面的滞留时间为7000ms，相应的十六进制值为0x00001B58<br>去掉这个延时界面只需将该时间修改得足够小<br>但是该时间位于系统领空，无法直接用OllyDbg进行修改保存，我们借助WinHex工具<br>使用WinHex工具打开程序，在菜单中选择Search -&gt; Find Hex Values，查找十六进制值581B0000<br><img src="/2017/08/19/CrackMe-003/08.png" alt=""><br>将该值修改为01000000，即延时时间为0x00000001ms，保存即可。<br>然后运行程序，发现不再延迟喽…</p>
+<p>………………………………………………………分割线…………………………………………….<br>其实自己也没必要太过灰心，毕竟自己也是刚开始学逆向没多久，根据汇编代码来推出算法对自己来说虽然还有难度，其实多遇到些题目，多总结经验慢慢的就很容易了。（其实现在做的题还是蛮难的，高手也得吮吮手指头呢…) hhh</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -184,7 +322,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
         		</li>
       		
 		</ul>
@@ -193,200 +331,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/08/年少无为，卖马为生/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2017/08/19/CrackMe-003/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-搭建博客后的资源整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/08/搭建博客后的资源整合/">搭建博客后的资源整合</a>
-    </h1>
   
-
-        
-        <a href="/2017/07/08/搭建博客后的资源整合/" class="archive-article-date">
-  	<time datetime="2017-07-08T05:14:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对于我这样的小白，从开始搭建博客到搭建好，到配置博客的小功能，，再到基本熟悉用Markdown语法写文章并熟悉上传文章的命令，差不多用了三四天的时间。下面就简单整合一下此过程中接触到的一些较为有用的资源。。。<br></p>
-        
-          <a class="article-more-a" href="/2017/07/08/搭建博客后的资源整合/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具or软件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/08/搭建博客后的资源整合/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
+    <a href="/2017/08/18/CrackMe-002/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CrackMe 002</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    <article id="post-Markdown 使用语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/06/Markdown 使用语法/">Markdown 使用语法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/06/Markdown 使用语法/" class="archive-article-date">
-  	<time datetime="2017-07-06T12:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Markdown是一个轻量、简单、通用的文档快速排版的标记语言</p>
-<p>Markdown的语法简洁明了、学习容易，而且功能比纯文本更强，因此有很多人用它写博客。世界上最流行的博客平台WordPress和大型CMS如Joomla、Drupal都能很好的支持Markdown。完全采用Markdown编辑器的博客平台有Ghost和Typecho。<br></p>
-        
-          <a class="article-more-a" href="/2017/07/06/Markdown 使用语法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具or软件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/06/Markdown 使用语法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Hello-Word" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/04/Hello-Word/">Hello Word</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/04/Hello-Word/" class="archive-article-date">
-  	<time datetime="2017-07-04T13:53:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在实验室鹏哥和某些学长的推荐和帮助下，这个博客终于搭建起来了。<br></p>
-        
-          <a class="article-more-a" href="/2017/07/04/Hello-Word/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/04/Hello-Word/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+</nav>
 
 
 
@@ -394,9 +406,10 @@
 
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
+  
+
+  
+
   
 
 
@@ -419,8 +432,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
