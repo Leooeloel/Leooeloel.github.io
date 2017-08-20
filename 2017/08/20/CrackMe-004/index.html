@@ -6,14 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Archives: 2017 | Leo</title>
+  <title>CrackMe 004 | Leo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leo">
-<meta property="og:url" content="http://leo.dropsec.xyz/archives/2017/page/3/index.html">
+  <meta name="description" content="首先说一下，这个题是比较有“脾气”的。OK，咱们就来看看它到底是什么脾气…">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CrackMe 004">
+<meta property="og:url" content="http://leo.dropsec.xyz/2017/08/20/CrackMe-004/index.html">
 <meta property="og:site_name" content="Leo">
+<meta property="og:description" content="首先说一下，这个题是比较有“脾气”的。OK，咱们就来看看它到底是什么脾气…">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/20/CrackMe-004/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/20/CrackMe-004/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/20/CrackMe-004/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/20/CrackMe-004/04.png">
+<meta property="og:updated_time" content="2017-08-20T13:56:26.534Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leo">
+<meta name="twitter:title" content="CrackMe 004">
+<meta name="twitter:description" content="首先说一下，这个题是比较有“脾气”的。OK，咱们就来看看它到底是什么脾气…">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/08/20/CrackMe-004/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -151,215 +161,244 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-CrackMe-004" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CrackMe 004
+    </h1>
+  
+
+        
+        <a href="/2017/08/20/CrackMe-004/" class="archive-article-date">
+  	<time datetime="2017-08-20T13:03:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-20</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先说一下，这个题是比较有“脾气”的。OK，咱们就来看看它到底是什么脾气…<br><a id="more"></a></p>
+<h2 id="观察"><a href="#观察" class="headerlink" title="观察"></a>观察</h2><p><img src="/2017/08/20/CrackMe-004/01.png" alt=""><br>当自己输入伪码后发现怎么没有确定键呀？进一步观察发现，当光标进入灰色区域是光标旁边会出现提示：注册成功时会在下面出现一张照片<br>然后我们可以假想一下题目的思路：可能是当输入正确的信息后点击灰色区域就会出现照片，而输入伪码时就会陷入死循环…</p>
+<h2 id="查壳"><a href="#查壳" class="headerlink" title="查壳"></a>查壳</h2><p><img src="/2017/08/20/CrackMe-004/02.png" alt=""><br>Delphi，没有加壳<br>由于对Delphi不是很熟悉，因此网上查了一下大佬们在逆Delphi时的各种姿势，发现了一个很好用的工具Dede，于是下载下来然后拖入程序进行分析。<br>查看过程<br><img src="/2017/08/20/CrackMe-004/03.png" alt=""><br>发现过程窗口里面有chkcode事件，这就很有可能是我们要找的计算序列号的函数了，查看RVA是00457C40<br>那么在OD当中，ctrl+G 找到这个位置，下断点分析</p>
+<pre><code>00457C40  /.  55            push ebp
+00457C41  |.  8BEC          mov ebp,esp
+00457C43  |.  51            push ecx
+00457C44  |.  B9 05000000   mov ecx,0x5
+00457C49  |&gt;  6A 00         /push 0x0
+00457C4B  |.  6A 00         |push 0x0
+00457C4D  |.  49            |dec ecx
+00457C4E  |.^ 75 F9         \jnz short CKme.00457C49
+00457C50  |.  51            push ecx
+00457C51  |.  874D FC       xchg [local.1],ecx
+00457C54  |.  53            push ebx
+00457C55  |.  56            push esi
+00457C56  |.  8BD8          mov ebx,eax
+00457C58  |.  33C0          xor eax,eax
+00457C5A  |.  55            push ebp
+00457C5B  |.  68 3D7E4500   push CKme.00457E3D
+00457C60  |.  64:FF30       push dword ptr fs:[eax]
+00457C63  |.  64:8920       mov dword ptr fs:[eax],esp
+00457C66  |.  8BB3 F8020000 mov esi,dword ptr ds:[ebx+0x2F8]         ;  esi=len(name)
+00457C6C  |.  83C6 05       add esi,0x5                              ;  esi+=5
+00457C6F  |.  FFB3 10030000 push dword ptr ds:[ebx+0x310]            ;  黑头Sun Bird
+00457C75  |.  8D55 F8       lea edx,[local.2]
+00457C78  |.  8BC6          mov eax,esi
+00457C7A  |.  E8 85FEFAFF   call CKme.00407B04
+00457C7F  |.  FF75 F8       push [local.2]                           ;  9
+00457C82  |.  FFB3 14030000 push dword ptr ds:[ebx+0x314]            ;  dseloffc-012-OK
+00457C88  |.  8D55 F4       lea edx,[local.3]
+00457C8B  |.  8B83 D4020000 mov eax,dword ptr ds:[ebx+0x2D4]
+00457C91  |.  E8 B2B6FCFF   call CKme.00423348
+00457C96  |.  FF75 F4       push [local.3]
+00457C99  |.  8D83 18030000 lea eax,dword ptr ds:[ebx+0x318]
+00457C9F  |.  BA 04000000   mov edx,0x4
+00457CA4  |.  E8 93BFFAFF   call CKme.00403C3C
+00457CA9  |.  33D2          xor edx,edx
+00457CAB  |.  8B83 F4020000 mov eax,dword ptr ds:[ebx+0x2F4]
+00457CB1  |.  E8 AAB5FCFF   call CKme.00423260
+00457CB6  |.  8B93 18030000 mov edx,dword ptr ds:[ebx+0x318]         ;  黑头Sun Bird9dseloffc-012-OKtest   记为_str
+00457CBC  |.  8B83 F4020000 mov eax,dword ptr ds:[ebx+0x2F4]
+00457CC2  |.  E8 B1B6FCFF   call CKme.00423378
+00457CC7  |.  33F6          xor esi,esi
+00457CC9  |&gt;  8D55 EC       /lea edx,[local.5]
+00457CCC  |.  8B83 D4020000 |mov eax,dword ptr ds:[ebx+0x2D4]
+00457CD2  |.  E8 71B6FCFF   |call CKme.00423348
+00457CD7  |.  8B45 EC       |mov eax,[local.5]
+00457CDA  |.  E8 9DBEFAFF   |call CKme.00403B7C
+00457CDF  |.  83C0 03       |add eax,0x3
+00457CE2  |.  8D55 F0       |lea edx,[local.4]
+00457CE5  |.  E8 1AFEFAFF   |call CKme.00407B04
+00457CEA  |.  FF75 F0       |push [local.4]
+00457CED  |.  8D55 E8       |lea edx,[local.6]
+00457CF0  |.  8B83 D4020000 |mov eax,dword ptr ds:[ebx+0x2D4]
+00457CF6  |.  E8 4DB6FCFF   |call CKme.00423348
+00457CFB  |.  FF75 E8       |push [local.6]
+00457CFE  |.  8D55 E4       |lea edx,[local.7]
+00457D01  |.  8BC6          |mov eax,esi
+00457D03  |.  E8 FCFDFAFF   |call CKme.00407B04
+00457D08  |.  FF75 E4       |push [local.7]
+00457D0B  |.  8D45 FC       |lea eax,[local.1]
+00457D0E  |.  BA 03000000   |mov edx,0x3
+00457D13  |.  E8 24BFFAFF   |call CKme.00403C3C
+00457D18  |.  46            |inc esi
+00457D19  |.  83FE 13       |cmp esi,0x13
+00457D1C  |.^ 75 AB         \jnz short CKme.00457CC9
+00457D1E  |.  8D55 E0       lea edx,[local.8]
+00457D21  |.  8B83 D8020000 mov eax,dword ptr ds:[ebx+0x2D8]
+00457D27  |.  E8 1CB6FCFF   call CKme.00423348                       ;  get input serial
+00457D2C  |.  8B45 E0       mov eax,[local.8]
+00457D2F  |.  8B93 18030000 mov edx,dword ptr ds:[ebx+0x318]         ;  出现 _str+name   黑头Sun Bird9dseloffc-012-OKtest
+00457D35  |.  E8 52BFFAFF   call CKme.00403C8C                       ;  compare
+</code></pre><p>这里就是分析之后的结果，先计算name的长度，然后加5，之后与指定字符串进行拼接，最后结尾接上name。<br>keygen:</p>
+<pre><code>#coding:gb18030
+
+def keygen(name):
+    serial=len(name)+5
+    serial=&apos;黑头Sun Bird&apos;+str(serial)+&apos;dseloffc-012-OK&apos;+name
+    print serial
+
+name=raw_input(&apos;please input the name: &apos;)
+keygen(name)
+</code></pre><p>随便生成一个name/serial组合试一下<br>name:111<br>serial:黑头Sun Bird8dseloffc-012-OK111<br><img src="/2017/08/20/CrackMe-004/04.png" alt=""></p>
+<p>最终破解完成.</p>
+<p>…………………………………………………………………………………………………</p>
+<p>其实这个题的内部结构远比以上分析的复杂，以上只是捡关键的在分析，正在交错的地方，或许根本没触及到…<br>可以进一步参考如下链接：<a href="http://blog.csdn.net/liwz11/article/details/50717038" target="_blank" rel="external">http://blog.csdn.net/liwz11/article/details/50717038</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/11/Summer-第一周/" class="archive-article-date">
-  	<time datetime="2017-07-11T09:07:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/11/Summer-第一周/">Summer  第一周</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2017/08/20/CrackMe-004/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/08/年少无为，卖马为生/" class="archive-article-date">
-  	<time datetime="2017-07-08T12:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/08/年少无为，卖马为生/">年少无为，卖马为生</a>
-    </h1>
+  
+    <a href="/2017/08/19/CrackMe-003/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CrackMe 003</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/08/搭建博客后的资源整合/" class="archive-article-date">
-  	<time datetime="2017-07-08T05:14:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/08/搭建博客后的资源整合/">搭建博客后的资源整合</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具or软件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/06/Markdown 使用语法/" class="archive-article-date">
-  	<time datetime="2017-07-06T12:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/06/Markdown 使用语法/">Markdown 使用语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具or软件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/04/Hello-Word/" class="archive-article-date">
-  	<time datetime="2017-07-04T13:53:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/04/Hello-Word/">Hello Word</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2017/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2017/">1</a><a class="page-number" href="/archives/2017/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
 
 
@@ -383,8 +422,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
