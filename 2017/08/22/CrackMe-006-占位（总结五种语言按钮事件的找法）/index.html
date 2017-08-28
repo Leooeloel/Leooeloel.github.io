@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Archives | Leo</title>
+  <title>CrackMe 006 占位（总结五种语言按钮事件的找法） | Leo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leo">
-<meta property="og:url" content="http://leo.dropsec.xyz/archives/page/2/index.html">
+  <meta name="description" content="我想我可以去die了…CrackMe 006也有点难。。。伤心">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CrackMe 006 占位（总结五种语言按钮事件的找法）">
+<meta property="og:url" content="http://leo.dropsec.xyz/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/index.html">
 <meta property="og:site_name" content="Leo">
+<meta property="og:description" content="我想我可以去die了…CrackMe 006也有点难。。。伤心">
+<meta property="og:updated_time" content="2017-08-28T12:54:12.968Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leo">
+<meta name="twitter:title" content="CrackMe 006 占位（总结五种语言按钮事件的找法）">
+<meta name="twitter:description" content="我想我可以去die了…CrackMe 006也有点难。。。伤心">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -151,36 +156,153 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-CrackMe-006-占位（总结五种语言按钮事件的找法）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CrackMe 006 占位（总结五种语言按钮事件的找法）
+    </h1>
+  
+
+        
+        <a href="/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/" class="archive-article-date">
+  	<time datetime="2017-08-22T12:57:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-22</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我想我可以去die了…<br>CrackMe 006也有点难。。。<br>伤心<br><a id="more"></a><br>这里有个教程感觉也不是很好：<a href="http://www.dbgpro.com/archives/317.html" target="_blank" rel="external">http://www.dbgpro.com/archives/317.html</a><br>中间就不照号了</p>
+<p>其间看到一篇不同语言程序找按钮事件的方法，转载到此：</p>
+<h1 id="总结五种语言按钮事件的找法"><a href="#总结五种语言按钮事件的找法" class="headerlink" title="总结五种语言按钮事件的找法"></a>总结五种语言按钮事件的找法</h1><p>调试软件,最重要的就是下断点,那么如何下断点,就是一门重要的技巧.<br>比如:弹提示框,就下MessageBoxA,注册表的,就下RegOpenKeyA等等.<br>当然,能直接下到按钮事件,当然更为方便,因为到了按钮事件后,很快就会到达核心代码,离你的破解也就不远了.<br>本文就总结一下各类语言找按钮事件的方法,当然也可以借助工具,如VBexplorer,DEDE,ECE等等.</p>
+<h2 id="一、VB程序"><a href="#一、VB程序" class="headerlink" title="一、VB程序"></a>一、VB程序</h2><p>其实,VB的按钮事件的找法是最为普遍的,也就是大家所谓的万能断点.其实也不仅仅是针对按钮事件,还有很多其他的用处,如取消NAG,启动框,灰色按钮或隐藏按钮,启动时的timer事件等等,具体的就自己去总结吧,这里只演示按钮事件!</p>
+<p>OD载入后,CTRL+B,816C24</p>
+<p>然后,就在下面的JMP处F2下断,下完后CTRL+L,如果还有,就继续下断点.</p>
+<p>下完断点后,运行程序,点击相应的按钮,OD就会断下来了</p>
+<p>下面的任务就是考验大家的耐心,F8跟踪吧,不再赘述了.</p>
+<p>当然,为了方便大家,可以写个简单的脚本,免的每次都去手动设置了,节省时间:<br>复制内容到剪贴板<br>代码:</p>
+<pre><code>var Addr
+mov Addr,401000
+loop:
+find Addr,#816C2404??000000#
+cmp $RESULT,0
+je Exit
+add $RESULT,08
+bp $RESULT
+add $RESULT,1
+mov Addr,$RESULT
+jmp loop
+Exit:
+eval &quot;按钮事件查找完毕!&quot;
+msg $RESULT
+ret
+</code></pre><h2 id="二、Delphi和BC-程序"><a href="#二、Delphi和BC-程序" class="headerlink" title="二、Delphi和BC++程序"></a>二、Delphi和BC++程序</h2><p>Delphi和BC++都是同一公司开发的,故查找方法都一样,当然你也可以使用DEDE.</p>
+<p>OD载入后,CTRL+G,转到00401000处<br>然后就CTRL+B,查找特征码<code>740E8BD38B83????????FF93????????</code></p>
+<p>然后就会找到下面的地方:</p>
+<p>然后就在下面的CALL处下断吧.</p>
+<p>下面的工作就是不断的CTRL+L继续查找和F2下断了.</p>
+<p>同样写个脚本,方便大家操作:<br>复制内容到剪贴板<br>代码:</p>
+<pre><code>var Addr
+mov Addr,401000
+loop:
+find Addr,#740E8BD38B83????????FF93????????#
+cmp $RESULT,0
+je Exit
+add $RESULT,0A
+bp $RESULT
+add $RESULT,1
+mov Addr,$RESULT
+jmp loop
+Exit:
+ret
+</code></pre><h2 id="三、易语言"><a href="#三、易语言" class="headerlink" title="三、易语言"></a>三、易语言</h2><p>易语言的这种查找方法,同样适合有壳的程序,其他的就必须脱壳后再继续操作了.</p>
+<p>OD载入后,就F9运行程序吧,当程序运行后,ALT+E<br>选中易语言的核心库krnln,双击进去</p>
+<p>然后CTRL+B,查找FF 55 FC</p>
+<p>查找到的这个CALL就是了,F2下断吧</p>
+<p>现在输入必须的内容后,单击对应的按钮吧</p>
+<p>断下了就F7跟进吧,就来到按钮事件处了</p>
+<p>同样,写个脚本,方便大家<br>复制内容到剪贴板<br>代码:</p>
+<pre><code>gpa&quot;GetProcessHeap&quot;,&quot;kernel32.dll&quot;
+cmp $RESULT,0
+je err
+bp $RESULT
+run
+run
+run
+bc $RESULT
+rtu
+find 10001000,#FF55FC5F5E895D??8945#
+bp $RESULT
+
+find eip,#FFE0#
+cmp$RESULT,0
+je err
+bp $RESULT
+run
+bc $RESULT
+sto
+
+MSG &quot;按钮事件查找完毕！&quot;
+ret
+
+
+
+err:
+MSG &quot;脚本运行错误！请检查错误后再继续运行脚本！&quot;
+ret
+</code></pre><h2 id="四、VC-程序-非MFC程序"><a href="#四、VC-程序-非MFC程序" class="headerlink" title="四、VC++程序(非MFC程序)"></a>四、VC++程序(非MFC程序)</h2><p>OD载入后,单击鼠标右键,选择”查找”,然后是”所有命令”<br>在弹出的输入框里,写入特征代码”sub eax,0a“</p>
+<p>在下面的sub eax,0A处,双击进去吧:</p>
+<p>来找这里后,在下面的je处跟随过去</p>
+<p>跟随来到的这个CALL,就是了,F2下断吧</p>
+<p>然后断下后,F7跟进,F8几次,就来到按钮事件了.</p>
+<h2 id="五、MFC类程序"><a href="#五、MFC类程序" class="headerlink" title="五、MFC类程序"></a>五、MFC类程序</h2><p>当然判断MFC和非MFC的程序,靠大家自己去判断了<br>OD载入后.ALT+E,来到可执行模块,找MFC的核心DLL:MFC42<br>然后就双击进去</p>
+<p>然后就CTRL+F,查找特征代码:sub eax,0a</p>
+<p>同样,找到后,就在下面的je处跟随,跟随后看到的CALL,就是那个关键CALL了!</p>
+<p>断下后F7跟进,F8几次,就会来到按钮事件代码处了!</p>
+<p>方法就简单的介绍到这里了,当然只是抛砖引玉,其他的,还得多靠大家自己慢慢总结吧! </p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/13/合天-CTF-REVERSE练习之-NET-WP/" class="archive-article-date">
-  	<time datetime="2017-08-13T11:37:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/13/合天-CTF-REVERSE练习之-NET-WP/">合天 CTF-REVERSE练习之.NET WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,364 +314,97 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/13/合天-CTF-REVERSE练习之病毒分析-WP/" class="archive-article-date">
-  	<time datetime="2017-08-13T10:28:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-13</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/13/合天-CTF-REVERSE练习之病毒分析-WP/">合天 CTF-REVERSE练习之病毒分析 WP</a>
-    </h1>
+    <a href="/2017/08/23/CrackMe-007-补/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CrackMe 007 补
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/21/CrackMe-005-占位/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CrackMe 005 占位 {{{(&gt;_&lt;)}}}</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/13/合天-CTF-REVERSE练习之信息提取-WP/" class="archive-article-date">
-  	<time datetime="2017-08-13T08:02:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/13/合天-CTF-REVERSE练习之信息提取-WP/">合天 CTF-REVERSE练习之信息提取 WP</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/" class="archive-article-date">
-  	<time datetime="2017-08-13T03:28:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/13/合天-CTF-REVERSE练习之脱壳分析-WP/">合天 CTF-REVERSE练习之脱壳分析 WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/" class="archive-article-date">
-  	<time datetime="2017-08-12T13:27:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/12/合天-CTF-REVERSE练习之算法分析2-WP/">合天 CTF-REVERSE练习之算法分析2 WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/" class="archive-article-date">
-  	<time datetime="2017-08-12T09:48:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/12/合天-CTF-REVERSE练习之算法分析1-WP/">合天 CTF-REVERSE练习之算法分析1 WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/" class="archive-article-date">
-  	<time datetime="2017-08-12T06:28:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/">合天 CTF-REVERSE练习之API断点 WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/11/合天-CTF-REVERSE练习之API定位-WP/" class="archive-article-date">
-  	<time datetime="2017-08-11T08:56:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/11/合天-CTF-REVERSE练习之API定位-WP/">合天 CTF REVERSE练习之API定位 WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/11/合天-CTF-REVERSSE练习之逆向初探-WP/" class="archive-article-date">
-  	<time datetime="2017-08-11T06:31:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/11/合天-CTF-REVERSSE练习之逆向初探-WP/">合天 CTF-REVERSSE练习之逆向初探 WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/10/壳与ESP定律/" class="archive-article-date">
-  	<time datetime="2017-08-10T12:58:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/10/壳与ESP定律/">壳与ESP定律</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -573,8 +428,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
