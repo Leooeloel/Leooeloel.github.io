@@ -15,16 +15,16 @@
 <meta property="og:url" content="http://leo.dropsec.xyz/2017/08/24/CrackMe-008/index.html">
 <meta property="og:site_name" content="Leo">
 <meta property="og:description" content="经过了前两天的煎熬，总算遇到一个简单点的题了。。。呜呜呜，我也是很激动(。・∀・)ノ">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/24/CrackMe-008/01.ng">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/24/CrackMe-008/02.ng">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/24/CrackMe-008/03.ng">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/24/CrackMe-008/04.ng">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/24/CrackMe-008/05.ng">
-<meta property="og:updated_time" content="2017-08-24T04:37:00.838Z">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/24/CrackMe-008/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/24/CrackMe-008/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/24/CrackMe-008/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/24/CrackMe-008/04.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/24/CrackMe-008/05.png">
+<meta property="og:updated_time" content="2017-08-28T13:03:45.723Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CrackMe 008">
 <meta name="twitter:description" content="经过了前两天的煎熬，总算遇到一个简单点的题了。。。呜呜呜，我也是很激动(。・∀・)ノ">
-<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/08/24/CrackMe-008/01.ng">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/08/24/CrackMe-008/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -183,7 +183,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>经过了前两天的煎熬，总算遇到一个简单点的题了。。。呜呜呜，我也是很激动(。・∀・)ノ<br><a id="more"></a></p>
-<h1 id="观察"><a href="#观察" class="headerlink" title="观察"></a>观察</h1><p><img src="/2017/08/24/CrackMe-008/01.ng" alt=""><br>简单一个KEY，输入后弹出错误提示<br>PEID查看一下，无壳，VB写的<br>载入OD，智能搜索字符串<br><img src="/2017/08/24/CrackMe-008/02.ng" alt=""><br>双击succesful进入对应汇编代码<br>简单分析可以看到关键跳<br><img src="/2017/08/24/CrackMe-008/03.ng" alt=""><br>然后向上找到这个函数入口，往下单步执行，容易看到在获得输入KEY后紧接着有个strcmp,其上一行出现了正确KEY.<br><img src="/2017/08/24/CrackMe-008/04.ng" alt=""><br>验证一下<br><img src="/2017/08/24/CrackMe-008/05.ng" alt=""><br>OK 结束</p>
+<h1 id="观察"><a href="#观察" class="headerlink" title="观察"></a>观察</h1><p><img src="/2017/08/24/CrackMe-008/01.png" alt=""><br>简单一个KEY，输入后弹出错误提示<br>PEID查看一下，无壳，VB写的<br>载入OD，智能搜索字符串<br><img src="/2017/08/24/CrackMe-008/02.png" alt=""><br>双击succesful进入对应汇编代码<br>简单分析可以看到关键跳<br><img src="/2017/08/24/CrackMe-008/03.png" alt=""><br>然后向上找到这个函数入口，往下单步执行，容易看到在获得输入KEY后紧接着有个strcmp,其上一行出现了正确KEY.<br><img src="/2017/08/24/CrackMe-008/04.png" alt=""><br>验证一下<br><img src="/2017/08/24/CrackMe-008/05.png" alt=""><br>OK 结束</p>
 
       
 
@@ -297,6 +297,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/08/28/OK-天津/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          OK 天津
+        
+      </div>
+    </a>
   
   
     <a href="/2017/08/23/CrackMe-007-补/" id="article-nav-older" class="article-nav-link-wrap">
