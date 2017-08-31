@@ -8,30 +8,17 @@
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
   <title>CrackMe 005 占位 {{{(&gt;_&lt;)}}} | Leo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="呃，CrackMe 005有点难…题解也老长了，暂时记下，日后等水平稍微提升一点点再来战它。今天就把占的这个位置来简单总结一下近段时间实验吧上的一些知识点。">
+  <meta name="description" content="呃，CrackMe 005有点难…题解也老长了，暂时记下，日后等水平稍微提升一点点再来战它。">
 <meta name="keywords" content="二进制逆向">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CrackMe 005 占位 {{{(&gt;_&lt;)}}}">
 <meta property="og:url" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/index.html">
 <meta property="og:site_name" content="Leo">
-<meta property="og:description" content="呃，CrackMe 005有点难…题解也老长了，暂时记下，日后等水平稍微提升一点点再来战它。今天就把占的这个位置来简单总结一下近段时间实验吧上的一些知识点。">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/01.png">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/02.png">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/04.png">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/03.png">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/05.png">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/06.png">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/07.png">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/08.png">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/09.png">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/10.png">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/11.png">
-<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/12.png">
-<meta property="og:updated_time" content="2017-08-28T11:58:42.859Z">
+<meta property="og:description" content="呃，CrackMe 005有点难…题解也老长了，暂时记下，日后等水平稍微提升一点点再来战它。">
+<meta property="og:updated_time" content="2017-08-31T12:46:56.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CrackMe 005 占位 {{{(&gt;_&lt;)}}}">
-<meta name="twitter:description" content="呃，CrackMe 005有点难…题解也老长了，暂时记下，日后等水平稍微提升一点点再来战它。今天就把占的这个位置来简单总结一下近段时间实验吧上的一些知识点。">
-<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/08/21/CrackMe-005-占位/01.png">
+<meta name="twitter:description" content="呃，CrackMe 005有点难…题解也老长了，暂时记下，日后等水平稍微提升一点点再来战它。">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -189,25 +176,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>呃，CrackMe 005有点难…题解也老长了，暂时记下，日后等水平稍微提升一点点再来战它。今天就把占的这个位置来简单总结一下近段时间实验吧上的一些知识点。<br><a id="more"></a><br>首先记下CrackMe 005的两个题解链接：</p>
+        <p>呃，CrackMe 005有点难…题解也老长了，暂时记下，日后等水平稍微提升一点点再来战它。<br><a id="more"></a><br>首先记下CrackMe 005的两个题解链接：</p>
 <ol>
 <li><a href="https://www.52pojie.cn/thread-366291-1-1.html" target="_blank" rel="external">https://www.52pojie.cn/thread-366291-1-1.html</a></li>
 <li><a href="http://blog.csdn.net/liwz11/article/details/50726518" target="_blank" rel="external">http://blog.csdn.net/liwz11/article/details/50726518</a> </li>
 </ol>
-<p><img src="/2017/08/21/CrackMe-005-占位/01.png" alt=""><br>做过实验之后至少应该在看到实验名称之后能回想起它的要点吧，而我，唉，记忆力严重衰退…来，只好重新回顾一遍各个实验的要点喽。</p>
-<h1 id="第1节-暴力破解程序"><a href="#第1节-暴力破解程序" class="headerlink" title="第1节 暴力破解程序"></a>第1节 暴力破解程序</h1><p>用查找字符串的方法找到关键跳，NOP掉，实现暴力破解。</p>
-<h1 id="第2节-获得注册码"><a href="#第2节-获得注册码" class="headerlink" title="第2节 获得注册码"></a>第2节 获得注册码</h1><p>用查找字符串的方法找到关键代码，追出注册码。</p>
-<h1 id="第3节-跳转破解"><a href="#第3节-跳转破解" class="headerlink" title="第3节 跳转破解"></a>第3节 跳转破解</h1><p>先00401000到达程序入口，查找字符串的方法找到关键跳，修改关键跳指令实现爆破。</p>
-<h1 id="第4节-带壳破解"><a href="#第4节-带壳破解" class="headerlink" title="第4节 带壳破解"></a>第4节 带壳破解</h1><ol>
-<li>本题是不脱ASPack2.12壳直接寻找注册码</li>
-<li>加壳程序载入OD是先载入壳程序，壳程序解密软件。所以需要先跳转到软件解密的地方才可以搜索字符串，加密下是无法找到的</li>
-<li>本程序在搜索字符串的时候看到了S哦反弹ware\engydt，即程序在启动时访问了注册表，提取了用户名与序列号，然后进行对比</li>
-<li>然后运用API断点<br><img src="/2017/08/21/CrackMe-005-占位/02.png" alt=""><br>操作后可以跟到注册码<h1 id="第5节-软件文件大小自校验"><a href="#第5节-软件文件大小自校验" class="headerlink" title="第5节 软件文件大小自校验"></a>第5节 软件文件大小自校验</h1>首先用ESP定律脱壳，然后用ImportRECR获取导入表、修正转存…<br><img src="/2017/08/21/CrackMe-005-占位/04.png" alt=""><br>然后在用OD解除文件自校验。用到了API断点<br><img src="/2017/08/21/CrackMe-005-占位/03.png" alt=""><br>找到关键跳转NOP掉就OK了<h1 id="第6节-修改关键CALL返回值"><a href="#第6节-修改关键CALL返回值" class="headerlink" title="第6节 修改关键CALL返回值"></a>第6节 修改关键CALL返回值</h1>先字符串查找到关键跳，关键跳是根据关键CALL返回的值执行的，so,想办法控制CALL返回的值就KO了。<br><img src="/2017/08/21/CrackMe-005-占位/05.png" alt=""><br><img src="/2017/08/21/CrackMe-005-占位/06.png" alt=""><h1 id="第7节-重启验证读取文件"><a href="#第7节-重启验证读取文件" class="headerlink" title="第7节 重启验证读取文件"></a>第7节 重启验证读取文件</h1>字符串查找到关键跳，下断点<br>设置API断点<br><img src="/2017/08/21/CrackMe-005-占位/07.png" alt=""><br><img src="/2017/08/21/CrackMe-005-占位/08.png" alt=""></li>
-</ol>
-<h1 id="第8节-万能断点"><a href="#第8节-万能断点" class="headerlink" title="第8节 万能断点"></a>第8节 万能断点</h1><p>利用万能断点追出注册码，万能断点可以吧程序中可以断下的地方都断下<br><img src="/2017/08/21/CrackMe-005-占位/09.png" alt=""><br><img src="/2017/08/21/CrackMe-005-占位/10.png" alt=""><br><img src="/2017/08/21/CrackMe-005-占位/11.png" alt=""></p>
-<h1 id="第9节-VB弹出窗口"><a href="#第9节-VB弹出窗口" class="headerlink" title="第9节 VB弹出窗口"></a>第9节 VB弹出窗口</h1><p>利用VB弹出函数追出注册码，对于VB程序，在rtcMsBox函数处下断点，然后追出（最后也是NOP的）<br><img src="/2017/08/21/CrackMe-005-占位/12.png" alt=""></p>
-<h1 id="第10节-删除弹窗"><a href="#第10节-删除弹窗" class="headerlink" title="第10节 删除弹窗"></a>第10节 删除弹窗</h1><p>找到弹窗的代码，改变指令跳过或NOP就可以了。</p>
-<p>多熟悉看过的实验，多熟悉其中用到的方法，将其系统化。</p>
 
       
 

@@ -6,14 +6,32 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Archives | Leo</title>
+  <title>实验吧逆向破解 汇总 | Leo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leo">
-<meta property="og:url" content="http://leo.dropsec.xyz/archives/page/3/index.html">
+  <meta name="description" content="用了好长时间看完了这十九个实验，总该有些收获吧，简单汇总一下，方便之后的记忆…">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实验吧逆向破解 汇总">
+<meta property="og:url" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/index.html">
 <meta property="og:site_name" content="Leo">
+<meta property="og:description" content="用了好长时间看完了这十九个实验，总该有些收获吧，简单汇总一下，方便之后的记忆…">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/04.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/05.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/06.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/07.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/08.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/09.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/10.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/11.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/12.png">
+<meta property="og:updated_time" content="2017-08-31T13:29:36.211Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leo">
+<meta name="twitter:title" content="实验吧逆向破解 汇总">
+<meta name="twitter:description" content="用了好长时间看完了这十九个实验，总该有些收获吧，简单汇总一下，方便之后的记忆…">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -151,36 +169,90 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-实验吧逆向破解-汇总" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      实验吧逆向破解 汇总
+    </h1>
+  
+
+        
+        <a href="/2017/08/31/实验吧逆向破解-汇总/" class="archive-article-date">
+  	<time datetime="2017-08-31T12:40:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用了好长时间看完了这十九个实验，总该有些收获吧，简单汇总一下，方便之后的记忆…</p>
+<a id="more"></a>
+<p><img src="/2017/08/31/实验吧逆向破解-汇总/01.png" alt=""></p>
+<h1 id="第1节-暴力破解程序"><a href="#第1节-暴力破解程序" class="headerlink" title="第1节 暴力破解程序"></a>第1节 暴力破解程序</h1><p>用查找字符串的方法找到关键跳，NOP掉，实现暴力破解。</p>
+<h1 id="第2节-获得注册码"><a href="#第2节-获得注册码" class="headerlink" title="第2节 获得注册码"></a>第2节 获得注册码</h1><p>用查找字符串的方法找到关键代码，追出注册码。</p>
+<h1 id="第3节-跳转破解"><a href="#第3节-跳转破解" class="headerlink" title="第3节 跳转破解"></a>第3节 跳转破解</h1><p>先00401000到达程序入口，查找字符串的方法找到关键跳，修改关键跳指令实现爆破。</p>
+<h1 id="第4节-带壳破解"><a href="#第4节-带壳破解" class="headerlink" title="第4节 带壳破解"></a>第4节 带壳破解</h1><ol>
+<li>本题是不脱ASPack2.12壳直接寻找注册码</li>
+<li>加壳程序载入OD是先载入壳程序，壳程序解密软件。所以需要先跳转到软件解密的地方才可以搜索字符串，加密下是无法找到的</li>
+<li>本程序在搜索字符串的时候看到了S哦反弹ware\engydt，即程序在启动时访问了注册表，提取了用户名与序列号，然后进行对比</li>
+<li>然后运用API断点<br><img src="/2017/08/31/实验吧逆向破解-汇总/02.png" alt=""><br>操作后可以跟到注册码<h1 id="第5节-软件文件大小自校验"><a href="#第5节-软件文件大小自校验" class="headerlink" title="第5节 软件文件大小自校验"></a>第5节 软件文件大小自校验</h1>首先用ESP定律脱壳，然后用ImportRECR获取导入表、修正转存…<br><img src="/2017/08/31/实验吧逆向破解-汇总/04.png" alt=""><br>然后在用OD解除文件自校验。用到了API断点<br><img src="/2017/08/31/实验吧逆向破解-汇总/03.png" alt=""><br>找到关键跳转NOP掉就OK了<h1 id="第6节-修改关键CALL返回值"><a href="#第6节-修改关键CALL返回值" class="headerlink" title="第6节 修改关键CALL返回值"></a>第6节 修改关键CALL返回值</h1>先字符串查找到关键跳，关键跳是根据关键CALL返回的值执行的，so,想办法控制CALL返回的值就KO了。<br><img src="/2017/08/31/实验吧逆向破解-汇总/05.png" alt=""><br><img src="/2017/08/31/实验吧逆向破解-汇总/06.png" alt=""><h1 id="第7节-重启验证读取文件"><a href="#第7节-重启验证读取文件" class="headerlink" title="第7节 重启验证读取文件"></a>第7节 重启验证读取文件</h1>字符串查找到关键跳，下断点<br>设置API断点<br><img src="/2017/08/31/实验吧逆向破解-汇总/07.png" alt=""><br><img src="/2017/08/31/实验吧逆向破解-汇总/08.png" alt=""></li>
+</ol>
+<h1 id="第8节-万能断点"><a href="#第8节-万能断点" class="headerlink" title="第8节 万能断点"></a>第8节 万能断点</h1><p>利用万能断点追出注册码，万能断点可以吧程序中可以断下的地方都断下<br><img src="/2017/08/31/实验吧逆向破解-汇总/09.png" alt=""><br><img src="/2017/08/31/实验吧逆向破解-汇总/10.png" alt=""><br><img src="/2017/08/31/实验吧逆向破解-汇总/11.png" alt=""></p>
+<h1 id="第9节-VB弹出窗口"><a href="#第9节-VB弹出窗口" class="headerlink" title="第9节 VB弹出窗口"></a>第9节 VB弹出窗口</h1><p>利用VB弹出函数追出注册码，对于VB程序，在rtcMsBox函数处下断点，然后追出（最后也是NOP的）<br><img src="/2017/08/31/实验吧逆向破解-汇总/12.png" alt=""></p>
+<h1 id="第10节-删除弹窗"><a href="#第10节-删除弹窗" class="headerlink" title="第10节 删除弹窗"></a>第10节 删除弹窗</h1><p>找到弹窗的代码，改变指令跳过或NOP就可以了。</p>
+<h1 id="第11节-真码保存在系统文件"><a href="#第11节-真码保存在系统文件" class="headerlink" title="第11节 真码保存在系统文件"></a>第11节 真码保存在系统文件</h1><p>这个实验没什么好说的…</p>
+<h1 id="第12节-BC-手动查找IAT"><a href="#第12节-BC-手动查找IAT" class="headerlink" title="第12节 BC++手动查找IAT"></a>第12节 BC++手动查找IAT</h1><p>脱壳后手动修复地址表。</p>
+<h1 id="第13节-利用dede查找按钮事件"><a href="#第13节-利用dede查找按钮事件" class="headerlink" title="第13节 利用dede查找按钮事件"></a>第13节 利用dede查找按钮事件</h1><p>如题： 利用dede查找按钮事件，找到关键跳NOP</p>
+<h1 id="第14节-ALT-F9关键CALL追注册码"><a href="#第14节-ALT-F9关键CALL追注册码" class="headerlink" title="第14节 ALT+F9关键CALL追注册码"></a>第14节 ALT+F9关键CALL追注册码</h1><p>ALT+F9关键CALL追注册码  搞得我都不知道如何写。。。</p>
+<h1 id="第15节-加壳软件打补丁"><a href="#第15节-加壳软件打补丁" class="headerlink" title="第15节 加壳软件打补丁"></a>第15节 加壳软件打补丁</h1><p>就是用特定软件改写了一下相关指令的地址，本质类似于jmp</p>
+<h1 id="第16节-易语言窗体法"><a href="#第16节-易语言窗体法" class="headerlink" title="第16节 易语言窗体法"></a>第16节 易语言窗体法</h1><p>更改易语言主窗口弹出代码，使程序跳过注册口，直接弹出用户界面<br>（满满的我不知道的套路）</p>
+<h1 id="第17节-易语言退出暗桩"><a href="#第17节-易语言退出暗桩" class="headerlink" title="第17节 易语言退出暗桩"></a>第17节 易语言退出暗桩</h1><p>修改跳转</p>
+<h1 id="第18节-VB按钮脚本破解"><a href="#第18节-VB按钮脚本破解" class="headerlink" title="第18节 VB按钮脚本破解"></a>第18节 VB按钮脚本破解</h1><p>（满满的我不知道的套路，请看原指导书）</p>
+<h1 id="第19节-修改软件标题图标"><a href="#第19节-修改软件标题图标" class="headerlink" title="第19节 修改软件标题图标"></a>第19节 修改软件标题图标</h1><p>利用PE Explorer修改一下caption选项内容</p>
+<p>记忆力下降  理解能力下降</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/11/合天-CTF-REVERSSE练习之逆向初探-WP/" class="archive-article-date">
-  	<time datetime="2017-08-11T06:31:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/11/合天-CTF-REVERSSE练习之逆向初探-WP/">合天 CTF-REVERSSE练习之逆向初探 WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,364 +264,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2017/08/31/实验吧逆向破解-汇总/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/10/壳与ESP定律/" class="archive-article-date">
-  	<time datetime="2017-08-10T12:58:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/10/壳与ESP定律/">壳与ESP定律</a>
-    </h1>
+  
+    <a href="/2017/08/28/OK-天津/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OK 天津</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/08/十天的放逐/" class="archive-article-date">
-  	<time datetime="2017-08-08T02:59:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/08/十天的放逐/">十天的放逐</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/20/暑假一练-WriteUp/" class="archive-article-date">
-  	<time datetime="2017-07-20T07:36:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/20/暑假一练-WriteUp/">暑假一练 WriteUp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/15/汇编语言 王爽 章节知识点总结/" class="archive-article-date">
-  	<time datetime="2017-07-15T12:04:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/15/汇编语言 王爽 章节知识点总结/">汇编语言 王爽 章节知识点总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Assembly</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/14/所谓的废纸篓/" class="archive-article-date">
-  	<time datetime="2017-07-14T02:11:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/14/所谓的废纸篓/">所谓的废纸篓</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">废纸篓</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/11/Summer-第一周/" class="archive-article-date">
-  	<time datetime="2017-07-11T09:07:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/11/Summer-第一周/">Summer  第一周</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/08/年少无为，卖马为生/" class="archive-article-date">
-  	<time datetime="2017-07-08T12:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/08/年少无为，卖马为生/">年少无为，卖马为生</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/08/搭建博客后的资源整合/" class="archive-article-date">
-  	<time datetime="2017-07-08T05:14:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/08/搭建博客后的资源整合/">搭建博客后的资源整合</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具or软件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/06/Markdown 使用语法/" class="archive-article-date">
-  	<time datetime="2017-07-06T12:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/06/Markdown 使用语法/">Markdown 使用语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具or软件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/4/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -573,8 +369,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
