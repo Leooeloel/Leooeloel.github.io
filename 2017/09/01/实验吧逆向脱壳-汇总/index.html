@@ -6,14 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Archives | Leo</title>
+  <title>实验吧逆向脱壳 汇总 | Leo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leo">
-<meta property="og:url" content="http://leo.dropsec.xyz/archives/index.html">
+  <meta name="description" content="实验吧的五个逆向脱壳实验，汇总一下。">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实验吧逆向脱壳 汇总">
+<meta property="og:url" content="http://leo.dropsec.xyz/2017/09/01/实验吧逆向脱壳-汇总/index.html">
 <meta property="og:site_name" content="Leo">
+<meta property="og:description" content="实验吧的五个逆向脱壳实验，汇总一下。">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/01/实验吧逆向脱壳-汇总/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/01/实验吧逆向脱壳-汇总/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/01/实验吧逆向脱壳-汇总/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/01/实验吧逆向脱壳-汇总/04.png">
+<meta property="og:updated_time" content="2017-09-01T07:50:19.987Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leo">
+<meta name="twitter:title" content="实验吧逆向脱壳 汇总">
+<meta name="twitter:description" content="实验吧的五个逆向脱壳实验，汇总一下。">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/09/01/实验吧逆向脱壳-汇总/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -151,36 +161,83 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-实验吧逆向脱壳-汇总" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      实验吧逆向脱壳 汇总
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/01/实验吧逆向脱壳-汇总/" class="archive-article-date">
+
+        
+        <a href="/2017/09/01/实验吧逆向脱壳-汇总/" class="archive-article-date">
   	<time datetime="2017-09-01T06:05:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/01/实验吧逆向脱壳-汇总/">实验吧逆向脱壳 汇总</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>实验吧的五个逆向脱壳实验，汇总一下。</p>
+<a id="more"></a>
+<p><img src="/2017/09/01/实验吧逆向脱壳-汇总/01.png" alt=""></p>
+<h1 id="第1节-ESP定律"><a href="#第1节-ESP定律" class="headerlink" title="第1节 ESP定律"></a>第1节 ESP定律</h1><p>ESP定理脱壳<br>（ESP在OD的寄存器中，我们只要在命令行下ESP的硬件访问断点，就会一下来到程序的OEP了！）<br>（1）开始就点F8，注意观察OD右上角的寄存器中ESP有没突现（变成红色）（这只是一般情况下，更确切的说我们选择的ESP值是关键句之后的第一个ESP值）当有且只有ESP和EIP为红色时，我们可以用ESP定律了<br>（2）在命令行下：dd XXXXXXXX(指在当前代码中的ESP地址，或者是hr XXXXXXXX)，按回车<br>（3）选中下断的地址，断点—&gt;硬件访问—&gt;WORD断点<br>（4）按一下F9运行程序，直接来到了跳转处，按下F8，到达程序OEP</p>
+<h1 id="第2节-SFX定律"><a href="#第2节-SFX定律" class="headerlink" title="第2节 SFX定律"></a>第2节 SFX定律</h1><p>使用SFX法脱壳的常见步骤：</p>
+<ol>
+<li>将OD设置为忽略所有异常</li>
+<li>在OD的“调试选项”对话框的“SFX”选项中选择“字节模式跟踪实际入口”，确定</li>
+<li>将待脱壳程序拖入OD，程序载入完成后会直接停在OEP处</li>
+</ol>
+<p><img src="/2017/09/01/实验吧逆向脱壳-汇总/02.png" alt=""></p>
+<p><img src="/2017/09/01/实验吧逆向脱壳-汇总/03.png" alt=""></p>
+<p>关于SFX:<br><img src="/2017/09/01/实验吧逆向脱壳-汇总/04.png" alt=""></p>
+<h1 id="第3节-出口标志"><a href="#第3节-出口标志" class="headerlink" title="第3节 出口标志"></a>第3节 出口标志</h1><p>前面几个脱壳方法中有一个共同点，就是在单步跟踪到popad指令后面不远处的jmp指令的时候，就可以大胆的判断这个jmp指令的目的地址就是OEP。原因很简单，popad指令用于将壳运行之前保存的环境恢复，使原程序能正常运行。有些壳的popad指令很少，我们就可以查看被这种壳加壳的程序的所有popad指令，找到后面存在jmp指令的popad指令，然后来到其后的jmp指令的目的地址，这很可能就是OEP，然后就可以进行dump脱壳了。</p>
+<p>使用出口标志法脱壳的常见步骤：<br>1、将待脱壳程序载入OD中，在OD的反汇编客人口中单击鼠标右键，在弹出的右键菜单中单击“查找”→“所有命令”，在弹出的输入框中输入“popad”并按“查找”按钮；<br>2、逐一尝试跟踪查找到的所有“popad”指令，最终达到程序的OEP。</p>
+<h1 id="第4节-单步跟踪"><a href="#第4节-单步跟踪" class="headerlink" title="第4节 单步跟踪"></a>第4节 单步跟踪</h1><p>单步跟踪法的步骤：<br>（1）用OD载入，点“不分析代码”<br>（2）单步向下跟踪F8，实现向下的跳。也就是说向上的跳不让其实现（通过F4）<br>（3）遇到程序往回跳的（包括循环），我们在下一句代码处按F4（或者右健单击代码，选择断点—&gt;运行到所选）<br>（4）绿色线条表示跳转没实现，不用理会，红色线条表示跳转已经实现<br>（5）如果刚载入程序，在附近就有一个CALL的，我们就F7跟进去，不然程序很容易跑飞，这样很快就能到程序的OEP<br>（6）在跟踪的时候，如果运行到某个CALL程序就运行的，就在这个CALL中F7进入<br>（7）一般有很大的跳转（大跨段），比如 jmp XXXXXX 或者 JE XXXXXX 或者有RETN  的一般很快就会到程序的OEP</p>
+<h1 id="第5节-内存镜像法"><a href="#第5节-内存镜像法" class="headerlink" title="第5节 内存镜像法"></a>第5节 内存镜像法</h1><p>内存镜像法的步骤：<br>（1）用OD打开软件<br>（2）点击选项——调试选项——异常，把里面的忽略全部√上。CTRL+F2重载入程序<br>（3）按ALT+M,打开内存镜象，找到程序的第一个.rsrc.按F2下断点，然后按SHIFT+F9运 行到断点，接着再按ALT+M,打开内存镜象，找到程序的第一个.rsrc.上面的代码段.text（或者CODE）（也就是00401000处），按F2下断点。然后按SHIFT+F9（或者是在没异常情况下按F9）， 直接到达程序OEP</p>
+<p>(亲自在试验机里试了试，怎么发现不可行…)</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,364 +249,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2017/09/01/实验吧逆向脱壳-汇总/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/31/实验吧逆向破解-汇总/" class="archive-article-date">
-  	<time datetime="2017-08-31T12:40:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/31/实验吧逆向破解-汇总/">实验吧逆向破解 汇总</a>
-    </h1>
+  
+    <a href="/2017/08/31/实验吧逆向破解-汇总/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">实验吧逆向破解 汇总</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/28/OK-天津/" class="archive-article-date">
-  	<time datetime="2017-08-28T13:29:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/28/OK-天津/">OK 天津</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/24/CrackMe-008/" class="archive-article-date">
-  	<time datetime="2017-08-24T02:48:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/24/CrackMe-008/">CrackMe 008</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/23/CrackMe-007-补/" class="archive-article-date">
-  	<time datetime="2017-08-23T14:12:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/23/CrackMe-007-补/">CrackMe 007 补</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/" class="archive-article-date">
-  	<time datetime="2017-08-22T12:57:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/">CrackMe 006 占位（总结五种语言按钮事件的找法）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/21/CrackMe-005-占位/" class="archive-article-date">
-  	<time datetime="2017-08-21T13:34:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/21/CrackMe-005-占位/">CrackMe 005 占位 {{{(&gt;_&lt;)}}}</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/20/CrackMe-004/" class="archive-article-date">
-  	<time datetime="2017-08-20T13:03:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/20/CrackMe-004/">CrackMe 004</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/19/CrackMe-003/" class="archive-article-date">
-  	<time datetime="2017-08-19T07:13:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/19/CrackMe-003/">CrackMe 003</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/18/CrackMe-002/" class="archive-article-date">
-  	<time datetime="2017-08-18T13:45:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/18/CrackMe-002/">CrackMe 002</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -573,8 +354,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
