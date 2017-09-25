@@ -15,17 +15,10 @@
 <meta property="og:url" content="http://leo.dropsec.xyz/2017/07/14/所谓的废纸篓/index.html">
 <meta property="og:site_name" content="Leo">
 <meta property="og:description" content="我喜欢随手记录一些杂而不乱的东西…">
-<meta property="og:image" content="https://i.imgur.com/MFnc7P6.jpg">
-<meta property="og:image" content="https://i.imgur.com/bDIbuvH.jpg">
-<meta property="og:image" content="https://i.imgur.com/WzySrkY.jpg">
-<meta property="og:image" content="https://i.imgur.com/Ny6Ew1X.jpg">
-<meta property="og:image" content="https://i.imgur.com/f7q20wu.jpg">
-<meta property="og:image" content="https://i.imgur.com/MQ6oSM6.jpg">
-<meta property="og:updated_time" content="2017-09-20T08:46:16.528Z">
+<meta property="og:updated_time" content="2017-09-25T12:39:45.119Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="所谓的废纸篓">
 <meta name="twitter:description" content="我喜欢随手记录一些杂而不乱的东西…">
-<meta name="twitter:image" content="https://i.imgur.com/MFnc7P6.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -184,22 +177,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>我喜欢随手记录一些杂而不乱的东西…<br><a id="more"></a><br>MarkDown使用小技巧[<a href="http://www.jianshu.com/p/9d94660a96f1" target="_blank" rel="external">http://www.jianshu.com/p/9d94660a96f1</a>]<br>MarkDown使用小技巧[<a href="http://www.cnblogs.com/rossoneri/p/4446440.html" target="_blank" rel="external">http://www.cnblogs.com/rossoneri/p/4446440.html</a>]<br>看一看ta博客[<a href="http://www.cnseay.com/" target="_blank" rel="external">http://www.cnseay.com/</a>]</p>
-<p>用ida打开，查找字符串<br>.rdata:0040E194 00000014 C wow.You are right!\n<br>很明显就是这段字符了跟进</p>
-<p>找到调用这段字符串的块，这个块被2处引用<br><img src="https://i.imgur.com/MFnc7P6.jpg" alt=""><br>第一个跟进就知道不是，进入第二个：</p>
-<p><img src="https://i.imgur.com/bDIbuvH.jpg" alt=""><br>401030这个函数就是输出wow.You are right!\n<br>对应这一段代码<br>    jnz     short loc_401217<br>.text:004011C1                 cmp     cl, ‘H’<br>.text:004011C4                 jnz     short loc_401202<br>.text:004011C6                 cmp     byte ptr [ebp+var_24+1], ‘e’<br>.text:004011CA                 jnz     short loc_401202<br>.text:004011CC                 cmp     byte ptr [ebp+var_24+2], ‘l’<br>.text:004011D0                 jnz     short loc_401202<br>.text:004011D2                 cmp     byte ptr [ebp+var_24+3], ‘l’<br>.text:004011D6                 jnz     short loc_401202<br>.text:004011D8                 cmp     byte ptr [ebp+var_24+4], ‘0’<br>.text:004011DC                 jnz     short loc_401202<br>.text:004011DE                 cmp     byte ptr [ebp+var<em>24+5], ‘</em>‘<br>.text:004011E2                 jnz     short loc_401202<br>.text:004011E4                 cmp     byte ptr [ebp+var_24+6], ‘W’<br>.text:004011E8                 jnz     short loc_401202<br>.text:004011EA                 cmp     byte ptr [ebp+var_24+7], ‘0’<br>.text:004011EE                 jnz     short loc_401202<br>.text:004011F0                 cmp     byte ptr [ebp+var_24+8], ‘r’<br>.text:004011F4                 jnz     short loc_401202<br>.text:004011F6                 cmp     byte ptr [ebp+var_24+9], ‘l’<br>.text:004011FA                 jnz     short loc_401202<br>.text:004011FC                 cmp     byte ptr [ebp+var_24+0Ah], ‘d’<br>.text:00401200                 jz      short loc_401212</p>
-<p>答案很显然了(づ￣ 3￣)づ (<em>^▽^</em>)</p>
-<p>二：<br>用od载入，查找字符串<br><img src="https://i.imgur.com/WzySrkY.jpg" alt=""><br>这里就是key了 (#&gt;д&lt;)ﾉ<br>跟进去<br><img src="https://i.imgur.com/Ny6Ew1X.jpg" alt=""><br>把光标放到该函数的开始右键查找参考指定命令，发现还有一个地方引用了这里双击后走到这里<br><img src="https://i.imgur.com/f7q20wu.jpg" alt=""><br>这个jnz就是关键跳了。下面分析一下算法吧&lt;(<em>￣▽￣</em>)/</p>
-<p>用ida打开，找到这个地址（就是上图里jnz的地址）<br>004010FB  |. /75 14         jnz short re_80_20.00401111<br>int __cdecl main(int argc, const char <strong>argv, const char </strong>envp)<br>{<br>  int v4; // [sp+0h] [bp-3ECh]@1<br>  int v5; // [sp+3E8h] [bp-4h]@1</p>
-<p>  v5 = 0;<br>  sub_401129(aIFIkeyG, v4);<br>  scanf(aS, &amp;v4);<br>  if ( v5 == 1 )<br>  {<br>    atexit(sub_401000);<br>    exit(1);<br>  }<br>  sub_40104F((char <em>)&amp;v4);<br>  return 1;<br>}<br>这一定会走到sub_40104F((char </em>)&amp;v4);,(正常情况输入后会有call或者一段代码来判断假码是否正确不过这里scanf（）之后就直接判断了)</p>
-<p>这里sub_401000函数内容是<br>void __cdecl sub_401000()<br>{<br>  signed int i; // [sp+0h] [bp-18h]@1<br>  char v1[20]; // [sp+4h] [bp-14h]@3</p>
-<p>  for ( i = 0; i &lt; 16; ++i )<br>    v1[i] = off_409030[46 * i % 98];<br>  sub_401129(aTQKey, i);<br>}<br>aTQKey就是字符串”这里才是key”</p>
-<p>sub_40104F((char <em>)&amp;v4)里是<br>int __cdecl sub_40104F(char </em>a1)<br>{<br>  int result; // eax@5<br>  signed int i; // [sp+0h] [bp-18h]@1<br>  char v3[20]; // [sp+4h] [bp-14h]@3</p>
-<p>  for ( i = 0; i &lt; 19; ++i )<br>    v3[i] = off_409030[47 * i % 99];<br>  if ( !strcmp(v3, a1) )<br>    result = sub_401129(&amp;unk_4092DC, i);<br>  else<br>    result = sub_401129(aKT, i);<br>  return result;<br>}<br>&amp;unk_4092DC这里是一对乱码，倒是有可能进行了一组运算然后生成注册码，不过查看它的交叉引用时看到没有其他地方引用它了。<br>aKT处就是”这里不是key了”</p>
-<p>如果还有其他隐藏的地方没被发现最可能的就是引用<br>  ; sub_40104F+2Fr<br>.data:00409030                                         ; “CTF?#WTF?Capture@the.Flag.(CTF)is.a.spe”…<br>.data:00409034 aCtf?Wtf?captur db ‘CTF?#WTF?Capture@the.Flag.(CTF)is.a.special.kind.of.information.s’<br>.data:00409034                                         ; DATA XREF: .data:off_409030o<br>.data:00409034                 db ‘ecurity.competitions!There.are.three.common.types.of.CTFs:Jeopard’<br>.data:00409034                 db ‘y.Attack-Defence.and.mixed!Jeopardy-style.CTFs.has.a.couple.of.qu’<br>.data:00409034                 db ‘estions!(tasks).in.range.of.categories.For.example.Web.Forensic.C’<br>.data:00409034                 db ‘rypto.Binary.or.something.else!Team.can.gain.some.points.for.ever’<br>.data:00409034                 db ‘y.solved.task.More.points.for.more.complicated.tasks.usually!The.’<br>.data:00409034                 db ‘next%task.in.chain.can.be.opened%only%after.some.team.solve.previ’<br>.data:00409034                 db ‘oustask!Then.the.game.time.is.over.sum.of.points.shows.you.a.CTF.’<br>.data:00409034                 db ‘winer!Famous%example%of.such.CTF.is%Defcon.CTF.quals!Well.attack-‘<br>.data:00409034                 db ‘defence.is.another.interesting.kind.of.competitionswritten$by$McD’<br>.data:00409034                 db ‘ull@anyun.’,0<br>.data:004092C9                 align 4<br>这段字符了，查找交叉引用也只有2处之前的那2处计算<br>总结，这题应该找不到注册码，如果有的话只能是IDA识别的scanf函数有问题 (づ￣ 3￣)づ</p>
-<p>三：<br>载入ida查找字符串<br>.rdata:00421A8C 00000009 C good job<br>.rdata:00421A98 00000012 C Yeah, you did it!<br>双击，双击交叉引用：<br><img src="https://i.imgur.com/MQ6oSM6.jpg" alt=""><br>这里该程序的流程了<br>反编译出来：<br>unsigned int __usercall sub_401060@<eax>(HWND a1@<edi>)<br>{<br>  unsigned int result; // eax@3<br>  signed int i; // ecx@4<br>  const CHAR <em>v3; // [sp-Ch] [bp-918h]@2<br>  const CHAR </em>v4; // [sp-8h] [bp-914h]@2<br>  CHAR String; // [sp+8h] [bp-904h]@1<br>  char v6; // [sp+9h] [bp-903h]@1<br>  CHAR v7; // [sp+508h] [bp-404h]@1<br>  char v8; // [sp+509h] [bp-403h]@1</edi></eax></p>
-<p>  String = 0;<br>  memset(&amp;v6, 0, 0x3FFu);<br>  v7 = 0;<br>  memset(&amp;v8, 0, 0x3FFu);<br>  GetDlgItemTextA(a1, 1001, &amp;String, 1024);<br>  GetDlgItemTextA(a1, 1002, &amp;v7, 1024);<br>  if ( strlen(&amp;String) &lt; 5 )<br>  {<br>    v4 = “!!!”;<br>    v3 = “Your name must be at least five characters long!”;<br>    return MessageBoxA(a1, v3, v4, 0);<br>  }<br>  result = strlen(&amp;String);<br>  if ( result )<br>  {<br>    for ( i = 0; i &lt; (signed int)strlen(&amp;String); ++i )<br>    {<br>      if ( <em>(&amp;v7 + i) != i + </em>(&amp;String + i) - strlen(&amp;String) )<br>        break;<br>    }<br>    result = strlen(&amp;String);<br>    if ( i == result )<br>    {<br>      v4 = “good job”;<br>      v3 = “Yeah, you did it!”;<br>      return MessageBoxA(a1, v3, v4, 0);<br>    }<br>  }<br>  return result;<br>}<br>这里String应该是用户名，v7是注册码。<br>用Python执行下面代码<br>name=input()<br>count=0<br>for i in name:<br>    print(chr(count+ord(i)-len(name)))<br>    count=count+1</p>
-<p>好了 O(∩_∩)O</p>
-<p>总结：od更容易发现陷阱，能用od找尽量用od，用ida分析算法和函数结构。</p>
 
       
 
