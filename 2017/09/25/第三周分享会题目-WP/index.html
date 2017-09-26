@@ -15,10 +15,13 @@
 <meta property="og:url" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/index.html">
 <meta property="og:site_name" content="Leo">
 <meta property="og:description" content="第二周分享会题目是暑假布置的三道题，之前称为暑假一练，上周又重新熟悉了一下。这里又来了三道，come on…">
-<meta property="og:updated_time" content="2017-09-25T12:35:06.251Z">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/02.png">
+<meta property="og:updated_time" content="2017-09-26T00:18:42.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第三周分享会题目 WP">
 <meta name="twitter:description" content="第二周分享会题目是暑假布置的三道题，之前称为暑假一练，上周又重新熟悉了一下。这里又来了三道，come on…">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -178,7 +181,7 @@
       
         <p>第二周分享会题目是暑假布置的三道题，之前称为暑假一练，上周又重新熟悉了一下。这里又来了三道，come on… </p>
 <a id="more"></a>
-<h2 id="一：easy-keygen"><a href="#一：easy-keygen" class="headerlink" title="一：easy_keygen"></a>一：easy_keygen</h2><p>运行程序，观察<br>![01.png]<br>发现又是一道用户名and注册码题目。<br>本道题目已经给出了注册码 5B134977135E7D13  求用户名<br>可知这是一道算法题，拉进IDA分析算法<br>以下为反编译出来的关键代码：</p>
+<h2 id="一：easy-keygen"><a href="#一：easy-keygen" class="headerlink" title="一：easy_keygen"></a>一：easy_keygen</h2><p>运行程序，观察<br><img src="/2017/09/25/第三周分享会题目-WP/01.png" alt=""><br>发现又是一道用户名and注册码题目。<br>本道题目已经给出了注册码 5B134977135E7D13  求用户名<br>可知这是一道算法题，拉进IDA分析算法<br>以下为反编译出来的关键代码：</p>
 <pre><code>int __cdecl main(int argc, const char **argv, const char **envp)
 {
   signed int v3; // ebp@1
@@ -258,7 +261,7 @@ namestr = &quot;&quot;
 for j in range(len(name)):
     namestr += chr(name[j])
 print(namestr)
-</code></pre><p>（需在Python 2 下才能正确运行）<br>![02.png]</p>
+</code></pre><p>（需在Python 2 下才能正确运行）<br><img src="/2017/09/25/第三周分享会题目-WP/02.png" alt=""></p>
 
       
 
@@ -372,6 +375,15 @@ print(namestr)
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/09/26/心结-1111/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          心结_11：11
+        
+      </div>
+    </a>
   
   
     <a href="/2017/09/19/跟着崔岩老师学Java/" id="article-nav-older" class="article-nav-link-wrap">
