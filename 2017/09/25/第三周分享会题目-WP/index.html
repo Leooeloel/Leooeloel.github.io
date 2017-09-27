@@ -17,7 +17,15 @@
 <meta property="og:description" content="第二周分享会题目是暑假布置的三道题，之前称为暑假一练，上周又重新熟悉了一下。这里又来了三道，come on…">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/01.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/02.png">
-<meta property="og:updated_time" content="2017-09-26T00:18:42.237Z">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/04.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/05.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/06.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/07.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/08.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/9.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/09/25/第三周分享会题目-WP/10.png">
+<meta property="og:updated_time" content="2017-09-27T13:42:32.418Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第三周分享会题目 WP">
 <meta name="twitter:description" content="第二周分享会题目是暑假布置的三道题，之前称为暑假一练，上周又重新熟悉了一下。这里又来了三道，come on…">
@@ -187,9 +195,9 @@
   signed int v3; // ebp@1
   signed int i; // esi@1
   int result; // eax@6
-  char v6; // [sp+Ch] [bp-130h]@1
-  char v7; // [sp+Dh] [bp-12Fh]@1
-  char v8; // [sp+Eh] [bp-12Eh]@1
+  char v6; // [sp+Ch] [bp-130h]@1        //
+  char v7; // [sp+Dh] [bp-12Fh]@1        //  注意地址连续
+  char v8; // [sp+Eh] [bp-12Eh]@1        //
   char v9; // [sp+10h] [bp-12Ch]@1
   char v10; // [sp+11h] [bp-12Bh]@1
   __int16 v11; // [sp+71h] [bp-CBh]@1
@@ -207,8 +215,8 @@
   memset(&amp;v14, 0, 0xC4u);
   v15 = 0;
   v16 = 0;
-  v6 = 16;
-  v7 = 32;
+  v6 = 16;       
+  v7 = 32;                           // 注意地址连续
   v8 = 48;
   sub_4011B9(aInputName);
   scanf(aS, &amp;v9);              //v9为输入name
@@ -243,10 +251,11 @@
       }
 </code></pre><p>不要被sprintf的参数影响。<br>用OD动态调试的时候会看到输入的用户名一个一个的变成了十六进制的形式</p>
 <p>结合算法，逆推出以下注册机：</p>
-<pre><code>serial=[]
+<pre><code>一：
+serial=[]
 serial11 = &quot;5B134977135E7D13&quot;
-for i in serial11.lower().decode(&quot;hex&quot;):
-    print(i) 
+for i in serial11.decode(&quot;hex&quot;):   #十六进制默认两位两位循环
+    print(i)                               #辅助
     serial.append(ord(i))
 name = []
 v6 = [16, 32, 48]
@@ -261,7 +270,53 @@ namestr = &quot;&quot;
 for j in range(len(name)):
     namestr += chr(name[j])
 print(namestr)
-</code></pre><p>（需在Python 2 下才能正确运行）<br><img src="/2017/09/25/第三周分享会题目-WP/02.png" alt=""></p>
+
+（需在Python 2 下才能正确运行）
+
+二：
+serial = &quot;5B134977135E7D13&quot;
+b = [0x10, 0x20, 0x30]
+a = 0
+ss = &apos;&apos;
+for i in range(0, len(serial), 2):
+    print(hex(int(serial[i:i + 2], 16)))         #辅助
+    ss += chr(int(serial[i:i + 2], 16) ^ b[a])
+    a += 1
+    if (a &gt;= 3):
+        a = 0
+print(ss)
+</code></pre><p><img src="/2017/09/25/第三周分享会题目-WP/02.png" alt=""></p>
+<h2 id="二：baby-tortoise"><a href="#二：baby-tortoise" class="headerlink" title="二：baby_tortoise"></a>二：baby_tortoise</h2><p>先看一下提示：<br><img src="/2017/09/25/第三周分享会题目-WP/03.png" alt=""><br>本题的目的是找到OEP<br>查壳查语言运行程序<br><img src="/2017/09/25/第三周分享会题目-WP/04.png" alt=""><br>有壳<br><img src="/2017/09/25/第三周分享会题目-WP/05.png" alt=""><br>C/C++语言<br><strong>【经验】 C/C++语言写的程序一般会有连续两个jmp跳转到OEP。</strong><br>方法一：<br>转动鼠标滑轮，寻找连续两个jmp，找到后F4，然后F8，越过灰色山丘成功找到OEP。<br>方法二：<br>加载程序后单步，发现符合ESP定律使用的条件。so,选中ESP后的地址右键选择：HW break [ESP]<br>这是快速设置硬件断点的一个方法<br>然后F9，程序停下之后去快捷菜单删除硬件断点<br>F8几步(结合转动鼠标滑轮观察)就看到连续两个jmp了，然背就没有然后了…<br><img src="/2017/09/25/第三周分享会题目-WP/06.png" alt=""></p>
+<h2 id="三：S0-ea3y"><a href="#三：S0-ea3y" class="headerlink" title="三：S0_ea3y"></a>三：S0_ea3y</h2><p>先看一下提示：<br><img src="/2017/09/25/第三周分享会题目-WP/07.png" alt=""><br>字符串！字符串！字符串！字符串！<br>还是四遍…<br><img src="/2017/09/25/第三周分享会题目-WP/08.png" alt=""><br>无壳，c++语言<br>运行程序看看呗<br><img src="/2017/09/25/第三周分享会题目-WP/9.png" alt=""><br>由于提示字符串，直接加载进IDA<br>搜索字符串交叉引用反编译得到关键的伪代码</p>
+<pre><code>int __cdecl sub_401080(HWND hDlg)
+{
+  int result; // eax@5
+  CHAR String; // [sp+4h] [bp-64h]@1
+  char v3; // [sp+5h] [bp-63h]@1             //String v3 v4 v5
+  char v4; // [sp+6h] [bp-62h]@2             //注意地址的连续性
+  char v5; // [sp+8h] [bp-60h]@3
+  __int16 v6; // [sp+65h] [bp-3h]@1
+  char v7; // [sp+67h] [bp-1h]@1
+
+  String = 0;
+  memset(&amp;v3, 0, 0x60u);
+  v6 = 0;
+  v7 = 0;
+  GetDlgItemTextA(hDlg, 1000, &amp;String, 100);
+ ** if ( v3 == 97 &amp;&amp; !strncmp(&amp;v4, a5y, 2u) &amp;&amp; !strcmp(&amp;v5, aR3versing) &amp;&amp; String == 69 )**
+  {
+    MessageBoxA(hDlg, Text, Caption, 0x40u);
+    result = EndDialog(hDlg, 0);
+  }
+  else
+  {
+    result = MessageBoxA(hDlg, aIncorrectPassw, Caption, 0x10u);
+  }
+  return result;
+}
+</code></pre><p>然后根据地址的连续性把比较的字符串连起来得到key：<br>Ea5yR3versing</p>
+<p><img src="/2017/09/25/第三周分享会题目-WP/10.png" alt=""></p>
+<p>【注意】  一定不要被变量名误导，要跟进去看它的值；然后就是别忘把对应的ASCII值转成对应的字符</p>
 
       
 
@@ -501,7 +556,7 @@ MathJax.Hub.Queue(function() {
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://010.dropsec.xyz" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>0 1 0</a>
+              <a href="http://www.foxroot.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>0 1 0</a>
             </li>
           
             <li class="search-li">
