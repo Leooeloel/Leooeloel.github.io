@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://leo.dropsec.xyz/2017/08/18/点滴算法/index.html">
 <meta property="og:site_name" content="Leo">
 <meta property="og:description" content="我是有一点算法情节的。而我也一直认为学好算法是从事计算机相关行业人员所必备的。里面是我收集的对学习算法有帮助的一些知识。">
-<meta property="og:updated_time" content="2017-08-18T08:10:58.735Z">
+<meta property="og:updated_time" content="2017-10-05T10:58:12.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="点滴算法">
 <meta name="twitter:description" content="我是有一点算法情节的。而我也一直认为学好算法是从事计算机相关行业人员所必备的。里面是我收集的对学习算法有帮助的一些知识。">
@@ -179,7 +179,10 @@
         <p>我是有一点算法情节的。而我也一直认为学好算法是从事计算机相关行业人员所必备的。<br>里面是我收集的对学习算法有帮助的一些知识。<br><a id="more"></a></p>
 <ol>
 <li>字符转数字、数字转字符: <a href="http://blog.sina.com.cn/s/blog_4c8a2a870100qgq7.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_4c8a2a870100qgq7.html</a></li>
+<li>计算任意一天是星期几的一种常用方法<br> W = ([Y-1] + [(Y-1)/4] - [(Y-1)/100] + [(Y-1)/400] + D) mod 7</li>
 </ol>
+<pre><code>Y是年份数，D是这一天在这一年中的累积天数，也就是这一天在这一年中是第几天。
+</code></pre><p>为了求出Y年M月D日是星期几,只需求从公元1年1月1日至公元Y年M月D日包含的总天数除以7的余数,自然关键是求这个总天数<br>如下分析:<br>(1)假设只有在平年的情况下,Y年之前Y-1中包含的天数为365<em>（Y-1）<br>(2)考虑闰年的情况,每4年一闰,但逢100年除外,然而每400年又要加一个闰日.于是Y-1年共有闰日[(Y-1)/4] - [(Y-1)/100] + [(Y-1)/400] ,再加上M月D日包含的天数,即可得总天数<br>(3)因为365≡1（mod 7）,所以365</em>（Y-1）≡（Y-1)（mod 7）,这样,在求总天数除以7的余数时,可把365*（Y-1）简化为（Y-1）即W =( [Y-1] + [(Y-1)/4] - [(Y-1)/100] + [(Y-1)/400] + D ) mod 7</p>
 
       
 
