@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Archives | Leo</title>
+  <title>第四周分享会题目 wp | Leo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leo">
-<meta property="og:url" content="http://leo.dropsec.xyz/archives/page/4/index.html">
+  <meta name="description" content="这道题目是国庆中秋放假期间布置的一道题目。">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第四周分享会题目 wp">
+<meta property="og:url" content="http://leo.dropsec.xyz/2017/10/13/第四周分享会题目-wp/index.html">
 <meta property="og:site_name" content="Leo">
+<meta property="og:description" content="这道题目是国庆中秋放假期间布置的一道题目。">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/10/13/第四周分享会题目-wp/01.png">
+<meta property="og:updated_time" content="2017-10-13T12:04:53.050Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leo">
+<meta name="twitter:title" content="第四周分享会题目 wp">
+<meta name="twitter:description" content="这道题目是国庆中秋放假期间布置的一道题目。">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/10/13/第四周分享会题目-wp/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -151,36 +158,159 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-第四周分享会题目-wp" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/10/壳与ESP定律/" class="archive-article-date">
-  	<time datetime="2017-08-10T12:58:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/10/壳与ESP定律/">壳与ESP定律</a>
+    <h1 class="article-title" itemprop="name">
+      第四周分享会题目 wp
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/13/第四周分享会题目-wp/" class="archive-article-date">
+  	<time datetime="2017-10-13T05:47:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这道题目是国庆中秋放假期间布置的一道题目。</p>
+<a id="more"></a>
+<p>查壳运行程序，无壳，是一道name&amp;serial类型的题目，基本上就是考察算法。<br>拖进IDA，shift+F12,找到关键字符串，然后反汇编得到关键算法伪代码</p>
+<pre><code>int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  int v3; // eax@1
+  int v4; // eax@5
+  unsigned int v5; // kr04_4@5
+  signed int i; // eax@6
+  char v7; // dl@7
+  int v9; // [sp+4h] [bp-4Ch]@1
+  int v10; // [sp+8h] [bp-48h]@1
+  int v11; // [sp+Ch] [bp-44h]@1
+  int v12; // [sp+10h] [bp-40h]@1
+  int v13; // [sp+14h] [bp-3Ch]@1
+  __int16 v14; // [sp+18h] [bp-38h]@1
+  char v15; // [sp+1Ah] [bp-36h]@1
+  int v16; // [sp+1Ch] [bp-34h]@1
+  int v17; // [sp+20h] [bp-30h]@1
+  __int16 v18; // [sp+24h] [bp-2Ch]@1
+  char v19; // [sp+2Bh] [bp-25h]@7
+  char v20; // [sp+2Ch] [bp-24h]@1
+  int v21; // [sp+2Dh] [bp-23h]@1
+  int v22; // [sp+31h] [bp-1Fh]@1
+  __int16 v23; // [sp+35h] [bp-1Bh]@1
+  char v24; // [sp+37h] [bp-19h]@1
+  char v25; // [sp+38h] [bp-18h]@1
+
+  v21 = 0;
+  v22 = 0;
+  v23 = 0;
+  v24 = 0;
+  v20 = 0;
+  v16 = 0x7544634D;
+  v17 = 1094741100;
+  v18 = 28277;
+  v9 = 1330405193;
+  v10 = 1130317142;
+  v11 = 6243924;
+  v12 = 976562704;
+  v13 = 53689371;
+  v14 = 8994;
+  v15 = 126;
+  v3 = sub_4013C0(std::cout, &amp;unk_40317C);
+  std::basic_ostream&lt;char,std::char_traits&lt;char&gt;&gt;::operator&lt;&lt;(v3, std::endl);
+  sub_401610(std::cin, &amp;v25);   //&amp;v25=name
+  if ( strlen(&amp;v25) - 5 &lt;= 3 || strcmp(&amp;v25, (const char *)&amp;v16) )
+  {
+    printf(Format);            //name需要&gt;8  并且需要与&amp;v16进行一一比较，相同为正确
+    exit(0);
+  }
+  v4 = sub_4013C0(std::cout, &quot;请输入管理员密码：&quot;);
+  std::basic_ostream&lt;char,std::char_traits&lt;char&gt;&gt;::operator&lt;&lt;(v4, std::endl);
+  sub_401610(std::cin, &amp;v16);        //&amp;v16为输入密码
+  v5 = strlen((const char *)&amp;v16);
+  if ( v5 - 5 &gt; 6 )                  //密码长度需要&lt;=11
+  {
+    printf(&quot;对不起，您输入的密码错误！&quot;);
+    exit(0);
+  }
+  for ( i = 0; i &lt; (signed int)v5; *(&amp;v19 + i) = v7 )  //关键算法
+  {
+    v7 = *((_BYTE *)&amp;v12 + i) ^ *((_BYTE *)&amp;v16 + i);
+    ++i;
+  }
+  if ( !strcmp((const char *)&amp;v9, &amp;v20) )            //最终比较
+    printf(&quot;登陆成功！KEY{管理员密码}       \n&quot;);
+  else
+    printf(&quot;对不起，您输入的密码错误！&quot;);
+  system(&quot;pause&quot;);
+  return 0;
+}
+</code></pre><p>把关键算法拉下来分析</p>
+<pre><code>for ( i = 0; i &lt; (signed int)v5; *(&amp;v19 + i) = v7 )  
+      {
+        v7 = *((_BYTE *)&amp;v12 + i) ^ *((_BYTE *)&amp;v16 + i);
+        ++i;
+      }
+      if ( !strcmp((const char *)&amp;v9, &amp;v20) )            
+        printf(&quot;登陆成功！KEY{管理员密码}       \n&quot;);
+      else
+        printf(&quot;对不起，您输入的密码错误！&quot;);
+</code></pre><p>&amp;v12与&amp;v16相与的结果赋给&amp;v7,然后&amp;v7的值付给&amp;v19,最后是让&amp;v9的值与&amp;v20(&amp;v19)的值进行最终比较。<br>想求出正确的&amp;v16,只需让&amp;v9和&amp;v12相与即可得到</p>
+<p>正确的name可由之前的&amp;v16得到</p>
+<p>写注册机得到密码之前先把&amp;v9与&amp;v12的值找到<br><img src="/2017/10/13/第四周分享会题目-wp/01.png" alt=""></p>
+<pre><code> list1=[0x49,0x5f,0x4c,0x4f,0x56,0x45,0x5f,0x43,0x54,0x46,0x5f]
+ list2=[0x10,0x2a,0x35,0x3a,0x1b,0x3c,0x33,0x33,0x22,0x23,0x7e]
+ for i,j in zip(list1,list2):
+     print(chr(i^j),end=&apos;&apos;)
+
+运行结果：YuyuMylpve!
+</code></pre><p>最后总结：<br>1.一个遗留问题，不明白为什么&amp;v19突然就变成了&amp;v20</p>
+<p>2.还不是特别会利用OD进行解题目（不能利用它找到有用的信息）<br>之后要多加练习</p>
+<p>3.现在看看这个算法题目也不是特别难，不明白当时自己为什么就懂不懂。<br>积累经验吧。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,364 +322,97 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2017/10/13/第四周分享会题目-wp/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/08/十天的放逐/" class="archive-article-date">
-  	<time datetime="2017-08-08T02:59:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-08</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/08/十天的放逐/">十天的放逐</a>
-    </h1>
+    <a href="/2017/10/14/第五周分享会题目-wp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          第五周分享会题目 wp
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/06/转-一个计算机学院学生四年学习生活的回顾与反思/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">转 一个计算机学院学生四年学习生活的回顾与反思</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/20/暑假一练-WriteUp/" class="archive-article-date">
-  	<time datetime="2017-07-20T07:36:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/20/暑假一练-WriteUp/">暑假一练 WriteUp</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/15/汇编语言 王爽 章节知识点总结/" class="archive-article-date">
-  	<time datetime="2017-07-15T12:04:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/15/汇编语言 王爽 章节知识点总结/">汇编语言 王爽 章节知识点总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Assembly</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/14/所谓的废纸篓/" class="archive-article-date">
-  	<time datetime="2017-07-14T02:11:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/14/所谓的废纸篓/">所谓的废纸篓</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">废纸篓</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/11/Summer-第一周/" class="archive-article-date">
-  	<time datetime="2017-07-11T09:07:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/11/Summer-第一周/">Summer  第一周</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/08/年少无为，卖马为生/" class="archive-article-date">
-  	<time datetime="2017-07-08T12:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/08/年少无为，卖马为生/">年少无为，卖马为生</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/08/搭建博客后的资源整合/" class="archive-article-date">
-  	<time datetime="2017-07-08T05:14:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/08/搭建博客后的资源整合/">搭建博客后的资源整合</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具or软件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/06/Markdown 使用语法/" class="archive-article-date">
-  	<time datetime="2017-07-06T12:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/06/Markdown 使用语法/">Markdown 使用语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具or软件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/04/Hello-Word/" class="archive-article-date">
-  	<time datetime="2017-07-04T13:53:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/04/Hello-Word/">Hello Word</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/3/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span>
-    </nav>
   
 
 
@@ -573,8 +436,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
