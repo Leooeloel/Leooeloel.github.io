@@ -26,7 +26,8 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/09.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/10.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/11.png">
-<meta property="og:updated_time" content="2017-10-14T06:38:49.547Z">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/12.png">
+<meta property="og:updated_time" content="2017-10-15T02:34:43.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第五周分享会题目 wp">
 <meta name="twitter:description" content="这三道题目是本周三分享会上给的，假期缘故，就把这三道题目归为第五周分享会题目吧。">
@@ -268,6 +269,52 @@ print(str)
 运行结果：
 [&apos;0&apos;, &apos;o&apos;, &apos;p&apos;, &apos;s&apos;, &apos;.&apos;, &apos;.&apos;, &apos;.&apos;, &apos;O&apos;, &apos;D&apos;, &apos;_&apos;, &apos;_&apos;, &apos;1&apos;, &apos;5&apos;, &apos;_&apos;, &apos;U&apos;, &apos;s&apos;, &apos;e&apos;, &apos;f&apos;, &apos;u&apos;, &apos;l&apos;, &apos;!&apos;]
 0ops...OD__15_Useful!
+</code></pre><h2 id="二-cm1"><a href="#二-cm1" class="headerlink" title="二.cm1"></a>二.cm1</h2><p>这好像是一个linux小程序，不能运行（也可以说目前的我不知道怎么运行linux程序）。<br>然后直接IDA打开，按照老套路来看看能不能找到关键算法，然后就找到了</p>
+<pre><code>int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  int result; // eax@2
+  char s; // [sp+10h] [bp-30h]@1
+  int v5; // [sp+38h] [bp-8h]@3
+  int v6; // [sp+3Ch] [bp-4h]@1
+
+  printf(&quot;Let me cheack your flag:&quot;, argv, argv);
+  gets(&amp;s);              //输入flag
+  v6 = strlen(&amp;s);        //v6为flag长度
+  if ( (unsigned int)cheack_func(&amp;s) )     //进入check_func发现v6==22进入if语句
+  {
+    v5 = decode1((__int64)&amp;s, v6);    //核心算法
+    judge_func(v5);                 //符合条件则输出成功找到
+    result = 0;
+  }
+  else
+  {
+    puts(&quot;Try again~&quot;);
+    result = 0;
+  }
+  return result;
+}
+</code></pre><p>进入check_func看下</p>
+<pre><code>__int64 __fastcall decode1(__int64 a1, int a2)
+{
+  unsigned int v3; // [sp+14h] [bp-8h]@1
+  int i; // [sp+18h] [bp-4h]@1
+
+  v3 = 0;
+  for ( i = 0; i &lt; a2; ++i )
+  {
+    if ( (i ^ *(_BYTE *)(i + a1)) != compare[(signed __int64)i] )
+      return 0LL;
+    ++v3;
+  }
+  return v3;
+}
+</code></pre><p>算法不是太复杂，容易写出注册机。先来看看compare的数据<br><img src="/2017/10/14/第五周分享会题目-wp/12.png" alt=""></p>
+<h3 id="注意区分什么时候是倒的，什么时候是正的）"><a href="#注意区分什么时候是倒的，什么时候是正的）" class="headerlink" title="(注意区分什么时候是倒的，什么时候是正的）"></a>(注意区分什么时候是倒的，什么时候是正的）</h3><p>然后就是脚本了</p>
+<pre><code>c = &quot;E`1z[F1fkbUFiRFnftMUa{&quot;
+for i in range(len(c)):
+    print(chr(i^ord(c[i])),end=&quot;&quot;)
+
+运行结果：Ea3y_C7ack_Me_Have_Fun
 </code></pre>
       
 
