@@ -27,7 +27,8 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/10.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/11.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/12.png">
-<meta property="og:updated_time" content="2017-10-15T02:34:43.515Z">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/13.png">
+<meta property="og:updated_time" content="2017-10-24T09:51:09.922Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第五周分享会题目 wp">
 <meta name="twitter:description" content="这三道题目是本周三分享会上给的，假期缘故，就把这三道题目归为第五周分享会题目吧。">
@@ -315,7 +316,52 @@ for i in range(len(c)):
     print(chr(i^ord(c[i])),end=&quot;&quot;)
 
 运行结果：Ea3y_C7ack_Me_Have_Fun
-</code></pre>
+</code></pre><h2 id="三、RE50"><a href="#三、RE50" class="headerlink" title="三、RE50"></a>三、RE50</h2><p>（2017.10.24 补题解）<br>这道题滞留了好多天，刚才算是窍通了一下…<br>先来运行下程序<br><img src="/2017/10/14/第五周分享会题目-wp/13.png" alt=""><br>寻找flag 无壳 C/C++编写<br>先用IDA看看能不能看出求解算法<br>shift+f12查找字符串，进而找到关键算法的伪码</p>
+<pre><code>int sub_401130()
+{
+  char v1; // [sp+0h] [bp-10h]@1
+
+  sub_402702(&quot;Do you know flag?\n&quot;);
+  ((void (__thiscall *)(char *))loc_4010A0)(&amp;v1); //&amp;v1 输入的flag
+  if ( !sub_401000((int)&amp;v1) )   //需使sub_401000((int)&amp;v1)成真
+  {
+    sub_402702(&quot;wrong~&quot;);
+    ExitProcess(0);
+  }
+  sub_402702(&quot;Yes,YOU GET IT!&quot;);
+  return 0;
+}
+</code></pre><p>跟进sub_401000((int)&amp;v1)这个函数</p>
+<pre><code>bool __thiscall sub_401000(int this)  //this = &amp;v1
+{
+  int v1; // eax@1
+  bool result; // al@2
+  char v3; // dl@7
+  char v4[48]; // [sp+0h] [bp-40h]@1  //v4 v5 v6为连续的一个数组
+  int v5; // [sp+30h] [bp-10h]@1
+  int v6; // [sp+34h] [bp-Ch]@1
+  char v7; // [sp+38h] [bp-8h]@1
+
+  v1 = *(_BYTE *)this;
+  v5 = 0x2020908;  //v4数组内容
+  v6 = 0x9030106;
+  v7 = 0;
+  if ( v4[v1] != 2
+    || v4[*(_BYTE *)(this + 1)] != 8
+    || v4[*(_BYTE *)(this + 2)] != 9
+    || v4[*(_BYTE *)(this + 3)] != 3
+    || v4[*(_BYTE *)(this + 4)] != 9
+    || (v3 = v4[*(_BYTE *)(this + 7)], v4[*(_BYTE *)(this + 5)] != v3)
+    || v4[*(_BYTE *)(this + 6)] != 9 )  //关键
+    result = 0;
+  else
+    result = v3 == 8;
+  return result;
+}
+</code></pre><p>通过对关键代码的分析需满足<br>v4[v1] == 2<br>v4[<em>(_BYTE </em>)(this + 1)] == 8<br>v4[<em>(_BYTE </em>)(this + 2)] == 9<br>v4[<em>(_BYTE </em>)(this + 3)] == 3<br>v4[<em>(_BYTE </em>)(this + 4)] == 9<br>v4[<em>(_BYTE </em>)(this + 7)] == v4[<em>(_BYTE </em>)(this + 5)] == v3 == 8<br>v4[<em>(_BYTE </em>)(this + 6)] == 9</p>
+<p>又知道数组v4[]的内容<br>v4[] ={8，9，2，2，6，1，3，9}  //注意存储的顺序<br>由数组元素下标和数组元素值的对应关系可以推出this[]数组的值<br>即flag为<br>20767070或20161010或30767070或30161010<br>flag不唯一</p>
+<p>（此题用OD不太方便）<br>此题不难，但是却拖了老长时间，最后还是在看了庆哥的思路后才明白。<br>之后做题要学会自己思考、不畏难、打活思维。</p>
+
       
 
       
@@ -428,6 +474,15 @@ for i in range(len(c)):
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/10/25/第六周分享会题目-wp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          第六周分享会题目 wp
+        
+      </div>
+    </a>
   
   
     <a href="/2017/10/13/第四周分享会题目-wp/" id="article-nav-older" class="article-nav-link-wrap">
