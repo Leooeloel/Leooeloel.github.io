@@ -6,14 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Archives | Leo</title>
+  <title>第七周分享会题目 wp | Leo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leo">
-<meta property="og:url" content="http://leo.dropsec.xyz/archives/page/4/index.html">
+  <meta name="description" content="第七周的题目。更换了一个IDA。F5大法好。是真强大。好久都没用OD了，一个F5全部解决。">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第七周分享会题目 wp">
+<meta property="og:url" content="http://leo.dropsec.xyz/2017/10/26/第七周分享会题目-wp/index.html">
 <meta property="og:site_name" content="Leo">
+<meta property="og:description" content="第七周的题目。更换了一个IDA。F5大法好。是真强大。好久都没用OD了，一个F5全部解决。">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/10/26/第七周分享会题目-wp/11.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/10/26/第七周分享会题目-wp/02.png">
+<meta property="og:updated_time" content="2017-10-28T06:17:19.814Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leo">
+<meta name="twitter:title" content="第七周分享会题目 wp">
+<meta name="twitter:description" content="第七周的题目。更换了一个IDA。F5大法好。是真强大。好久都没用OD了，一个F5全部解决。">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/10/26/第七周分享会题目-wp/11.png">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -151,36 +159,304 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-第七周分享会题目-wp" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      第七周分享会题目 wp
+    </h1>
+  
+
+        
+        <a href="/2017/10/26/第七周分享会题目-wp/" class="archive-article-date">
+  	<time datetime="2017-10-26T07:24:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>第七周的题目。更换了一个IDA。F5大法好。是真强大。好久都没用OD了，一个F5全部解决。</p>
+<a id="more"></a>
+<h2 id="一、Linux-1"><a href="#一、Linux-1" class="headerlink" title="一、Linux 1"></a>一、Linux 1</h2><p>本题也超级简单，关键在于找到关键算法函<br>F5出来的伪码如下</p>
+<pre><code>__int64 sub_4009AE()
+{
+  unsigned __int64 v0; // rax@2
+  unsigned __int64 v1; // rax@4
+  unsigned __int64 v2; // rax@6
+  unsigned __int64 v3; // rax@7
+  __int64 v4; // rdx@10
+  __int64 result; // rax@10
+  char v6; // [sp+10h] [bp-110h]@2
+  __int64 v7; // [sp+118h] [bp-8h]@1
+
+  v7 = *MK_FP(__FS__, 40LL);
+  sub_40FF80(&quot;===============Welcome to Linux!===============&quot;);
+  sub_40FF80(&quot;Maybe it&apos;s strange, but it&apos;s absolutely simple.&quot;);
+  sub_40FF80(&quot;Now guess the password to prove your ability : &quot;);
+  sub_40F580((unsigned __int64)&quot; -&gt; &quot;);
+  while ( 1 )
+  {
+    while ( 1 )
+    {
+      sub_40F6B0((unsigned __int64)&quot;%s&quot;);
+      LODWORD(v0) = sub_423D10(&amp;v6, &amp;v6);
+      if ( v0 &gt; 0xF )
+        sub_40F580((unsigned __int64)&quot;The password is too long! \n -&gt; &quot;);
+      LODWORD(v1) = sub_423D10(&amp;v6, &amp;v6);
+      if ( v1 &lt; 0xF )
+        sub_40F580((unsigned __int64)&quot;The password is too short! \n -&gt; &quot;);
+      LODWORD(v2) = sub_423D10(&amp;v6, &amp;v6);
+      if ( v2 &lt;= 0xF )
+      {
+        LODWORD(v3) = sub_423D10(&amp;v6, &amp;v6);
+        if ( v3 &gt;= 0xF )
+          break;
+      }
+    }
+    if ( (unsigned int)sub_400B28((__int64)&amp;v6) )  //关键函数
+      break;
+    sub_40F580((unsigned __int64)&quot;check failed! \n -&gt; &quot;);
+  }
+  sub_40FF80(&quot;That&apos;s it! :)&quot;);
+  sub_40F580((unsigned __int64)&quot;flag is \&quot;SYC{ }\&quot;\n&quot;);
+  result = 0LL;
+  if ( *MK_FP(__FS__, 40LL) != v7 )
+    sub_443140(&quot;flag is \&quot;SYC{ }\&quot;\n&quot;, &amp;v6, v4, *MK_FP(__FS__, 40LL) ^ v7);
+  return result;
+}
+</code></pre><p>跟进关键函数</p>
+<pre><code>__int64 __fastcall sub_400B28(__int64 a1)
+{
+  __int64 result; // rax@6
+
+  if ( *(_BYTE *)a1 == 76
+    &amp;&amp; *(_BYTE *)(a1 + 1) == 49
+    &amp;&amp; *(_BYTE *)(a1 + 2) == 110
+    &amp;&amp; *(_BYTE *)(a1 + 3) == 117
+    &amp;&amp; *(_BYTE *)(a1 + 4) == 120 )
+  {
+    if ( *(_BYTE *)(a1 + 14) == 101
+      &amp;&amp; *(_BYTE *)(a1 + 13) == 108
+      &amp;&amp; *(_BYTE *)(a1 + 12) == 112
+      &amp;&amp; *(_BYTE *)(a1 + 9) == 53
+      &amp;&amp; *(_BYTE *)(a1 + 8) == 95 )
+    {
+      result = *(_BYTE *)(a1 + 10) == 49
+            &amp;&amp; *(_BYTE *)(a1 + 11) == 109
+            &amp;&amp; *(_BYTE *)(a1 + 7) == 115
+            &amp;&amp; *(_BYTE *)(a1 + 6) == *(_BYTE *)(a1 + 1)
+            &amp;&amp; *(_BYTE *)(a1 + 5) == *(_BYTE *)(a1 + 8);
+    }
+    else
+    {
+      result = 0LL;
+    }
+  }
+  else
+  {
+    result = 0LL;
+  }
+  return result;
+}
+</code></pre><p>很简单，注意数组元素顺序</p>
+<pre><code>a=[76,49,110,117,120,95,49,115,95,53,49,109,112,108,101]
+for i in a:
+    print(chr(i), end=&quot;&quot;)
+
+运行结果：L1nux_1s_51mple
+</code></pre><p>伪码中看到  sub_40F580((unsigned __int64)”flag is \”SYC{ }\”\n”);<br>所以提交的时候加上格式SYC{ }<br>之后在提交flag之前，要注意这个细节。不要犯这种低级错误。</p>
+<h2 id="二、CrackMe1"><a href="#二、CrackMe1" class="headerlink" title="二、CrackMe1"></a>二、CrackMe1</h2><p>F5出来的</p>
+<pre><code>int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  int result; // eax@2
+  int v4; // [sp+0h] [bp-7D0h]@1
+
+  sub_4011BA((int)aCanYouGuessThe, v4);
+  gets((char *)&amp;v4);
+  if ( sub_401060((const char *)&amp;v4) )  //关键函数
+  {
+    sub_4011BA((int)aGoodTheKeyIsYo, v4);  //字符提示
+    result = 0;
+  }
+  else
+  {
+    sub_4011BA((int)aYouDonTGuessIt, v4);
+    result = 0;
+  }
+  return result;
+}
+</code></pre><p>跟进关键函数</p>
+<pre><code>signed int __cdecl sub_401060(const char *a1)
+{
+  unsigned int v1; // edx@2
+  unsigned int v2; // edx@4
+  int v3; // edx@6
+  int v5; // [sp+Ch] [bp-10h]@1
+  int v6; // [sp+10h] [bp-Ch]@1
+  int v7; // [sp+14h] [bp-8h]@1
+  __int16 v8; // [sp+18h] [bp-4h]@1
+  char v9; // [sp+1Ah] [bp-2h]@1
+
+  v5 = dword_40708C;
+  v6 = dword_407090;
+  v8 = word_407098;
+  v9 = byte_40709A;
+  v7 = dword_407094;
+  if ( strlen(a1) == strlen((const char *)&amp;v5) )
+  {
+    v1 = 0;
+    if ( strlen(a1) != 0 )
+    {
+      do
+        a1[v1++] ^= 0x20u;   //处理一 对a1异或操作
+      while ( v1 &lt; strlen(a1) );
+    }
+    v2 = 0;
+    if ( strlen((const char *)&amp;v5) != 0 )
+    {
+      do
+        *((_BYTE *)&amp;v5 + v2++) -= 5;  //处理二 对v5 -5 操作
+      while ( v2 &lt; strlen((const char *)&amp;v5) );
+    }
+    v3 = 0;
+    if ( strlen((const char *)&amp;v5) == 0 )
+      return 1;
+    while ( *((_BYTE *)&amp;v5 + v3 + a1 - (const char *)&amp;v5) == *((_BYTE *)&amp;v5 + v3) )      //这个语句反编译出错（提醒我们不要太相信F5，他也会出先错误滴），不过这个语句不涉及算法操作。
+    {
+      if ( ++v3 &gt;= strlen((const char *)&amp;v5) )
+        return 1;
+    }
+  }
+  return 0;
+}
+</code></pre><p>先得到数组v5的数据<br>v5=[0x68,0x57,0x19,0x48,0x50,0x6e,0x58,0x78,0x54,0x6a,0x19,0x58,0x5e,0x6]<br>然后开始逆向出脚本</p>
+<pre><code>v5=[0x68,0x57,0x19,0x48,0x50,0x6e,0x58,0x78,0x54,0x6a,0x19,0x58,0x5e,0x6]
+
+for i in range(len(v5)):
+    v5[i]=v5[i]-0x5                  # 注意不用逆成+5
+    print(chr(v5[i]^0x20),end=&quot;&quot;)
+
+运行结果：Cr4ckIsSoE4sy!
+</code></pre><p>总结：理清运算操作的对象，再敲脚本。（要不还一直自以为是的认为自己是对的）<br>抓住关键语句，忽略次要语句。（宁信IDA，不如无IDA）</p>
+<h2 id="三、cosh-3"><a href="#三、cosh-3" class="headerlink" title="三、cosh.3"></a>三、cosh.3</h2><p>同样，拉进IDA，和之前不一样的是，字符串搜索后，交叉引用后来到调用段，发现有些调用是红色的（正常是黑色）<br><img src="/2017/10/26/第七周分享会题目-wp/11.png" alt=""></p>
+<p>这里需要多一个操作，把红色的调用段解封一下。具体做法是找到连续红色调用段最上面的红色调用段，选中、右击，选择create function。然后会发现突然解封出一些黑色代码段。然后往下翻，把能看到的还是红色的调用段继续解封。直到把字符提示段对应的红色调用段这部分解封完毕即可。<br>然后F5，就看到反编译出来的关键伪码了</p>
+<pre><code>int __thiscall sub_4014B0(CWnd *this)
+{
+  signed int v1; // ecx@3
+  _BYTE *v2; // eax@3
+  signed int v3; // ecx@5
+  _BYTE *v4; // eax@5
+  _BYTE *v5; // eax@7
+  _BYTE *v6; // edx@7
+  CWnd *v8; // [sp+Ch] [bp-20h]@1
+  _BYTE *v9; // [sp+10h] [bp-1Ch]@1
+  int v10; // [sp+14h] [bp-18h]@2
+  int v11; // [sp+18h] [bp-14h]@1
+  _BYTE *v12; // [sp+1Ch] [bp-10h]@1
+  int v13; // [sp+28h] [bp-4h]@1
+
+  v8 = this;
+  CString::CString(&amp;v9);
+  v13 = 0;
+  CString::CString(&amp;v12);
+  LOBYTE(v13) = 1;
+  v11 = CWnd::GetWindowTextLengthA((CWnd *)((char *)v8 + 160)); //获取文本长度
+  if ( v11 &gt; 5 )
+  {
+    v10 = CWnd::GetWindowTextLengthA((CWnd *)((char *)v8 + 96));  //获取文本长度
+    if ( v10 &gt; 5 )
+    {
+      CWnd::GetWindowTextA((CWnd *)((char *)v8 + 160), (CWnd *)((char *)v8 + 224)); //获取文本（name)内容
+      CWnd::GetWindowTextA((CWnd *)((char *)v8 + 96), (CWnd *)((char *)v8 + 228));  //获取文本（serial)内容
+      CString::operator=(&amp;v9, (char *)v8 + 224);  //$v9=输入的name
+      CString::operator=(&amp;v12, (char *)v8 + 228);  //$v12=输入的serial
+      v1 = 1;
+      v2 = v9;
+      do
+        *v2++ ^= v1++;  //关键处
+      while ( *v2 );
+      v3 = 10;
+      v4 = v12;
+      do
+        *v4++ ^= v3++;
+      while ( *v4 );
+      v5 = v9;
+      v6 = v12;
+      while ( *v5 == *v6 )
+      {
+        ++v5;
+        ++v6;
+        if ( !*v5 )
+        {
+          CWnd::MessageBoxA(v8, aWellDoneCracke, aYouDidIt, 0);
+          goto LABEL_12;
+        }
+      }
+    }
+  }
+  CWnd::MessageBoxA(v8, aOneOfTheDetail, aError, 0);
+LABEL_12:
+  Sleep(0x64u);
+  LOBYTE(v13) = 0;
+  CString::~CString((CString *)&amp;v12);
+  v13 = -1;
+  return CString::~CString((CString *)&amp;v9);
+}
+</code></pre><p>关键算法处理很简单<br>脚本如下（例name=dropsec)</p>
+<pre><code>name=&apos;dropsec&apos;
+a = 1
+b = 10
+for i in range(len(name)):
+    print(chr(((ord(name[i])^a)^b)),end=&quot;&quot;)
+    a=a+1
+    b=b+1
+
+运行结果:o{`yxlt
+</code></pre><p><img src="/2017/10/26/第七周分享会题目-wp/02.png" alt=""></p>
+<p>这个题是一个注册机，答案不限制，这里name=dropsec而已。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/11/合天-CTF-REVERSE练习之API定位-WP/" class="archive-article-date">
-  	<time datetime="2017-08-11T08:56:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/11/合天-CTF-REVERSE练习之API定位-WP/">合天 CTF REVERSE练习之API定位 WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,364 +468,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2017/10/26/第七周分享会题目-wp/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/11/合天-CTF-REVERSSE练习之逆向初探-WP/" class="archive-article-date">
-  	<time datetime="2017-08-11T06:31:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/11/合天-CTF-REVERSSE练习之逆向初探-WP/">合天 CTF-REVERSSE练习之逆向初探 WP</a>
-    </h1>
+  
+    <a href="/2017/10/25/第六周分享会题目-wp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第六周分享会题目 wp</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/10/壳与ESP定律/" class="archive-article-date">
-  	<time datetime="2017-08-10T12:58:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/10/壳与ESP定律/">壳与ESP定律</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/08/十天的放逐/" class="archive-article-date">
-  	<time datetime="2017-08-08T02:59:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/08/十天的放逐/">十天的放逐</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/20/暑假一练-WriteUp/" class="archive-article-date">
-  	<time datetime="2017-07-20T07:36:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/20/暑假一练-WriteUp/">暑假一练 WriteUp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/15/汇编语言 王爽 章节知识点总结/" class="archive-article-date">
-  	<time datetime="2017-07-15T12:04:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/15/汇编语言 王爽 章节知识点总结/">汇编语言 王爽 章节知识点总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Assembly</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/14/所谓的废纸篓/" class="archive-article-date">
-  	<time datetime="2017-07-14T02:11:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/14/所谓的废纸篓/">所谓的废纸篓</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">废纸篓</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/11/Summer-第一周/" class="archive-article-date">
-  	<time datetime="2017-07-11T09:07:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/11/Summer-第一周/">Summer  第一周</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/08/年少无为，卖马为生/" class="archive-article-date">
-  	<time datetime="2017-07-08T12:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/08/年少无为，卖马为生/">年少无为，卖马为生</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/08/搭建博客后的资源整合/" class="archive-article-date">
-  	<time datetime="2017-07-08T05:14:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/08/搭建博客后的资源整合/">搭建博客后的资源整合</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具or软件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/3/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/5/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -573,8 +573,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
