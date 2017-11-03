@@ -153,6 +153,146 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-第八周-密码学相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/03/第八周-密码学相关/">第八周 密码学相关</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/03/第八周-密码学相关/" class="archive-article-date">
+  	<time datetime="2017-11-03T12:42:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这周开始接触密码学，简单总结下。<br>!&lt;—more—&gt;</p>
+<h2 id="一、常见文件类型的文件头"><a href="#一、常见文件类型的文件头" class="headerlink" title="一、常见文件类型的文件头"></a>一、常见文件类型的文件头</h2><p>根据文件的后缀名识别文件类型并不准确，可以使用文件的头信息进行识别：<br>(文件头信息可以用WinHex得到)</p>
+<pre><code>JPEG (jpg)，文件头：FFD8FFE1
+PNG (png)，文件头：89504E47
+GIF (gif)，文件头：47494638
+TIFF (tif)，文件头：49492A00
+Windows Bitmap (bmp)，文件头：424D
+CAD (dwg)，文件头：41433130
+Adobe Photoshop (psd)，文件头：38425053
+Rich Text Format (rtf)，文件头：7B5C727466
+XML (xml)，文件头：3C3F786D6C
+HTML (html)，文件头：68746D6C3E
+Email [thorough only] (eml)，文件头：44656C69766572792D646174653A
+Outlook Express (dbx)，文件头：CFAD12FEC5FD746F
+Outlook (pst)，文件头：2142444E
+MS Word/Excel (xls.or.doc)，文件头：D0CF11E0
+MS Access (mdb)，文件头：5374616E64617264204A
+WordPerfect (wpd)，文件头：FF575043
+Postscript (eps.or.ps)，文件头：252150532D41646F6265
+Adobe Acrobat (pdf)，文件头：255044462D312E
+Quicken (qdf)，文件头：AC9EBD8F
+Windows Password (pwl)，文件头：E3828596
+ZIP Archive (zip)，文件头：504B0304
+RAR Archive (rar)，文件头：52617221
+Wave (wav)，文件头：57415645
+AVI (avi)，文件头：41564920
+Real Audio (ram)，文件头：2E7261FD
+Real Media (rm)，文件头：2E524D46
+MPEG (mpg)，文件头：000001BA
+MPEG (mpg)，文件头：000001B3
+Quicktime (mov)，文件头：6D6F6F76
+Windows Media (asf)，文件头：3026B2758E66CF11
+MIDI (mid)，文件头：4D546864 
+</code></pre><p>参考：<a href="http://fuliang.iteye.com/blog/769680" target="_blank" rel="external">http://fuliang.iteye.com/blog/769680</a></p>
+<h2 id="二、常见（古典）密码简述"><a href="#二、常见（古典）密码简述" class="headerlink" title="二、常见（古典）密码简述"></a>二、常见（古典）密码简述</h2><h3 id="摩尔斯电码（摩斯密码，Morse-code）"><a href="#摩尔斯电码（摩斯密码，Morse-code）" class="headerlink" title="摩尔斯电码（摩斯密码，Morse code）"></a>摩尔斯电码（摩斯密码，Morse code）</h3><p>用两种“符号”用来表示字元：划（—）和点（·）</p>
+<p>用摩斯密码表示字母</p>
+<p><img src="/2017/11/03/第八周-密码学相关/1.jpg" alt=""></p>
+<p>用摩斯密码表示数字</p>
+<p><img src="/2017/11/03/第八周-密码学相关/2.jpg" alt=""></p>
+<p>用摩斯密码表示标点符号</p>
+<p><img src="/2017/11/03/第八周-密码学相关/3.jpg" alt=""></p>
+<p><a href="http://www.zhongguosou.com/zonghe/moErSiCodeConverter.aspx" target="_blank" rel="external">摩尔斯电码在线解密</a></p>
+<h3 id="凯撒密码"><a href="#凯撒密码" class="headerlink" title="凯撒密码"></a>凯撒密码</h3><p>凯撒密码加密就是把原字母按照字母表顺序向后移1-26位，例如：ABCDEF集体向后移三位结果就是defghi 再例如：byebye后移5位就是gdjgdj</p>
+<p><a href="http://www.zjslove.com/3.decode/" target="_blank" rel="external">凯撒在线加密与解密</a></p>
+<h3 id="培根密码"><a href="#培根密码" class="headerlink" title="培根密码"></a>培根密码</h3><p>培根密码本质上用二进制数设计的，没有用通常的0和1来表示，而是采用a和b</p>
+<pre><code>第一种方式
+A aaaaa  B aaaab
+C aaaba  D aaabb
+E aabaa  F aabab
+G aabba  H aabbb
+I abaaa  J abaab
+K ababa  L ababb
+M abbaa  N abbab
+O abbba  P abbbb
+Q baaaa  R baaab
+S baaba  T baabb
+U babaa  V babab
+W babba  X babbb
+Y bbaaa  Z bbaab
+
+第二种方式
+a AAAAA  g AABBA    n ABBAA  t BAABA
+b AAAAB  h AABBB    o ABBAB  u-v BAABB
+c AAABA  i-j ABAAA  p ABBBA  w BABAA
+d AAABB  k ABAAB    q ABBBB  x BABAB
+e AABAA  l ABABA    r BAAAA  y BABBA
+f AABAB  m ABABB    s BAAAB  z BABBB
+</code></pre><p>加密者需使用两种不同字体。准备好一篇包含相同AB字数的假信息后，即两种字体分别代表A型和B型。然后假信息中的每个字母按字体来决定其代表“A”还是“B”。</p>
+<p>如：密文是LOVE，用“随意选取句子和文”加密，得到结果就是“SuLyi XuanQ uJuZi HEwEN”（这里用小写代表b）</p>
+<p><a href="https://netair.xyz/tools/%e5%9f%b9%e6%a0%b9%e5%af%86%e7%a0%81%e5%8a%a0%e5%af%86%e8%a7%a3%e5%af%86.html" target="_blank" rel="external">培根密码在线加解密</a></p>
+<h3 id="栅栏密码"><a href="#栅栏密码" class="headerlink" title="栅栏密码"></a>栅栏密码</h3><p>所谓栅栏密码，就是把要加密的明文分成N个一组，然后把每组的第1个字连起来，形成一段无规律的话。 不过栅栏密码本身有一个潜规则，就是组成栅栏的字母一般不会太多。（一般不超过30个，也就是一、两句话）</p>
+<pre><code>一般比较常见的是2栏的栅栏密码。
+比如明文：THERE IS A CIPHER
+去掉空格后变为：THEREISACIPHER
+两个一组，得到：TH ER EI SA CI PH ER
+先取出第一个字母：TEESCPE
+再取出第二个字母：HRIAIHR
+连在一起就是：TEESCPEHRIAIHR
+(解密步骤与此相反）
+</code></pre><p><a href="http://www.qqxiuzi.cn/bianma/zhalanmima.php" target="_blank" rel="external">栅栏密码加密解密</a></p>
+<hr>
+<p><a href="http://blog.csdn.net/sinat_25449961/article/details/56279952" target="_blank" rel="external">密码介绍补充一</a><br><a href="http://tieba.baidu.com/p/2027781907" target="_blank" rel="external">密码介绍补充二</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/03/第八周-密码学相关/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-第七周分享会题目-wp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -519,67 +659,6 @@
 
 
   
-    <article id="post-心结-1111" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/26/心结-1111/">心结_11：11</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/26/心结-1111/" class="archive-article-date">
-  	<time datetime="2017-09-26T14:04:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>沉默是最好的思考方式，也是最好做选择的方式。</p>
-        
-          <a class="article-more-a" href="/2017/09/26/心结-1111/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/26/心结-1111/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
     <article id="post-第三周分享会题目-WP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -661,7 +740,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前在超星算是初步接触过Java，本学期有Java程序设计这门课，我是很高兴的。上过两节课，发现崔岩老师也很给力，更坚定了我学好Java的信心。 这里就用于记录我在崔老师的课堂上的点点收获吧。</p>
+        <p>之前在超星算是初步接触过Java，本学期有Java程序设计这门课，我是很高兴的。上过两节课，发现崔岩老师也很给力，更坚定了我学好Java的信心。 这里就用于记录我在崔老师的课堂上的点点收获吧</p>
         
           <a class="article-more-a" href="/2017/09/19/跟着崔岩老师学Java/#more">more >></a>
         
