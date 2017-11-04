@@ -8,20 +8,25 @@
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
   <title>第八周 密码学相关 | Leo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这周开始接触密码学，简单总结下。!&amp;lt;—more—&amp;gt; 一、常见文件类型的文件头根据文件的后缀名识别文件类型并不准确，可以使用文件的头信息进行识别：(文件头信息可以用WinHex得到) JPEG (jpg)，文件头：FFD8FFE1 PNG (png)，文件头：89504E47 GIF (gif)，文件头：47494638 TIFF (tif)，文件头：49492A00 Windows B">
+  <meta name="description" content="这周开始接触密码学，简单总结下。">
 <meta name="keywords" content="二进制逆向">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第八周 密码学相关">
 <meta property="og:url" content="http://leo.dropsec.xyz/2017/11/03/第八周-密码学相关/index.html">
 <meta property="og:site_name" content="Leo">
-<meta property="og:description" content="这周开始接触密码学，简单总结下。!&amp;lt;—more—&amp;gt; 一、常见文件类型的文件头根据文件的后缀名识别文件类型并不准确，可以使用文件的头信息进行识别：(文件头信息可以用WinHex得到) JPEG (jpg)，文件头：FFD8FFE1 PNG (png)，文件头：89504E47 GIF (gif)，文件头：47494638 TIFF (tif)，文件头：49492A00 Windows B">
+<meta property="og:description" content="这周开始接触密码学，简单总结下。">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/03/第八周-密码学相关/1.jpg">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/03/第八周-密码学相关/2.jpg">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/03/第八周-密码学相关/3.jpg">
-<meta property="og:updated_time" content="2017-11-03T14:01:59.345Z">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/11/03/第八周-密码学相关/4.jpg">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/11/03/第八周-密码学相关/5.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/11/03/第八周-密码学相关/6.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/11/03/第八周-密码学相关/7.jpg">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/11/03/第八周-密码学相关/8.png">
+<meta property="og:updated_time" content="2017-11-04T03:51:32.216Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第八周 密码学相关">
-<meta name="twitter:description" content="这周开始接触密码学，简单总结下。!&amp;lt;—more—&amp;gt; 一、常见文件类型的文件头根据文件的后缀名识别文件类型并不准确，可以使用文件的头信息进行识别：(文件头信息可以用WinHex得到) JPEG (jpg)，文件头：FFD8FFE1 PNG (png)，文件头：89504E47 GIF (gif)，文件头：47494638 TIFF (tif)，文件头：49492A00 Windows B">
+<meta name="twitter:description" content="这周开始接触密码学，简单总结下。">
 <meta name="twitter:image" content="http://leo.dropsec.xyz/2017/11/03/第八周-密码学相关/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
@@ -180,7 +185,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这周开始接触密码学，简单总结下。<br>!&lt;—more—&gt;</p>
+        <p>这周开始接触密码学，简单总结下。</p>
+<a id="more"></a>
 <h2 id="一、常见文件类型的文件头"><a href="#一、常见文件类型的文件头" class="headerlink" title="一、常见文件类型的文件头"></a>一、常见文件类型的文件头</h2><p>根据文件的后缀名识别文件类型并不准确，可以使用文件的头信息进行识别：<br>(文件头信息可以用WinHex得到)</p>
 <pre><code>JPEG (jpg)，文件头：FFD8FFE1
 PNG (png)，文件头：89504E47
@@ -223,6 +229,7 @@ MIDI (mid)，文件头：4D546864
 <p><img src="/2017/11/03/第八周-密码学相关/3.jpg" alt=""></p>
 <p><a href="http://www.zhongguosou.com/zonghe/moErSiCodeConverter.aspx" target="_blank" rel="external">摩尔斯电码在线解密</a></p>
 <h3 id="凯撒密码"><a href="#凯撒密码" class="headerlink" title="凯撒密码"></a>凯撒密码</h3><p>凯撒密码加密就是把原字母按照字母表顺序向后移1-26位，例如：ABCDEF集体向后移三位结果就是defghi 再例如：byebye后移5位就是gdjgdj</p>
+<p><img src="/2017/11/03/第八周-密码学相关/4.jpg" alt=""></p>
 <p><a href="http://www.zjslove.com/3.decode/" target="_blank" rel="external">凯撒在线加密与解密</a></p>
 <h3 id="培根密码"><a href="#培根密码" class="headerlink" title="培根密码"></a>培根密码</h3><p>培根密码本质上用二进制数设计的，没有用通常的0和1来表示，而是采用a和b</p>
 <pre><code>第一种方式
@@ -261,7 +268,18 @@ f AABAB  m ABABB    s BAAAB  z BABBB
 (解密步骤与此相反）
 </code></pre><p><a href="http://www.qqxiuzi.cn/bianma/zhalanmima.php" target="_blank" rel="external">栅栏密码加密解密</a></p>
 <hr>
-<p><a href="http://blog.csdn.net/sinat_25449961/article/details/56279952" target="_blank" rel="external">密码介绍补充一</a><br><a href="http://tieba.baidu.com/p/2027781907" target="_blank" rel="external">密码介绍补充二</a></p>
+<p><a href="http://blog.csdn.net/sinat_25449961/article/details/56279952" target="_blank" rel="external">密码种类介绍补充一</a><br><a href="http://tieba.baidu.com/p/2027781907" target="_blank" rel="external">密码种类介绍补充二</a></p>
+<hr>
+<p>下面接着写下分享会的一道reverseMe 题目</p>
+<p><img src="/2017/11/03/第八周-密码学相关/5.png" alt=""></p>
+<p>因为不确定文件类型（惯用IDA打开看看，发现风格与以往不同），用上面所讲的方法来确定类型 首先拉进WinHex，然后拉到最下面，发现文件头是 FFD8FFE1</p>
+<p><img src="/2017/11/03/第八周-密码学相关/6.png" alt=""></p>
+<p>所以判断出它是jpg格式的图片<br>然后就可以去把他变为一张可视的图片喽，具体实现如下</p>
+<pre><code>open(&quot;E:\\flag.jpg&quot;,&quot;wb&quot;).write(open(&quot;E:\\reverseMe&quot;,&quot;rb&quot;).read()[::-1])
+</code></pre><p>注意路径的书写，然后运行后可以在此目录下得到名为flag.jpg的图片。</p>
+<p><img src="/2017/11/03/第八周-密码学相关/7.jpg" alt=""></p>
+<p>发现是镜像flag，可以用手机或镜子辅助看到正常显示的内容<br>在这里分享一个小在线工具<br><a href="http://www.asqql.com/giffanzuan/" target="_blank" rel="external">在线反转、旋转图片</a><br>然后经过操作变成这个样子喽</p>
+<p><img src="/2017/11/03/第八周-密码学相关/8.png" alt=""></p>
 
       
 
