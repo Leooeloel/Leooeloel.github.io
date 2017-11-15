@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
   <title>第九周 第八届极客大挑战精选题目 wp | Leo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="又是一周过去了，好快，简单总结下着这周学到的新姿势吧。附：CTF工具集合安装脚本操作姿势">
+  <meta name="description" content="又是一周过去了，好快，简单总结下着这周学到的新姿势吧(Xortool)。附：CTF工具集合安装脚本操作姿势">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第九周 第八届极客大挑战精选题目 wp">
 <meta property="og:url" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/index.html">
 <meta property="og:site_name" content="Leo">
-<meta property="og:description" content="又是一周过去了，好快，简单总结下着这周学到的新姿势吧。附：CTF工具集合安装脚本操作姿势">
+<meta property="og:description" content="又是一周过去了，好快，简单总结下着这周学到的新姿势吧(Xortool)。附：CTF工具集合安装脚本操作姿势">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/02.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/01.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/03.png">
@@ -26,14 +26,18 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/10.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/11.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/12.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/17.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/18.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/19.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/20.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/13.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/14.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/15.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/16.png">
-<meta property="og:updated_time" content="2017-11-12T04:48:01.615Z">
+<meta property="og:updated_time" content="2017-11-15T11:25:23.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第九周 第八届极客大挑战精选题目 wp">
-<meta name="twitter:description" content="又是一周过去了，好快，简单总结下着这周学到的新姿势吧。附：CTF工具集合安装脚本操作姿势">
+<meta name="twitter:description" content="又是一周过去了，好快，简单总结下着这周学到的新姿势吧(Xortool)。附：CTF工具集合安装脚本操作姿势">
 <meta name="twitter:image" content="http://leo.dropsec.xyz/2017/11/10/第九周-第八届极客大挑战精选题目-wp/02.png">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
@@ -192,7 +196,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>又是一周过去了，好快，简单总结下着这周学到的新姿势吧。<br>附：<a href="http://www.freebuf.com/sectool/94235.html" target="_blank" rel="external">CTF工具集合安装脚本操作姿势</a> </p>
+        <p>又是一周过去了，好快，简单总结下着这周学到的新姿势吧(Xortool)。<br>附：<a href="http://www.freebuf.com/sectool/94235.html" target="_blank" rel="external">CTF工具集合安装脚本操作姿势</a> </p>
 <a id="more"></a>
 <h2 id="一、CM-2-exe"><a href="#一、CM-2-exe" class="headerlink" title="一、CM_2.exe"></a>一、CM_2.exe</h2><p><a href="http://pan.baidu.com/s/1mh6WEJu" target="_blank" rel="external">题目下载链接</a></p>
 <p>下载好题目之后发现不能正常运行<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/02.png" alt=""><br>结合题目提示<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/01.png" alt=""><br>可知程序被处理过(xor)<br>so,要想能正常运行，就需要逆处理<br>先用WinHex查看一下程序的十六进制数据<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/03.png" alt=""><br>发现明显与正常的exe程序不一样<br>然后随便用WinHex再打开一个正常的exe程序<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/04.png" alt=""><br>对比其数据观察 由于一个非0数据与0异或(xor)等于这个数<br>可以发现第三行F2 A4 E2 B7 53 87一直循环出现  所以很大可能做的处理就是拿这6个数六个六个的去与整个文件异或<br>我们需要找到哪一个数据是六个中的第一个<br>经过观察或计算会发现顺序是53 87 F2 A4 E2 B7<br>搞懂做的处理然后就是写脚本了</p>
@@ -213,6 +217,31 @@ outfile.close()
 <pre><code>常用命令2：python xortool -l 6 -b CM_2.exe  //-l后要连着上图推测出来的密钥长度  -b代表爆破
 </code></pre><p><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/09.png" alt=""><br>爆破出256种长度为6的可能的密钥<br>然后在Scripts目录下已生成对应文件xortool_out<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/10.png" alt=""><br>然后用文本查看器打开看看哪个符合pe文件头标准哪个就是正确的爆破结果<br>打开第一个 巧合的是第一个就是正确的<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/11.png" alt=""><br>那就是它了 拉进IDA 搜索字符串 OK<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/12.png" alt=""></p>
 <p>运用工具，不用分析，简单快速。</p>
+<hr>
+<p>下面紧接着再写一道与上题相似的2017问鼎杯线上赛题目“真真假假”</p>
+<p><a href="http://pan.baidu.com/s/1jHTv7ca" target="_blank" rel="external">题目下载链接</a></p>
+<p>这道题目只有一个提示——Xor，第一眼知道是异或，也就知道这一个信息。<br>与上题不同的是上题还知道是一个PE文件。<br>之后遇到XOR提示的都可以用小工具xortool先试试看，看能不能得到什么有用的信息<br>打题目放到一个方便操作的目录下 然后敲入命令开始查看<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/17.png" alt=""><br>可以看出来key的长度最大可能是13<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/18.png" alt=""><br>给出了长度为13的最大可能的一个key:<code>Good\tuckToYou</code><br>因为一方面工具处理存在一定误差，另一方面是出题人有意为之，so猜测正确的key是<code>GoodLuckToYou</code><br>然后就可以将这个key与整个文件XOR去寻找flag了，脚本下面写，在这里咱们用工具一条路走到黑<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/19.png" alt=""><br>用长度为13的key与文件进行XOR的爆破，共出现了256种长度为13的key  爆破结果中有55个文本的内容95%以上是可打印字符<br>然后在对应目录下出现一个名为xortool_out的文件<br>打开第一个 感觉是正确的结果<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/20.png" alt=""><br>但是苦苦思索没什么发现（把大写字母全部改为小写也不好发现什么flag) 然后还是乖乖的写脚本去吧 。。。</p>
+<p>明白具体操作后脚本也好写</p>
+<p>python 2.7</p>
+<pre><code>key = &quot;GoodLuckToYou&quot;
+f = open(&quot;E:\\cipher1&quot;, &quot;rb&quot;)
+txt = f.read()
+str = &quot;&quot;
+for i in range(0,len(txt)):
+    str = str + chr(ord(txt[i])^ord(key[i%13]))
+print str
+f.close()
+</code></pre><p>python 3.6</p>
+<pre><code>key = &quot;GoodLuckToYou&quot;
+f = open(&apos;E://cipher&apos;,&apos;rb&apos;)
+txt = f.read()
+for i in range(len(txt)):
+    print(chr(txt[i]^ord(key[i%13])),end=&quot;&quot;)
+f.close()
+</code></pre><p>运行结果为：</p>
+<pre><code>The opening line of the novel famously announces: &quot;It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife.&quot; This sets marriage as a central subject—and really, a central problem—for the novel generally. Readers are poised to question whether or not these single men are, in fact, in want of a wife, or if such desires are dictated by the &quot;neighbourhood&quot; families and their daughters who require a &quot;good fortune&quot;. Marriage is a complex social activity that takes political economy, and economy more generally, into account. In the case of Charlotte Lucas, for example, the seeming success of her marriage lies in the comfortable economy of their household, while the relationship between Mr and Mrs Bennet serves to illustrate bad marriages based on an initial attraction and surface over substance (economic and psychological). The Bennets&apos; marriage is one such example that the youngest Bennet, Lydia, will come to re-enact with Wickham, and the results are far from felicitous. wdflag{You Are Very Smart}Though the central characters, Elizabeth and Darcy, begin the novel as hostile acquaintances and unlikely friends, they eventually work to understand each other and themselves so that they can marry each other on compatible terms personally, even if their &quot;equal&quot; social status remains fraught. When Elizabeth rejects Darcy&apos;s first proposal, the argument of only marrying when one is in love is introduced. Elizabeth only accepts Darcy&apos;s proposal when she is certain she loves him and her feelings are reciprocated. Austen&apos;s complex sketching of different marriages ultimately allows readers to question what forms of alliance are desirable, especially when it comes to privileging economic, sexual, companionate attraction.
+</code></pre><p>然后flag就在里面 flag{You Are Very Smart}</p>
+<hr>
 <h2 id="二、APK-1"><a href="#二、APK-1" class="headerlink" title="二、APK_1"></a>二、APK_1</h2><p><a href="http://pan.baidu.com/s/1slyVj1F" target="_blank" rel="external">题目下载链接</a></p>
 <p>APK,也算是第一次真正的做这样安卓题目，前些天聪哥分享了一个反编译APK的工具–Jeb，用Jeb打开<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/13.png" alt=""><br>双击loginactivity<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/14.png" alt=""><br>点击右键 选择decompile进行反编译，然后得到反编译后的源码<br><img src="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/15.png" alt=""><br>然后就是寻找关键代码了 关键代码如下：</p>
 <pre><code>private void attemptLogin() {
