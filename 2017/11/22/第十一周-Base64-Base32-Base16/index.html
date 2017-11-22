@@ -6,14 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Archives: 2017 | Leo</title>
+  <title>第十一周 Base64|Base32|Base16 | Leo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leo">
-<meta property="og:url" content="http://leo.dropsec.xyz/archives/2017/index.html">
+  <meta name="description" content="来，了解一下Base家族。">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十一周 Base64|Base32|Base16">
+<meta property="og:url" content="http://leo.dropsec.xyz/2017/11/22/第十一周-Base64-Base32-Base16/index.html">
 <meta property="og:site_name" content="Leo">
+<meta property="og:description" content="来，了解一下Base家族。">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/11/22/第十一周-Base64-Base32-Base16/1.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/11/22/第十一周-Base64-Base32-Base16/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/11/22/第十一周-Base64-Base32-Base16/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/11/22/第十一周-Base64-Base32-Base16/04.png">
+<meta property="og:updated_time" content="2017-11-22T09:52:28.612Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leo">
+<meta name="twitter:title" content="第十一周 Base64|Base32|Base16">
+<meta name="twitter:description" content="来，了解一下Base家族。">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/11/22/第十一周-Base64-Base32-Base16/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -151,36 +161,108 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-第十一周-Base64-Base32-Base16" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      第十一周 Base64|Base32|Base16
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/22/第十一周-Base64-Base32-Base16/" class="archive-article-date">
+
+        
+        <a href="/2017/11/22/第十一周-Base64-Base32-Base16/" class="archive-article-date">
   	<time datetime="2017-11-22T05:36:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-22</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/22/第十一周-Base64-Base32-Base16/">第十一周 Base64|Base32|Base16</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>来，了解一下Base家族。</p>
+<a id="more"></a>
+<h1 id="一、Base64简介"><a href="#一、Base64简介" class="headerlink" title="一、Base64简介"></a>一、Base64简介</h1><p>Base64是网络上最常见的用于传输8Bit字节码的编码方式之一，是一种基于64个可打印字符来表示二进制数据的表示方法。</p>
+<p>Base64编码一般有下面两个用途：</p>
+<blockquote>
+<p>a）所有的二进制文件，都可以因此转化为可打印的文本编码（都变成ASCII码可打印字符），使用文本软件进行编辑；<br>b）能够对文本进行简单的加密。</p>
+</blockquote>
+<p>说白了，一段由0和1组成的串或文件，都能按照Base64的编码规则转换成一段由64个字符任意组合的串。</p>
+<h2 id="Base64编码规则"><a href="#Base64编码规则" class="headerlink" title="Base64编码规则"></a>Base64编码规则</h2><p>所谓Base64，就是说选出64个字符—-小写字母a-z、大写字母A-Z、数字0-9、符号”+”、”/“（再加上作为垫字的”=”，实际上是65个字符）—-作为一个基本字符集。然后，其他所有符号都转换成这个字符集中的字符。</p>
+<p>具体来说，转换方式可以分为四步:</p>
+<blockquote>
+<p>第一步，将每三个字节作为一组，一共是24个二进制位<br>第二步，将这24个二进制位分为四组，每个组有6个二进制位<br>第三步，在每组前面加两个00，扩展成32个二进制位，即四个字节<br>第四步，根据下表，得到扩展后的每个字节的对应符号，这就是Base64的编码值  </p>
+</blockquote>
+<p>Base64将三个字节转化成四个字节，因此Base64编码后的文本，会比原文本大出三分之一左右。</p>
+<p>Base64编码映射表：</p>
+<p>base64中包含大写字母（A-Z）、小写字母（a-z）、数字0——9以及+/<br><img src="/2017/11/22/第十一周-Base64-Base32-Base16/1.png" alt=""></p>
+<h2 id="Base64编码的一个例子"><a href="#Base64编码的一个例子" class="headerlink" title="Base64编码的一个例子"></a>Base64编码的一个例子</h2><h3 id="举一个具体的实例，演示英语单词Man如何转成Base64编码"><a href="#举一个具体的实例，演示英语单词Man如何转成Base64编码" class="headerlink" title="举一个具体的实例，演示英语单词Man如何转成Base64编码"></a>举一个具体的实例，演示英语单词Man如何转成Base64编码</h3><p><img src="/2017/11/22/第十一周-Base64-Base32-Base16/02.png" alt=""></p>
+<blockquote>
+<p>第一步，”M”、”a”、”n”的ASCII值分别是77、97、110，对应的二进制值是01001101、01100001、01101110，将它们连成一个24位的二进制字符串010011010110000101101110。<br>第二步，将这个24位的二进制字符串分成4组，每组6个二进制位：010011、010110、000101、101110。<br>第三步，在每组前面加两个00，扩展成32个二进制位，即四个字节：00010011、00010110、00000101、00101110。它们的十进制值分别是19、22、5、46。<br>第四步，根据上表，得到每个值对应Base64编码，即T、W、F、u。</p>
+</blockquote>
+<h3 id="如果字节数不足三，则这样处理："><a href="#如果字节数不足三，则这样处理：" class="headerlink" title="如果字节数不足三，则这样处理："></a>如果字节数不足三，则这样处理：</h3><blockquote>
+<p>a）二个字节的情况：将这二个字节的一共16个二进制位，按照上面的规则，转成三组，最后一组除了前面加两个0以外，后面也要加两个0。这样得到一个三位的Base64编码，再在末尾补上一个”=”号。<br>比如，”Ma”这个字符串是两个字节，可以转化成三组00010011、00010110、00010000以后，对应Base64值分别为T、W、E，再补上一个”=”号，因此”Ma”的Base64编码就是TWE=。</p>
+<p>b）一个字节的情况：将这一个字节的8个二进制位，按照上面的规则转成二组，最后一组除了前面加二个0以外，后面再加4个0。这样得到一个二位的Base64编码，再在末尾补上两个”=”号。<br>比如，”M”这个字母是一个字节，可以转化为二组00010011、00010000，对应的Base64值分别为T、Q，再补上二个”=”号，因此”M”的Base64编码就是TQ==。</p>
+</blockquote>
+<h3 id="再举一个中文的例子，汉字”严”如何转化成Base64编码？"><a href="#再举一个中文的例子，汉字”严”如何转化成Base64编码？" class="headerlink" title="再举一个中文的例子，汉字”严”如何转化成Base64编码？"></a>再举一个中文的例子，汉字”严”如何转化成Base64编码？</h3><p>这里需要注意，汉字本身可以有多种编码，比如gb2312、utf-8、gbk等等，每一种编码的Base64对应值都不一样。下面的例子以utf-8为例。</p>
+<p>首先，”严”的utf-8编码为E4B8A5，写成二进制就是三字节的”11100100 10111000 10100101”。将这个24位的二进制字符串，按照第3节中的规则，转换成四组一共32位的二进制值”00111001 00001011 00100010 00100101”，相应的十进制数为57、11、34、37，它们对应的Base64值就为5、L、i、l。</p>
+<p>所以，汉字”严”（utf-8编码）的Base64值就是5Lil。</p>
+<h2 id="Base64小总结："><a href="#Base64小总结：" class="headerlink" title="Base64小总结："></a>Base64小总结：</h2><p>（1）Base64将三个字节转化成四个字节，因此Base64编码后的文本，会比原文本大出三分之一左右</p>
+<p>（2）对于不满3个字节的东东，就需要加上base64编码中的垫字符(=)来补充</p>
+<p>（3）Base64编码是可逆的，所以有Base64编码(encode)和解码(decode)</p>
+<p>（4）Base64主要不是加密，它主要的用途是把一些二进制数转成普通字符用于网络传输  （因为一些二进制字符在传输协议中属于控制字符，不能直接传送）。</p>
+<p> 另外，还有一些系统中只能使用ASCII字符。Base64就是用来将非ASCII字符的数据转换成ASCII字符的一种方法。</p>
+<p> base64其实不是安全领域下的加密解密算法。虽然有时候经常看到所谓的base64加密解密。其实base64只能算是一个<strong>编码算法</strong>，对数据内容进行编码来适合传输。</p>
+<p><a href="http://www1.tc711.com/tool/BASE64.htm" target="_blank" rel="external">Base64在线编码解码</a></p>
+<h1 id="二、Base32和Base16"><a href="#二、Base32和Base16" class="headerlink" title="二、Base32和Base16"></a>二、Base32和Base16</h1><p>在Base家族中还有Base32和Base16，其实Base32/Base16和Base64目的是一样的，只是具体的编码规则的不一样罢了。<br>Base32编码将二进制文件转换成由32个ASCII字符组成的文本；<br>Base16编码则将二进制文件转换成由16个字符组成的文本。</p>
+<p>Base32编码映射表：<br>Base32中只有大写字母（A-Z）和数字234567</p>
+<p><img src="/2017/11/22/第十一周-Base64-Base32-Base16/03.png" alt=""></p>
+<p>Base16编码映射表：<br>Base16中只有数字0-9以及大写字母ABCDEF</p>
+<p><img src="/2017/11/22/第十一周-Base64-Base32-Base16/04.png" alt=""></p>
+<h2 id="小小总结："><a href="#小小总结：" class="headerlink" title="小小总结："></a>小小总结：</h2><p>Base64编码是用64（2的6次方）个ASCII字符来表示256（2的8次方）个ASCII字符，也就是三位二进制数组经过编码后变为四位的ASCII字符显示，长度比原来增加1/3。</p>
+<p>同样，Base32就是用32（2的5次方）个特定ASCII码来表示256个ASCII码。所以，5个ASCII字符经过Base32编码后会变为8个字符（公约数为40），长度增加3/5.不足8n用“=”补足。</p>
+<p>Base16就是用16（2的4次方）个特定ASCII码表示256个ASCII字符。1个ASCII字符经过Base16编码后会变为2个字符，长度增加一倍。不足2n用“=”补足</p>
+<p>参考链接：<br><a href="http://blog.csdn.net/instruder/article/details/5963344" target="_blank" rel="external">http://blog.csdn.net/instruder/article/details/5963344</a><br><a href="http://www.ruanyifeng.com/blog/2008/06/base64.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2008/06/base64.html</a></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,353 +274,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2017/11/22/第十一周-Base64-Base32-Base16/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/17/第十周-透明-wcstok-wp/" class="archive-article-date">
-  	<time datetime="2017-11-16T23:48:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-17</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/17/第十周-透明-wcstok-wp/">第十周 透明&amp;&amp;wcstok() wp</a>
-    </h1>
+  
+    <a href="/2017/11/17/第十周-透明-wcstok-wp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">第十周 透明&amp;&amp;wcstok() wp</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/" class="archive-article-date">
-  	<time datetime="2017-11-10T00:51:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/">第九周 第八届极客大挑战精选题目 wp</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/03/第八周-密码学相关/" class="archive-article-date">
-  	<time datetime="2017-11-03T12:42:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/03/第八周-密码学相关/">第八周 密码学相关</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/26/第七周分享会题目-wp/" class="archive-article-date">
-  	<time datetime="2017-10-26T07:24:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/26/第七周分享会题目-wp/">第七周分享会题目 wp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/25/第六周分享会题目-wp/" class="archive-article-date">
-  	<time datetime="2017-10-25T13:12:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/25/第六周分享会题目-wp/">第六周分享会题目 wp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/14/第五周分享会题目-wp/" class="archive-article-date">
-  	<time datetime="2017-10-14T05:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/14/第五周分享会题目-wp/">第五周分享会题目 wp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/13/第四周分享会题目-wp/" class="archive-article-date">
-  	<time datetime="2017-10-13T05:47:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/13/第四周分享会题目-wp/">第四周分享会题目 wp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/06/转-一个计算机学院学生四年学习生活的回顾与反思/" class="archive-article-date">
-  	<time datetime="2017-10-06T03:55:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/06/转-一个计算机学院学生四年学习生活的回顾与反思/">转 一个计算机学院学生四年学习生活的回顾与反思</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/05/转-为什么中工人没有自豪感？/" class="archive-article-date">
-  	<time datetime="2017-10-05T12:57:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/05/转-为什么中工人没有自豪感？/">转 为什么中工人没有自豪感？</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2017/page/2/">2</a><a class="page-number" href="/archives/2017/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2017/page/5/">5</a><a class="extend next" rel="next" href="/archives/2017/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -562,8 +379,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
