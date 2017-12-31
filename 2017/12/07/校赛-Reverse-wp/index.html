@@ -15,10 +15,38 @@
 <meta property="og:url" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/index.html">
 <meta property="og:site_name" content="Leo">
 <meta property="og:description" content="西普杯2017年中原工学院第四届信息安全与网络攻防竞赛 Reverse 题解(待完善)">
-<meta property="og:updated_time" content="2017-12-31T13:11:36.803Z">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/04.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/05.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/07.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/06.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/08.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/09.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/10.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/11.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/17.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/18.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/19.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/20.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/21.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/22.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/23.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/25.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/24.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/12.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/13.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/14.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/15.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/16.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/26.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/27.png">
+<meta property="og:updated_time" content="2017-12-31T13:29:10.602Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="校赛(Reverse) wp">
 <meta name="twitter:description" content="西普杯2017年中原工学院第四届信息安全与网络攻防竞赛 Reverse 题解(待完善)">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2017/12/07/校赛-Reverse-wp/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leo" type="application/atom+xml">
   
@@ -177,14 +205,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>西普杯2017年中原工学院第四届信息安全与网络攻防竞赛 Reverse 题解(待完善)<br><a id="more"></a></p>
-<p>一、简单的Re 100<br><a href="https://pan.baidu.com/s/1i5hCaNz" target="_blank" rel="external">下载链接</a><br>题目没有可用的hint 那就开始吧 是一个让输入key的exe<br>拉进IDA找关键点<br><a href="01.png"></a><br>思路很简单 就是一个简单的异或  容易写出脚本</p>
+<p>一、简单的Re 100<br><a href="https://pan.baidu.com/s/1i5hCaNz" target="_blank" rel="external">下载链接</a><br>题目没有可用的hint 那就开始吧 是一个让输入key的exe<br>拉进IDA找关键点<br><img src="/2017/12/07/校赛-Reverse-wp/01.png" alt=""><br>思路很简单 就是一个简单的异或  容易写出脚本</p>
 <pre><code>from __future__ import print_function
 a = [53,63,50,52,40,1,96,37,54,103,32,58,61,52,12,98,32,12,102,60,12,58,61,39,54,97,54,102,39,33,63,61,52,46]
 for i in(a):
     print(chr(i^0x53),end= &quot;&quot;)
 
 运行结果 flag{R3ve4sing_1s_5o_inte2e5trlng}
-</code></pre><p>二、来自计算机七号的挑（song）战（fen）150<br><a href="https://pan.baidu.com/s/1geA6iaB" target="_blank" rel="external">下载链接</a><br><a href="02.png"></a><br>这是hint 目前不知道有什么用  运行程序看看<br><a href="03.png"></a><br>其实也就是找flag的<br>拉进IDA看看 容易找到关键代码<br><a href="04.png"></a><br>乍一看 貌似思路也很简单  就是一个简单的异或 这是第一反应 就先这样写下脚本</p>
+</code></pre><p>二、来自计算机七号的挑（song）战（fen）150<br><a href="https://pan.baidu.com/s/1geA6iaB" target="_blank" rel="external">下载链接</a><br><img src="/2017/12/07/校赛-Reverse-wp/02.png" alt=""><br>这是hint 目前不知道有什么用  运行程序看看<br><img src="/2017/12/07/校赛-Reverse-wp/03.png" alt=""><br>其实也就是找flag的<br>拉进IDA看看 容易找到关键代码<br><img src="/2017/12/07/校赛-Reverse-wp/04.png" alt=""><br>乍一看 貌似思路也很简单  就是一个简单的异或 这是第一反应 就先这样写下脚本</p>
 <pre><code>from __future__ import print_function
 v17 = &quot;C064MrRbj2hiq6F5lg28l17D75I9523O6l3FR8rkOm8NZUN4OhE7KekMq3m8VuG1SG1FUBlBl4k714w9PO3t5151OxGipc4sX9XE&quot;
 v17_base = [22,25,23,21,24,28,26,26,27,29,30,20,18,19,31]
@@ -195,7 +223,7 @@ for i in range(len(a)):
 运行结果 
 �nV   print (chr(((a[i]^ord(v17[v17_base[i]]))-7)^7),end=&quot;&quot;)
 ValueError: chr() arg not in range(256)
-</code></pre><p>这是第一反应写出来的脚本 按照自己的想法就应该得到flag（尽管需要进一步排序） 但是明显这是错误的  基本可以锁定错误出在V22那个数组  可能是自己想当然的认为v22就是V17那个字符串第一个字符从17开始数的第22个吧  事实也证明自己太天真了  没办法  只能去OD里跟出V22那个比较的数组了<br>先在OD里找到对应输入字符串的地方  输入15个字符 a–o  然后一步步F8跟踪<br>首先会遇到15次循环 对应IDA里的异或7  +7处理  可先F4跳过<br><a href="05.png"></a><br>就这样 可以跟踪到15个用来比较的字符  跟踪过程中需要修改标志位不要让其跳转<br>j8lbgFDD3q4r04i 为15个跟踪到的字符<br>然后修改上面的脚本</p>
+</code></pre><p>这是第一反应写出来的脚本 按照自己的想法就应该得到flag（尽管需要进一步排序） 但是明显这是错误的  基本可以锁定错误出在V22那个数组  可能是自己想当然的认为v22就是V17那个字符串第一个字符从17开始数的第22个吧  事实也证明自己太天真了  没办法  只能去OD里跟出V22那个比较的数组了<br>先在OD里找到对应输入字符串的地方  输入15个字符 a–o  然后一步步F8跟踪<br>首先会遇到15次循环 对应IDA里的异或7  +7处理  可先F4跳过<br><img src="/2017/12/07/校赛-Reverse-wp/05.png" alt=""><br>就这样 可以跟踪到15个用来比较的字符  跟踪过程中需要修改标志位不要让其跳转<br>j8lbgFDD3q4r04i 为15个跟踪到的字符<br>然后修改上面的脚本</p>
 <pre><code>from __future__ import print_function
 v22 = &quot;j8lbgFDD3q4r04i&quot;
 a = [239,69,28,23,56,51,61,45,108,10,83,45,74,65,25]
@@ -205,11 +233,11 @@ for i in range(len(a)):
 运行结果 yqni_iue_sg_tin
 </code></pre><p>看着像是正确的字符了 然后不要忘了按照v2数组的顺序排起来<br>yin_que_si_ting<br>有意思啦  ok  flag{yin_que_si_ting}<br>现在知道hint走错片场就是顺序错了的意思。</p>
 <p><strong>收获：IDA反编译出来的if()里的顺序就是程序执行时比较的顺序 时刻注意flag排序问题</strong></p>
-<p>三、Android_B 150<br><a href="https://pan.baidu.com/s/1pL0wBHL" target="_blank" rel="external">下载链接</a><br>一个安卓题目 模拟器打开看一下<br><a href="07.png"></a><br>点击 看flag 没反应 结合hint 应该是出题人把butto的click功能给false了，那么我们只要找到smail文件的关键位置把false改成true就行了<br><a href="06.png"></a><br>用APK改之理打开 找到关键点<br><a href="08.png"></a><br>然后把0x0改成0x1  保存 编译生成APK 然后相同目录下出现了新生成的APK<br><a href="09.png"></a><br>模拟器打开 需要先把之前那个卸载掉重新安装生成的<br>点击 看到了flag<br><a href="10.png"></a><br>Flag:Hfnos%lywv*N78<br>然后根据hint，提交MD5就OK</p>
-<p>四、破解快乐 200<br><a href="https://pan.baidu.com/s/1c1KLEdM" target="_blank" rel="external">下载链接</a><br><a href="11.png"></a><br>你好，这是我的hint。 事实证明hint很重要，如果提示很明显的话，一定要盯紧。<br><a href="17.png"></a><br>后缀为jar  是 Java 的一种文档格式<br>用jd-gui来反编译Java写的程序<br>跟着main走 先找main<br><a href="18.png"></a><br>发现有两个main 哪一个才是有用的(继续跟)呢<br>都点开看看 发现第二个有明显的输入KEY字符串提示<br><a href="19.png"></a><br>so 跟下去 发现连续几个关键函数<br><a href="20.png"></a></p>
-<p><a href="21.png"></a><br>KEY长度为19</p>
-<p><a href="22.png"></a></p>
-<p><a href="23.png"></a><br>思路也不是很复杂 主要是把思路连贯起来<br>仿照Java代码就可以写出py脚本</p>
+<p>三、Android_B 150<br><a href="https://pan.baidu.com/s/1pL0wBHL" target="_blank" rel="external">下载链接</a><br>一个安卓题目 模拟器打开看一下<br><img src="/2017/12/07/校赛-Reverse-wp/07.png" alt=""><br>点击 看flag 没反应 结合hint 应该是出题人把butto的click功能给false了，那么我们只要找到smail文件的关键位置把false改成true就行了<br><img src="/2017/12/07/校赛-Reverse-wp/06.png" alt=""><br>用APK改之理打开 找到关键点<br><img src="/2017/12/07/校赛-Reverse-wp/08.png" alt=""><br>然后把0x0改成0x1  保存 编译生成APK 然后相同目录下出现了新生成的APK<br><img src="/2017/12/07/校赛-Reverse-wp/09.png" alt=""><br>模拟器打开 需要先把之前那个卸载掉重新安装生成的<br>点击 看到了flag<br><img src="/2017/12/07/校赛-Reverse-wp/10.png" alt=""><br>Flag:Hfnos%lywv*N78<br>然后根据hint，提交MD5就OK</p>
+<p>四、破解快乐 200<br><a href="https://pan.baidu.com/s/1c1KLEdM" target="_blank" rel="external">下载链接</a><br><img src="/2017/12/07/校赛-Reverse-wp/11.png" alt=""><br>你好，这是我的hint。 事实证明hint很重要，如果提示很明显的话，一定要盯紧。<br><img src="/2017/12/07/校赛-Reverse-wp/17.png" alt=""><br>后缀为jar  是 Java 的一种文档格式<br>用jd-gui来反编译Java写的程序<br>跟着main走 先找main<br><img src="/2017/12/07/校赛-Reverse-wp/18.png" alt=""><br>发现有两个main 哪一个才是有用的(继续跟)呢<br>都点开看看 发现第二个有明显的输入KEY字符串提示<br><img src="/2017/12/07/校赛-Reverse-wp/19.png" alt=""><br>so 跟下去 发现连续几个关键函数<br><img src="/2017/12/07/校赛-Reverse-wp/20.png" alt=""></p>
+<p><img src="/2017/12/07/校赛-Reverse-wp/21.png" alt=""><br>KEY长度为19</p>
+<p><img src="/2017/12/07/校赛-Reverse-wp/22.png" alt=""></p>
+<p><img src="/2017/12/07/校赛-Reverse-wp/23.png" alt=""><br>思路也不是很复杂 主要是把思路连贯起来<br>仿照Java代码就可以写出py脚本</p>
 <pre><code>def chuli(a):
     if a &gt; 2:
         return chuli(a-1) + chuli(a-2)
@@ -229,16 +257,16 @@ for z2 in range(4):
 print(str3)
 
 运行结果 sssntrtktceaakJr
-</code></pre><p>运行结果长度为 16 不到19<br>集合上面两个循环次数为4的for循环 与+5操作可知进行对比的数组下标为<br>0  1  2  3   5  6  7  8<br>10 11 12 13  15 16 17 18<br>然后 然后你需要把空着的下表为4 9 14的元素补上<br>其实这里是不用猜测的 题目上有提示 只要你能看到并且get到 （看到没get到就难受了）<br><a href="25.png"></a><br>所以 sssn-trtk-tcea-akJr<br><a href="24.png"></a><br>哦了 flag{sssn-trtk-tcea-akJr}<br>（注意把-换成任何字符都会提示正确，因为这三位程序没对比，但是提交是错的。另外，根据生活经验，输注册码的时候格式都是-连起来的）</p>
+</code></pre><p>运行结果长度为 16 不到19<br>集合上面两个循环次数为4的for循环 与+5操作可知进行对比的数组下标为<br>0  1  2  3   5  6  7  8<br>10 11 12 13  15 16 17 18<br>然后 然后你需要把空着的下表为4 9 14的元素补上<br>其实这里是不用猜测的 题目上有提示 只要你能看到并且get到 （看到没get到就难受了）<br><img src="/2017/12/07/校赛-Reverse-wp/25.png" alt=""><br>所以 sssn-trtk-tcea-akJr<br><img src="/2017/12/07/校赛-Reverse-wp/24.png" alt=""><br>哦了 flag{sssn-trtk-tcea-akJr}<br>（注意把-换成任何字符都会提示正确，因为这三位程序没对比，但是提交是错的。另外，根据生活经验，输注册码的时候格式都是-连起来的）</p>
 <p>【唯一的问题在于从jd-gui中复制奇怪字符串的时候Ctrl+c不出来，但是有些人可以，不知道为什么】</p>
-<p>五、Android2 200<br><a href="https://pan.baidu.com/s/1i5gWgFb" target="_blank" rel="external">下载链接</a><br>一个安卓题目附带一个命名为Key的enc文件 没有有用的提示<br>模拟器打开 软件名字为图片加密 作用就是用来加密解密图片  不过解密图片程序会崩溃<br>那就用Jeb打开看看代码<br><a href="12.png"></a><br>关键代码是这一点，解密内没有代码，他的重要操作就是异或，异或可以，但是下面有图片验证，那么我们先把Key.enc后缀改为图片后缀，然后拉到模拟器再次加密，试试看嘛。<br>然后弹出字符串显示加密后文件的保存位置<br><a href="13.png"></a><br>找到这个位置  改成图片后缀  打开看看<br><a href="14.png"></a><br>根据经验能判断出来是base16 解下码就行了</p>
+<p>五、Android2 200<br><a href="https://pan.baidu.com/s/1i5gWgFb" target="_blank" rel="external">下载链接</a><br>一个安卓题目附带一个命名为Key的enc文件 没有有用的提示<br>模拟器打开 软件名字为图片加密 作用就是用来加密解密图片  不过解密图片程序会崩溃<br>那就用Jeb打开看看代码<br><img src="/2017/12/07/校赛-Reverse-wp/12.png" alt=""><br>关键代码是这一点，解密内没有代码，他的重要操作就是异或，异或可以，但是下面有图片验证，那么我们先把Key.enc后缀改为图片后缀，然后拉到模拟器再次加密，试试看嘛。<br>然后弹出字符串显示加密后文件的保存位置<br><img src="/2017/12/07/校赛-Reverse-wp/13.png" alt=""><br>找到这个位置  改成图片后缀  打开看看<br><img src="/2017/12/07/校赛-Reverse-wp/14.png" alt=""><br>根据经验能判断出来是base16 解下码就行了</p>
 <pre><code>import base64
 a = &apos;666C61677B41706B5F776934685F313361356531365F31735F46756E6E797D&apos;
 print (base64.b16decode(a))
 
 运行结果 flag{Apk_wi4h_13a5e16_1s_Funny}
 </code></pre><p>小小提示：<br>Base64：a-z、A-Z、0-9、+、/ (=垫字符)<br>Base32：A-Z、234567<br>Base16：ABCDEF、0-9</p>
-<p>六、Maze 300<br><a href="https://pan.baidu.com/s/1b5qHf4" target="_blank" rel="external">下载链接</a><br><a href="15.png"></a><br>然后exe程序不能正常运行<br><a href="16.png"></a><br>老套路 祭出WinHex或010<br>发现PE头有误 修改之前就ok了 然后就可以正常运行程序<br>接下来的操作请看下面这个链接(我目前还没搞特别懂，彻底理解之后再更新)</p>
+<p>六、Maze 300<br><a href="https://pan.baidu.com/s/1b5qHf4" target="_blank" rel="external">下载链接</a><br><img src="/2017/12/07/校赛-Reverse-wp/15.png" alt=""><br>然后exe程序不能正常运行<br><img src="/2017/12/07/校赛-Reverse-wp/16.png" alt=""><br>老套路 祭出WinHex或010<br>发现PE头有误 修改之前就ok了 然后就可以正常运行程序<br>接下来的操作请看下面这个链接(我目前还没搞特别懂，彻底理解之后再更新)</p>
 <p><a href="http://xq.dropsec.xyz/2017/08/10/XMAN%E6%8E%92%E4%BD%8D%E8%B5%9B-babymaze/" target="_blank" rel="external">主要writeup在此</a></p>
 <hr>
 <p>以上是Reverse的题解 下面补下PWN题和Crypto题</p>
@@ -246,7 +274,7 @@ print (base64.b16decode(a))
 <p>一起来”胖“呀！ 300<br><a href="https://pan.baidu.com/s/1c254brq" target="_blank" rel="external">下载链接</a></p>
 <p>(目前还未深入学习PWN题，暂且记下，方便各位大佬试手，日后更新)</p>
 <p>Crypto</p>
-<p>密码学 100<br><a href="https://pan.baidu.com/s/1o8cJzp4" target="_blank" rel="external">下载链接</a><br>结合hint:听说凯撒大帝喜欢跳栅栏？跳跳跳跳跳？<br>猜测是凯撒 栅栏双层加密 在线解密看看呗<br>先用栅栏接下看看 根据hint中有5个跳，暂且把每组字数设为5 然后解密<br><a href="26.png"></a><br>然后再拿栅栏解密的结果进行凯撒解密<br><a href="27.png"></a><br>然后就看到了 但是请不要激动 <strong>凯撒解密的时候把大小写统一成小写了</strong> 你还需要手动把对应的大写字母给变回大写 so flag为：flag{You_1Re_C1eVer}<br>我当时做的时候也忽略了这个</p>
+<p>密码学 100<br><a href="https://pan.baidu.com/s/1o8cJzp4" target="_blank" rel="external">下载链接</a><br>结合hint:听说凯撒大帝喜欢跳栅栏？跳跳跳跳跳？<br>猜测是凯撒 栅栏双层加密 在线解密看看呗<br>先用栅栏接下看看 根据hint中有5个跳，暂且把每组字数设为5 然后解密<br><img src="/2017/12/07/校赛-Reverse-wp/26.png" alt=""><br>然后再拿栅栏解密的结果进行凯撒解密<br><img src="/2017/12/07/校赛-Reverse-wp/27.png" alt=""><br>然后就看到了 但是请不要激动 <strong>凯撒解密的时候把大小写统一成小写了</strong> 你还需要手动把对应的大写字母给变回大写 so flag为：flag{You_1Re_C1eVer}<br>我当时做的时候也忽略了这个</p>
 <p>贝斯家族 150<br><a href="https://pan.baidu.com/s/1pL9R1Th" target="_blank" rel="external">下载链接</a><br>hint:想挑战贝斯家族36位64大将和一位16元帅团结的权威？你可以试试。<br>根据提示猜测 flag经过了36次base64加密，又经过一次base16加密<br>脚本如下：</p>
 <pre><code>import base64
 f=open(&quot;E:dd.txt&quot;,&apos;r&apos;)
