@@ -15,10 +15,12 @@
 <meta property="og:url" content="http://leo.dropsec.xyz/2018/01/02/格式化字符串漏洞-简介/index.html">
 <meta property="og:site_name" content="Leooel">
 <meta property="og:description" content="这里是参考链接">
-<meta property="og:updated_time" content="2018-01-02T05:39:22.350Z">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/01/02/格式化字符串漏洞-简介/01.png">
+<meta property="og:updated_time" content="2018-01-02T05:59:37.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="格式化字符串漏洞 简介">
 <meta name="twitter:description" content="这里是参考链接">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2018/01/02/格式化字符串漏洞-简介/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -265,7 +267,8 @@ int main(void)
 int main(void)
  { 
     int flag = 0;
-     int *p = &amp;flag; char a[100];
+     int *p = &amp;flag; 
+    char a[100];
     scanf(&quot;%s&quot;,a);
     printf(a);
 
@@ -293,6 +296,8 @@ int main(void)
 </blockquote>
 <p>这个便是我构造出的poc，很短，但是很强悍（→_→）。 那么我们来看看效果吧 </p>
 <p>good!被打印了处理。</p>
+<p><img src="/2018/01/02/格式化字符串漏洞-简介/01.png" alt=""></p>
+<p>这是本人电脑用CodeBlocks运行结果。</p>
 
       
 
