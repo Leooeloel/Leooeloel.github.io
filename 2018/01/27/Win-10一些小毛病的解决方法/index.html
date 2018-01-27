@@ -6,14 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Archives | Leooel</title>
+  <title>Win 10一些小毛病的解决方法 | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leooel">
-<meta property="og:url" content="http://leo.dropsec.xyz/archives/page/2/index.html">
+  <meta name="description" content="我现用的笔记本是Dell Inspiron 15R-5537 原装win8，免费升win10之后经常会遇到一些小问题，这里简单记录一下小问题的解决方法。">
+<meta name="keywords" content="工具or软件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Win 10一些小毛病的解决方法">
+<meta property="og:url" content="http://leo.dropsec.xyz/2018/01/27/Win-10一些小毛病的解决方法/index.html">
 <meta property="og:site_name" content="Leooel">
+<meta property="og:description" content="我现用的笔记本是Dell Inspiron 15R-5537 原装win8，免费升win10之后经常会遇到一些小问题，这里简单记录一下小问题的解决方法。">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/01/27/Win-10一些小毛病的解决方法/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/01/27/Win-10一些小毛病的解决方法/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/01/27/Win-10一些小毛病的解决方法/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/01/27/Win-10一些小毛病的解决方法/04.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/01/27/Win-10一些小毛病的解决方法/05.png">
+<meta property="og:updated_time" content="2018-01-27T14:48:15.999Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leooel">
+<meta name="twitter:title" content="Win 10一些小毛病的解决方法">
+<meta name="twitter:description" content="我现用的笔记本是Dell Inspiron 15R-5537 原装win8，免费升win10之后经常会遇到一些小问题，这里简单记录一下小问题的解决方法。">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2018/01/27/Win-10一些小毛病的解决方法/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -151,405 +162,165 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Win-10一些小毛病的解决方法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Win 10一些小毛病的解决方法
+    </h1>
+  
+
+        
+        <a href="/2018/01/27/Win-10一些小毛病的解决方法/" class="archive-article-date">
+  	<time datetime="2018-01-27T13:38:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-27</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我现用的笔记本是Dell Inspiron 15R-5537 原装win8，免费升win10之后经常会遇到一些小问题，这里简单记录一下小问题的解决方法。<br><a id="more"></a><br>解决相关问题的时候可以结合win10官方的帮助：<a href="https://support.microsoft.com/zh-cn/products/windows?os=windows-10" target="_blank" rel="external">https://support.microsoft.com/zh-cn/products/windows?os=windows-10</a></p>
+<h2 id="一、点关机后电源状态灯不灭、电脑发热"><a href="#一、点关机后电源状态灯不灭、电脑发热" class="headerlink" title="一、点关机后电源状态灯不灭、电脑发热"></a>一、点关机后电源状态灯不灭、电脑发热</h2><p>解决方法：<br>百度上的答案大多数是让勾掉电源选项里面的“启用快速启动”然后重启，尝试后发现并没有卵用。<br><img src="/2018/01/27/Win-10一些小毛病的解决方法/01.png" alt=""></p>
+<p>后来发现是计算机管理 系统设备里的 Intel(R) Management Engine Interface 这个东西在作怪，我的版本是11.0.0.1157 不兼容 需要退到9或10的版本 搜索后发现这个驱动对个人来说没多大作用，可以禁用或卸载，然后就可以解决这个问题。</p>
+<p>后来发现右击这个驱动，查看它的属性，在电源管理里有个“允许计算机关闭此设备以节约电源”的选项，勾掉之后也可以正常关机，但是偶然发现开机后它又自动勾上了，很无奈。<br><img src="/2018/01/27/Win-10一些小毛病的解决方法/02.png" alt=""></p>
+<p>如果是这样的话那估计最好的选择就是禁用或卸载喽。</p>
+<h2 id="二、WLAN无法启用"><a href="#二、WLAN无法启用" class="headerlink" title="二、WLAN无法启用"></a>二、WLAN无法启用</h2><p>前几天好生生的突然连不上无线了，出现了下面的图标<br><img src="/2018/01/27/Win-10一些小毛病的解决方法/03.png" alt=""><br>打开网络连接面板后发现WLAN已关闭，同时启用无效</p>
+<p>解决方法：<br>右击WLAN查看属性<br><img src="/2018/01/27/Win-10一些小毛病的解决方法/04.png" alt=""><br><img src="/2018/01/27/Win-10一些小毛病的解决方法/05.png" alt=""><br>只保留以上6项的勾，确定，然后重启就ok了。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/03/第八周-密码学相关/" class="archive-article-date">
-  	<time datetime="2017-11-03T12:42:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/03/第八周-密码学相关/">第八周 密码学相关</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具or软件</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2018/01/27/Win-10一些小毛病的解决方法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/26/第七周分享会题目-wp/" class="archive-article-date">
-  	<time datetime="2017-10-26T07:24:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/26/第七周分享会题目-wp/">第七周分享会题目 wp</a>
-    </h1>
+  
+    <a href="/2018/01/02/格式化字符串漏洞-简介/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">格式化字符串漏洞 简介</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/25/第六周分享会题目-wp/" class="archive-article-date">
-  	<time datetime="2017-10-25T13:12:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/25/第六周分享会题目-wp/">第六周分享会题目 wp</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/14/第五周分享会题目-wp/" class="archive-article-date">
-  	<time datetime="2017-10-14T05:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/14/第五周分享会题目-wp/">第五周分享会题目 wp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/13/第四周分享会题目-wp/" class="archive-article-date">
-  	<time datetime="2017-10-13T05:47:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/13/第四周分享会题目-wp/">第四周分享会题目 wp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/06/转-一个计算机学院学生四年学习生活的回顾与反思/" class="archive-article-date">
-  	<time datetime="2017-10-06T03:55:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/06/转-一个计算机学院学生四年学习生活的回顾与反思/">转 一个计算机学院学生四年学习生活的回顾与反思</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/05/转-为什么中工人没有自豪感？/" class="archive-article-date">
-  	<time datetime="2017-10-05T12:57:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/05/转-为什么中工人没有自豪感？/">转 为什么中工人没有自豪感？</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/25/第三周分享会题目-WP/" class="archive-article-date">
-  	<time datetime="2017-09-25T12:06:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/25/第三周分享会题目-WP/">第三周分享会题目 WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/19/跟着崔岩老师学Java/" class="archive-article-date">
-  	<time datetime="2017-09-19T10:39:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/19/跟着崔岩老师学Java/">跟着崔岩老师学Java</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/05/新手常见的17个Python运行时错误/" class="archive-article-date">
-  	<time datetime="2017-09-05T11:37:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/05/新手常见的17个Python运行时错误/">新手常见的17个Python运行时错误</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -573,8 +344,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

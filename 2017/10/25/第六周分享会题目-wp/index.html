@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/25/第六周分享会题目-wp/03.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/25/第六周分享会题目-wp/04.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/25/第六周分享会题目-wp/05.png">
-<meta property="og:updated_time" content="2017-10-28T05:42:38.803Z">
+<meta property="og:updated_time" content="2018-01-27T03:03:55.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第六周分享会题目 wp">
 <meta name="twitter:description" content="第六周,从本周开始只上传一些能总结出东西的题目，以节省时间的同时总结经验。">
@@ -235,7 +235,7 @@
 <p><img src="/2017/10/25/第六周分享会题目-wp/04.png" alt=""></p>
 <p>所以<br>v4 = [230,236,225,231,186,244,229,243,244,244,229,243,244]<br>又因为其进行的是或（|）运算，是不可逆的，所以只能进行爆破得到flag<br>又因为flag一般都是可打印字符，所以爆破范围是(32，126]  (也可以从1开始）<br>下面是详细脚本：</p>
 <pre><code>v4 = [230,236,225,231,186,244,229,243,244,244,229,243,244]
-for i in a:
+for i in v4:
     for j in range(32,127):
         if ((j | 128) == i):
              print(chr(j), end=&quot;&quot;)

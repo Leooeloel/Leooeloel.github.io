@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/11.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/12.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/13.png">
-<meta property="og:updated_time" content="2017-10-24T09:51:09.922Z">
+<meta property="og:updated_time" content="2018-01-27T02:53:29.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第五周分享会题目 wp">
 <meta name="twitter:description" content="这三道题目是本周三分享会上给的，假期缘故，就把这三道题目归为第五周分享会题目吧。">
@@ -359,7 +359,7 @@ for i in range(len(c)):
   return result;
 }
 </code></pre><p>通过对关键代码的分析需满足<br>v4[v1] == 2<br>v4[<em>(_BYTE </em>)(this + 1)] == 8<br>v4[<em>(_BYTE </em>)(this + 2)] == 9<br>v4[<em>(_BYTE </em>)(this + 3)] == 3<br>v4[<em>(_BYTE </em>)(this + 4)] == 9<br>v4[<em>(_BYTE </em>)(this + 7)] == v4[<em>(_BYTE </em>)(this + 5)] == v3 == 8<br>v4[<em>(_BYTE </em>)(this + 6)] == 9</p>
-<p>又知道数组v4[]的内容<br>v4[] ={8，9，2，2，6，1，3，9}  //注意存储的顺序<br>由数组元素下标和数组元素值的对应关系可以推出this[]数组的值<br>即flag为<br>20767070或20161010或30767070或30161010<br>flag不唯一</p>
+<p>又知道数组v4[]的内容<br>v4[] ={8，9，2，2，6，1，3，9}  //注意存储的顺序<br>由数组元素下标和数组元素值的对应关系可以推出this[]数组的值<br>即flag为<br>20767070或20161010或30767070或30161010等共16种<br>so flag不唯一</p>
 <p>（此题用OD不太方便）<br>此题不难，但是却拖了老长时间，最后还是在看了庆哥的思路后才明白。<br>之后做题要学会自己思考、不畏难、打活思维。</p>
 
       
