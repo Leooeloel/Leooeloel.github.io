@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/01/27/Win-10一些小毛病的解决方法/03.PNG">
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/01/27/Win-10一些小毛病的解决方法/04.PNG">
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/01/27/Win-10一些小毛病的解决方法/05.PNG">
-<meta property="og:updated_time" content="2018-01-28T09:47:02.567Z">
+<meta property="og:updated_time" content="2018-01-28T09:52:09.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Win 10一些小毛病的解决方法">
 <meta name="twitter:description" content="我现用的笔记本是Dell Inspiron 15R-5537 原装win8，免费升win10之后经常会遇到一些小问题，这里简单记录一下小问题的解决方法。">
@@ -183,7 +183,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>我现用的笔记本是Dell Inspiron 15R-5537 原装win8，免费升win10之后经常会遇到一些小问题，这里简单记录一下小问题的解决方法。<br><a id="more"></a><br>解决相关问题的时候可以结合win10官方的帮助：<a href="https://support.microsoft.com/zh-cn/products/windows?os=windows-10" target="_blank" rel="external">https://support.microsoft.com/zh-cn/products/windows?os=windows-10</a></p>
-<h2 id="一、点关机后电源状态灯不灭、电脑发热"><a href="#一、点关机后电源状态灯不灭、电脑发热" class="headerlink" title="一、点关机后电源状态灯不灭、电脑发热"></a>一、点关机后电源状态灯不灭、电脑发热</h2><p>解决方法：<br>百度上的答案大多数是让勾掉电源选项里面的“启用快速启动”然后重启，尝试后发现并没有卵用。<br><img src="/2018/01/27/Win-10一些小毛病的解决方法/01.PNG" alt=""></p>
+<h2 id="一、点关机后电源状态灯不灭、电脑发热"><a href="#一、点关机后电源状态灯不灭、电脑发热" class="headerlink" title="一、点关机后电源状态灯不灭、电脑发热"></a>一、点关机后电源状态灯不灭、电脑发热</h2><p>解决方法：<br>百度上的答案大多数是让勾掉电源选项里面的“启用快速启动”然后重启，尝试后发现并没有什么卵用。<br><img src="/2018/01/27/Win-10一些小毛病的解决方法/01.PNG" alt=""></p>
 <p>后来发现是计算机管理 系统设备里的 Intel(R) Management Engine Interface 这个东西在作怪，我的版本是11.0.0.1157 不兼容 需要退到9或10的版本 搜索后发现这个驱动对个人来说没多大作用，可以禁用或卸载，然后就可以解决这个问题。</p>
 <p>后来发现右击这个驱动，查看它的属性，在电源管理里有个“允许计算机关闭此设备以节约电源”的选项，勾掉之后也可以正常关机，但是偶然发现开机后它又自动勾上了，很无奈。<br><img src="/2018/01/27/Win-10一些小毛病的解决方法/02.PNG" alt=""></p>
 <p>如果是这样的话那估计最好的选择就是禁用或卸载喽。</p>
