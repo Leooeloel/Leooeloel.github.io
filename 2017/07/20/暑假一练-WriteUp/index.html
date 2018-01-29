@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/07/20/暑假一练-WriteUp/11.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/07/20/暑假一练-WriteUp/12.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/07/20/暑假一练-WriteUp/13.jpg">
-<meta property="og:updated_time" content="2017-08-11T10:25:53.549Z">
+<meta property="og:updated_time" content="2018-01-29T12:02:17.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="暑假一练 WriteUp">
 <meta name="twitter:description" content="也算是第一次正式的接触这种题目吧，在聪大佬的指引下大概领悟了点，咱也写一些WriteUp…">
@@ -191,7 +191,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>也算是第一次正式的接触这种题目吧，在聪大佬的指引下大概领悟了点，咱也写一些WriteUp…<br><a id="more"></a></p>
-<h2 id="第一题-Hellow-分值-50"><a href="#第一题-Hellow-分值-50" class="headerlink" title="第一题 Hellow 分值:50"></a>第一题 Hellow 分值:50</h2><p>首先运行一下程序，看看是什么样子： <center> <img src="/2017/07/20/暑假一练-WriteUp/1.png" alt=""> </center></p>
+<h2 id="第一题-Hellow-分值-50"><a href="#第一题-Hellow-分值-50" class="headerlink" title="第一题 Hellow 分值:50"></a>第一题 Hellow 分值:50</h2><p><a href="https://pan.baidu.com/s/1i7d7FcL" target="_blank" rel="external">题目下载链接</a></p>
+<p>首先运行一下程序，看看是什么样子： <center> <img src="/2017/07/20/暑假一练-WriteUp/1.png" alt=""> </center></p>
 <p>可知本题应该是输入用户名、注册码之类。然后将程序加载进IDA，shift+F12查询程序中的关键字符串</p>
 <p><center> <img src="/2017/07/20/暑假一练-WriteUp/2.png" alt=""></center></p>
 <p>在前几行会看到有我们需要找到字符串，选择程序开始的提示“Please input your name”双击进入。</p>
@@ -207,7 +208,8 @@
 <p><center> <img src="/2017/07/20/暑假一练-WriteUp/8.png" alt=""></center></p>
 <p><center> <img src="/2017/07/20/暑假一练-WriteUp/9.png" alt=""></center></p>
 <p>注意：1.不要漏字符 2.留意字符是否存在顺序 3.看清楚0和O和o<br>最后用户名是：Syclover  注册码是：Hell0_W0rld</p>
-<h2 id="第二题-注册码-分值-100"><a href="#第二题-注册码-分值-100" class="headerlink" title="第二题 注册码 分值:100"></a>第二题 注册码 分值:100</h2><p>依然是先运行程序</p>
+<h2 id="第二题-注册码-分值-100"><a href="#第二题-注册码-分值-100" class="headerlink" title="第二题 注册码 分值:100"></a>第二题 注册码 分值:100</h2><p><a href="https://pan.baidu.com/s/1smfIWsl" target="_blank" rel="external">题目下载链接</a></p>
+<p>依然是先运行程序</p>
 <p><center> <img src="/2017/07/20/暑假一练-WriteUp/10.png" alt=""></center></p>
 <p>可知此题与第一题有些相似，均为求注册码类型的题目。但是考察的内容可能略有不同，毕竟分值大了，也就是说难了，或者说需要略有思考或者计算才能解决。不管那么多，先拖进IDA再说。<br>按照第一题的步骤一步步来，当按下shift+F12后感觉目的字符串不好找的话可以按ctrl+f查找关键字符串。比如此题可以用“name”作为关键字来查找。</p>
 <p><center> <img src="/2017/07/20/暑假一练-WriteUp/11.png" alt=""></center></p>
@@ -216,7 +218,8 @@
 <p>仔细分析算法，依次算出V7便是答案。<br>最后注册码为：Ygspiqcb</p>
 <p><center> <img src="/2017/07/20/暑假一练-WriteUp/13.jpg" alt=""></center></p>
 <p>(聪哥之前写的脚本…)</p>
-<h2 id="第三题-R-KEY-分值-200"><a href="#第三题-R-KEY-分值-200" class="headerlink" title="第三题 R_KEY 分值:200"></a>第三题 R_KEY 分值:200</h2><p><center> &lt;敬请期待&gt;</center></p>
+<h2 id="第三题-R-KEY-分值-200"><a href="#第三题-R-KEY-分值-200" class="headerlink" title="第三题 R_KEY 分值:200"></a>第三题 R_KEY 分值:200</h2><p><a href="https://pan.baidu.com/s/1d4Ackm" target="_blank" rel="external">题目下载链接</a></p>
+<p><center> &lt;敬请期待&gt;</center></p>
 
       
 

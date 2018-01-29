@@ -17,7 +17,7 @@
 <meta property="og:description" content="第七周的题目。更换了一个IDA。F5大法好。是真强大。好久都没用OD了，一个F5全部解决。">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/26/第七周分享会题目-wp/11.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/26/第七周分享会题目-wp/02.png">
-<meta property="og:updated_time" content="2018-01-27T04:10:45.872Z">
+<meta property="og:updated_time" content="2018-01-29T12:34:17.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第七周分享会题目 wp">
 <meta name="twitter:description" content="第七周的题目。更换了一个IDA。F5大法好。是真强大。好久都没用OD了，一个F5全部解决。">
@@ -181,7 +181,8 @@
       
         <p>第七周的题目。更换了一个IDA。F5大法好。是真强大。好久都没用OD了，一个F5全部解决。</p>
 <a id="more"></a>
-<h2 id="一、Linux-1"><a href="#一、Linux-1" class="headerlink" title="一、Linux_1"></a>一、Linux_1</h2><p>本题也超级简单，关键在于找到关键算法<br>F5出来的伪码如下</p>
+<h2 id="一、Linux-1"><a href="#一、Linux-1" class="headerlink" title="一、Linux_1"></a>一、Linux_1</h2><p><a href="https://pan.baidu.com/s/1pMPOplh" target="_blank" rel="external">题目下载链接</a></p>
+<p>本题也超级简单，关键在于找到关键算法<br>F5出来的伪码如下</p>
 <pre><code>__int64 sub_4009AE()
 {
   unsigned __int64 v0; // rax@2
@@ -269,7 +270,8 @@ for i in a:
 
 运行结果：L1nux_1s_51mple
 </code></pre><p>伪码中看到  sub_40F580((unsigned __int64)”flag is \”SYC{ }\”\n”);<br>所以提交的时候加上格式SYC{ }<br>之后在提交flag之前，要注意这个细节。不要犯这种低级错误。</p>
-<h2 id="二、CrackMe1"><a href="#二、CrackMe1" class="headerlink" title="二、CrackMe1"></a>二、CrackMe1</h2><p>F5出来的</p>
+<h2 id="二、CrackMe1"><a href="#二、CrackMe1" class="headerlink" title="二、CrackMe1"></a>二、CrackMe1</h2><p><a href="https://pan.baidu.com/s/1o9ArnVs" target="_blank" rel="external">题目下载链接</a></p>
+<p>F5出来的</p>
 <pre><code>int __cdecl main(int argc, const char **argv, const char **envp)
 {
   int result; // eax@2
@@ -342,7 +344,8 @@ for i in range(len(v5)):
 
 运行结果：Cr4ckIsSoE4sy!
 </code></pre><p>总结：理清运算操作的对象，再敲脚本。（要不还一直自以为是的认为自己是对的）<br>抓住关键语句，忽略次要语句。（宁信IDA，不如无IDA）</p>
-<h2 id="三、cosh-3"><a href="#三、cosh-3" class="headerlink" title="三、cosh.3"></a>三、cosh.3</h2><p>同样，拉进IDA，和之前不一样的是，字符串搜索后，交叉引用后来到调用段，发现有些调用是红色的（正常是黑色）<br><img src="/2017/10/26/第七周分享会题目-wp/11.png" alt=""></p>
+<h2 id="三、cosh-3"><a href="#三、cosh-3" class="headerlink" title="三、cosh.3"></a>三、cosh.3</h2><p><a href="https://pan.baidu.com/s/1htgbsji" target="_blank" rel="external">题目下载链接</a></p>
+<p>同样，拉进IDA，和之前不一样的是，字符串搜索后，交叉引用后来到调用段，发现有些调用是红色的（正常是黑色）<br><img src="/2017/10/26/第七周分享会题目-wp/11.png" alt=""></p>
 <p>这里需要多一个操作，把红色的调用段解封一下。具体做法是找到连续红色调用段最上面的红色调用段，选中、右击，选择create function。然后会发现突然解封出一些黑色代码段。然后往下翻，把能看到的还是红色的调用段继续解封。直到把字符提示段对应的红色调用段这部分解封完毕即可。<br>然后F5，就看到反编译出来的关键伪码了</p>
 <pre><code>int __thiscall sub_4014B0(CWnd *this)
 {

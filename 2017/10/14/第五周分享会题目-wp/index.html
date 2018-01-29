@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/11.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/12.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/10/14/第五周分享会题目-wp/13.png">
-<meta property="og:updated_time" content="2018-01-27T02:53:29.288Z">
+<meta property="og:updated_time" content="2018-01-29T12:29:32.354Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第五周分享会题目 wp">
 <meta name="twitter:description" content="这三道题目是本周三分享会上给的，假期缘故，就把这三道题目归为第五周分享会题目吧。">
@@ -192,7 +192,8 @@
       
         <p>这三道题目是本周三分享会上给的，假期缘故，就把这三道题目归为第五周分享会题目吧。</p>
 <a id="more"></a>
-<h2 id="一-CM-3"><a href="#一-CM-3" class="headerlink" title="一.CM_3"></a>一.CM_3</h2><p><img src="/2017/10/14/第五周分享会题目-wp/01.png" alt=""><br>这个题是寻找flag,输入正确的注册码会得到flag.<br>两种思路：<br>1.根据算法找到正确注册码，进而得到flag<br>2.爆破，直接去找flag.</p>
+<h2 id="一-CM-3"><a href="#一-CM-3" class="headerlink" title="一.CM_3"></a>一.CM_3</h2><p><a href="https://pan.baidu.com/s/1gfYBMJT" target="_blank" rel="external">题目下载链接</a></p>
+<p><img src="/2017/10/14/第五周分享会题目-wp/01.png" alt=""><br>这个题是寻找flag,输入正确的注册码会得到flag.<br>两种思路：<br>1.根据算法找到正确注册码，进而得到flag<br>2.爆破，直接去找flag.</p>
 <p>先加载到IDA看看算法，发现比较复杂，正面求解注册码会比较费事。<br>这个时候就寻思用简单的方法了。<br>加载到OD，去爆破跟flag<br>先找到字符<br><img src="/2017/10/14/第五周分享会题目-wp/02.png" alt=""><br>在上边适当语句上下断点<br><img src="/2017/10/14/第五周分享会题目-wp/03.png" alt=""><br>重新加载，F9,F8单步到输入注册码，随便输一个<br><img src="/2017/10/14/第五周分享会题目-wp/04.png" alt=""><br>单步到跳转处<br><img src="/2017/10/14/第五周分享会题目-wp/05.png" alt=""><br>修改标志位为1 使其跳转<br><img src="/2017/10/14/第五周分享会题目-wp/06.png" alt=""><br>然后接着进入call<br><img src="/2017/10/14/第五周分享会题目-wp/07.png" alt=""><br>然后运行到字符提示出就会看到flag<br><img src="/2017/10/14/第五周分享会题目-wp/08.png" alt=""><br>然后继续单步<br><img src="/2017/10/14/第五周分享会题目-wp/09.png" alt=""><br>OK了</p>
 <p>然后在IDA算法里会发现，在判断注册码后有一个生成flag的函数<br><img src="/2017/10/14/第五周分享会题目-wp/10.png" alt=""><br>然后进去瞅瞅</p>
 <pre><code>int sub_45BFF0()
@@ -270,7 +271,8 @@ print(str)
 运行结果：
 [&apos;0&apos;, &apos;o&apos;, &apos;p&apos;, &apos;s&apos;, &apos;.&apos;, &apos;.&apos;, &apos;.&apos;, &apos;O&apos;, &apos;D&apos;, &apos;_&apos;, &apos;_&apos;, &apos;1&apos;, &apos;5&apos;, &apos;_&apos;, &apos;U&apos;, &apos;s&apos;, &apos;e&apos;, &apos;f&apos;, &apos;u&apos;, &apos;l&apos;, &apos;!&apos;]
 0ops...OD__15_Useful!
-</code></pre><h2 id="二-cm1"><a href="#二-cm1" class="headerlink" title="二.cm1"></a>二.cm1</h2><p>这好像是一个linux小程序，不能运行（也可以说目前的我不知道怎么运行linux程序）。<br>然后直接IDA打开，按照老套路来看看能不能找到关键算法，然后就找到了</p>
+</code></pre><h2 id="二-cm1"><a href="#二-cm1" class="headerlink" title="二.cm1"></a>二.cm1</h2><p><a href="https://pan.baidu.com/s/1c3gj1Pe" target="_blank" rel="external">题目下载链接</a></p>
+<p>这好像是一个linux小程序，不能运行（也可以说目前的我不知道怎么运行linux程序）。<br>然后直接IDA打开，按照老套路来看看能不能找到关键算法，然后就找到了</p>
 <pre><code>int __cdecl main(int argc, const char **argv, const char **envp)
 {
   int result; // eax@2
@@ -316,7 +318,8 @@ for i in range(len(c)):
     print(chr(i^ord(c[i])),end=&quot;&quot;)
 
 运行结果：Ea3y_C7ack_Me_Have_Fun
-</code></pre><h2 id="三、RE50"><a href="#三、RE50" class="headerlink" title="三、RE50"></a>三、RE50</h2><p>（2017.10.24 补题解）<br>这道题滞留了好多天，刚才算是窍通了一下…<br>先来运行下程序<br><img src="/2017/10/14/第五周分享会题目-wp/13.png" alt=""><br>寻找flag 无壳 C/C++编写<br>先用IDA看看能不能看出求解算法<br>shift+f12查找字符串，进而找到关键算法的伪码</p>
+</code></pre><h2 id="三、RE50"><a href="#三、RE50" class="headerlink" title="三、RE50"></a>三、RE50</h2><p><a href="https://pan.baidu.com/s/1i7gV1sD" target="_blank" rel="external">题目下载链接</a></p>
+<p>（2017.10.24 补题解）<br>这道题滞留了好多天，刚才算是窍通了一下…<br>先来运行下程序<br><img src="/2017/10/14/第五周分享会题目-wp/13.png" alt=""><br>寻找flag 无壳 C/C++编写<br>先用IDA看看能不能看出求解算法<br>shift+f12查找字符串，进而找到关键算法的伪码</p>
 <pre><code>int sub_401130()
 {
   char v1; // [sp+0h] [bp-10h]@1
