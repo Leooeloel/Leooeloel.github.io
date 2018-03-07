@@ -6,14 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Tag: 二进制逆向 | Leooel</title>
+  <title>py交易 | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leooel">
-<meta property="og:url" content="http://leo.dropsec.xyz/tags/二进制逆向/page/4/index.html">
+  <meta name="description" content="结合实验吧上的“py的交易”与南邮上的“py交易”简单总结一下。其中收获不少利器。">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="py交易">
+<meta property="og:url" content="http://leo.dropsec.xyz/2018/03/07/py交易/index.html">
 <meta property="og:site_name" content="Leooel">
+<meta property="og:description" content="结合实验吧上的“py的交易”与南邮上的“py交易”简单总结一下。其中收获不少利器。">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/07/py交易/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/07/py交易/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/07/py交易/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/07/py交易/04.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/07/py交易/05.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/07/py交易/06.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/07/py交易/07.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/07/py交易/08.png">
+<meta property="og:updated_time" content="2018-03-07T11:29:48.468Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leooel">
+<meta name="twitter:title" content="py交易">
+<meta name="twitter:description" content="结合实验吧上的“py的交易”与南邮上的“py交易”简单总结一下。其中收获不少利器。">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2018/03/07/py交易/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -151,36 +165,86 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-py交易" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      py交易
+    </h1>
+  
+
+        
+        <a href="/2018/03/07/py交易/" class="archive-article-date">
+  	<time datetime="2018-03-07T04:53:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>结合实验吧上的“py的交易”与南邮上的“py交易”简单总结一下。其中收获不少利器。<br><a id="more"></a></p>
+<h1 id="一、py的交易"><a href="#一、py的交易" class="headerlink" title="一、py的交易"></a>一、py的交易</h1><p><a href="https://pan.baidu.com/s/1YCsXxx3_jmDUe0erqObMkw" target="_blank" rel="external">下载链接</a><br><img src="/2018/03/07/py交易/01.png" alt=""><br>下载下来的是一张png图片<br><img src="/2018/03/07/py交易/02.png" alt=""><br>疑似二维码，扫描无果后决定用专业的png图片分析工具<code>tweakpng</code>查看究竟<br>载入后提示crc错误，自动修复后查看iTXt模块，发现这张图片是<code>Adobe Fireworks</code>制作的。<br><img src="/2018/03/07/py交易/03.png" alt=""><br>用Fireworks打开这张图片发现除了背景之外还有一个图层，单独查看这个图层发现是张二维码<br><img src="/2018/03/07/py交易/04.png" alt=""><br>然后用<code>QR Research</code>扫描得到一串十六进制数<br><img src="/2018/03/07/py交易/05.png" alt=""><br>然后把这串十六进制数粘贴到记事本，通过import hex导入到010或winhex如下<br><img src="/2018/03/07/py交易/06.png" alt=""><br>发现文件头03F30D0A是pyc文件的magic number(即魔数、文件头，用来表明某种文件的格式，例如Windows操作系统可执行程序的开头标记一般为MZ)，所以确定了该文件的后缀是.pyc。通过010或winhex将其另存到桌面，更改其后缀名，然后导入<code>https://tool.lu/pyc/</code>在线反编译pyc文件。<br><img src="/2018/03/07/py交易/07.png" alt=""><br>结合题目hint，猜测key位py,将CTF{py_13eeTh0vEn}提交通过，猜测正确。</p>
+<h2 id="考察点"><a href="#考察点" class="headerlink" title="考察点"></a>考察点</h2><p>1、PNG图片格式、信息分析<br>2、十六进制文件还原及根据十六进制文件头识别文件类型<br>3、pyc文件的反编译</p>
+<p>补充：<br>photoshop和fireworks的区别：</p>
+<p>PS是由一款的图像处理软件，主要处理以像素所构成的数字图像。使用其众多的编修与绘图工具，可以有效地进行图片编辑工作。ps有很多功能，在图像、图形、文字、视频、出版等各方面都有涉及。</p>
+<p>fw是一款网页作图软件，软件可以加速 Web 设计与开发， 是一款创建与优化 Web 图像和快速构建网站与 Web 界面原型的理想工具。</p>
+<h1 id="二、py交易"><a href="#二、py交易" class="headerlink" title="二、py交易"></a>二、py交易</h1><p><a href="https://pan.baidu.com/s/1CBnPfEVdTx9LCd3mKS3rHg" target="_blank" rel="external">下载链接</a><br>下载下来是一个pyc文件，直接在线反编译看看<br><img src="/2018/03/07/py交易/08.png" alt=""><br>代码的思路很简单，脚本如下：</p>
+<pre><code>#python 2.7
+from __future__ import print_function
+import base64
+
+a = &apos;XlNkVmtUI1MgXWBZXCFeKY+AaXNt&apos;
+a = base64.b64decode(a)
+
+for i in a:
+    b = (ord(i)-16)^32
+    print(chr(b),end=&quot;&quot;)
+
+运行结果：nctf{d3c0mpil1n9_PyC}
+</code></pre><p>知识补充：<br>python中，string.printable 包含所有可打印字符的字符串<br>如下：0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!”#$%&amp;’()*+,-./:;&lt;=&gt;?@[]^_`{|}~     </p>
+<p>一般这样使用 string.printable[:-6]  (去除~后面长度为6的部分)</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/11/合天-CTF-REVERSSE练习之逆向初探-WP/" class="archive-article-date">
-  	<time datetime="2017-08-11T06:31:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/11/合天-CTF-REVERSSE练习之逆向初探-WP/">合天 CTF-REVERSSE练习之逆向初探 WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,98 +256,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2018/03/07/py交易/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/10/壳与ESP定律/" class="archive-article-date">
-  	<time datetime="2017-08-10T12:58:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/10/壳与ESP定律/">壳与ESP定律</a>
-    </h1>
+  
+    <a href="/2018/01/30/连接两个或多个音频的骚操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">连接两个或多个音频的骚操作</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/20/暑假一练-WriteUp/" class="archive-article-date">
-  	<time datetime="2017-07-20T07:36:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/20/暑假一练-WriteUp/">暑假一练 WriteUp</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/二进制逆向/page/3/">&laquo; Prev</a><a class="page-number" href="/tags/二进制逆向/">1</a><a class="page-number" href="/tags/二进制逆向/page/2/">2</a><a class="page-number" href="/tags/二进制逆向/page/3/">3</a><span class="page-number current">4</span>
-    </nav>
   
 
 
@@ -307,9 +361,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",
