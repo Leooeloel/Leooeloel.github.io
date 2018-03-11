@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Leooel">
 <meta property="og:description" content="读汇编是逆向基本功。 emmm…">
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/03/10/Read-Asm/01.png">
-<meta property="og:updated_time" content="2018-03-10T13:29:26.514Z">
+<meta property="og:updated_time" content="2018-03-11T06:19:16.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Read Asm">
 <meta name="twitter:description" content="读汇编是逆向基本功。 emmm…">
@@ -233,7 +233,7 @@
 400517: 8b 55 fc              mov    edx,DWORD PTR [rbp-0x4]        //edx=1
 40051a: 31 ca                 xor    edx,ecx                        //edx^=ecx即edx=0x1^0x67=0x66=&quot;f&quot;
 40051c: 88 10                 mov    BYTE PTR [rax],dl            //rax=dl
-40051e: 83 45 fc 01           add    DWORD PTR [rbp-0x4],0x1      //内存[rbp-0x4]处值为1
+40051e: 83 45 fc 01           add    DWORD PTR [rbp-0x4],0x1      //内存[rbp-0x4]处的值变为2
 400522: 8b 45 fc              mov    eax,DWORD PTR [rbp-0x4]      //这里接上段
 400525: 3b 45 e4              cmp    eax,DWORD PTR [rbp-0x1c]        
 400528: 7e d0                 jle    4004fa &lt;func+0x14&gt;    
