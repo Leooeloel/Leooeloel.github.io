@@ -6,14 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Tag: 二进制逆向 | Leooel</title>
+  <title>maze | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leooel">
-<meta property="og:url" content="http://leo.dropsec.xyz/tags/二进制逆向/page/4/index.html">
+  <meta name="description" content="让我们干了这杯maze酒！">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="maze">
+<meta property="og:url" content="http://leo.dropsec.xyz/2018/03/21/maze/index.html">
 <meta property="og:site_name" content="Leooel">
+<meta property="og:description" content="让我们干了这杯maze酒！">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/21/maze/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/21/maze/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/21/maze/01.png">
+<meta property="og:updated_time" content="2018-03-21T05:33:01.163Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leooel">
+<meta name="twitter:title" content="maze">
+<meta name="twitter:description" content="让我们干了这杯maze酒！">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2018/03/21/maze/02.png">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -151,36 +160,213 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-maze" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      maze
+    </h1>
+  
+
+        
+        <a href="/2018/03/21/maze/" class="archive-article-date">
+  	<time datetime="2018-03-21T03:24:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>让我们干了这杯maze酒！<br><a id="more"></a><br>maze是CTF中常见的题目类型，本打算多做几道类似题目然后梳理总结下的，但是自己太菜了，暂且先记下这个吧。 这道题也是南邮上的。<br><a href="https://pan.baidu.com/s/1MTDTkVVE5eyX4yLh3rmo1Q" target="_blank" rel="external">下载链接</a></p>
+<p>下载下来是Linux文件，没有hint，无壳，拉进IDA，容易找到关键伪代码</p>
+<pre><code>__int64 __fastcall main(__int64 a1, char **a2, char **a3)
+{
+  const char *v3; // rsi
+  signed __int64 v4; // rbx
+  signed int v5; // eax
+  char v6; // bp
+  char v7; // al
+  const char *v8; // rdi
+  __int64 v10; // [rsp+0h] [rbp-28h]
+
+  v10 = 0LL;
+  puts(&quot;Input flag:&quot;);
+  scanf(&quot;%s&quot;, &amp;s1, 0LL);
+  if ( strlen(&amp;s1) != 24 || (v3 = &quot;nctf{&quot;, strncmp(&amp;s1, &quot;nctf{&quot;, 5uLL)) || *(&amp;byte_6010BF + 24) != 125 )
+  {
+LABEL_22:
+    puts(&quot;Wrong flag!&quot;);
+    exit(-1);
+  }
+  v4 = 5LL;
+  if ( strlen(&amp;s1) - 1 &gt; 5 )
+  {
+    while ( 1 )
+    {
+      v5 = *(&amp;s1 + v4);
+      v6 = 0;
+      if ( v5 &gt; 78 )
+      {
+        v5 = (unsigned __int8)v5;
+        if ( (unsigned __int8)v5 == 79 )
+        {
+          v7 = sub_400650((char *)&amp;v10 + 4, v3);
+          goto LABEL_14;
+        }
+        if ( v5 == 111 )
+        {
+          v7 = sub_400660((char *)&amp;v10 + 4, v3);
+          goto LABEL_14;
+        }
+      }
+      else
+      {
+        v5 = (unsigned __int8)v5;
+        if ( (unsigned __int8)v5 == 46 )
+        {
+          v7 = sub_400670(&amp;v10, v3);
+          goto LABEL_14;
+        }
+        if ( v5 == 48 )
+        {
+          v7 = sub_400680(&amp;v10, v3);
+LABEL_14:
+          v6 = v7;
+          goto LABEL_15;
+        }
+      }
+LABEL_15:
+      v3 = (const char *)HIDWORD(v10);
+      if ( !(unsigned __int8)sub_400690(asc_601060, HIDWORD(v10), (unsigned int)v10) )
+        goto LABEL_22;
+      if ( ++v4 &gt;= strlen(&amp;s1) - 1 )
+      {
+        if ( v6 )
+          break;
+LABEL_20:
+        v8 = &quot;Wrong flag!&quot;;
+        goto LABEL_21;
+      }
+    }
+  }
+  if ( asc_601060[8 * (signed int)v10 + SHIDWORD(v10)] != 35 )
+    goto LABEL_20;
+  v8 = &quot;Congratulations!&quot;;
+LABEL_21:
+  puts(v8);
+  return 0LL;
+}
+</code></pre><p>一段一段分析</p>
+<pre><code>if ( strlen(&amp;s1) != 24 || (v3 = &quot;nctf{&quot;, strncmp(&amp;s1, &quot;nctf{&quot;, 5uLL)) || *(&amp;byte_6010BF + 24) != 125 )
+</code></pre><p>可知字符串长度为24，前5个字符是nctf{,最后一个字符是}，即flag格式为nctf{ }</p>
+<p>接下来的是4个方向的移动，这里分析第一个</p>
+<pre><code>v3 = 5LL;
+while ( 1 )  //多次循环执行
+    {
+      v4 = *(&amp;s1 + v3);   //从输入字符串的下标为5的字符开始
+      v5 = 0;
+      if ( v4 &gt; 78 )
+      {
+        v4 = (unsigned __int8)v4;
+        if ( (unsigned __int8)v4 == 79 )  //79-&gt;&apos;O&apos; 如果当前字符为O则执行下面代码
+        {
+          v6 = sub_400650((_DWORD *)&amp;v9 + 1); //进入sub_400650()函数
+          goto LABEL_14;    //跳到LABEL_14继续执行
+        }
+
+    ...
+
+    }
+</code></pre><p>sub_400650()函数如下：</p>
+<pre><code>bool __fastcall sub_400650(_DWORD *a1)
+{
+  int v1; // eax
+
+  v1 = (*a1)--;  //(*a1)的值减一，即(&amp;v9+1)的值减一
+  return v1 &gt; 0;
+}
+</code></pre><p>LABEL_14:</p>
+<pre><code>v5 = v6;
+goto LABEL_15;
+</code></pre><p>LABEL_15:</p>
+<pre><code>if ( !(unsigned __int8)sub_400690((__int64)asc_601060, SHIDWORD(v9), v9) )
+    goto LABEL_22;            //输出“wromg~&quot; 
+  if ( ++v3 &gt;= strlen(&amp;s1) - 1 )  //满足条件，则循环结束
+  {
+    if ( v5 )
+      break;
+</code></pre><blockquote>
+<p>SHIDWORD()的作用是取下一字节<br>asc_601060处存储的数据为：’  <strong><em>*</em></strong>   <em>  <em>**</em> </em> <strong><em>*  </em> *</strong>  <em>#  **</em> <strong><em> </em></strong>     <strong><strong>*</strong></strong>‘</p>
+</blockquote>
+<p>函数sub_400690():</p>
+<pre><code>__int64 __fastcall sub_400690(__int64 a1, int a2, int a3)
+{
+  __int64 result; // rax
+
+  result = *(unsigned __int8 *)(a1 + a2 + 8LL * a3); //因为8*a3,所以v9代表列,v9+1代表行。同时可知每行有8个字符
+  LOBYTE(result) = (_DWORD)result == &apos; &apos; || (_DWORD)result == &apos;#&apos;; //判断此步是否可走
+  return result;
+}
+</code></pre><blockquote>
+<p>关键之一是找出谁代表行、列，然后就可以将四种符号与左右上下移动联系起来</p>
+</blockquote>
+<p>再继续看跳出循环之后的代码</p>
+<pre><code>if ( asc_601060[8 * (signed int)v9 + SHIDWORD(v9)] != 35 ) //35对应‘#’
+    goto LABEL_20;
+v7 = &quot;Congratulations!&quot;;
+</code></pre><p>多次循环执行结束之后，如果坐标处为’#” 则输出Congratulations! 否则goto LABEL_20，输出wrong~</p>
+<p>现在已经知道v9处代表列，v9+1处代表行，结合移动的函数可以知道：<br>O-&gt;左移 o-&gt;右移 .-&gt;下移 0-&gt;上移</p>
+<p>现在知道了maze的终点是‘#’和移动规则，只差关键二找起点了。找到定义v9与v9+1的地方看有没有初始值<br><img src="/2018/03/21/maze/02.png" alt=""><br>再看看对应的汇编代码<br><img src="/2018/03/21/maze/03.png" alt=""><br>可知行和列初始值都为0</p>
+<p>结合每行8个字符，现在可将矩阵画出来,用@代表空格<br><img src="/2018/03/21/maze/01.png" alt=""></p>
+<p>然后从(0,0)开始走，Oo.0 代表 左右下上 的移动 终点是# 空格代表通路可走<br>然后喝完这杯maze酒得到的精华就是 o0oo00O000oooo..OO<br>即nctf{o0oo00O000oooo..OO}</p>
+<p>总节：<br>走出迷宫的要领：</p>
+<ul>
+<li>分清行与列的代号</li>
+<li>明确起终点</li>
+<li>明确移动规则</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/" class="archive-article-date">
-  	<time datetime="2017-08-12T06:28:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/12/合天-CTF-REVERSE练习之API断点-WP/">合天 CTF-REVERSE练习之API断点 WP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,174 +378,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2018/03/21/maze/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/11/合天-CTF-REVERSE练习之API定位-WP/" class="archive-article-date">
-  	<time datetime="2017-08-11T08:56:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/11/合天-CTF-REVERSE练习之API定位-WP/">合天 CTF REVERSE练习之API定位 WP</a>
-    </h1>
+  
+    <a href="/2018/03/17/WxyVM/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">WxyVM</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/11/合天-CTF-REVERSSE练习之逆向初探-WP/" class="archive-article-date">
-  	<time datetime="2017-08-11T06:31:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/11/合天-CTF-REVERSSE练习之逆向初探-WP/">合天 CTF-REVERSSE练习之逆向初探 WP</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/10/壳与ESP定律/" class="archive-article-date">
-  	<time datetime="2017-08-10T12:58:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/10/壳与ESP定律/">壳与ESP定律</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/20/暑假一练-WriteUp/" class="archive-article-date">
-  	<time datetime="2017-07-20T07:36:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/20/暑假一练-WriteUp/">暑假一练 WriteUp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/二进制逆向/page/3/">&laquo; Prev</a><a class="page-number" href="/tags/二进制逆向/">1</a><a class="page-number" href="/tags/二进制逆向/page/2/">2</a><a class="page-number" href="/tags/二进制逆向/page/3/">3</a><span class="page-number current">4</span>
-    </nav>
   
 
 
@@ -383,9 +483,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",
