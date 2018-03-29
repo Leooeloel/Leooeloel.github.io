@@ -6,14 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Leooel</title>
+  <title>Just_Three | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leooel">
-<meta property="og:url" content="http://leo.dropsec.xyz/page/4/index.html">
+  <meta name="description" content="前三周学习总结 + 第四周分享会简单记录">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Just_Three">
+<meta property="og:url" content="http://leo.dropsec.xyz/2018/03/28/Just-Three/index.html">
 <meta property="og:site_name" content="Leooel">
+<meta property="og:description" content="前三周学习总结 + 第四周分享会简单记录">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/28/Just-Three/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/28/Just-Three/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/28/Just-Three/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/28/Just-Three/04.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/28/Just-Three/05.png">
+<meta property="og:updated_time" content="2018-03-29T03:20:53.242Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leooel">
+<meta name="twitter:title" content="Just_Three">
+<meta name="twitter:description" content="前三周学习总结 + 第四周分享会简单记录">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2018/03/28/Just-Three/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -151,34 +162,96 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-CrackMe-008" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Just-Three" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/24/CrackMe-008/">CrackMe 008</a>
+    <h1 class="article-title" itemprop="name">
+      Just_Three
     </h1>
   
 
         
-        <a href="/2017/08/24/CrackMe-008/" class="archive-article-date">
-  	<time datetime="2017-08-24T02:48:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-24</time>
+        <a href="/2018/03/28/Just-Three/" class="archive-article-date">
+  	<time datetime="2018-03-28T13:43:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>经过了前两天的煎熬，总算遇到一个简单点的题了。。。呜呜呜，我也是很激动(。・∀・)ノ<br></p>
-        
-          <a class="article-more-a" href="/2017/08/24/CrackMe-008/#more">more >></a>
-        
+        <p>前三周学习总结 + 第四周分享会简单记录<br><a id="more"></a><br>做好任何一件事情都不容易，哪怕是一件很微小的事情。<br>前三周断断续续的做了几道南邮上的题目，看着大佬的wp断断续续的更了几篇博客。但是我感觉自己并没有完全掌握解题所需的技能，更没有完全独立做出题的能力。还是需要多多练习、多多总结、多多联系。<br>为了能使所学知识连贯起来，也方便别人和自己日后回顾，继续上学期的周汇总。</p>
+<h2 id="一、实验吧：该题不简单"><a href="#一、实验吧：该题不简单" class="headerlink" title="一、实验吧：该题不简单"></a>一、实验吧：该题不简单</h2><p><a href="https://pan.baidu.com/s/1WVWkEAABAc5zY0o7IOfFRg" target="_blank" rel="external">下载链接</a></p>
+<p><img src="/2018/03/28/Just-Three/01.png" alt=""><br>无论题目标识难或易，通过率能暴漏一切。<br><img src="/2018/03/28/Just-Three/02.png" alt=""><br>题目说让我们找到”hello”用户名对应的注册码。这个hint暗示我们正确的flag是事先根据hello生成好的，我们可以直接去Od里面找到正确的flag。这对于算法复杂的题目来说是种好方法。然而这道题目算法很清晰。<br>拉进IDA，可以根据错误提示“密钥无效！”运用Alt+T快捷键搜索到关键位置(有些IDA版本可能会搜不到，但是列表左侧第一个函数就是关键函数，也很容易找到)<br><img src="/2018/03/28/Just-Three/03.png" alt=""><br><img src="/2018/03/28/Just-Three/04.png" alt=""><br>算法很清晰，但是里面有几个不熟悉的函数，搞懂函数功能后容易根据葫芦画瓢用python写出脚本。</p>
+<ul>
+<li><p>int GetDlgItemText( HWND hDlg , int nID, LPTSTR lpStr, int nMaxCount)</p>
+<ul>
+<li>nID 指定了要获取其标题的控件的整数标识符</li>
+<li>lpStr 指向要接收控件的标题或文本的缓冲区</li>
+<li>nMaxCount 指定了要拷贝到lpStr的字符串的最大长度（以字节为单位）。如果字符串比nMaxCount要长，它将被截断</li>
+</ul>
+</li>
+<li><p>lstrcat(String1, String2)</p>
+<ul>
+<li>该函数将字符串String2加在另一个字符串String1后面</li>
+</ul>
+</li>
+<li><p>lstrcmp(String1,String2)</p>
+<ul>
+<li>lstrcmp 字符串比较，区分大小写; lstrcmpi 不区分大小写. 返回值: -1、0、1, 其中 0 表示相同</li>
+</ul>
+</li>
+</ul>
+<p>然后就是py脚本：</p>
+<pre><code>string = &quot;hello&quot;
+string2 = &quot;&quot;
+for i in range(len(string)):
+    string2 += chr((i + i *ord(string[i])*ord(string[i])) % 0x42 + 33)
+string =  &quot;Happy@&quot; + string2
+print(string)
+
+运行结果： Happy@!GA0U
+</code></pre><h2 id="二、易语言报毒的了解"><a href="#二、易语言报毒的了解" class="headerlink" title="二、易语言报毒的了解"></a>二、易语言报毒的了解</h2><p><a href="https://pan.baidu.com/s/1lYmn7sCPXeqwiEa0OTCwxQ" target="_blank" rel="external">下载链接</a><br>之前遇到过这道题目，当时没思路后直接看了别人的wp，然后的然后就缺失了自己的思考。现在再次遇到这个题目，简单总结下新了解的东西。<br><img src="/2018/03/28/Just-Three/05.png" alt=""><br>提示说输入的密码是一个纯数字，1000具有特殊含义。对于像我这样缺少经验又记忆力不好的同学来说能意会到”特殊含义”貌似不太容易。<br><strong>可是对于我们搞二进制的，需要对01时刻保持高度的敏感呀！</strong><br>然后你就应该知道1000表示的是8，这就是特殊含义喽~<br>输入8，确定，安全软件提示在C盘生成危险文件，文件里的便是”伪flag”，对于喜欢裸奔的同学来说，怎么知道会生成文件，怎么知道flag呢？  呃，我也不知道~</p>
+<p>接下来补充下关于易语言报毒的内容：<br>明明是易语言写的小程序，die与peid偏偏说是C/C++  emmm…<br>下面是百度百科对易语言报毒的说明：</p>
+<h4 id="语言缺点"><a href="#语言缺点" class="headerlink" title="语言缺点"></a>语言缺点</h4><p>由于易语言程序的运行方式存在特殊性，单个空白程序就达到400~500KB，当前易语言拓展插件：斩月，黑月的一些模块可以把易语言编译的程序缩小，缩小后的空白程序仅为10Kb左右。易语言编写的程序被许多杀毒软件的高级启发式技术误报为病毒，甚至一个不包含任何代码的空白程序都会被一些杀毒软件识别为木马。有关各方都在积极解决这个问题，但是截止2017年12月，误报问题仍然存在。</p>
+<h4 id="运行报错"><a href="#运行报错" class="headerlink" title="运行报错"></a>运行报错</h4><p>关于易语言误报问题，实践证明：并非易语言生成出来的程序容易误报，VB单独生成的空窗口也报毒，C++也同样出现误报现象。当然，也有一些不正当利用易语言编写的程序例如：盗号，木马，键盘监控的程序，然后寻求解除误报的方法，这样是没用的，程序本身就存在危害，报毒也属于正常现象。因此，若用户需要检验由易语言编写的成品是否有毒，可到网络软件分析处检查，可得到更详细的分析，且对一般无毒程序不会报毒，但过程缓慢。</p>
+<h4 id="报毒说明"><a href="#报毒说明" class="headerlink" title="报毒说明"></a>报毒说明</h4><p>因为它的行为有点像病毒：弹出窗口，修改注册表，写出文件，隐藏窗口等等，所以国内许多知名的杀毒软件都会报毒。一般情况下，程序不修改注册表，增加花指令，修改版本号，通过第三方软件进行加壳，可在一定程度上避免杀软误报。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -198,565 +271,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/24/CrackMe-008/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2018/03/28/Just-Three/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-CrackMe-007-补" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/CrackMe-007-补/">CrackMe 007 补</a>
-    </h1>
   
-
-        
-        <a href="/2017/08/23/CrackMe-007-补/" class="archive-article-date">
-  	<time datetime="2017-08-23T14:12:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>标题创建于八月二十三，内容写于二十四。加油，Crack 007<br></p>
-        
-          <a class="article-more-a" href="/2017/08/23/CrackMe-007-补/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/23/CrackMe-007-补/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
+    <a href="/2018/03/24/DefCamp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">DefCamp</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    <article id="post-CrackMe-006-占位（总结五种语言按钮事件的找法）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/">CrackMe 006 占位（总结五种语言按钮事件的找法）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/" class="archive-article-date">
-  	<time datetime="2017-08-22T12:57:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我想我可以去die了…<br>CrackMe 006也有点难。。。<br>伤心<br></p>
-        
-          <a class="article-more-a" href="/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CrackMe-005-占位" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/21/CrackMe-005-占位/">CrackMe 005 占位 {{{(&gt;_&lt;)}}}</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/21/CrackMe-005-占位/" class="archive-article-date">
-  	<time datetime="2017-08-21T13:34:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>呃，CrackMe 005有点难…题解也老长了，暂时记下，日后等水平稍微提升一点点再来战它。<br></p>
-        
-          <a class="article-more-a" href="/2017/08/21/CrackMe-005-占位/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/21/CrackMe-005-占位/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CrackMe-004" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/20/CrackMe-004/">CrackMe 004</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/20/CrackMe-004/" class="archive-article-date">
-  	<time datetime="2017-08-20T13:03:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先说一下，这个题是比较有“脾气”的。OK，咱们就来看看它到底是什么脾气…<br></p>
-        
-          <a class="article-more-a" href="/2017/08/20/CrackMe-004/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/20/CrackMe-004/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CrackMe-003" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/19/CrackMe-003/">CrackMe 003</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/19/CrackMe-003/" class="archive-article-date">
-  	<time datetime="2017-08-19T07:13:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>算法部分又出新花样，在第二题之上加入了浮点运算，加上战线拉的长，需要耐心分析方可得出Key… en,最后再加个解除延时…   [多看看浮点汇编运算]<br></p>
-        
-          <a class="article-more-a" href="/2017/08/19/CrackMe-003/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/19/CrackMe-003/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CrackMe-002" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/18/CrackMe-002/">CrackMe 002</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/18/CrackMe-002/" class="archive-article-date">
-  	<time datetime="2017-08-18T13:45:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>直接转入正题…<br></p>
-        
-          <a class="article-more-a" href="/2017/08/18/CrackMe-002/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/18/CrackMe-002/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-点滴算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/18/点滴算法/">点滴算法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/18/点滴算法/" class="archive-article-date">
-  	<time datetime="2017-08-18T08:03:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我是有一点算法情怀的。而我也一直认为学好算法是从事计算机相关行业人员所必备的。<br>里面是我收集的对学习算法有帮助的一些知识。<br></p>
-        
-          <a class="article-more-a" href="/2017/08/18/点滴算法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ACM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/18/点滴算法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CrackMe-001" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/17/CrackMe-001/">CrackMe 001</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/17/CrackMe-001/" class="archive-article-date">
-  	<time datetime="2017-08-17T14:02:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>适合新手破解的160个crackme练手…好难呀，理解不了我能有什么办法~~ 我也是很无奈哦… 想了想还是需要硬着头皮做下去，谁让我是学计算机的呢？立个flag，之后每天攻克一道crackme…<br></p>
-        
-          <a class="article-more-a" href="/2017/08/17/CrackMe-001/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/17/CrackMe-001/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-在线小工具推介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/16/在线小工具推介/">在线小工具推介</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/16/在线小工具推介/" class="archive-article-date">
-  	<time datetime="2017-08-16T07:24:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这里对你而言可能会有一些比较好用的在线小工具哦。 更新ing…<br></p>
-        
-          <a class="article-more-a" href="/2017/08/16/在线小工具推介/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具or软件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/16/在线小工具推介/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+</nav>
 
 
 
@@ -764,9 +346,10 @@
 
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -789,8 +372,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
