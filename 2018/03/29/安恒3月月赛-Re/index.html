@@ -6,14 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Leooel</title>
+  <title>安恒3月月赛 Re | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leooel">
-<meta property="og:url" content="http://leo.dropsec.xyz/page/2/index.html">
+  <meta name="description" content="自己真的太菜了，什么也不想说了。 python[::-1] + RSA">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安恒3月月赛 Re">
+<meta property="og:url" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/index.html">
 <meta property="og:site_name" content="Leooel">
+<meta property="og:description" content="自己真的太菜了，什么也不想说了。 python[::-1] + RSA">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/04.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/05.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/06.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/07.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/08.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/09.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/10.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/11.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/12.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/13.png">
+<meta property="og:updated_time" content="2018-04-04T03:42:54.898Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leooel">
+<meta name="twitter:title" content="安恒3月月赛 Re">
+<meta name="twitter:description" content="自己真的太菜了，什么也不想说了。 python[::-1] + RSA">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -151,156 +170,94 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Leooel的2017" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-安恒3月月赛-Re" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/01/Leooel的2017/">Leooel的2017</a>
+    <h1 class="article-title" itemprop="name">
+      安恒3月月赛 Re
     </h1>
   
 
         
-        <a href="/2018/01/01/Leooel的2017/" class="archive-article-date">
-  	<time datetime="2018-01-01T15:10:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-01</time>
+        <a href="/2018/03/29/安恒3月月赛-Re/" class="archive-article-date">
+  	<time datetime="2018-03-29T10:40:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/2018/01/01/Leooel的2017/01.jpg" alt=""></p>
-        
-          <a class="article-more-a" href="/2018/01/01/Leooel的2017/#more">more >></a>
-        
-      
+        <p>自己真的太菜了，什么也不想说了。 python[::-1] + RSA<br><a id="more"></a></p>
+<h2 id="一、xor"><a href="#一、xor" class="headerlink" title="一、xor"></a>一、xor</h2><p><a href="https://pan.baidu.com/s/1UCMPDrIbouUrQWP2NCvF-g" target="_blank" rel="external">下载链接</a><br>用die或peid查不出xor的编写语言，斯托夫分析出的格式为Mach-o,在osx下可执行。<br>拉进IDA看看，容易找到关键伪码<br><img src="/2018/03/29/安恒3月月赛-Re/01.png" alt=""><br>思路也是比较清晰的，输入的flag长度为33，经过有规律的异或操作后讲结果与global处的字符串进行对比。<br>点进去看看global是什么<br><img src="/2018/03/29/安恒3月月赛-Re/02.png" alt=""><br><img src="/2018/03/29/安恒3月月赛-Re/03.png" alt=""><br>右键、data,变成直观的数组形式<br><img src="/2018/03/29/安恒3月月赛-Re/04.png" alt=""><br>可见，有些元素是不可见字符<br>选中这些数据，然后Shift+e将数据以方便写脚本的形式提取出来<br><img src="/2018/03/29/安恒3月月赛-Re/05.png" alt=""><br>注意不要多取后面的0，也不要少取。<br>然后就是写脚本了，这个脚本相对来说稍微不好写一点，注意逆序操作和添补第一个字符，如下：</p>
+<pre><code>g = [0x66,0x0A,0x6B,0x0C,0x77,0x26,0x4F,0x2E,0x40,0x11,0x78,0x0D,0x5A,0x3B,0x55,0x11,0x70,0x19,0x46,0x1F,0x76,0x22,0x4D,0x23,0x44,0x0E,0x67,0x06,0x68,0x0F,0x47,0x32,0x4F]
+length = len(g)
+ret = &quot;&quot;
+for i in range(1,length)[::-1]:
+    ret += chr(g[i]^g[i-1])    #逆序操作
+print (chr(g[0]) + ret[::-1])
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
+运行结果：flag{QianQiuWanDai_YiTongJiangHu}
+</code></pre><p>我当时做的时候，由于不知道怎么方便的处理global数组的数据，所以没有继续做下去，积累经验喽。<br>还有，学会熟练的使用[::-1]这个利器。</p>
+<h2 id="二、RSA"><a href="#二、RSA" class="headerlink" title="二、RSA"></a>二、RSA</h2><p><a href="https://pan.baidu.com/s/1DQn1vYe3w4UfKprSUGH8DQ" target="_blank" rel="external">下载链接</a><br>刚开始着手做RSA类型的题目，因为没有配好专门解这类题目的环境，在这里更多的是利用工具来解。<br>先简单阐述下RSA密钥体制。</p>
+<blockquote>
+<p>RSA算法涉及三个参数 N，e，d<br>其中N是两个大素数p，q的乘积，即模数N = p <em> q<br>计算φ = (p−1) </em> (q−1) 即N的欧拉函数，然后选择一个e (1&lt;e&lt;φ)，且e和φ互质<br>取e的模反数为d，计算方法: e * d ≡ 1 (mod φ)<br>对明文m进行加密：c = pow(m, e, N)，得到的c即为密文<br>对密文c进行解密，m = pow(c, d, N)，得到的m即为明文<br>一般称（N，e)为公钥   （N，d)为私钥</p>
+</blockquote>
+<p>参数整理：<br>p 和 q ：大整数N的两个因子（factor）<br>N：大整数N，我们称之为模数（modulus)<br>e 和 d：互为模反数的两个指数（exponent）<br>c：密文  m：明文，这里一般指的是一个十进制的数</p>
+<p>CTF中的RSA题目一般是将flag进行加密，然后把密文（即c）和其他一些你解题需要的信息一起给你，你需要克服重重难关，去解密密文c，得到flag（即m），题型有很多种，这里写的是最常见的：出题人会给你一个公钥文件（通常是以.pem或.pub结尾的文件）和密文（通常叫做flag.enc之类的），你需要分析公钥，提取出（N，e），通过各种攻击手段恢复私钥，然后去解密密文得到flag。 所以这里介绍的方法可能不会适用于任何解密RSA的场合。</p>
+<p>打开文件<br><img src="/2018/03/29/安恒3月月赛-Re/06.png" alt=""><br>flag.enc里面是密文<br><img src="/2018/03/29/安恒3月月赛-Re/07.png" alt=""><br>pub.key是公钥文件<br><img src="/2018/03/29/安恒3月月赛-Re/08.png" alt=""><br>这里用 在线Rsa公私钥解析网站 <a href="http://tool.chacuo.net/cryptrsakeyparse" target="_blank" rel="external">http://tool.chacuo.net/cryptrsakeyparse</a><br><img src="/2018/03/29/安恒3月月赛-Re/09.png" alt=""><br>解析出模数N和指数e<br>N: C0332C5C64AE47182F6C1C876D42336910545A58F7EEFEFC0BCAAF5AF341CCDD<br>e: 65537<br>然后用 大数分解网站factordb <a href="http://factordb.com/" target="_blank" rel="external">http://factordb.com/</a> 分解N<br>发现直接分解十六进制的N不成功，先把N转换成十进制<br><img src="/2018/03/29/安恒3月月赛-Re/10.png" alt=""><br>N: 86934482296048119190666062003494800588905656017203025617216654058378322103517<br><img src="/2018/03/29/安恒3月月赛-Re/11.png" alt=""><br>分解成功<br>p: 285960468890451637935629440372639283459<br>q: 304008741604601924494328155975272418463<br>现在可以根据pq计算出d,这里利用一个小工具RSAtool<br><img src="/2018/03/29/安恒3月月赛-Re/12.png" alt=""><br>d: 81176168860169991027846870170527607562179635470395365333547868786951080991441</p>
+<p>到现在就可以用公式 m = c^d mod N 解出明文了</p>
+<pre><code>python2.7脚本：
+# m = open(&apos;E:\\flag.enc&apos;).read().encode(&apos;hex&apos;)
+# print m  4196c0594a5e000a96b878b67cd724795b13a8f2ca54da06d0f19c28be689b62
+mm = 0x4196c0594a5e000a96b878b67cd724795b13a8f2ca54da06d0f19c28be689b62
+d = 81176168860169991027846870170527607562179635470395365333547868786951080991441
+n = 86934482296048119190666062003494800588905656017203025617216654058378322103517
+c = pow(mm,d,n)
+# print c  4618144028027957675862906963888332345633248954043303780331531906089123082
+# print hex(c)   0x29d207b7a521e08e4e6180600666c61677b646563727970745f3235367d0aL
+print (&apos;0&apos;+hex(c)[2:][:-1]).decode(&quot;hex&quot;)
 
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/01/Leooel的2017/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-数据结构-知识回顾" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/27/数据结构-知识回顾/">数据结构 知识回顾</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/27/数据结构-知识回顾/" class="archive-article-date">
-  	<time datetime="2017-12-27T13:13:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>拥抱被我冷落在角落的数据结构吧!</p>
-        
-          <a class="article-more-a" href="/2017/12/27/数据结构-知识回顾/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C艹</a>
-        		</li>
-      		
-		</ul>
-	</div>
+运行结果： � {zR�� flag{decrypt_256}
+</code></pre><p>如果遇到明文是一串数字的情况，也可以用小工具 Big Integer Calculator 来计算明文<br><img src="/2018/03/29/安恒3月月赛-Re/13.png" alt=""></p>
+<p>然后flag就是flag{decrypt_256}了。</p>
+<p>总结一下：<br>解密RSA，要紧紧围绕e、d、N等关键参数与加密公式c = pow(m, e, N)和解密公式m = pow(c, d, N)进行。<br>官方wp链接 <a href="http://forum.91ctf.com/index.php/group/topic/id-51" target="_blank" rel="external">http://forum.91ctf.com/index.php/group/topic/id-51</a> 目前我还没搞好他的运行环境~~~<br>初出茅庐，介绍RSA不够系统全面，贴几个详细介绍链接:<br>CTF中RSA的常见攻击方法 <a href="https://www.anquanke.com/post/id/84632" target="_blank" rel="external">https://www.anquanke.com/post/id/84632</a><br>CTF中RSA题型解题思路及技巧 <a href="http://www.freebuf.com/articles/others-articles/161475.html" target="_blank" rel="external">http://www.freebuf.com/articles/others-articles/161475.html</a></p>
 
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/27/数据结构-知识回顾/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-校赛-Reverse-wp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/07/校赛-Reverse-wp/">校赛(Reverse) wp</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/07/校赛-Reverse-wp/" class="archive-article-date">
-  	<time datetime="2017-12-07T11:39:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>西普杯2017年中原工学院第四届信息安全与网络攻防竞赛 Reverse 题解(待完善)<br></p>
-        
-          <a class="article-more-a" href="/2017/12/07/校赛-Reverse-wp/#more">more >></a>
-        
-      
-
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -320,432 +277,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/07/校赛-Reverse-wp/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2018/03/29/安恒3月月赛-Re/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-Just-XXXX-XXXX" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/01/Just-XXXX-XXXX/">Just XXXX XXXX</a>
-    </h1>
   
-
-        
-        <a href="/2017/12/01/Just-XXXX-XXXX/" class="archive-article-date">
-  	<time datetime="2017-12-01T12:06:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>还好，只是最近有点压抑、有点虚。</p>
-        
-          <a class="article-more-a" href="/2017/12/01/Just-XXXX-XXXX/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/01/Just-XXXX-XXXX/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
+    <a href="/2018/03/28/Just-Three/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Just_Three</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    <article id="post-第十二周-Reverse题目简单整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/01/第十二周-Reverse题目简单整理/">第十二周 Reverse题目简单整理</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/01/第十二周-Reverse题目简单整理/" class="archive-article-date">
-  	<time datetime="2017-12-01T11:08:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>明天有个校赛，组长让我们简单整理下入坑以来所做的逆向题目类型。</p>
-        
-          <a class="article-more-a" href="/2017/12/01/第十二周-Reverse题目简单整理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/01/第十二周-Reverse题目简单整理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-第十一周-Base64-Base32-Base16" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/22/第十一周-Base64-Base32-Base16/">第十一周 Base64|Base32|Base16</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/22/第十一周-Base64-Base32-Base16/" class="archive-article-date">
-  	<time datetime="2017-11-22T05:36:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>来，了解一下Base家族。</p>
-        
-          <a class="article-more-a" href="/2017/11/22/第十一周-Base64-Base32-Base16/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/22/第十一周-Base64-Base32-Base16/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-第十周-透明-wcstok-wp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/17/第十周-透明-wcstok-wp/">第十周 透明&amp;&amp;wcstok() wp</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/17/第十周-透明-wcstok-wp/" class="archive-article-date">
-  	<time datetime="2017-11-16T23:48:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>分别是2016极客大挑战与2017 ISCC的题目<br>多做题，积累经验 Fuck the rest.</p>
-        
-          <a class="article-more-a" href="/2017/11/17/第十周-透明-wcstok-wp/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/17/第十周-透明-wcstok-wp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-第九周-第八届极客大挑战精选题目-wp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/">第九周 第八届极客大挑战精选题目 wp</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/" class="archive-article-date">
-  	<time datetime="2017-11-10T00:51:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>又是一周过去了，好快，简单总结下着这周学到的新姿势吧(Xortool)。<br>附：<a href="http://www.freebuf.com/sectool/94235.html" target="_blank" rel="external">CTF工具集合安装脚本操作姿势</a> </p>
-        
-          <a class="article-more-a" href="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/10/第九周-第八届极客大挑战精选题目-wp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-第八周-密码学相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/03/第八周-密码学相关/">第八周 密码学相关</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/03/第八周-密码学相关/" class="archive-article-date">
-  	<time datetime="2017-11-03T12:42:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这周开始接触密码学，简单总结下。</p>
-        
-          <a class="article-more-a" href="/2017/11/03/第八周-密码学相关/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/03/第八周-密码学相关/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-第七周分享会题目-wp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/26/第七周分享会题目-wp/">第七周分享会题目 wp</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/26/第七周分享会题目-wp/" class="archive-article-date">
-  	<time datetime="2017-10-26T07:24:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>第七周的题目。更换了一个IDA。F5大法好。是真强大。好久都没用OD了，一个F5全部解决。</p>
-        
-          <a class="article-more-a" href="/2017/10/26/第七周分享会题目-wp/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/26/第七周分享会题目-wp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+</nav>
 
 
 
@@ -753,9 +352,10 @@
 
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -778,8 +378,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
