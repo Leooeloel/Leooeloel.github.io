@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/14.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/15.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/16.png">
-<meta property="og:updated_time" content="2018-05-06T08:53:02.047Z">
+<meta property="og:updated_time" content="2018-05-06T09:10:18.412Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iscc2018 My math is bad">
 <meta name="twitter:description" content="在同伴看来很简单的一道题，到我这里却折腾了2、3天，才算勉强顺我的意。字符串s分段利用的理解、计算v1等8个数据的值，以及逆算flag这几个地方是我受阻的点。">
@@ -201,36 +201,23 @@
 27 * a + s -11 * b - c == 40179413815
 </code></pre><p>由于对数组在ida伪代码里的存在形式理解的不够全面，刚开始我没有想到把其他参数a,b,c和s联系理解，其实a,b,c包括后面分析到的v3,v4,v5,v6都是数组s的一部分，这可以通过观察参数名和双击进去查看对应.bss数据段看到，dword_6020A4、dword_6020A8、dword_6020AC、unk_6020B0、unk_6020B4、unk_6020B8、unk_6020BC都是数组s的一部分，并且重组s的时候要注意各个部分的顺序。<br><img src="/2018/05/06/iscc2018-My-math-is-bad/04.png" alt=""></p>
 <p>现在我们知道了，要想求出s，需要求出以上8个参数。很自然的过度到了下一个方程组，其中v3,v4,v5,v6是我们要求的，然而解出它们需要知道v1,v2,v7…v12的值，进而需要知道种子srand()的参数，用到了第一个方程组的解，那就先求第一个方程组吧。<br>在这里用在线解方程<a href="https://zh.numberempire.com/equationsolver.php" target="_blank" rel="external">https://zh.numberempire.com/equationsolver.php</a><br>先转化成符合要求的形式：</p>
+<pre><code>a*s-b*c=2652042832920173142,3*c+4*b-a-2*s=397958918,3*s*b-c*a=3345692380376715070,27*a+s-11*b-c=40179413815
+</code></pre><p><img src="/2018/05/06/iscc2018-My-math-is-bad/05.png" alt=""><br>然后解出：</p>
+<pre><code>a = 1801073242,s = 1869639009,b = 862734414,c = 829124174
+</code></pre><p>然后编写c脚本求v1,v2,v7…v12的值，如下：<br><img src="/2018/05/06/iscc2018-My-math-is-bad/06.png" alt=""><br>然后我兴高采烈的拿着得到的8个值去解第二个方程了，然后在线解得到的是分数，懵逼了。<br>后来经过小伙伴提醒，相同的C代码在Windows、Linux下运行得到的结果可能会不同，而这个程序本来就是Linux下的程序，遂复制到Linux下运行<br><img src="/2018/05/06/iscc2018-My-math-is-bad/07.png" alt=""><br>果然。于是</p>
 <blockquote>
-<p>a<em>s-b</em>c=2652042832920173142,3<em>c+4</em>b-a-2<em>s=397958918,3</em>s<em>b-c</em>a=3345692380376715070,27<em>a+s-11</em>b-c=40179413815</p>
+<p>v1 = 22,<br>v2 = 39,<br>v7 = 45,<br>v8 = 45,<br>v9 = 35,<br>v10 = 41,<br>v11 = 13,<br>v12 = 36</p>
 </blockquote>
-<p><img src="/2018/05/06/iscc2018-My-math-is-bad/05.png" alt=""><br>然后解出：</p>
-<blockquote>
-<p>a = 1801073242,s = 1869639009,b = 862734414,c = 829124174</p>
-</blockquote>
-<p>然后编写c脚本求v1,v2,v7…v12的值，如下：<br><img src="/2018/05/06/iscc2018-My-math-is-bad/06.png" alt=""><br>然后我兴高采烈的拿着得到的8个值去解第二个方程了，然后在线解得到的是分数，懵逼了。<br>后来经过小伙伴提醒，相同的C代码在Windows、Linux下运行得到的结果可能会不同，而这个程序本来就是Linux下的程序，遂复制到Linux下运行<br><img src="/2018/05/06/iscc2018-My-math-is-bad/07.png" alt=""><br>果然。于是</p>
-<pre><code>v1 = 22
-v2 = 39
-v7 = 45
-v8 = 45
-v9 = 35
-v10 = 41
-v11 = 13
-v12 = 36
-</code></pre><p>然后得到第二个方程组：</p>
+<p>然后得到第二个方程组：</p>
 <pre><code>v6 * 39 + v3 * 22 - v4 - v5 == 61799700179
 v6 + v3 + v5 * 45 - v4 * 45 == 48753725643
 v3 * 35 + v4 * 41 - v5 -v6 == 59322698861
 v5 * 36 + v3 - v4 - v6 * 13 == 51664230587
 </code></pre><p>转化形式：</p>
-<blockquote>
-<p>v6<em>39+v3</em>22-v4-v5=61799700179,v6+v3+v5<em>45-v4</em>45=48753725643,v3<em>35+v4</em>41-v5-v6=59322698861,v5<em>36+v3-v4-v6</em>13=51664230587</p>
-</blockquote>
-<p>解出：</p>
-<blockquote>
-<p>v3=811816014,v4=828593230,v5=1867395930,v6=1195788129</p>
-</blockquote>
-<p>然后调整参数顺序(s: s a c b v3 v4 v5 v6)，注意是int型拿取数据，然后得到s:<br><img src="/2018/05/06/iscc2018-My-math-is-bad/08.png" alt=""></p>
+<pre><code>v6*39+v3*22-v4-v5=61799700179,v6+v3+v5*45-v4*45=48753725643,v3*35+v4*41-v5-v6=59322698861,v5*36+v3-v4-v6*13=51664230587
+</code></pre><p>解出：</p>
+<pre><code>v3=811816014,v4=828593230,v5=1867395930,v6=1195788129
+</code></pre><p>然后调整参数顺序(s: s a c b v3 v4 v5 v6)，注意是int型拿取数据，然后得到s:<br><img src="/2018/05/06/iscc2018-My-math-is-bad/08.png" alt=""></p>
 <blockquote>
 <p>s: ampoZ2ZkNnk1NHl3NTc0NTc1Z3NoaGFG</p>
 </blockquote>
