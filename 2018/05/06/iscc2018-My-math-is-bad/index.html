@@ -6,14 +6,36 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Archives | Leooel</title>
+  <title>iscc2018 My math is bad | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leooel">
-<meta property="og:url" content="http://leo.dropsec.xyz/archives/page/4/index.html">
+  <meta name="description" content="在同伴看来很简单的一道题，到我这里却折腾了2、3天，才算勉强顺我的意。字符串s分段利用的理解、计算v1等8个数据的值，以及逆算flag这几个地方是我受阻的点。">
+<meta name="keywords" content="二进制逆向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iscc2018 My math is bad">
+<meta property="og:url" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/index.html">
 <meta property="og:site_name" content="Leooel">
+<meta property="og:description" content="在同伴看来很简单的一道题，到我这里却折腾了2、3天，才算勉强顺我的意。字符串s分段利用的理解、计算v1等8个数据的值，以及逆算flag这几个地方是我受阻的点。">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/04.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/05.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/06.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/07.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/08.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/09.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/10.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/11.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/13.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/12.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/14.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/15.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/16.png">
+<meta property="og:updated_time" content="2018-05-06T08:53:02.047Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leooel">
+<meta name="twitter:title" content="iscc2018 My math is bad">
+<meta name="twitter:description" content="在同伴看来很简单的一道题，到我这里却折腾了2、3天，才算勉强顺我的意。字符串s分段利用的理解、计算v1等8个数据的值，以及逆算flag这几个地方是我受阻的点。">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -151,36 +173,172 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-iscc2018-My-math-is-bad" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iscc2018 My math is bad
+    </h1>
+  
+
+        
+        <a href="/2018/05/06/iscc2018-My-math-is-bad/" class="archive-article-date">
+  	<time datetime="2018-05-06T02:41:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-06</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在同伴看来很简单的一道题，到我这里却折腾了2、3天，才算勉强顺我的意。<br>字符串s分段利用的理解、计算v1等8个数据的值，以及逆算flag这几个地方是我受阻的点。<br><a id="more"></a><br><a href="https://pan.baidu.com/s/18DSNnNqanTJ9uyZvgg0xMg" target="_blank" rel="external">下载链接</a><br>根据题目hint可知，本题可能会关系到数学计算。将下载得到的elf直接拉到ida查看关键伪代码：<br><img src="/2018/05/06/iscc2018-My-math-is-bad/01.png" alt=""><br>先查看函数sub_400766()，需要返回1<br><img src="/2018/05/06/iscc2018-My-math-is-bad/02.png" alt=""><br>输入的s长32，!=当作==看待才能使函数返回1<br>再看一下函数sub_400B16()<br><img src="/2018/05/06/iscc2018-My-math-is-bad/03.png" alt=""><br>显示是在输出flag。想得到flag必须首先求出s (这道题到Linux下运行输入正确s就会得到flag，我原本准备求出s后，再根据这个函数操作写个脚本得到flag，以为操作很简单，就是一个异或和求余，然后忽略了一些细节导致得不到flag)</p>
+<p>回到第一个函数先求S,显然是先解一组四元一次方程(为方便查看将第一个if里的参数一次重命名为a,s,b,c)：</p>
+<pre><code>a * s - b * C == 2652042832920173142
+3 * c + 4 * b - a -2 * s == 397958918
+3 * s * b - c * a == 3345692380376715070
+27 * a + s -11 * b - c == 40179413815
+</code></pre><p>由于对数组在ida伪代码里的存在形式理解的不够全面，刚开始我没有想到把其他参数a,b,c和s联系理解，其实a,b,c包括后面分析到的v3,v4,v5,v6都是数组s的一部分，这可以通过观察参数名和双击进去查看对应.bss数据段看到，dword_6020A4、dword_6020A8、dword_6020AC、unk_6020B0、unk_6020B4、unk_6020B8、unk_6020BC都是数组s的一部分，并且重组s的时候要注意各个部分的顺序。<br><img src="/2018/05/06/iscc2018-My-math-is-bad/04.png" alt=""></p>
+<p>现在我们知道了，要想求出s，需要求出以上8个参数。很自然的过度到了下一个方程组，其中v3,v4,v5,v6是我们要求的，然而解出它们需要知道v1,v2,v7…v12的值，进而需要知道种子srand()的参数，用到了第一个方程组的解，那就先求第一个方程组吧。<br>在这里用在线解方程<a href="https://zh.numberempire.com/equationsolver.php" target="_blank" rel="external">https://zh.numberempire.com/equationsolver.php</a><br>先转化成符合要求的形式：</p>
+<blockquote>
+<p>a<em>s-b</em>c=2652042832920173142,3<em>c+4</em>b-a-2<em>s=397958918,3</em>s<em>b-c</em>a=3345692380376715070,27<em>a+s-11</em>b-c=40179413815</p>
+</blockquote>
+<p><img src="/2018/05/06/iscc2018-My-math-is-bad/05.png" alt=""><br>然后解出：</p>
+<blockquote>
+<p>a = 1801073242,s = 1869639009,b = 862734414,c = 829124174</p>
+</blockquote>
+<p>然后编写c脚本求v1,v2,v7…v12的值，如下：<br><img src="/2018/05/06/iscc2018-My-math-is-bad/06.png" alt=""><br>然后我兴高采烈的拿着得到的8个值去解第二个方程了，然后在线解得到的是分数，懵逼了。<br>后来经过小伙伴提醒，相同的C代码在Windows、Linux下运行得到的结果可能会不同，而这个程序本来就是Linux下的程序，遂复制到Linux下运行<br><img src="/2018/05/06/iscc2018-My-math-is-bad/07.png" alt=""><br>果然。于是</p>
+<pre><code>v1 = 22
+v2 = 39
+v7 = 45
+v8 = 45
+v9 = 35
+v10 = 41
+v11 = 13
+v12 = 36
+</code></pre><p>然后得到第二个方程组：</p>
+<pre><code>v6 * 39 + v3 * 22 - v4 - v5 == 61799700179
+v6 + v3 + v5 * 45 - v4 * 45 == 48753725643
+v3 * 35 + v4 * 41 - v5 -v6 == 59322698861
+v5 * 36 + v3 - v4 - v6 * 13 == 51664230587
+</code></pre><p>转化形式：</p>
+<blockquote>
+<p>v6<em>39+v3</em>22-v4-v5=61799700179,v6+v3+v5<em>45-v4</em>45=48753725643,v3<em>35+v4</em>41-v5-v6=59322698861,v5<em>36+v3-v4-v6</em>13=51664230587</p>
+</blockquote>
+<p>解出：</p>
+<blockquote>
+<p>v3=811816014,v4=828593230,v5=1867395930,v6=1195788129</p>
+</blockquote>
+<p>然后调整参数顺序(s: s a c b v3 v4 v5 v6)，注意是int型拿取数据，然后得到s:<br><img src="/2018/05/06/iscc2018-My-math-is-bad/08.png" alt=""></p>
+<blockquote>
+<p>s: ampoZ2ZkNnk1NHl3NTc0NTc1Z3NoaGFG</p>
+</blockquote>
+<p>(上面这个脚本倒取数据的时候有点费事，文末附一个简单的脚本)</p>
+<p>然后Linux下运行程序，输入s,得到flag：<br><img src="/2018/05/06/iscc2018-My-math-is-bad/09.png" alt=""></p>
+<blockquote>
+<p>flag： flag{th3_Line@r_4lgebra_1s_d1fficult!}</p>
+</blockquote>
+<hr>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p><strong>一、</strong></p>
+<p>求v1,v2,v7…v12的值的时候除了写脚本还有一个简单快捷方法，就是结合ida与gdb跟出来。需要在gdb中下个断点，下载哪里好呢?<br><img src="/2018/05/06/iscc2018-My-math-is-bad/10.png" alt=""><br>v12赋完值后，开始比较，那就在第一个跳转那下断吧<br><img src="/2018/05/06/iscc2018-My-math-is-bad/11.png" alt=""><br>第一个箭头处是v12赋值，设断在第一个jnz处，地址400A69，然后需要输入s,需要注意的是执行到赋值这里的前提是第一组方程解出来的部分参数要求输入正确，也就是s的前16位需要输入正确，这里输入：ampoZ2ZkNnk1NHl31111111111111111，然后断下<br><img src="/2018/05/06/iscc2018-My-math-is-bad/13.png" alt=""><br>观察ida变量定义处<br><img src="/2018/05/06/iscc2018-My-math-is-bad/12.png" alt=""><br>变量是连续的，查看内存地址rsp+0x20往后100个内存单元的内容，应该会找到v1,v2,v7…v12的值，并且因为种子是固定的，所以它们的值是不变的。<br><img src="/2018/05/06/iscc2018-My-math-is-bad/14.png" alt=""></p>
+<p>0x16,0x27,0x2d,0x2d,0x23,0x29,0xd,0x24 即 22,39,45,45,35,41,13,36</p>
+<p><strong>二、</strong></p>
+<p>补一下逆求flag的脚本：</p>
+<p><img src="/2018/05/06/iscc2018-My-math-is-bad/15.png" alt=""><br>注意数据字节大小的转化，还有s数组之后还有一些未知数据，一般情况下是0，四个四个取数据，到最后需要用0补够四个。<br><img src="/2018/05/06/iscc2018-My-math-is-bad/16.png" alt=""></p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+int main()
+{
+    int v0,i;
+    char ss[60];
+    char b[60];
+    int a[] = {39,236,19,1,7,6,52,195,72,199,223,177,159,219,25,45,4,241,145,10,162,210,21,213,237,53,144,220,212,60,63,244};
+    char s[] = {97,109,112,111,90,50,90,107,78,110,107,49,78,72,108,51,78,84,99,48,78,84,99,49,90,51,78,111,97,71,70,71,0,0,0,0,0};
+    printf(&quot;%s&quot;,&quot;flag{&quot;);  
+    for ( i = 0; i &lt; 32; ++i )
+    {
+        srand(*(int*)(&amp;s[i]));  //重点，刚开始被我忽略了
+        v0 = rand();
+        b[i] = (0xff &amp; a[i]) ^ v0 % 255;
+        printf(&quot;%c&quot;,b[i]);
+    }
+    printf(&quot;%s&quot;,&quot;}&quot;);
+    return 0;
+}
+
+运行结果： flag{th3_Line@r_4lgebra_1s_d1fficult!}
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>灵活、充分理解数组在ida伪代码中的存在形式。</li>
+<li>明确C代码在Windows与Linux下的区别。</li>
+<li>伪代码小细节(数据存储大小变化…)不能忽略。</li>
+<li>观察、动手相结合，即ida与gdb相结合。</li>
+</ol>
+<p>附上文小脚本: rehex</p>
+<pre><code>#功能样例(python 2.7)：
+#输入：0x6f706d61 0x6b5a325a 
+#输出：0x61,0x6d,0x70,0x6f,0x5a,0x32,0x5a,0x6b
+#by: @pq 2018/05/06
+
+def get(txt):
+    txt_ = txt.replace(&apos;0x&apos;,&apos;&apos;)
+    x = txt_[0::2]
+    y = txt_[1::2]
+    l = []
+    for i,j in zip(x,y):
+        l.append(&apos;0x&apos;+i+j)
+    l.reverse()
+    return l
+
+if __name__ == &apos;__main__&apos;:
+    l = input(&apos;请输入待转化数据，格式：0xaaaaaaaa 0xaaaaaaaa ...\n&apos;)
+    s = l.split(&apos; &apos;)
+    #print s
+    the_list = []
+
+    for n in s:
+        for m in get(n):
+            the_list.append(m)
+    print (&apos;,&apos;.join(the_list))
+</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/01/实验吧逆向脱壳-汇总/" class="archive-article-date">
-  	<time datetime="2017-09-01T06:05:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/01/实验吧逆向脱壳-汇总/">实验吧逆向脱壳 汇总</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,364 +350,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2018/05/06/iscc2018-My-math-is-bad/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/31/实验吧逆向破解-汇总/" class="archive-article-date">
-  	<time datetime="2017-08-31T12:40:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/31/实验吧逆向破解-汇总/">实验吧逆向破解 汇总</a>
-    </h1>
+  
+    <a href="/2018/04/30/ciscn2017-填数游戏/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ciscn2017 填数游戏</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/28/OK-天津/" class="archive-article-date">
-  	<time datetime="2017-08-28T13:29:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/28/OK-天津/">OK 天津</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/24/CrackMe-008/" class="archive-article-date">
-  	<time datetime="2017-08-24T02:48:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/24/CrackMe-008/">CrackMe 008</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/23/CrackMe-007-补/" class="archive-article-date">
-  	<time datetime="2017-08-23T14:12:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/23/CrackMe-007-补/">CrackMe 007 补</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/" class="archive-article-date">
-  	<time datetime="2017-08-22T12:57:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/">CrackMe 006 占位（总结五种语言按钮事件的找法）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/21/CrackMe-005-占位/" class="archive-article-date">
-  	<time datetime="2017-08-21T13:34:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/21/CrackMe-005-占位/">CrackMe 005 占位 {{{(&gt;_&lt;)}}}</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/20/CrackMe-004/" class="archive-article-date">
-  	<time datetime="2017-08-20T13:03:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/20/CrackMe-004/">CrackMe 004</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/19/CrackMe-003/" class="archive-article-date">
-  	<time datetime="2017-08-19T07:13:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/19/CrackMe-003/">CrackMe 003</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/18/CrackMe-002/" class="archive-article-date">
-  	<time datetime="2017-08-18T13:45:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/18/CrackMe-002/">CrackMe 002</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/3/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/5/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -573,8 +455,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
