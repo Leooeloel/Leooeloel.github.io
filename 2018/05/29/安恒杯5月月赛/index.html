@@ -6,14 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Leooel</title>
+  <title>安恒杯5月月赛 | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leooel">
-<meta property="og:url" content="http://leo.dropsec.xyz/page/7/index.html">
+  <meta name="description" content="前一阵子比较乱，PWN的学习、HNCTF、甲骨文培训加上对大三时间安排的初步构想一下子涌了过来…然后持续低迷了十天多一点，直到现在。桌面攒下了好多需要处理的东西…">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安恒杯5月月赛">
+<meta property="og:url" content="http://leo.dropsec.xyz/2018/05/29/安恒杯5月月赛/index.html">
 <meta property="og:site_name" content="Leooel">
+<meta property="og:description" content="前一阵子比较乱，PWN的学习、HNCTF、甲骨文培训加上对大三时间安排的初步构想一下子涌了过来…然后持续低迷了十天多一点，直到现在。桌面攒下了好多需要处理的东西…">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/29/安恒杯5月月赛/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/29/安恒杯5月月赛/04.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/05/29/安恒杯5月月赛/05.png">
+<meta property="og:updated_time" content="2018-05-29T12:53:04.320Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leooel">
+<meta name="twitter:title" content="安恒杯5月月赛">
+<meta name="twitter:description" content="前一阵子比较乱，PWN的学习、HNCTF、甲骨文培训加上对大三时间安排的初步构想一下子涌了过来…然后持续低迷了十天多一点，直到现在。桌面攒下了好多需要处理的东西…">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2018/05/29/安恒杯5月月赛/03.png">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -151,35 +160,79 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-年少无为，卖马为生" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-安恒杯5月月赛" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/08/年少无为，卖马为生/">年少无为，卖马为生</a>
+    <h1 class="article-title" itemprop="name">
+      安恒杯5月月赛
     </h1>
   
 
         
-        <a href="/2017/07/08/年少无为，卖马为生/" class="archive-article-date">
-  	<time datetime="2017-07-08T12:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
+        <a href="/2018/05/29/安恒杯5月月赛/" class="archive-article-date">
+  	<time datetime="2018-05-29T10:40:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/2017/07/08/年少无为，卖马为生/1.jpg" alt=""></p>
-<p>前几天在浏览博客的时候无意间看到有人用“年少无为，卖马为生”来介绍自己，顿时心里五味陈杂…<br></p>
-        
-          <a class="article-more-a" href="/2017/07/08/年少无为，卖马为生/#more">more >></a>
-        
+        <p>前一阵子比较乱，PWN的学习、HNCTF、甲骨文培训加上对大三时间安排的初步构想一下子涌了过来…然后持续低迷了十天多一点，直到现在。<br>桌面攒下了好多需要处理的东西…</p>
+<a id="more"></a>
+<h2 id="一、baby-writeup"><a href="#一、baby-writeup" class="headerlink" title="一、baby_writeup"></a>一、baby_writeup</h2><p><a href="https://pan.baidu.com/s/1G7h1pmGsreyQ8nsSau93kQ" target="_blank" rel="external">下载链接</a><br>其实算是逆向题目，在这里划归密码。<br>首先改个方便点的名字:123，<code>file 123</code>，ELF 64-bit，一般下载下来的文件还不可以直接运行 那就<code>ls -l 123</code>查看一下文件权限 若没有可执行权限 用<code>chmod 777 123</code>改下权限 然后就可以正常运行了 运行后输入一串字符结束  <code>strings 123</code>搜索字符串 发现有flag字符<br><a href="01.png"></a><br>然后到ida里去看一下 通过关键字符flag找到关键伪代码<br><a href="02.png"></a><br>基本思路就是 长16的字符串经过sub_400756的处理与byte_601100处的字符比较 相等即输出flag(输入的字符串)  这种题目见的也是比较多的<br>常规思路就是去分析函数sub_400756,然后逆着写脚本得到flag，但是遇到复杂一点的函数分析就比较困难了。<br>在这里提供两种思路。省时方法一：shift+e提取出byte_601100处的数据后发现大部分是不可见字符，输入的可见字符串经过函数操作变成了不可见字符串，把不可见字符变成可见字符的常见处理有两种：hex和base64</p>
+<blockquote>
+<ul>
+<li>Base64可以将任意的字节数组数据通过算法生成只有（英文大小写，数字，+，/）共64种字符的字符串数据；相当于将任意内容转换为可见字符串表示。</li>
+<li>Hex将每一个字节表示的十六进制表示的内容，用字符串来显示。将不可见的，复杂的字节数组数据，转换为可显示的字符串数据,类似于Base64编码算法.</li>
+<li>区别：Base64将三个字节转换为四个字符，Hex将三个字节转换为六个字节</li>
+</ul>
+</blockquote>
+<p>如果你有这样的想法，那已经说明你很幸运，不管对不对，试试嘛，搞不好一血就是你的。</p>
+<p>用shift+e提取出hex形式的数据<code>6DAB1EEB88B9B6179B7ACB7E</code><br>decode(hex())了一下发现还有很多不可见字符 所以将目标锁定base6<br>4</p>
+<p>然后抄工具吧，今天咱们不用在线工具了(不可见字符用在线工具不太方便又懒的写脚本)，用 burpsuite。</p>
+<p>思路：将hex数据先变成对应ascii字符，然后再encode(base64()) 即先decode(hex()) 再encode(base64())<br><img src="/2018/05/29/安恒杯5月月赛/03.png" alt=""><br>得到flag。</p>
+<p>方法二：分析函数sub_400756<br>哇，好复杂，好乱，看不懂…<br>幸好发现了关键点<br><img src="/2018/05/29/安恒杯5月月赛/04.png" alt=""><br>flag的长度除以4乘以3，这不是base64的敏感操作嘛？只不过是decode(base64())而已  那基本也就是了  如果你还是有点怀疑的话那就在函数这下个断点  随便输入点东西验证一下喽<br>呐，输入1234567891234567后经过函数出来后是0x5df7fcaee7f86dd7，与decode(base64())后的值相等<br><img src="/2018/05/29/安恒杯5月月赛/05.png" alt=""></p>
+<h2 id="二、听说这题是rsa的续集"><a href="#二、听说这题是rsa的续集" class="headerlink" title="二、听说这题是rsa的续集"></a>二、听说这题是rsa的续集</h2><p><a href="https://pan.baidu.com/s/18TyNk8RIusx6tIE_8mhqZw" target="_blank" rel="external">下载链接</a><br>RSA题目，原本计划还是按照老的套路来解，发现N太大，分解不了。只能寻找利器。找到利器然后就结束了。</p>
+<p>利器：<a href="https://github.com/pablocelayes/rsa-wiener-attack" target="_blank" rel="external">rsa-wiener-attack-master</a><br>然后在RSAwienerHacker中简单编辑一下运行得到d<br><a href="06.png"></a></p>
+<p>d:8920758995414587152829426558580025657357328745839747693739591820283538307445<br>然后带入d 运行(python2.7)得到flag<br><a href="07.png"></a></p>
+<p>注：notepad++ 运行复制过来的代码时，默认tab不等于4个空格，会出现IndentationError: unindent does not match any outer indentation level错误，解决方法是：设置-首选项-语言-勾上’替换为空格’就ok了。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -190,7 +243,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CTF</a>
         		</li>
       		
 		</ul>
@@ -199,200 +252,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/08/年少无为，卖马为生/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2018/05/29/安恒杯5月月赛/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-搭建博客后的资源整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/08/搭建博客后的资源整合/">搭建博客后的资源整合</a>
-    </h1>
   
-
-        
-        <a href="/2017/07/08/搭建博客后的资源整合/" class="archive-article-date">
-  	<time datetime="2017-07-08T05:14:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对于我这样的小白，从开始搭建博客到搭建好，到配置博客的小功能，，再到基本熟悉用Markdown语法写文章并熟悉上传文章的命令，差不多用了三四天的时间。下面就简单整合一下此过程中接触到的一些较为有用的资源。。。<br></p>
-        
-          <a class="article-more-a" href="/2017/07/08/搭建博客后的资源整合/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具or软件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/08/搭建博客后的资源整合/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
+    <a href="/2018/05/14/Jarvis-OJ-PWN-入门学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Jarvis OJ PWN 入门学习</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    <article id="post-Markdown 使用语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/06/Markdown 使用语法/">Markdown 使用语法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/06/Markdown 使用语法/" class="archive-article-date">
-  	<time datetime="2017-07-06T12:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Markdown是一个轻量、简单、通用的文档快速排版的标记语言</p>
-<p>Markdown的语法简洁明了、学习容易，而且功能比纯文本更强，因此有很多人用它写博客。世界上最流行的博客平台WordPress和大型CMS如Joomla、Drupal都能很好的支持Markdown。完全采用Markdown编辑器的博客平台有Ghost和Typecho。<br></p>
-        
-          <a class="article-more-a" href="/2017/07/06/Markdown 使用语法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工具or软件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/06/Markdown 使用语法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Hello-Word" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/04/Hello-Word/">Hello Word</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/04/Hello-Word/" class="archive-article-date">
-  	<time datetime="2017-07-04T13:53:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在实验室鹏哥和某些学长的推荐和帮助下，这个博客终于搭建起来了。<br></p>
-        
-          <a class="article-more-a" href="/2017/07/04/Hello-Word/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂儿</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/04/Hello-Word/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+</nav>
 
 
 
@@ -400,9 +327,10 @@
 
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
-    </nav>
+  
+
+  
+
   
 
 
@@ -425,8 +353,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
