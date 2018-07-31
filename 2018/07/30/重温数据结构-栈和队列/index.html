@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://leo.dropsec.xyz/2018/07/30/重温数据结构-栈和队列/index.html">
 <meta property="og:site_name" content="Leooel">
 <meta property="og:description" content="自认为听起来的“堆栈”和看起来的“殷墟”一样，让人着迷。">
-<meta property="og:updated_time" content="2018-07-30T12:40:57.634Z">
+<meta property="og:updated_time" content="2018-07-31T12:55:07.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重温数据结构-栈和队列">
 <meta name="twitter:description" content="自认为听起来的“堆栈”和看起来的“殷墟”一样，让人着迷。">
@@ -312,7 +312,7 @@ Status DeQueue (SqQueue &amp;Q, QElemType &amp;e) {
     Q.front = (Q.front + 1) % MAXQSIZE;
     return OK;
 }
-</code></pre><h3 id="题集经典例题："><a href="#题集经典例题：" class="headerlink" title="题集经典例题："></a>题集经典例题：</h3><p>3.15 假设以顺序存储结构实现一个双向栈，即在一维数组的存储空间中存在着两个栈，它们的 栈底分别设在数组的两个端点。 试编写实现这个双向栈 tws 的三个操作： 初始化 inistack(tws) 、 入栈 push(tws,i,x) 和出栈 pop(tws,i) 的算法，其中 i 为 0 或 1，用以分别指示设在数组两端的 两个栈</p>
+</code></pre><h3 id="题集经典例题："><a href="#题集经典例题：" class="headerlink" title="题集经典例题："></a>题集经典例题：</h3><p>3.15 假设以顺序存储结构实现一个双向栈，即在一维数组的存储空间中存在着两个栈，它们的栈底分别设在数组的两个端点。 试编写实现这个双向栈 tws 的三个操作： 初始化 inistack(tws) 、 入栈 push(tws,i,x) 和出栈 pop(tws,i) 的算法，其中 i 为 0 或 1，用以分别指示设在数组两端的 两个栈</p>
 <pre><code>typedef struct {
     Elemtype * base[2];
     Elemtype * top[2];
@@ -613,6 +613,15 @@ Status DeCyQueue (CyQueue &amp;Q, int x) //带length域的循环队列出队算�
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/07/31/重温数据结构-线性表/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          重温数据结构-线性表
+        
+      </div>
+    </a>
   
   
     <a href="/2018/05/29/安恒杯5月月赛/" id="article-nav-older" class="article-nav-link-wrap">
