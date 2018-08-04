@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://leo.dropsec.xyz/2018/07/31/重温数据结构-线性表/index.html">
 <meta property="og:site_name" content="Leooel">
 <meta property="og:description" content="线性表是最基本、最简单、也是最常用的一种数据结构。">
-<meta property="og:updated_time" content="2018-07-31T13:00:46.717Z">
+<meta property="og:updated_time" content="2018-08-01T02:50:58.537Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重温数据结构-线性表">
 <meta name="twitter:description" content="线性表是最基本、最简单、也是最常用的一种数据结构。">
@@ -393,6 +393,35 @@ Status ListDelete_DuL(DuLinkList &amp;L, int i, ElemType &amp;e) {
     }
     return OK;
 }
+</code></pre><p>2.22 试写一算法，对单链表实现就地逆置。</p>
+<pre><code>Status ListReverse_L(LinkList &amp;L)
+{
+    LinkList p,q;
+    p = L -&gt; next;
+    L -&gt; next = NULL;
+    while(p){
+        q = p;
+        p = p -&gt; next;
+        q -&gt; next = L -&gt; next;
+        L -&gt; next = q;
+    }
+    return OK;
+}
+</code></pre><p>2.25 假设以两个元素依值递增有序排列的线性表 A和 B 分别表示两个集合（即同一表中的元素 值各不相同） ，现要求另辟空间构成一个线性表 C，其元素为 A 和 B中元素的交集，且表 C中的 元素依值递增有序排列。试对顺序表编写求 C的算法。 </p>
+<pre><code>Status SqList_Insert(SqList A, SqList B, SqList &amp;C)
+{
+    int i = 1, j = 1, k = 0;
+    while(A.elem[i] &amp;&amp; B.elem[j])
+    {
+        if(A.elem[i] &lt; B.elem[j]) i++;
+        if(A.elem[i] &gt; B.elem[j]) j++;
+        if(A.elem[i] = B.elem[j]) {
+            C.elem[k++] = B.elem[j];
+            i++; j++;
+        }
+    }
+    return OK;
+}
 </code></pre>
       
 
@@ -506,6 +535,15 @@ Status ListDelete_DuL(DuLinkList &amp;L, int i, ElemType &amp;e) {
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/08/04/重温数据结构-串-KMP/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          重温数据结构-串(KMP)
+        
+      </div>
+    </a>
   
   
     <a href="/2018/07/30/重温数据结构-栈和队列/" id="article-nav-older" class="article-nav-link-wrap">
