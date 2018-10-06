@@ -6,14 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Leooel</title>
+  <title>CSAPP-第一章 | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leooel">
-<meta property="og:url" content="http://leo.dropsec.xyz/page/2/index.html">
+  <meta name="description" content="Leooel和CSAPP(即Computer Systems: A Programmer’s Perspective)的计算机系统漫游。">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSAPP-第一章">
+<meta property="og:url" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/index.html">
 <meta property="og:site_name" content="Leooel">
+<meta property="og:description" content="Leooel和CSAPP(即Computer Systems: A Programmer’s Perspective)的计算机系统漫游。">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/02.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/03.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/04.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/05.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/06.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/08.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/09.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/10.png">
+<meta property="og:updated_time" content="2018-10-06T14:56:05.552Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leooel">
+<meta name="twitter:title" content="CSAPP-第一章">
+<meta name="twitter:description" content="Leooel和CSAPP(即Computer Systems: A Programmer’s Perspective)的计算机系统漫游。">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -151,34 +166,131 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-安恒3月月赛-Re" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-CSAPP-第一章" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/29/安恒3月月赛-Re/">安恒3月月赛 Re</a>
+    <h1 class="article-title" itemprop="name">
+      CSAPP-第一章
     </h1>
   
 
         
-        <a href="/2018/03/29/安恒3月月赛-Re/" class="archive-article-date">
-  	<time datetime="2018-03-29T10:40:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-29</time>
+        <a href="/2018/10/06/CSAPP-第一章/" class="archive-article-date">
+  	<time datetime="2018-10-06T11:54:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>自己真的太菜了，什么也不想说了。 python[::-1] + RSA<br></p>
-        
-          <a class="article-more-a" href="/2018/03/29/安恒3月月赛-Re/#more">more >></a>
-        
+        <p>Leooel和CSAPP(即Computer Systems: A Programmer’s Perspective)的计算机系统漫游。<br><a id="more"></a></p>
+<h3 id="1-1-信息就是「位-上下文」"><a href="#1-1-信息就是「位-上下文」" class="headerlink" title="1.1 信息就是「位 + 上下文」"></a>1.1 信息就是「位 + 上下文」</h3><ul>
+<li>源程序实际上就是一个由值０和１组成的位（比特）序列，８个位被组织成一组，称为字节。每个字节表示程序中的某些文本字符。</li>
+<li>系统中所有的信息——包括磁盘文件、内存中的程序、内存中存放的用户数据以及网络上传送的数据，都是由一串比特表示的。区分不同数据对象的唯一方法是我们读到这些数据对象时的上下文。比如，在不同的上下文中，一个同样的字节序列可能表示一个整数、浮点数、字符串或者机器指令。</li>
+</ul>
+<h3 id="1-2-程序被其他程序翻译成不同的格式"><a href="#1-2-程序被其他程序翻译成不同的格式" class="headerlink" title="1.2 程序被其他程序翻译成不同的格式"></a>1.2 程序被其他程序翻译成不同的格式</h3><ul>
+<li>在Unix系统上，从源文件到目标文件的转化是由编译器驱动程序完成的。这个转化过程可分为四个阶段完成，如下图所示。执行这四个阶段的程序（预处理器、编译器、汇编器和链接器）一起构成了编译系统。<ul>
+<li>预处理阶段：预处理器（cpp）根据以字符#开头的命令，修改原始的C程序，比如读取系统头文件的内容，并把它直接插入程序文本中，得到另一个C程序，通常以.i作为文件扩展名。</li>
+<li>编译阶段：编译器（ccl）将文本文件hello.i翻译成hello.s，变成一个汇编语言程序。</li>
+<li>汇编阶段：接下来，汇编器（as）将hello.s翻译成机器语言指令，把这些指令打包成一种叫做可重定位目标程序的格式，并把结果保存在目标文件hello.o中。hello.o文件是一个二进制文件。</li>
+<li>链接阶段：链接器（ld）负责链接程序中调用的事先库里提供的函数(如printf)到hello.o程序中，这样就得到了一个可执行目标文件。</li>
+</ul>
+</li>
+</ul>
+<center> <img src="/2018/10/06/CSAPP-第一章/01.png" alt=""> </center>
+
+<h3 id="1-3-了解编译系统如何工作是大有裨益的"><a href="#1-3-了解编译系统如何工作是大有裨益的" class="headerlink" title="1.3 了解编译系统如何工作是大有裨益的"></a>1.3 了解编译系统如何工作是大有裨益的</h3><ul>
+<li>从程序员的视角优化程序性能，比如做出好的编码选择。</li>
+<li>理解链接时出现的错误。根据经验，一些最令人困扰的出现错误往往都与链接器操作有关，尤其是试图构建大型的软件系统时。</li>
+<li>避免安全漏洞。</li>
+</ul>
+<h3 id="1-4-处理器读并解释存储在内存中的指令"><a href="#1-4-处理器读并解释存储在内存中的指令" class="headerlink" title="1.4 处理器读并解释存储在内存中的指令"></a>1.4 处理器读并解释存储在内存中的指令</h3><ul>
+<li>系统的硬件组成<ul>
+<li>总线：贯穿整个系统的一组电子管。它携带信息字节并负责在各个部件间传递。通常总线被设计成传送定常的字节块，也就是字。字中的字节数（字长）是一个基本的系统参数，现在大多数机器字长要么是4个字节（32位）要么是8个字节（64位）。</li>
+<li>I/O设备：I/O设备是系统与外部世界的联系通道。包含键盘、鼠标、显示器、磁盘、（网络）。每个I/O设备都通过一个控制器或适配器与I/O总线相连。</li>
+<li>主存：主存是一个临时存储设备，在处理器执行程序时，用来存放程序和程序处理的数据。从物理上来说，主存是由一组动态随机存取存储器（DRAM）芯片组成的。从逻辑上来说，存储器是一个线性的字节数组，每个字节都有其唯一的地址（数组索引），这些地址是从零开始的。</li>
+<li>处理器：中央处理单元（CPU），简称处理器，是解释（或执行）存储在主存中指令的引擎。处理器的核心是一个大小为一个字的存储设备（或寄存器）称为程序计数器（PC）。在任何时刻，PC都指向主存中的某条机器语言指令。</li>
+</ul>
+</li>
+</ul>
+<center> <img src="/2018/10/06/CSAPP-第一章/02.png" alt=""> </center>
+
+<ul>
+<li>运行hello程序<center> <img src="/2018/10/06/CSAPP-第一章/03.png" alt=""> </center>
+
+</li>
+</ul>
+<center> <img src="/2018/10/06/CSAPP-第一章/04.png" alt=""> </center><br><center> <img src="/2018/10/06/CSAPP-第一章/05.png" alt=""> </center>
+
+<h3 id="1-5-高速缓存至关重要"><a href="#1-5-高速缓存至关重要" class="headerlink" title="1.5 高速缓存至关重要"></a>1.5 高速缓存至关重要</h3><ul>
+<li>高速缓存存储器（cache)，作为暂时的集结区域，存放处理器近期可能会需要的信息。高速缓存用的是静态随机访问存储器（SRAM）。</li>
+<li>高速缓存的局部性原理：即程序具有访问局部区域里的数据和代码的趋势。通过让高速缓存里存放可能经常访问的数据，大部分的内存操作都能在快速的高速缓存中完成。<center> <img src="/2018/10/06/CSAPP-第一章/06.png" alt=""> </center>
+
+</li>
+</ul>
+<h3 id="1-6-存储设备形成层次结构"><a href="#1-6-存储设备形成层次结构" class="headerlink" title="1.6 存储设备形成层次结构"></a>1.6 存储设备形成层次结构</h3><p><center>! <a href="07.png"></a> </center></p>
+<ul>
+<li>正如可以运用不同的高速缓存的知识来提高程序性能一样，程序员同样可以利用对整个存储器层次结构的理解来提高程序性能。</li>
+</ul>
+<h3 id="1-7-操作系统管理硬件"><a href="#1-7-操作系统管理硬件" class="headerlink" title="1.7 操作系统管理硬件"></a>1.7 操作系统管理硬件</h3><ul>
+<li>可以把操作系统看成是应用程序和硬件之间插入的一层软件，所有应用程序对硬件的操作尝试都必须通过操作系统。如图1-10。</li>
+<li>操作系统有两个基本功能：（1）防止硬件被失控的应用程序滥用 （2）向应用程序提供简单一致的机制来控制复杂而又通常大不相同的低级硬件设备。 操作系统通过几个基本的抽象概念（进程、虚拟内存和文件）来实现这两个功能。如图1-11所示，文件是对I/O设备的抽象，虚拟内存是对主存和磁盘I/O设备的抽象，进程是对处理器、主存和I/O设备的抽象。<br><center> <img src="/2018/10/06/CSAPP-第一章/08.png" alt=""> </center><ul>
+<li>进程：进程是操作系统对一个正在运行的程序的一种抽象。在一个系统上可以同时运行多个进程，而每个进程都好像在独占地使用硬件。这个假象是通过进程的概念来实现的。<strong>并发运行 </strong> 是说一个进程的指令和另一个进程的指令是交错执行的。 <strong>上下文切换</strong>是说无论在单核还是多核系统中，一个CPU看上去都像是在并发地执行多个进程，这是通过处理器在进程间切换来实现的。从一个进程切换到另一个进程是由操作系统内核（kernel）管理的，内核是操作系统<code>代码</code>常驻主存的部分。<center> <img src="/2018/10/06/CSAPP-第一章/09.png" alt=""> </center></li>
+<li>线程：一个进程可以由多个称为线程的执行单元组成，每个线程都运行在进程的上下文中，并共享同样的代码和全局数据。 多线程之间比多进程之间更容易共享数据，线程一般也比进程更高效。</li>
+<li>虚拟内存：虚拟内存是一个抽象概念，它为每个进程提供了一个假象，即每个进程都在独占地使用主存。每个进程看到的内存都是一样的，称为虚拟地址空间。<center> <img src="/2018/10/06/CSAPP-第一章/10.png" alt=""> </center></li>
+<li>文件：文件就是文字序列。每个I/O设备，都可以看成是文件，</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-8-系统之间利用网络通信"><a href="#1-8-系统之间利用网络通信" class="headerlink" title="1.8 系统之间利用网络通信"></a>1.8 系统之间利用网络通信</h3><p>网络提供了计算机系统之间通信的手段。从特殊系统的角度来看，网络就是一种I/O设备。</p>
+<h3 id="1-9-重要主题"><a href="#1-9-重要主题" class="headerlink" title="1.9 重要主题"></a>1.9 重要主题</h3><ul>
+<li>Amdahl定律：主要思想是当我们对系统的某个部分加速时，其对系统整体性能的影响取决于该部分的重要性和加速程度。</li>
+<li>并行和并发：想要计算机做的更多、想要计算机做的更快是计算机整个发展历史中的两个持续动力。<strong>并发</strong>指一个同时具有多个活动的系统；<strong>并行</strong>指的是用并发来使一个系统运行的更快。</li>
+<li>抽象在计算机系统中有很大的重要性。</li>
+</ul>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
+<li>计算机系统是由硬件和系统软件组成的，它们共同协作以运行应用程序。计算机内部的信息被表示为一组组的位，它们依据上下文有不同的解释方式。程序被其他程序翻译成不同的形式，开始时是ASCII文本，然后被编译器和链接器翻译成二进制可执行文件。</li>
+<li>处理器读取并解释存放在主存里的二进制指令。因为计算机花费了大量的时间在内存、I/O设备和CPU寄存器之间复制数据，所以将系统中的存储设备划分成层次结构——CPU 寄存器在顶部，接着是多层的硬件高速缓存存储器、DRAM主存和磁盘存储器。在层次模型中，位于更高层的存储设备比低层的存储设备要更快，单位比特造价也更高。层次结构中较高层次的存储设备可以作为较低层次设备的高速缓存。通过理解和运用这种存储层次结构的知识，程序员可以优化C程序的性能。</li>
+<li>操作系统内核是应用程序和硬件之间的媒介。它提供三个基本的抽象: 1)文件是对I/O设备的抽象:2)虚拟内存是对主存和磁盘的抽象; 3)进程是处理器、主存和I/O设备的抽象。</li>
+<li>最后，网络提供了计算机系统之间通信的手段。从特殊系统的角度来看，网络就是一种I/O设备。</li>
+</ul>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -189,7 +301,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		
 		</ul>
@@ -198,565 +310,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/29/安恒3月月赛-Re/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-Just-Three" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/28/Just-Three/">Just_Three</a>
-    </h1>
   
-
-        
-        <a href="/2018/03/28/Just-Three/" class="archive-article-date">
-  	<time datetime="2018-03-28T13:43:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前三周学习总结 + 第四周分享会简单记录<br></p>
-        
-          <a class="article-more-a" href="/2018/03/28/Just-Three/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/28/Just-Three/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
+    <a href="/2018/09/08/Life-is-binary-zeros-and-ones/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Life is binary,zeros and ones.</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    <article id="post-DefCamp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/24/DefCamp/">DefCamp</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/24/DefCamp/" class="archive-article-date">
-  	<time datetime="2018-03-24T11:40:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>细思极恐、巩固基础。<br></p>
-        
-          <a class="article-more-a" href="/2018/03/24/DefCamp/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/24/DefCamp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-maze" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/21/maze/">maze</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/21/maze/" class="archive-article-date">
-  	<time datetime="2018-03-21T03:24:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>让我们干了这杯maze酒！<br></p>
-        
-          <a class="article-more-a" href="/2018/03/21/maze/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/21/maze/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-WxyVM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/17/WxyVM/">WxyVM</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/17/WxyVM/" class="archive-article-date">
-  	<time datetime="2018-03-17T06:04:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>南邮平台上的两道题。开始近距离接触IDC/IDAPython。<br></p>
-        
-          <a class="article-more-a" href="/2018/03/17/WxyVM/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/17/WxyVM/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Read-Asm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/10/Read-Asm/">Read Asm</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/10/Read-Asm/" class="archive-article-date">
-  	<time datetime="2018-03-10T12:45:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>读汇编是逆向基本功。 emmm…<br></p>
-        
-          <a class="article-more-a" href="/2018/03/10/Read-Asm/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/10/Read-Asm/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-py交易" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/py交易/">py交易</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/07/py交易/" class="archive-article-date">
-  	<time datetime="2018-03-07T04:53:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>结合实验吧上的“py的交易”与南邮上的“py交易”简单总结一下。其中收获不少利器。<br></p>
-        
-          <a class="article-more-a" href="/2018/03/07/py交易/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/07/py交易/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-连接两个或多个音频的骚操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/30/连接两个或多个音频的骚操作/">连接两个或多个音频的骚操作</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/30/连接两个或多个音频的骚操作/" class="archive-article-date">
-  	<time datetime="2018-01-30T04:29:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>帮小萌剪辑并连接歌曲的时候无意中学会一波骚操作。<br></p>
-        
-          <a class="article-more-a" href="/2018/01/30/连接两个或多个音频的骚操作/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">其他</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/30/连接两个或多个音频的骚操作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Win-10一些小毛病的解决方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/27/Win-10一些小毛病的解决方法/">Win 10一些小毛病的解决方法</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/27/Win-10一些小毛病的解决方法/" class="archive-article-date">
-  	<time datetime="2018-01-27T13:38:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我现用的笔记本是Dell Inspiron 15R-5537 原装win8，免费升win10之后经常会遇到一些小问题，这里简单记录一下小问题的解决方法。<br></p>
-        
-          <a class="article-more-a" href="/2018/01/27/Win-10一些小毛病的解决方法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">其他</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/27/Win-10一些小毛病的解决方法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-格式化字符串漏洞-简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/02/格式化字符串漏洞-简介/">格式化字符串漏洞 简介</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/02/格式化字符串漏洞-简介/" class="archive-article-date">
-  	<time datetime="2018-01-02T05:23:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://wps2015.org/drops/drops/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%BC%8F%E6%B4%9E%E7%AE%80%E4%BB%8B.html" target="_blank" rel="external">这里是参考链接</a></p>
-        
-          <a class="article-more-a" href="/2018/01/02/格式化字符串漏洞-简介/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/02/格式化字符串漏洞-简介/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+</nav>
 
 
 
@@ -764,9 +385,10 @@
 
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -789,8 +411,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
