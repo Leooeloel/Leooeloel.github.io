@@ -21,10 +21,11 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/04.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/05.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/06.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/07.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/08.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/09.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/10/06/CSAPP-第一章/10.png">
-<meta property="og:updated_time" content="2018-10-06T14:56:05.552Z">
+<meta property="og:updated_time" content="2018-10-07T02:32:34.581Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSAPP-第一章">
 <meta name="twitter:description" content="Leooel和CSAPP(即Computer Systems: A Programmer’s Perspective)的计算机系统漫游。">
@@ -219,19 +220,17 @@
 <center> <img src="/2018/10/06/CSAPP-第一章/02.png" alt=""> </center>
 
 <ul>
-<li>运行hello程序<center> <img src="/2018/10/06/CSAPP-第一章/03.png" alt=""> </center>
+<li>运行hello程序<center> <img src="/2018/10/06/CSAPP-第一章/03.png" alt=""> </center><br><center> <img src="/2018/10/06/CSAPP-第一章/04.png" alt=""> </center><br><center> <img src="/2018/10/06/CSAPP-第一章/05.png" alt=""> </center>
 
 </li>
 </ul>
-<center> <img src="/2018/10/06/CSAPP-第一章/04.png" alt=""> </center><br><center> <img src="/2018/10/06/CSAPP-第一章/05.png" alt=""> </center>
-
 <h3 id="1-5-高速缓存至关重要"><a href="#1-5-高速缓存至关重要" class="headerlink" title="1.5 高速缓存至关重要"></a>1.5 高速缓存至关重要</h3><ul>
 <li>高速缓存存储器（cache)，作为暂时的集结区域，存放处理器近期可能会需要的信息。高速缓存用的是静态随机访问存储器（SRAM）。</li>
 <li>高速缓存的局部性原理：即程序具有访问局部区域里的数据和代码的趋势。通过让高速缓存里存放可能经常访问的数据，大部分的内存操作都能在快速的高速缓存中完成。<center> <img src="/2018/10/06/CSAPP-第一章/06.png" alt=""> </center>
 
 </li>
 </ul>
-<h3 id="1-6-存储设备形成层次结构"><a href="#1-6-存储设备形成层次结构" class="headerlink" title="1.6 存储设备形成层次结构"></a>1.6 存储设备形成层次结构</h3><p><center>! <a href="07.png"></a> </center></p>
+<h3 id="1-6-存储设备形成层次结构"><a href="#1-6-存储设备形成层次结构" class="headerlink" title="1.6 存储设备形成层次结构"></a>1.6 存储设备形成层次结构</h3><p><center> <img src="/2018/10/06/CSAPP-第一章/07.png" alt=""> </center></p>
 <ul>
 <li>正如可以运用不同的高速缓存的知识来提高程序性能一样，程序员同样可以利用对整个存储器层次结构的理解来提高程序性能。</li>
 </ul>
@@ -241,7 +240,7 @@
 <li>进程：进程是操作系统对一个正在运行的程序的一种抽象。在一个系统上可以同时运行多个进程，而每个进程都好像在独占地使用硬件。这个假象是通过进程的概念来实现的。<strong>并发运行 </strong> 是说一个进程的指令和另一个进程的指令是交错执行的。 <strong>上下文切换</strong>是说无论在单核还是多核系统中，一个CPU看上去都像是在并发地执行多个进程，这是通过处理器在进程间切换来实现的。从一个进程切换到另一个进程是由操作系统内核（kernel）管理的，内核是操作系统<code>代码</code>常驻主存的部分。<center> <img src="/2018/10/06/CSAPP-第一章/09.png" alt=""> </center></li>
 <li>线程：一个进程可以由多个称为线程的执行单元组成，每个线程都运行在进程的上下文中，并共享同样的代码和全局数据。 多线程之间比多进程之间更容易共享数据，线程一般也比进程更高效。</li>
 <li>虚拟内存：虚拟内存是一个抽象概念，它为每个进程提供了一个假象，即每个进程都在独占地使用主存。每个进程看到的内存都是一样的，称为虚拟地址空间。<center> <img src="/2018/10/06/CSAPP-第一章/10.png" alt=""> </center></li>
-<li>文件：文件就是文字序列。每个I/O设备，都可以看成是文件，</li>
+<li>文件：文件就是文字序列。每个I/O设备，都可以看成是文件。</li>
 </ul>
 </li>
 </ul>
