@@ -20,7 +20,13 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/10/20/CSAPP-第二章：信息的表示和处理/03.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/10/20/CSAPP-第二章：信息的表示和处理/04.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2018/10/20/CSAPP-第二章：信息的表示和处理/05.png">
-<meta property="og:updated_time" content="2018-10-21T13:13:34.463Z">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/20/CSAPP-第二章：信息的表示和处理/06.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/20/CSAPP-第二章：信息的表示和处理/07.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/20/CSAPP-第二章：信息的表示和处理/08.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/20/CSAPP-第二章：信息的表示和处理/09.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/20/CSAPP-第二章：信息的表示和处理/10.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/10/20/CSAPP-第二章：信息的表示和处理/11.png">
+<meta property="og:updated_time" content="2018-10-26T03:45:43.240Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSAPP-第二章：信息的表示和处理">
 <meta name="twitter:description" content="这一章读起来让人多少有点崩溃，然后想到了作者在开篇所说：如果你全力投身学习书本中的概念，完全理解底层计算机系统以及它对应用程序的影响，那么你会步上成为为数不多的“大牛”的道路。">
@@ -218,7 +224,22 @@
 <li>原码：最高有效位是符号位，用来确定剩下的位应该取正权还是负权：<center> <img src="/2018/10/20/CSAPP-第二章：信息的表示和处理/05.png" alt=""> </center></li>
 <li>原码和反码都有一个奇怪的属性，对数字0有两种不同的编码方式。正0都表示为[00…0]，负0在原码中表示为[10…0]，在反码中表示为[11…1]。</li>
 </ul>
-<center> 未完待续 </center>
+<h2 id="2-3-整数运算"><a href="#2-3-整数运算" class="headerlink" title="2.3 整数运算"></a>2.3 整数运算</h2><ul>
+<li>无符号数加法：<center> <img src="/2018/10/20/CSAPP-第二章：信息的表示和处理/06.png" alt=""> </center></li>
+<li>补码加法：<center> <img src="/2018/10/20/CSAPP-第二章：信息的表示和处理/07.png" alt=""> </center></li>
+<li>无符号乘法：<center> <img src="/2018/10/20/CSAPP-第二章：信息的表示和处理/08.png" alt=""> </center></li>
+<li>补码乘法：<center> <img src="/2018/10/20/CSAPP-第二章：信息的表示和处理/09.png" alt=""> </center>
+
+</li>
+</ul>
+<h2 id="2-4-浮点数"><a href="#2-4-浮点数" class="headerlink" title="2.4 浮点数"></a>2.4 浮点数</h2><ul>
+<li>定点数：<br><center> <img src="/2018/10/20/CSAPP-第二章：信息的表示和处理/10.png" alt=""> </center><br>用23位表示整数，这范围比8位大多了， 但是精度又会受到损失了，可见用这种定点数的表示法，范围和精度是一对儿矛盾。如果再定义fixed number C, fixed number D， 程序员简直就不知道用哪个了，并且实现他们之间的计算也很麻烦。所以定点数并不是完美的解决方案。</li>
+<li>浮点数：<br>浮点数就是利用指数达到了小数点“浮动”的效果。从而可以灵活地表达更大范围内的<center> <img src="/2018/10/20/CSAPP-第二章：信息的表示和处理/11.png" alt=""> </center>
+
+</li>
+</ul>
+<p><a href="https://mp.weixin.qq.com/s/34Fg9GSqRDoBbGFPzOt_ow?client=tim&amp;ADUIN=1826234293&amp;ADSESSION=1540522083&amp;ADTAG=CLIENT.QQ.5591_.0&amp;ADPUBNO=26852" target="_blank" rel="external">关于浮点数详细参考</a></p>
+
       
 
       
