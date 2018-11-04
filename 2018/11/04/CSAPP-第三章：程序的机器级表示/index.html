@@ -6,14 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Archives | Leooel</title>
+  <title>CSAPP-第三章：程序的机器级表示 | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leooel">
-<meta property="og:url" content="http://leo.dropsec.xyz/archives/page/7/index.html">
+  <meta name="description" content="对机器而言，程序只是一个字节序列，它对你写的源代码一无所知。">
+<meta name="keywords" content="读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSAPP-第三章：程序的机器级表示">
+<meta property="og:url" content="http://leo.dropsec.xyz/2018/11/04/CSAPP-第三章：程序的机器级表示/index.html">
 <meta property="og:site_name" content="Leooel">
+<meta property="og:description" content="对机器而言，程序只是一个字节序列，它对你写的源代码一无所知。">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/11/04/CSAPP-第三章：程序的机器级表示/01.png">
+<meta property="og:image" content="http://leo.dropsec.xyz/2018/11/04/CSAPP-第三章：程序的机器级表示/02.png">
+<meta property="og:updated_time" content="2018-11-04T07:06:49.671Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leooel">
+<meta name="twitter:title" content="CSAPP-第三章：程序的机器级表示">
+<meta name="twitter:description" content="对机器而言，程序只是一个字节序列，它对你写的源代码一无所知。">
+<meta name="twitter:image" content="http://leo.dropsec.xyz/2018/11/04/CSAPP-第三章：程序的机器级表示/01.png">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -151,112 +159,153 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-CSAPP-第三章：程序的机器级表示" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSAPP-第三章：程序的机器级表示
+    </h1>
+  
+
+        
+        <a href="/2018/11/04/CSAPP-第三章：程序的机器级表示/" class="archive-article-date">
+  	<time datetime="2018-11-04T03:31:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-04</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对机器而言，程序只是一个字节序列，它对你写的源代码一无所知。<br><a id="more"></a></p>
+<h2 id="3-1-历史观点"><a href="#3-1-历史观点" class="headerlink" title="3.1 历史观点"></a>3.1 历史观点</h2><ul>
+<li>每个后继处理器的设计都是向后兼容的——较早版本上编译的代码可以在较新的处理器上运行；</li>
+</ul>
+<h2 id="3-2-程序编码"><a href="#3-2-程序编码" class="headerlink" title="3.2 程序编码"></a>3.2 程序编码</h2><ul>
+<li><p>编译选项-Og告诉编译器使用会生成符合原始C代码整体结构的机器代码的优化等级；</p>
+</li>
+<li><p>对于机器级编程来说，两种重要抽象分别是</p>
+<ul>
+<li>由指令集架构（ISA=Instruction Set Architechture）来定义机器级程序的格式和行为。大多数ISA将程序的行为描述成好像每条指令都是按顺序执行的，一条指令结束后，下一条再开始。实际上处理器的硬件可以并发的执行许多指令，但是可以采取措施保证整体行为与ISA指定的顺序执行行为完全一致；</li>
+<li>机器级程序使用的内存地址是虚拟地址，提供的内存模型看上去像一个非常大的字节数组。存储器的实际实现是将多个硬件存储器和操作系统软件组合起来的；</li>
+</ul>
+</li>
+<li><p>一些重要的处理器状态</p>
+<ul>
+<li>程序计数器（PC）：在x86-64中用%rip表示，里面存放的值代表着将要执行的下一条指令在内存中的地址；</li>
+<li>整数寄存器文件包含16个命名的位置，分别存储64位的值。这些寄存器可以存储地址或整数数据；</li>
+<li>条件码寄存器保存着最近执行的算术或逻辑指令的状态信息，每个通常只有一个bit；</li>
+<li>一组向量寄存器可以存放一个或多个整数或者浮点数值；</li>
+</ul>
+</li>
+<li><p>ATT 与 Intel 汇编代码格式</p>
+<ul>
+<li>ATT汇编代码格式是GCC、OBJDUMP和其他一些我们使用的工具的默认格式（本书中，采用ATT格式）；</li>
+<li>其他一些编程工具，包括Microsoft 的工具，以及来自Insel 的文档，其汇编代码都是Intel格式的；</li>
+</ul>
+</li>
+<li><p>Intel和ATT格式的不同</p>
+<ul>
+<li>Intel 代码省略了指示大小的后缓，指令push而不是pushq；</li>
+<li>Intel 代码省略了寄存器名字前面的‘%’符号，用的是rbx,而不是%rbx；</li>
+<li>Intel 代码用不同的方式来描述内存中的位置，例如是‘QWORD PTR [rbx]’而不是‘(%rbx)’；</li>
+<li>在带有多个操作数的指令情况下，列出操作数的顺序相反；</li>
+</ul>
+</li>
+<li><p>对于一些应用程序，程序员必须用汇编代码来访问机器的低级特性</p>
+<ul>
+<li>一种方法是用汇编代码编写整个函数，在链接阶段把它们和C函数组合起来；</li>
+<li>另一种方法是利用GCC的支持，直接在C程序中嵌入汇编代码；</li>
+<li>在C程序中包含汇编代码会使得这些代码与某类特殊的机器相关，所以只应该在想要的特性只能以此种方式才能访问到的时候使用这种方式；</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-3-数据格式"><a href="#3-3-数据格式" class="headerlink" title="3.3 数据格式"></a>3.3 数据格式</h2><ul>
+<li>大多数GCC生成的汇编代码指令都有一个字符的后缀，表明操作数的大小。比如b,w,l,q；<br><img src="/2018/11/04/CSAPP-第三章：程序的机器级表示/01.png" alt=""></li>
+</ul>
+<h2 id="3-4-访问信息"><a href="#3-4-访问信息" class="headerlink" title="3.4 访问信息"></a>3.4 访问信息</h2><p><img src="/2018/11/04/CSAPP-第三章：程序的机器级表示/02.png" alt=""></p>
+<ul>
+<li><p>机器指令可以对这16个寄存器的低位字节中存放的不同大小的数据进行操作。对于生成小于8字节结果的指令有两条规则：</p>
+<ul>
+<li>生成1字节和2字节数字的指令会保持剩下的字节不变;</li>
+<li>生成4字节数字的指令会把高位的4个字节置为0;</li>
+</ul>
+</li>
+<li><p>各种不同的操作数的可能性被分为三种类型：</p>
+<ul>
+<li>立即数;</li>
+<li>寄存器;</li>
+<li>内存引用;</li>
+</ul>
+</li>
+<li><p>寻址模式</p>
+<ul>
+<li>语法 $ Imm(r_b,r_i,s) $ 表示的是最常用的形式。这样的引用有四个组成部分:一个立即数偏移Imm,一个基址寄存器 $ r_b $ ，一个变址寄存器 $ r_i $ 和一个比例因子s，这里s必须是1、2、4或者8;</li>
+<li>基址和变址寄存器都必须是64位寄存器。有效地址被计算为 $ Imm+R[r_b]+R[r_i]*s $ 引用数组元素时，会用到这种通用形式。其他形式都是这种通用形式的特殊情况，只是省略了某些部分；</li>
+</ul>
+</li>
+<li><p>数据传送指令</p>
+<ul>
+<li>最频繁使用的指令是将数据从一个位置复制到另一个位置的指令;</li>
+<li>源操作数指定的值是一个立即数，存储在寄存器或者内存中；</li>
+<li>目的操作数指定一个位置，可以是寄存器或者内存地址；</li>
+<li>x86-64加了一条限制，传送指令的两个操作数不能都指向内存位置；</li>
+</ul>
+</li>
+<li><p>数据传送示例</p>
+<ul>
+<li>C语言中所谓的指针其实就是地址。间接引用就是将该指针放在一个寄存器中，然后在内存引用中使用这个寄存器；</li>
+<li>局部变量通常是保存在寄存器中，而不是内存中。访问寄存器比访问内存要快得多；</li>
+</ul>
+</li>
+<li><p>压入和弹出栈数据</p>
+<ul>
+<li>栈向下增长，所有栈顶元素的地址是所有栈中元素地址最低的； </li>
+<li>因为栈和程序代码以及其他形式的程序数据都是放在同一内存中，所以程序可以用标准的内存寻址方法访问栈内的任意位置；</li>
+</ul>
+</li>
+</ul>
+<center> ## 未完待续 ## </center>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/08/十天的放逐/" class="archive-article-date">
-  	<time datetime="2017-08-08T02:59:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/08/十天的放逐/">十天的放逐</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">洋流</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/20/暑假一练-WriteUp/" class="archive-article-date">
-  	<time datetime="2017-07-20T07:36:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/20/暑假一练-WriteUp/">暑假一练 WriteUp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/15/汇编语言 王爽 章节知识点总结/" class="archive-article-date">
-  	<time datetime="2017-07-15T12:04:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/15/汇编语言 王爽 章节知识点总结/">汇编语言 王爽 章节知识点总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -268,174 +317,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2018/11/04/CSAPP-第三章：程序的机器级表示/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/11/Summer-第一周/" class="archive-article-date">
-  	<time datetime="2017-07-11T09:07:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/11/Summer-第一周/">Summer  第一周</a>
-    </h1>
+  
+    <a href="/2018/10/20/CSAPP-第二章：信息的表示和处理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSAPP-第二章：信息的表示和处理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">洋流</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/08/年少无为，卖马为生/" class="archive-article-date">
-  	<time datetime="2017-07-08T12:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/08/年少无为，卖马为生/">年少无为，卖马为生</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">洋流</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/08/搭建博客后的资源整合/" class="archive-article-date">
-  	<time datetime="2017-07-08T05:14:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/08/搭建博客后的资源整合/">搭建博客后的资源整合</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">其他</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/04/Hello-Word/" class="archive-article-date">
-  	<time datetime="2017-07-04T13:53:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/04/Hello-Word/">Hello Word</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">洋流</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/6/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span>
-    </nav>
   
 
 
@@ -459,8 +422,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
