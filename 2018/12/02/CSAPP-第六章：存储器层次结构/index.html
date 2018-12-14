@@ -6,19 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Life is binary,zeros and ones. | Leooel</title>
+  <title>CSAPP-第六章：存储器层次结构 | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="01010111 01011000 01001010 01101001 01011001 01101110 01001010 00110101 01001100 01000111 01011010 01101110 01011010 01010111 01101000 00110000 01100100 01001000 01101100 01111001 01001001 01010001 00">
-<meta name="keywords" content="洋流">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Life is binary,zeros and ones.">
-<meta property="og:url" content="http://leo.dropsec.xyz/2018/09/08/Life-is-binary-zeros-and-ones/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="CSAPP-第六章：存储器层次结构">
+<meta property="og:url" content="http://leo.dropsec.xyz/2018/12/02/CSAPP-第六章：存储器层次结构/index.html">
 <meta property="og:site_name" content="Leooel">
-<meta property="og:description" content="01010111 01011000 01001010 01101001 01011001 01101110 01001010 00110101 01001100 01000111 01011010 01101110 01011010 01010111 01101000 00110000 01100100 01001000 01101100 01111001 01001001 01010001 00">
-<meta property="og:updated_time" content="2018-12-14T06:58:40.690Z">
+<meta property="og:updated_time" content="2018-12-02T14:22:35.909Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Life is binary,zeros and ones.">
-<meta name="twitter:description" content="01010111 01011000 01001010 01101001 01011001 01101110 01001010 00110101 01001100 01000111 01011010 01101110 01011010 01010111 01101000 00110000 01100100 01001000 01101100 01111001 01001001 01010001 00">
+<meta name="twitter:title" content="CSAPP-第六章：存储器层次结构">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -156,51 +152,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Life-is-binary-zeros-and-ones" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-CSAPP-第六章：存储器层次结构" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Life is binary,zeros and ones.
+      CSAPP-第六章：存储器层次结构
     </h1>
   
 
         
-        <a href="/2018/09/08/Life-is-binary-zeros-and-ones/" class="archive-article-date">
-  	<time datetime="2018-09-08T03:00:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
+        <a href="/2018/12/02/CSAPP-第六章：存储器层次结构/" class="archive-article-date">
+  	<time datetime="2018-12-02T14:22:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://www.qqxiuzi.cn/bianma/erjinzhi.php" target="_blank" rel="external">01010111 01011000 01001010 01101001 01011001 01101110 01001010 00110101 01001100 01000111 01011010 01101110 01011010 01010111 01101000 00110000 01100100 01001000 01101100 01111001 01001001 01010001 00111101 00111101</a><br><a id="more"></a><br>　　总有种感觉抑或错觉。做了一个选择，事后回过头来看当时的选择还是蛮正确的。我以为这种感觉会有利于我更自信的去做下一个选择，事实证明它更可能是一种错觉。<br>　　简单记录一下我的大二，不至于日后很快遗忘，也好给自己一个交代。<br>　　大一下学期包括寒假当时是想着学习算法，然后跟着ACM队学习。由于某种原因后来没有正式进入ACM。后来有意还是无意的进入了超星，学习Java、爬虫，但是由于当时认知和能力的原因，大一下的我对超星所学东西没有系统的认识，导致学习动力不足。17年5月份在安恒杯中接触并了解了Drops，然后就开始了为期一年的二进制安全学习，直到现在。然而现在我又面临了一个选择。<br>　　在Drops学习的这一年多里，学到了很多技术本领，视野也扩大了好多。我也一直在问自己喜欢二进制吗？要把二进制当作自己的饭碗吗？好像每次都未能回答自己。在安全、安全+考研、开发、开发+考研这几个选项中，结合自己的性格，我一直在寻找最适合自己的路，但也一直在两者中间徘徊，好像是在逃避。现在冷静分析一下。</p>
-<ul>
-<li>安全<br>　　优：(信息安全)前景较广阔、工作环境相对较好、薪资待遇较高、知识变更速度较慢<br>　　劣：二进制安全对应工作相对较少、就业门槛相对较高，学不到比较好的程度不好就业，并且就业面相对较窄；偏向于研究，到后期二进制工作基本分为(恶意)代码分析、挖软件漏洞，要不牛逼，要不web；很多学习二进制的最后在工作中都是从事和web相关的(当然，也不是说web不好)。</li>
-<li>安全 + 考研<br>　　心里完全没底，安全考研一般是偏向研究的，对研究型安全基本没概念。</li>
-<li>软件开发<br>　　优：可选范围多、科技浪潮一波接一波、机遇较多、容易向科技热门转型<br>　　劣：竞争较激烈、知识更新较快、需要较广的知识宽度和相应的知识深度、可能会遭遇中年危机</li>
-<li>软件开发 + 考研<br>　　给自己多一点的时间，提高自己的起点，增强自己的竞争力。</li>
-</ul>
-<p>　　上面的分析只是出于自己目前的认知水平，或许不是很客观。结合自己的性格与上面的分析，现阶段感觉选项三、选项四更适合自己。所以我还是决定暂时把安全学习当作自己的业余爱好，大三这一年将重点放在动手做项目上，同时也要注意重要课程基础知识的学习来面对考研。<br>　　真的，这个选择自己纠结了好久，有时候也很无助。但是现在不纠结了，因为我决定了。当然自己也付出了相应的试错成本。<br>　　惟愿自己能安静的利用好大三这一年的时间。</p>
-<p><br></p>
-<pre><code>Life is binary, it is a mash of zeros and ones and straightforward if you can master how to read it without translation.
-
-Life is also a game, there is an end goal and it looks simple and straightforward at the beginning, but as you get started you meet all the obstacles and have to fight and play through it to get to the end.
-
-Life is simple, you can see that if you just breathe and accept nothing is ever in your control.
-
-Life is hard, because as humans, we cannot give up our fetish for control and over thinking.
-
-Life is beautiful, filled with joys and love, great people and great things that bring us pleasure.
-
-Life is also ugly, filled with hate, pain and blood thirsty greed.
-
-Life is a lot of things, who you choose to have in yours determines which part of life you’ll live, some will make it great, some will make it hurt.
-
-Life is also full of chances, if you chose wrong, you can always start over. You can always let go of some people and keep some people. Life is Life like that.
-</code></pre>
+        
       
 
       
@@ -239,17 +211,6 @@ Life is also full of chances, if you chose wrong, you can always start over. You
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">洋流</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -300,7 +261,7 @@ Life is also full of chances, if you chose wrong, you can always start over. You
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2018/09/08/Life-is-binary-zeros-and-ones/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2018/12/02/CSAPP-第六章：存储器层次结构/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -314,18 +275,9 @@ Life is also full of chances, if you chose wrong, you can always start over. You
   
 <nav id="article-nav">
   
-    <a href="/2018/10/06/CSAPP-第一章：计算机系统漫游/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          CSAPP-第一章：计算机系统漫游
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/29/十四天理财训练营笔记/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">十四天理财训练营笔记</div>
+    <a href="/2018/11/04/股票初级训练营笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">股票初级训练营笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
