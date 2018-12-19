@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/03/第八周-密码学相关/6.png">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/03/第八周-密码学相关/7.jpg">
 <meta property="og:image" content="http://leo.dropsec.xyz/2017/11/03/第八周-密码学相关/8.png">
-<meta property="og:updated_time" content="2018-07-30T13:30:26.317Z">
+<meta property="og:updated_time" content="2018-12-14T10:24:59.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第八周 密码学相关">
 <meta name="twitter:description" content="这周开始接触密码学，简单总结下。密码学 + 文件头 + reverseMe">
@@ -276,7 +276,7 @@ f AABAB  m ABABB    s BAAAB  z BABBB
 <p>因为不确定文件类型（惯用IDA打开看看，发现风格与以往不同），用上面所讲的方法来确定类型 首先拉进WinHex，然后拉到最下面，发现文件头是 FFD8FFE1</p>
 <p><img src="/2017/11/03/第八周-密码学相关/6.png" alt=""></p>
 <p>所以判断出它是jpg格式的图片<br>然后就可以去把他变为一张可视的图片喽，具体实现如下</p>
-<pre><code>open(&quot;E:\\flag.jpg&quot;,&quot;wb&quot;).write(open(&quot;E:\\reverseMe&quot;,&quot;rb&quot;).read()[::-1])
+<pre><code>open(&apos;G:\\Leooel\\Desktop\\flag.jpg&apos;,&apos;wb&apos;).write(open(&apos;G:\\Leooel\\Desktop\\reverseMe&apos;,&apos;rb&apos;).read()[::-1])
 </code></pre><p>注意路径的书写，然后运行后可以在此目录下得到名为flag.jpg的图片。</p>
 <p><img src="/2017/11/03/第八周-密码学相关/7.jpg" alt=""></p>
 <p>发现是镜像flag，可以用手机或镜子辅助看到正常显示的内容<br>在这里分享一个小在线工具<br><a href="http://www.asqql.com/giffanzuan/" target="_blank" rel="external">在线反转、旋转图片</a><br>然后经过操作变成这个样子喽</p>
