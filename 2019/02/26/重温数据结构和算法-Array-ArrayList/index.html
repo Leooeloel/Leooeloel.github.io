@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Leooel</title>
+  <title>重温数据结构和算法 Array &amp; ArrayList | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leooel">
-<meta property="og:url" content="http://leo.dropsec.xyz/index.html">
+  <meta name="description" content="ArrayList 是一种 “会自动扩增容量” 的 Array。">
+<meta name="keywords" content="数据结构与算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重温数据结构和算法 Array &amp; ArrayList">
+<meta property="og:url" content="http://leo.dropsec.xyz/2019/02/26/重温数据结构和算法-Array-ArrayList/index.html">
 <meta property="og:site_name" content="Leooel">
+<meta property="og:description" content="ArrayList 是一种 “会自动扩增容量” 的 Array。">
+<meta property="og:updated_time" content="2019-02-26T08:32:07.585Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leooel">
+<meta name="twitter:title" content="重温数据结构和算法 Array &amp; ArrayList">
+<meta name="twitter:description" content="ArrayList 是一种 “会自动扩增容量” 的 Array。">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -151,16 +156,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-重温数据结构和算法-Array-ArrayList" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-重温数据结构和算法-Array-ArrayList" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/26/重温数据结构和算法-Array-ArrayList/">重温数据结构和算法 Array &amp; ArrayList</a>
+    <h1 class="article-title" itemprop="name">
+      重温数据结构和算法 Array &amp; ArrayList
     </h1>
   
 
@@ -174,11 +177,58 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>ArrayList 是一种 “会自动扩增容量” 的 Array。</p>
-        
-          <a class="article-more-a" href="/2019/02/26/重温数据结构和算法-Array-ArrayList/#more">more >></a>
-        
+<a id="more"></a>
+<h3 id="Array-与-ArrayList-的区别"><a href="#Array-与-ArrayList-的区别" class="headerlink" title="Array 与 ArrayList 的区别"></a>Array 与 ArrayList 的区别</h3><ul>
+<li>ArrayList 是 Array 的复杂版本</li>
+</ul>
+<p>ArrayList 内部封装了一个 Object 类型的数组，从一般的意义来说，它和数组没有本质的差别，甚至于 ArrayList 的许多方法，如 Index、IndexOf、Contains、Sort 等都是在内部数组的基础上直接调用 Array 的对应方法。</p>
+<ul>
+<li>存储的数据类型</li>
+</ul>
+<p>ArrayList 可以存储异构对象，而 Array 只能存储相同数据类型的数据。</p>
+<ul>
+<li>长度的可变</li>
+</ul>
+<p>Array 的长度实际上是不可变的，二维变长数组实际上的长度也是固定的，可变的只是其中元素的长度。而 ArrayList 的长度既可以指定（即使指定了长度，也会自动2倍扩容）也可以不指定，是变长的。</p>
+<ul>
+<li>存取和增删元素</li>
+</ul>
+<p>对于一般的引用类型来说，这部分的影响不是很大，但是对于值类型来说，往 ArrayList 里面添加和修改元素，都会引起装箱和拆箱的操作，频繁的操作可能会影响一部分效率。另外，ArrayList 是动态数组，它不包括通过 Key 或者 Value 快速访问的算法，所以实际上调用 IndexOf、Contains 等方法是执行的简单的循环来查找元素，所以频繁的调用此类方法并不比你自己写循环并且稍作优化来的快，如果有这方面的要求，建议使用 Hashtable 或 SortedList 等键值对的集合。</p>
+<h3 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> array;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@Author</span>: Leooel</div><div class="line"> * <span class="doctag">@Date</span>: 2019/2/24 18:24</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Array</span> </span>&#123;</div><div class="line">    <span class="comment">// 定义整型数组 data 保存数据</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> data[];</div><div class="line">    <span class="comment">// 定义数组长度</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> n;</div><div class="line">    <span class="comment">// 定义数组实际存储数据个数</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count;</div><div class="line"></div><div class="line">    <span class="comment">// 构造方法，定义数组大小</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Array</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data = <span class="keyword">new</span> <span class="keyword">int</span>[capacity];</div><div class="line">        <span class="keyword">this</span>.n = capacity;</div><div class="line">        <span class="keyword">this</span>.count = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 根据索引找到数组中的元素并返回</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(index &lt; <span class="number">0</span> || index &gt;= count)</div><div class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        <span class="keyword">return</span> data[index];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 插入元素</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> index, <span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">        <span class="comment">// 数组空间已满</span></div><div class="line">        <span class="keyword">if</span>(count == n)&#123;</div><div class="line">            System.out.println(<span class="string">"数组已满，没有可插入的位置"</span>);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// 插入位置不合法</span></div><div class="line">        <span class="keyword">if</span>(index &lt; <span class="number">0</span> || index &gt; count) &#123;</div><div class="line">            System.out.println(<span class="string">"插入位置不合法"</span>);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// 位置合法</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = count; i &gt; index; --i) &#123;</div><div class="line">            data[i] = data[i - <span class="number">1</span>];</div><div class="line">        &#125;</div><div class="line">        data[index] = value;</div><div class="line">        ++count;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 根据索引删除数组中元素</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(index &lt; <span class="number">0</span> || index &gt;= count)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        <span class="comment">// 从删除位置开始，后面的元素前移一位</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = index + <span class="number">1</span>; i &lt; count; ++i) &#123;</div><div class="line">            data[i - <span class="number">1</span>] = data[i];</div><div class="line">        &#125;</div><div class="line">        --count;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printAll</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; ++i) &#123;</div><div class="line">            System.out.print(data[i] + <span class="string">" "</span>);</div><div class="line">        &#125;</div><div class="line">        System.out.println();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Array array = <span class="keyword">new</span> Array(<span class="number">5</span>);</div><div class="line">        array.insert(<span class="number">0</span>, <span class="number">3</span>);</div><div class="line">        array.insert(<span class="number">1</span>, <span class="number">4</span>);</div><div class="line">        array.delete(<span class="number">0</span>);</div><div class="line">        System.out.println(array.find(<span class="number">0</span>));</div><div class="line">        array.printAll();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> array;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@Author</span>: Leooel</div><div class="line"> * <span class="doctag">@Date</span>: 2019/2/25 20:27</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericArray</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">private</span> T[] data;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</div><div class="line"></div><div class="line">    <span class="comment">// 根据传入容量构造Array</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GenericArray</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</div><div class="line">        data = (T[]) <span class="keyword">new</span> Object[capacity];</div><div class="line">        size = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 无参构造方法，默认数组容量为10</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GenericArray</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>(<span class="number">10</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 获取数组容量</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCapacity</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> data.length;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 获取当前元素个数</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> size;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 判断数组是否为空</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> size == <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 修改 index 位置的元素</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, T e)</span> </span>&#123;</div><div class="line">        checkIndex(index);</div><div class="line">        data[index] = e;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 获取对应 index 位置的元素</span></div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</div><div class="line">        checkIndex(index);</div><div class="line">        <span class="keyword">return</span> data[index];</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 查看数组是否包含元素 e</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(T e)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</div><div class="line">            <span class="keyword">if</span>(data[i].equals(e))</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 获取对应元素的下标，若未找到返回 -1</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(T e)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</div><div class="line">            <span class="keyword">if</span>(data[i].equals(e))</div><div class="line">                <span class="keyword">return</span> i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 在 index 位置插入元素 e</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, T e)</span> </span>&#123;</div><div class="line">        checkIndex(index);</div><div class="line">        <span class="comment">// 如果数组当前元素个数等于数组容量，则将数组扩容为原来的2倍</span></div><div class="line">        <span class="keyword">if</span>(size == data.length) &#123;</div><div class="line">            resize(<span class="number">2</span> * data.length);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = size - <span class="number">1</span>; i &gt;= index; i--) &#123;</div><div class="line">            data[i + <span class="number">1</span>] = data[i];</div><div class="line">        &#125;</div><div class="line">        data[index] = e;</div><div class="line">        size++;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 向数组头插入元素</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addFirst</span><span class="params">(T e)</span> </span>&#123;</div><div class="line">        add(<span class="number">0</span>, e);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 向数组尾插入元素</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addLast</span><span class="params">(T e)</span> </span>&#123;</div><div class="line">        add(size, e);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 删除 index 位置的元素，并将其值返回</span></div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</div><div class="line">        checkIndexForRemove(index);</div><div class="line"></div><div class="line">        T ret = data[index];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = index + <span class="number">1</span>; i &lt; size; i++) &#123;</div><div class="line">            data[i - <span class="number">1</span>] = data[i];</div><div class="line">        &#125;</div><div class="line">        size--;</div><div class="line">        data[size] = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 缩容</span></div><div class="line">        <span class="keyword">if</span>(size == data.length / <span class="number">4</span> &amp;&amp; data.length / <span class="number">2</span> != <span class="number">0</span>) &#123;</div><div class="line">            resize(data.length / <span class="number">2</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ret;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 删除第一个元素</span></div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">removeFirst</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> remove(<span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 删除末尾元素</span></div><div class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">removeLast</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> remove(size - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 输出数组中指定元素</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeElement</span><span class="params">(T e)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> index = find(e);</div><div class="line">        <span class="keyword">if</span>(index != -<span class="number">1</span>) &#123;</div><div class="line">            remove(index);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        StringBuilder builder = <span class="keyword">new</span> StringBuilder();</div><div class="line">        builder.append(String.format(<span class="string">"Array size = %d, capacity = %d \n"</span>, size, data.length));</div><div class="line">        builder.append(<span class="string">'['</span>);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</div><div class="line">            builder.append(data[i]);</div><div class="line">            <span class="keyword">if</span>(i != size - <span class="number">1</span>) &#123;</div><div class="line">                builder.append(<span class="string">","</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        builder.append(<span class="string">']'</span>);</div><div class="line">        <span class="keyword">return</span> builder.toString();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 扩容方法</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">resize</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</div><div class="line">        T[] newData = (T[]) <span class="keyword">new</span> Object[capacity];</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</div><div class="line">            newData[i] = data[i];</div><div class="line">        &#125;</div><div class="line">        data = newData;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">checkIndex</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(index &lt; <span class="number">0</span> || index &gt; size) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Add failed! Require index &gt;=0 and index &lt;= size."</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">checkIndexForRemove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(index &lt; <span class="number">0</span> || index &gt;= size) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"remove failed! Require index &gt;=0 and index &lt; size."</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -198,565 +248,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/26/重温数据结构和算法-Array-ArrayList/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2019/02/26/重温数据结构和算法-Array-ArrayList/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-INSPIRED-启示录-笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/19/INSPIRED-启示录-笔记/">INSPIRED 启示录 笔记</a>
-    </h1>
   
-
-        
-        <a href="/2019/02/19/INSPIRED-启示录-笔记/" class="archive-article-date">
-  	<time datetime="2019-02-19T03:24:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>大部分人游荡在黑暗里，他们只知道抱怨，却从不想办法寻找电灯开关。</p>
-        
-          <a class="article-more-a" href="/2019/02/19/INSPIRED-启示录-笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/19/INSPIRED-启示录-笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
+    <a href="/2019/02/19/INSPIRED-启示录-笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">INSPIRED 启示录 笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    <article id="post-学会花钱-笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/09/学会花钱-笔记/">学会花钱 笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/09/学会花钱-笔记/" class="archive-article-date">
-  	<time datetime="2019-02-09T06:38:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>你能正确理解「世界上始终只有货币价值，而没有个人的存在价值」这句话吗？<br></p>
-        
-          <a class="article-more-a" href="/2019/02/09/学会花钱-笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/09/学会花钱-笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-「帅张和他的朋友们」第二期精华电子书-笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/05/「帅张和他的朋友们」第二期精华电子书-笔记/">「帅张和他的朋友们」第二期精华电子书 笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/05/「帅张和他的朋友们」第二期精华电子书-笔记/" class="archive-article-date">
-  	<time datetime="2019-02-05T11:47:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>仗，要不要打？什么情况下该打？ 这场仗能打赢，再去打。<br></p>
-        
-          <a class="article-more-a" href="/2019/02/05/「帅张和他的朋友们」第二期精华电子书-笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/05/「帅张和他的朋友们」第二期精华电子书-笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-时间的朋友-小趋势-回顾笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/01/时间的朋友-小趋势-回顾笔记/">时间的朋友-小趋势-回顾笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/01/时间的朋友-小趋势-回顾笔记/" class="archive-article-date">
-  	<time datetime="2019-01-01T14:06:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有意瞄准，无意击发。<br></p>
-        
-          <a class="article-more-a" href="/2019/01/01/时间的朋友-小趋势-回顾笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/01/时间的朋友-小趋势-回顾笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Leooel-的-2018" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/31/Leooel-的-2018/">Leooel 的 2018</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/31/Leooel-的-2018/" class="archive-article-date">
-  	<time datetime="2018-12-31T06:16:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/2018/12/31/Leooel-的-2018/01.jpg" alt=""></p>
-        
-          <a class="article-more-a" href="/2018/12/31/Leooel-的-2018/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">洋流</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/31/Leooel-的-2018/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-保险实战课笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/19/保险实战课笔记/">保险实战课笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/19/保险实战课笔记/" class="archive-article-date">
-  	<time datetime="2018-12-19T05:55:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>2018.09.01 1460￥<br></p>
-        
-          <a class="article-more-a" href="/2018/12/19/保险实战课笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/19/保险实战课笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-股票初级训练营笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/04/股票初级训练营笔记/">股票初级训练营笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/04/股票初级训练营笔记/" class="archive-article-date">
-  	<time datetime="2018-11-04T11:08:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>股票卖出有三种情况，股票的价格高于它的价值了；原来的好公司基本面转坏了；发现了更好更便宜的股票。<br></p>
-        
-          <a class="article-more-a" href="/2018/11/04/股票初级训练营笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/04/股票初级训练营笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CSAPP-第三章：程序的机器级表示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/04/CSAPP-第三章：程序的机器级表示/">CSAPP-第三章：程序的机器级表示</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/04/CSAPP-第三章：程序的机器级表示/" class="archive-article-date">
-  	<time datetime="2018-11-04T03:31:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>对机器而言，程序只是一个字节序列，它对你写的源代码一无所知。</p>
-        
-          <a class="article-more-a" href="/2018/11/04/CSAPP-第三章：程序的机器级表示/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/04/CSAPP-第三章：程序的机器级表示/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CSAPP-第二章：信息的表示和处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/20/CSAPP-第二章：信息的表示和处理/">CSAPP-第二章：信息的表示和处理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/10/20/CSAPP-第二章：信息的表示和处理/" class="archive-article-date">
-  	<time datetime="2018-10-20T02:20:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这一章读起来让人多少有点崩溃，然后想到了作者在开篇所说：如果你全力投身学习书本中的概念，完全理解底层计算机系统以及它对应用程序的影响，那么你会步上成为为数不多的“大牛”的道路。</p>
-        
-          <a class="article-more-a" href="/2018/10/20/CSAPP-第二章：信息的表示和处理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/20/CSAPP-第二章：信息的表示和处理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+</nav>
 
 
 
@@ -764,9 +323,10 @@
 
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -789,8 +349,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
