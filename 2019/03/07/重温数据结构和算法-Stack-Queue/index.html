@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Leooel</title>
+  <title>重温数据结构和算法 Stack &amp; Queue | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leooel">
-<meta property="og:url" content="http://leo.dropsec.xyz/page/2/index.html">
+  <meta name="description" content="FILO &amp;amp; FIFO">
+<meta name="keywords" content="数据结构和算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重温数据结构和算法 Stack &amp; Queue">
+<meta property="og:url" content="http://leo.dropsec.xyz/2019/03/07/重温数据结构和算法-Stack-Queue/index.html">
 <meta property="og:site_name" content="Leooel">
+<meta property="og:description" content="FILO &amp;amp; FIFO">
+<meta property="og:updated_time" content="2019-03-07T13:37:58.549Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leooel">
+<meta name="twitter:title" content="重温数据结构和算法 Stack &amp; Queue">
+<meta name="twitter:description" content="FILO &amp;amp; FIFO">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -151,34 +156,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-CSAPP-第三章：程序的机器级表示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-重温数据结构和算法-Stack-Queue" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/04/CSAPP-第三章：程序的机器级表示/">CSAPP-第三章：程序的机器级表示</a>
+    <h1 class="article-title" itemprop="name">
+      重温数据结构和算法 Stack &amp; Queue
     </h1>
   
 
         
-        <a href="/2018/11/04/CSAPP-第三章：程序的机器级表示/" class="archive-article-date">
-  	<time datetime="2018-11-04T03:31:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-04</time>
+        <a href="/2019/03/07/重温数据结构和算法-Stack-Queue/" class="archive-article-date">
+  	<time datetime="2019-03-07T13:25:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>对机器而言，程序只是一个字节序列，它对你写的源代码一无所知。</p>
-        
-          <a class="article-more-a" href="/2018/11/04/CSAPP-第三章：程序的机器级表示/#more">more >></a>
-        
+        <p>FILO &amp; FIFO</p>
+<a id="more"></a>
+<h2 id="StackBasedLinkedList"><a href="#StackBasedLinkedList" class="headerlink" title="StackBasedLinkedList"></a>StackBasedLinkedList</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> stack;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@Author</span>: Leooel</div><div class="line"> * <span class="doctag">@Date</span>: 2019/3/7 8:52</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StackBasedLinkedList</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Node top = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">        Node newNode = <span class="keyword">new</span> Node(value);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (top == <span class="keyword">null</span>) &#123;</div><div class="line">            top = newNode;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            newNode.next = top;</div><div class="line">            top = newNode;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 返回 -1 代表栈中无元素</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (top == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> value = top.data;</div><div class="line">        top = top.next;</div><div class="line">        <span class="keyword">return</span> value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printAll</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">        Node p = top;</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (p != <span class="keyword">null</span>) &#123;</div><div class="line">            System.out.print(p.data + <span class="string">" "</span>);</div><div class="line">            p = p.next;</div><div class="line">        &#125;</div><div class="line">        System.out.println();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">private</span> <span class="keyword">int</span> data;</div><div class="line">        <span class="keyword">private</span> Node next;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> data)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.data = data;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="QueueBasedDynamicArray"><a href="#QueueBasedDynamicArray" class="headerlink" title="QueueBasedDynamicArray"></a>QueueBasedDynamicArray</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> queue;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@Author</span>: Leooel</div><div class="line"> * <span class="doctag">@Date</span>: 2019/3/7 20:29</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QueueBasedDynamicArray</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 数组 items,大小为 n</span></div><div class="line">    <span class="keyword">private</span> String[] items;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> n = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> head = <span class="number">0</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> tail = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">QueueBasedDynamicArray</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.items = <span class="keyword">new</span> String[capacity];</div><div class="line">        <span class="keyword">this</span>.n = capacity;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">enqueue</span><span class="params">(String item)</span> </span>&#123;</div><div class="line">        <span class="comment">// 队列末尾没有空间</span></div><div class="line">        <span class="keyword">if</span> (tail == n) &#123;</div><div class="line">            <span class="keyword">if</span> (head == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="comment">// 数据搬移</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = head; i &lt; tail; ++i) &#123;</div><div class="line">                items[i - head] = items[i];</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// 更新 head、tail，注意语句顺序</span></div><div class="line">            tail -= head;</div><div class="line">            head = <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        items[tail] = item;</div><div class="line">        tail++;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">dequeue</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (head == tail) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        String ret = items[head];</div><div class="line">        head++;</div><div class="line">        <span class="keyword">return</span> ret;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printAll</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = head; i &lt; tail; ++i) &#123;</div><div class="line">            System.out.print(items[i] + <span class="string">" "</span>);</div><div class="line">        &#125;</div><div class="line">        System.out.println();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        QueueBasedDynamicArray object = <span class="keyword">new</span> QueueBasedDynamicArray(<span class="number">4</span>);</div><div class="line"></div><div class="line">        object.enqueue(<span class="string">"1"</span>);</div><div class="line">        object.enqueue(<span class="string">"2"</span>);</div><div class="line">        object.enqueue(<span class="string">"3"</span>);</div><div class="line">        object.enqueue(<span class="string">"4"</span>);</div><div class="line">        object.dequeue();</div><div class="line">        object.enqueue(<span class="string">"5"</span>);</div><div class="line">        object.printAll();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="CircularQueueBasedArray"><a href="#CircularQueueBasedArray" class="headerlink" title="CircularQueueBasedArray"></a>CircularQueueBasedArray</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> queue;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@Author</span>: Leooel</div><div class="line"> * <span class="doctag">@Date</span>: 2019/3/7 9:49</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CircularQueueBasedArray</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 数组 items, 大小为 n</span></div><div class="line">    <span class="keyword">private</span> String items[];</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> n = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> head = <span class="number">0</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> tail = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CircularQueueBasedArray</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.items = <span class="keyword">new</span> String[capacity];</div><div class="line">        <span class="keyword">this</span>.n = capacity;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">enqueue</span><span class="params">(String item)</span> </span>&#123;</div><div class="line">        <span class="comment">// 队满</span></div><div class="line">        <span class="keyword">if</span> ((tail + <span class="number">1</span>) % n == head) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        items[tail] = item;</div><div class="line">        tail = (tail + <span class="number">1</span>) % n;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">dequeue</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 队空</span></div><div class="line">        <span class="keyword">if</span> (head == tail) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        String ret = items[head];</div><div class="line">        head = (head + <span class="number">1</span>) % n;</div><div class="line">        <span class="keyword">return</span> ret;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printAll</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = head; i % n != tail; ++i) &#123;</div><div class="line">            System.out.print(items[i] + <span class="string">" "</span>);</div><div class="line">        &#125;</div><div class="line">        System.out.println();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        CircularQueueBasedArray object = <span class="keyword">new</span> CircularQueueBasedArray(<span class="number">15</span>);</div><div class="line"></div><div class="line">        object.enqueue(<span class="string">"Leo"</span>);</div><div class="line">        object.enqueue(<span class="string">"oel"</span>);</div><div class="line">        object.dequeue();</div><div class="line"></div><div class="line">        object.printAll();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="QueueBasedLinkedList"><a href="#QueueBasedLinkedList" class="headerlink" title="QueueBasedLinkedList"></a>QueueBasedLinkedList</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> queue;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@Author</span>: Leooel</div><div class="line"> * <span class="doctag">@Date</span>: 2019/3/7 20:55</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QueueBasedLinkedList</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Node head = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">private</span> Node tail = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enqueue</span><span class="params">(String value)</span> </span>&#123;</div><div class="line">        Node res = <span class="keyword">new</span> Node(value);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (tail == <span class="keyword">null</span>) &#123;</div><div class="line">            head = res;</div><div class="line">            tail = res;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            tail.next = res;</div><div class="line">            tail = tail.next;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">dequeue</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line"></div><div class="line">        String ret = head.data;</div><div class="line">        head = head.next;</div><div class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</div><div class="line">            tail = <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ret;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printAll</span><span class="params">()</span> </span>&#123;</div><div class="line">        Node p = head;</div><div class="line">        <span class="keyword">while</span> (p != <span class="keyword">null</span>) &#123;</div><div class="line">            System.out.print(p.data + <span class="string">" "</span>);</div><div class="line">            p = p.next;</div><div class="line">        &#125;</div><div class="line">        System.out.println();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">private</span> String data;</div><div class="line">        <span class="keyword">private</span> Node next;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(String value)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.data = value;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        QueueBasedLinkedList object = <span class="keyword">new</span> QueueBasedLinkedList();</div><div class="line">        object.enqueue(<span class="string">"1"</span>);</div><div class="line">        object.enqueue(<span class="string">"2"</span>);</div><div class="line">        object.enqueue(<span class="string">"3"</span>);</div><div class="line">        object.dequeue();</div><div class="line">        object.printAll();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -189,7 +225,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机系统</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构和算法</a>
         		</li>
       		
 		</ul>
@@ -198,565 +234,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/04/CSAPP-第三章：程序的机器级表示/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2019/03/07/重温数据结构和算法-Stack-Queue/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-CSAPP-第二章：信息的表示和处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/20/CSAPP-第二章：信息的表示和处理/">CSAPP-第二章：信息的表示和处理</a>
-    </h1>
   
-
-        
-        <a href="/2018/10/20/CSAPP-第二章：信息的表示和处理/" class="archive-article-date">
-  	<time datetime="2018-10-20T02:20:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这一章读起来让人多少有点崩溃，然后想到了作者在开篇所说：如果你全力投身学习书本中的概念，完全理解底层计算机系统以及它对应用程序的影响，那么你会步上成为为数不多的“大牛”的道路。</p>
-        
-          <a class="article-more-a" href="/2018/10/20/CSAPP-第二章：信息的表示和处理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/20/CSAPP-第二章：信息的表示和处理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
+    <a href="/2019/03/02/重温数据结构和算法-LinkedList/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">重温数据结构和算法 LinkedList</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    <article id="post-基金训练营笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/07/基金训练营笔记/">基金训练营笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/10/07/基金训练营笔记/" class="archive-article-date">
-  	<time datetime="2018-10-07T11:19:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>无念说「我们现在意识跟得上，但是能力跟不上」，我想那就让思维先行吧。<br></p>
-        
-          <a class="article-more-a" href="/2018/10/07/基金训练营笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/07/基金训练营笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CSAPP-第一章：计算机系统漫游" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/06/CSAPP-第一章：计算机系统漫游/">CSAPP-第一章：计算机系统漫游</a>
-    </h1>
-  
-
-        
-        <a href="/2018/10/06/CSAPP-第一章：计算机系统漫游/" class="archive-article-date">
-  	<time datetime="2018-10-06T11:54:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Leooel和CSAPP(即Computer Systems: A Programmer’s Perspective)的计算机系统漫游。<br></p>
-        
-          <a class="article-more-a" href="/2018/10/06/CSAPP-第一章：计算机系统漫游/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/06/CSAPP-第一章：计算机系统漫游/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Life-is-binary-zeros-and-ones" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/08/Life-is-binary-zeros-and-ones/">Life is binary,zeros and ones.</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/08/Life-is-binary-zeros-and-ones/" class="archive-article-date">
-  	<time datetime="2018-09-08T03:00:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.qqxiuzi.cn/bianma/erjinzhi.php" target="_blank" rel="external">01010111 01011000 01001010 01101001 01011001 01101110 01001010 00110101 01001100 01000111 01011010 01101110 01011010 01010111 01101000 00110000 01100100 01001000 01101100 01111001 01001001 01010001 00111101 00111101</a><br></p>
-        
-          <a class="article-more-a" href="/2018/09/08/Life-is-binary-zeros-and-ones/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">洋流</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/08/Life-is-binary-zeros-and-ones/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-十四天理财训练营笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/29/十四天理财训练营笔记/">十四天理财训练营笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/29/十四天理财训练营笔记/" class="archive-article-date">
-  	<time datetime="2018-08-29T06:03:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我有一个愿望，希望在接下来这个属于我们的时代能够赶上一个风口，能够赶上“同龄人”的步伐。</p>
-        
-          <a class="article-more-a" href="/2018/08/29/十四天理财训练营笔记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/29/十四天理财训练营笔记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-重温数据结构-串-KMP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/04/重温数据结构-串-KMP/">重温数据结构-串(KMP)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/04/重温数据结构-串-KMP/" class="archive-article-date">
-  	<time datetime="2018-08-04T03:27:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>感觉串的操作挺无聊的。主要看了“一”下KMP,嗯,一下 ~<br></p>
-        
-          <a class="article-more-a" href="/2018/08/04/重温数据结构-串-KMP/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/04/重温数据结构-串-KMP/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-重温数据结构-线性表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/31/重温数据结构-线性表/">重温数据结构-线性表</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/31/重温数据结构-线性表/" class="archive-article-date">
-  	<time datetime="2018-07-31T12:55:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>线性表是最基本、最简单、也是最常用的一种数据结构。<br></p>
-        
-          <a class="article-more-a" href="/2018/07/31/重温数据结构-线性表/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/31/重温数据结构-线性表/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-重温数据结构-栈和队列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/重温数据结构-栈和队列/">重温数据结构-栈和队列</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/重温数据结构-栈和队列/" class="archive-article-date">
-  	<time datetime="2018-07-30T10:11:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>自认为听起来的“堆栈”和看起来的“殷墟”一样，让人着迷。<br></p>
-        
-          <a class="article-more-a" href="/2018/07/30/重温数据结构-栈和队列/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/重温数据结构-栈和队列/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Jarvis-OJ-PWN-入门学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/14/Jarvis-OJ-PWN-入门学习/">Jarvis OJ PWN 入门学习</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/14/Jarvis-OJ-PWN-入门学习/" class="archive-article-date">
-  	<time datetime="2018-05-14T09:29:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>背景知识：64位程序与32位程序有几处不同点，其中之一为参数传递方式不同，32位程序通过栈传参，64位优先寄存器，前6个参数保存在寄存器内，依次保存在rdi, rsi, rdx, rcx, r8, r9，剩余的参数，从右到左入栈。<br></p>
-        
-          <a class="article-more-a" href="/2018/05/14/Jarvis-OJ-PWN-入门学习/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PWN</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/14/Jarvis-OJ-PWN-入门学习/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+</nav>
 
 
 
@@ -764,9 +309,10 @@
 
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -789,8 +335,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
