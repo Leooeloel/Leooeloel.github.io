@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>Leooel</title>
+  <title>重温数据结构和算法 Sorts | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leooel">
-<meta property="og:url" content="http://leo.dropsec.xyz/page/3/index.html">
+  <meta name="description" content="bubbleSort &amp;amp; insertionSort &amp;amp; selectionSort &amp;amp; MergeSor &amp;amp; quickSort">
+<meta name="keywords" content="数据结构与算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重温数据结构和算法 Sorts">
+<meta property="og:url" content="http://leo.dropsec.xyz/2019/03/11/重温数据结构和算法-Sorts/index.html">
 <meta property="og:site_name" content="Leooel">
+<meta property="og:description" content="bubbleSort &amp;amp; insertionSort &amp;amp; selectionSort &amp;amp; MergeSor &amp;amp; quickSort">
+<meta property="og:updated_time" content="2019-03-11T02:34:37.539Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leooel">
+<meta name="twitter:title" content="重温数据结构和算法 Sorts">
+<meta name="twitter:description" content="bubbleSort &amp;amp; insertionSort &amp;amp; selectionSort &amp;amp; MergeSor &amp;amp; quickSort">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -151,34 +156,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-重温数据结构-栈和队列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-重温数据结构和算法-Sorts" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/重温数据结构-栈和队列/">重温数据结构-栈和队列</a>
+    <h1 class="article-title" itemprop="name">
+      重温数据结构和算法 Sorts
     </h1>
   
 
         
-        <a href="/2018/07/30/重温数据结构-栈和队列/" class="archive-article-date">
-  	<time datetime="2018-07-30T10:11:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+        <a href="/2019/03/11/重温数据结构和算法-Sorts/" class="archive-article-date">
+  	<time datetime="2019-03-11T02:30:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>自认为听起来的“堆栈”和看起来的“殷墟”一样，让人着迷。<br></p>
-        
-          <a class="article-more-a" href="/2018/07/30/重温数据结构-栈和队列/#more">more >></a>
-        
+        <p>bubbleSort &amp; insertionSort &amp; selectionSort &amp; MergeSor &amp; quickSort</p>
+<a id="more"></a>
+<h3 id="bubbleSort-amp-insertionSort-amp-selectionSort"><a href="#bubbleSort-amp-insertionSort-amp-selectionSort" class="headerlink" title="bubbleSort &amp; insertionSort &amp; selectionSort"></a>bubbleSort &amp; insertionSort &amp; selectionSort</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Sort;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@Author</span>: Leooel</div><div class="line"> * <span class="doctag">@Date</span>: 2019/3/11 9:07</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sorts</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 冒泡排序，a 是数组，n 是数组大小</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</div><div class="line">            <span class="comment">// 提前结束循环的标志</span></div><div class="line">            <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; n - i - <span class="number">1</span>; ++j) &#123;</div><div class="line">                <span class="keyword">if</span> (a[j] &gt; a[j + <span class="number">1</span>]) &#123;</div><div class="line">                    <span class="keyword">int</span> temp = a[j];</div><div class="line">                    a[j] = a[j + <span class="number">1</span>];</div><div class="line">                    a[j + <span class="number">1</span>] = temp;</div><div class="line">                    flag = <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// 没有数据交换，排序已完成，提前停止冒泡</span></div><div class="line">            <span class="keyword">if</span> (flag == <span class="keyword">false</span>) <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 插入排序，a 是数组，n 是数组大小</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</div><div class="line">            <span class="keyword">int</span> value = a[i];</div><div class="line">            <span class="keyword">int</span> j = i - <span class="number">1</span>;</div><div class="line"></div><div class="line">            <span class="comment">// 查找要插入的位置，并迅速移动</span></div><div class="line">            <span class="keyword">for</span> (; j &gt;= <span class="number">0</span>; --j) &#123;</div><div class="line">                <span class="keyword">if</span> (a[j] &gt; value) &#123;</div><div class="line">                    a[j + <span class="number">1</span>] = a[j];</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            a[j + <span class="number">1</span>] = value;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 选择排序，a 是数组，n 是数组大小</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectionSort</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</div><div class="line">            <span class="comment">// 查找最小值</span></div><div class="line">            <span class="keyword">int</span> minIndex = i;</div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; ++j) &#123;</div><div class="line">                <span class="keyword">if</span> (a[j] &lt; a[minIndex]) &#123;</div><div class="line">                    minIndex = j;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="comment">// 交换数值</span></div><div class="line">            <span class="keyword">int</span> temp = a[i];</div><div class="line">            a[i] = a[minIndex];</div><div class="line">            a[minIndex] = temp;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printAll</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</div><div class="line">            System.out.print(a[i] + <span class="string">" "</span>);</div><div class="line">        &#125;</div><div class="line">        System.out.println();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        Sorts object = <span class="keyword">new</span> Sorts();</div><div class="line"></div><div class="line">        <span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span> [<span class="number">4</span>];</div><div class="line">        a[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">        a[<span class="number">1</span>] = <span class="number">4</span>;</div><div class="line">        a[<span class="number">2</span>] = <span class="number">3</span>;</div><div class="line">        a[<span class="number">3</span>] = <span class="number">2</span>;</div><div class="line"></div><div class="line">        object.printAll(a, <span class="number">4</span>);</div><div class="line">        object.bubbleSort(a, <span class="number">4</span>);</div><div class="line">        <span class="comment">// object.selectionSort(a, 4);</span></div><div class="line">        <span class="comment">// object.insertionSort(a, 4);</span></div><div class="line">        object.printAll(a, <span class="number">4</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="MergeSor"><a href="#MergeSor" class="headerlink" title="MergeSor"></a>MergeSor</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Sort;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@Author</span>: Leooel</div><div class="line"> * <span class="doctag">@Date</span>: 2019/3/9 10:36</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSort</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 归并排序算法， a 是数组，n 表示数组大小</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        mergeSortInternally(a, <span class="number">0</span>, n - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 递归调用函数</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSortInternally</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">        <span class="comment">// 递归终止条件</span></div><div class="line">        <span class="keyword">if</span> (p &gt;= r) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 取 p 到 r 之间的中间位置 q，防止 (p + r) 的和超过 int 类型最大值</span></div><div class="line">        <span class="keyword">int</span> q = p + (r - p) / <span class="number">2</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 分治递归</span></div><div class="line">        mergeSortInternally(a, p, q);</div><div class="line">        mergeSortInternally(a, q + <span class="number">1</span>, r);</div><div class="line"></div><div class="line">        <span class="comment">// 合并</span></div><div class="line">        merge(a, p, q, r);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> p, <span class="keyword">int</span> q, <span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="comment">// 初始 i,j,k</span></div><div class="line">        <span class="keyword">int</span> i = p;</div><div class="line">        <span class="keyword">int</span> j = q + <span class="number">1</span>;</div><div class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 申请一个跟原数组 a 一样大的临时数组 tmp</span></div><div class="line">        <span class="keyword">int</span>[] tmp = <span class="keyword">new</span> <span class="keyword">int</span>[r - p + <span class="number">1</span>];</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (i &lt;= q &amp;&amp; j &lt;= r) &#123;</div><div class="line">            <span class="keyword">if</span> (a[i] &lt;= a[j]) &#123;</div><div class="line">                tmp[k++] = a[i++];</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                tmp[k++] = a[j++];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// 判断哪个子数组还有剩余数据</span></div><div class="line">        <span class="keyword">int</span> start = i;</div><div class="line">        <span class="keyword">int</span> end = q;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (j &lt;= r) &#123;</div><div class="line">            start = j;</div><div class="line">            end = r;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// 将剩余数据拷贝到临时数组 tmp</span></div><div class="line">        <span class="keyword">while</span> (start &lt;= end) &#123;</div><div class="line">            tmp[k++] = a[start++];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// 将 tmp 中的数据拷回原数组 a</span></div><div class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= r - p; ++i) &#123;</div><div class="line">            a[p + i] = tmp[i];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printAll</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</div><div class="line">            System.out.print(a[i] + <span class="string">" "</span>);</div><div class="line">        &#125;</div><div class="line">        System.out.println();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        MergeSort object = <span class="keyword">new</span> MergeSort();</div><div class="line"></div><div class="line">        <span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span> [<span class="number">4</span>];</div><div class="line">        a[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">        a[<span class="number">1</span>] = <span class="number">4</span>;</div><div class="line">        a[<span class="number">2</span>] = <span class="number">3</span>;</div><div class="line">        a[<span class="number">3</span>] = <span class="number">2</span>;</div><div class="line"></div><div class="line">        object.printAll(a, <span class="number">4</span>);</div><div class="line">        object.mergeSort(a, <span class="number">4</span>);</div><div class="line">        object.printAll(a, <span class="number">4</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="quickSort"><a href="#quickSort" class="headerlink" title="quickSort"></a>quickSort</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> Sort;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * <span class="doctag">@Author</span>: Leooel</div><div class="line"> * <span class="doctag">@Date</span>: 2019/3/9 12:31</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 快速排序，a 是数组，n 表示数组的大小</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        quickSortInternally(a, <span class="number">0</span>, n - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 快速排序递归函数，p,r 为下标</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">quickSortInternally</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (p &gt;= r) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">        <span class="comment">// 获取分区点</span></div><div class="line">        <span class="keyword">int</span> q = partition(a, p, r);</div><div class="line">        quickSortInternally(a, p, q - <span class="number">1</span>);</div><div class="line">        quickSortInternally(a, q + <span class="number">1</span>, r);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> pivot = a[r];</div><div class="line">        <span class="keyword">int</span> i = p;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = p; j &lt; r; ++j) &#123;</div><div class="line">            <span class="keyword">if</span> (a[j] &lt; pivot) &#123;</div><div class="line">                <span class="keyword">if</span> (i == j) &#123;</div><div class="line">                    ++i;</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="keyword">int</span> tmp = a[i];</div><div class="line">                    a[i++] = a[j];</div><div class="line">                    a[j] = tmp;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> tmp = a[i];</div><div class="line">        a[i] = a[r];</div><div class="line">        a[r] = tmp;</div><div class="line"></div><div class="line">        System.out.println(<span class="string">"i = "</span> + i);</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printAll</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</div><div class="line">            System.out.print(a[i] + <span class="string">" "</span>);</div><div class="line">        &#125;</div><div class="line">        System.out.println();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        QuickSort object = <span class="keyword">new</span> QuickSort();</div><div class="line"></div><div class="line">        <span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span> [<span class="number">4</span>];</div><div class="line">        a[<span class="number">0</span>] = <span class="number">1</span>;</div><div class="line">        a[<span class="number">1</span>] = <span class="number">4</span>;</div><div class="line">        a[<span class="number">2</span>] = <span class="number">3</span>;</div><div class="line">        a[<span class="number">3</span>] = <span class="number">2</span>;</div><div class="line"></div><div class="line">        object.printAll(a, <span class="number">4</span>);</div><div class="line">        object.quickSort(a, <span class="number">4</span>);</div><div class="line">        object.printAll(a, <span class="number">4</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/1.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/2.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -198,566 +233,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/重温数据结构-栈和队列/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2019/03/11/重温数据结构和算法-Sorts/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
-
-
-
   
-    <article id="post-Jarvis-OJ-PWN-入门学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/14/Jarvis-OJ-PWN-入门学习/">Jarvis OJ PWN 入门学习</a>
-    </h1>
   
-
-        
-        <a href="/2018/05/14/Jarvis-OJ-PWN-入门学习/" class="archive-article-date">
-  	<time datetime="2018-05-14T09:29:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>背景知识：64位程序与32位程序有几处不同点，其中之一为参数传递方式不同，32位程序通过栈传参，64位优先寄存器，前6个参数保存在寄存器内，依次保存在rdi, rsi, rdx, rcx, r8, r9，剩余的参数，从右到左入栈。<br></p>
-        
-          <a class="article-more-a" href="/2018/05/14/Jarvis-OJ-PWN-入门学习/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PWN</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/14/Jarvis-OJ-PWN-入门学习/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
+    <a href="/2019/03/10/计算机是怎样跑起来的-笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机是怎样跑起来的 笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
-    <article id="post-格式化字符串漏洞-简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/02/格式化字符串漏洞-简介/">格式化字符串漏洞 简介</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/02/格式化字符串漏洞-简介/" class="archive-article-date">
-  	<time datetime="2018-01-02T05:23:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://wps2015.org/drops/drops/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%BC%8F%E6%B4%9E%E7%AE%80%E4%BB%8B.html" target="_blank" rel="external">这里是参考链接</a></p>
-        
-          <a class="article-more-a" href="/2018/01/02/格式化字符串漏洞-简介/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/02/格式化字符串漏洞-简介/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Leooel-的-2017" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/01/Leooel-的-2017/">Leooel 的 2017</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/01/Leooel-的-2017/" class="archive-article-date">
-  	<time datetime="2018-01-01T15:10:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/2018/01/01/Leooel-的-2017/01.jpg" alt=""></p>
-        
-          <a class="article-more-a" href="/2018/01/01/Leooel-的-2017/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">洋流</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/01/Leooel-的-2017/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-数据结构-知识回顾" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/27/数据结构-知识回顾/">数据结构 知识回顾</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/27/数据结构-知识回顾/" class="archive-article-date">
-  	<time datetime="2017-12-27T13:13:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>拥抱被我冷落在角落的数据结构吧!</p>
-        
-          <a class="article-more-a" href="/2017/12/27/数据结构-知识回顾/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/27/数据结构-知识回顾/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Just-XXXX-XXXX" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/01/Just-XXXX-XXXX/">Just XXXX XXXX</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/01/Just-XXXX-XXXX/" class="archive-article-date">
-  	<time datetime="2017-12-01T12:06:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>还好，只是最近有点压抑、有点虚。</p>
-        
-          <a class="article-more-a" href="/2017/12/01/Just-XXXX-XXXX/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">洋流</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/01/Just-XXXX-XXXX/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-跟着崔岩老师学Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/19/跟着崔岩老师学Java/">跟着崔岩老师学Java</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/19/跟着崔岩老师学Java/" class="archive-article-date">
-  	<time datetime="2017-09-19T10:39:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前在超星算是初步接触过Java，本学期有Java程序设计这门课，我是很高兴的。上过两节课，发现崔岩老师也很给力，更坚定了我学好Java的信心。 这里就用于记录我在崔老师的课堂上的点点收获吧</p>
-        
-          <a class="article-more-a" href="/2017/09/19/跟着崔岩老师学Java/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/19/跟着崔岩老师学Java/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-新手常见的17个Python运行时错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/05/新手常见的17个Python运行时错误/">新手常见的17个Python运行时错误</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/05/新手常见的17个Python运行时错误/" class="archive-article-date">
-  	<time datetime="2017-09-05T11:37:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>早计划学习python了，最近一段时间才缓缓展开行动…<br>自我感觉熟练python后可以很随意的编写程序，比C++方便多。</p>
-        
-          <a class="article-more-a" href="/2017/09/05/新手常见的17个Python运行时错误/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/05/新手常见的17个Python运行时错误/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-OK-天津" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/28/OK-天津/">OK 天津</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/28/OK-天津/" class="archive-article-date">
-  	<time datetime="2017-08-28T13:29:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>8.24–8.28 与三友共浪天津，回来之后迫不及待的想记录一点东西…</p>
-<p><img src="/2017/08/28/OK-天津/00.jpg" alt=""></p>
-        
-          <a class="article-more-a" href="/2017/08/28/OK-天津/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">洋流</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/28/OK-天津/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-十天的放逐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/08/十天的放逐/">十天的放逐</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/08/十天的放逐/" class="archive-article-date">
-  	<time datetime="2017-08-08T02:59:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>就是这样如此巧合 2017.8.7 返校 立秋<br>我已经进入了秋天<br></p>
-        
-          <a class="article-more-a" href="/2017/08/08/十天的放逐/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">洋流</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/08/十天的放逐/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
+</nav>
 
 
 
@@ -765,9 +308,10 @@
 
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -790,8 +334,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
