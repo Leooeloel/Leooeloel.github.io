@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>新手常见的17个Python运行时错误 | Leooel</title>
+  <title>Tag: 产品 | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="早计划学习python了，最近一段时间才缓缓展开行动…自我感觉熟练python后可以很随意的编写程序，比C++方便多。">
-<meta name="keywords" content="技术">
-<meta property="og:type" content="article">
-<meta property="og:title" content="新手常见的17个Python运行时错误">
-<meta property="og:url" content="http://leo.dropsec.xyz/2017/09/05/新手常见的17个Python运行时错误/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Leooel">
+<meta property="og:url" content="http://leo.dropsec.xyz/tags/产品/index.html">
 <meta property="og:site_name" content="Leooel">
-<meta property="og:description" content="早计划学习python了，最近一段时间才缓缓展开行动…自我感觉熟练python后可以很随意的编写程序，比C++方便多。">
-<meta property="og:updated_time" content="2019-02-10T14:49:39.004Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新手常见的17个Python运行时错误">
-<meta name="twitter:description" content="早计划学习python了，最近一段时间才缓缓展开行动…自我感觉熟练python后可以很随意的编写程序，比C++方便多。">
+<meta name="twitter:title" content="Leooel">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -156,302 +151,108 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-新手常见的17个Python运行时错误" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      新手常见的17个Python运行时错误
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/01/31/腾讯产品启示录-笔记/" class="archive-article-date">
+  	<time datetime="2020-01-31T15:14:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-31</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/01/31/腾讯产品启示录-笔记/">腾讯产品启示录 笔记</a>
     </h1>
   
 
-        
-        <a href="/2017/09/05/新手常见的17个Python运行时错误/" class="archive-article-date">
-  	<time datetime="2017-09-05T11:37:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>早计划学习python了，最近一段时间才缓缓展开行动…<br>自我感觉熟练python后可以很随意的编写程序，比C++方便多。</p>
-<a id="more"></a>
-<p>当初学 Python 时，想要弄懂 Python 的错误信息的含义可能有点复杂。这里列出了常见的的一些让你程序 crash 的运行时错误。</p>
-<p>1）忘记在 if , elif , else , for , while , class ,def 声明末尾添加 ：（导致 “SyntaxError ：invalid syntax”）</p>
-<p>该错误将发生在类似如下代码中：</p>
-<pre><code>if spam == 42
-    print(&apos;Hello!&apos;)
-</code></pre><p>2)使用 = 而不是 ==（导致“SyntaxError: invalid syntax”）</p>
-<p> = 是赋值操作符而 == 是等于比较操作。该错误发生在如下代码中：</p>
-<pre><code>if spam = 42:
-    print(&apos;Hello!&apos;)
-</code></pre><p>3）错误的使用缩进量。（导致“IndentationError：unexpected indent”、“IndentationError：unindent does not match any outer indetation level”以及“IndentationError：expected an indented block”）</p>
-<p>记住缩进增加只用在以：结束的语句之后，而之后必须恢复到之前的缩进格式。该错误发生在如下代码中：</p>
-<pre><code>print(&apos;Hello!&apos;)
-    print(&apos;Howdy!&apos;)
-
-或者：
-
-if spam == 42:
-    print(&apos;Hello!&apos;)
-  print(&apos;Howdy!&apos;)
-
-或者：
-
-if spam == 42:
-print(&apos;Hello!&apos;)
-</code></pre><p>4）在 for 循环语句中忘记调用 len() (导致“TypeError: ‘list’ object cannot be interpreted as an integer”)</p>
-<p>通常你想要通过索引来迭代一个list或者string的元素，这需要调用 range() 函数。要记得返回len 值而不是返回这个列表。</p>
-<p>该错误发生在如下代码中：</p>
-<pre><code>spam = [&apos;cat&apos;, &apos;dog&apos;, &apos;mouse&apos;]
-for i in range(spam):
-    print(spam[i])
-</code></pre><p>5）尝试修改string的值（导致“TypeError: ‘str’ object does not support item assignment”）</p>
-<p>string是一种不可变的数据类型，该错误发生在如下代码中：</p>
-<pre><code>spam = &apos;I have a pet cat.&apos;
-spam[13] = &apos;r&apos;
-print(spam)
-</code></pre><p>而你实际想要这样做：</p>
-<pre><code>spam = &apos;I have a pet cat.&apos;
-spam = spam[:13] + &apos;r&apos; + spam[14:]
-print(spam)
-</code></pre><p>6）尝试连接非字符串值与字符串（导致 “TypeError: Can’t convert ‘int’ object to str implicitly”）</p>
-<p>该错误发生在如下代码中：</p>
-<pre><code>numEggs = 12
-print(&apos;I have &apos; + numEggs + &apos; eggs.&apos;)
-</code></pre><p>而你实际想要这样做：</p>
-<pre><code>numEggs = 12
-print(&apos;I have &apos; + str(numEggs) + &apos; eggs.&apos;)
-
-或者：
-
-numEggs = 12
-print(&apos;I have %s eggs.&apos; % (numEggs))
-</code></pre><p>7）在字符串首尾忘记加引号（导致“SyntaxError: EOL while scanning string literal”）</p>
-<p>该错误发生在如下代码中：</p>
-<pre><code>print(Hello!&apos;)
-
-或者:
-
-print(&apos;Hello!)
-
-或者:
-
-myName = &apos;Al&apos;
-print(&apos;My name is &apos; + myName + . How are you?&apos;)
-</code></pre><p>8）变量或者函数名拼写错误（导致“NameError: name ‘fooba’ is not defined”）</p>
-<p>该错误发生在如下代码中：</p>
-<pre><code>foobar = &apos;Al&apos;
-print(&apos;My name is &apos; + fooba)
-
-或者:
-
-spam = ruond(4.2)
-
-或者:
-
-spam = Round(4.2)
-</code></pre><p>9）方法名拼写错误（导致 “AttributeError: ‘str’ object has no attribute ‘lowerr’”）</p>
-<p>该错误发生在如下代码中：</p>
-<pre><code>spam = &apos;THIS IS IN LOWERCASE.&apos;
-spam = spam.lowerr()
-</code></pre><p>10）引用超过list最大索引（导致“IndexError: list index out of range”）</p>
-<p>该错误发生在如下代码中：</p>
-<pre><code>spam = [&apos;cat&apos;, &apos;dog&apos;, &apos;mouse&apos;]
-print(spam[6])
-</code></pre><p>11）使用不存在的字典键值（导致“KeyError：‘spam’”）</p>
-<p>该错误发生在如下代码中：</p>
-<pre><code>spam = {&apos;cat&apos;: &apos;Zophie&apos;, &apos;dog&apos;: &apos;Basil&apos;, &apos;mouse&apos;: &apos;Whiskers&apos;}
-print(&apos;The name of my pet zebra is &apos; + spam[&apos;zebra&apos;])
-</code></pre><p>12）尝试使用Python关键字作为变量名（导致“SyntaxError：invalid syntax”）</p>
-<p>Python关键不能用作变量名，该错误发生在如下代码中：</p>
-<pre><code>class = &apos;algebra&apos;
-
-Python3的关键字有：and, as, assert, break, class, continue, def, del, elif, else, except, False, finally, for, from, global, if, import, in, is, lambda, None, nonlocal, not, or, pass, raise, return, True, try, while, with, yield
-</code></pre><p>13）在一个定义新变量中使用增值操作符（导致“NameError: name ‘foobar’ is not defined”）</p>
-<p>不要在声明变量时使用0或者空字符串作为初始值，这样使用自增操作符的一句spam += 1等于spam = spam + 1，这意味着spam需要指定一个有效的初始值。</p>
-<p>该错误发生在如下代码中：</p>
-<pre><code>spam = 0
-spam += 42
-eggs += 42
-</code></pre><p>14）在定义局部变量前在函数中使用局部变量（此时有与局部变量同名的全局变量存在）（导致“UnboundLocalError: local variable ‘foobar’ referenced before assignment”）</p>
-<p>在函数中使用局部变来那个而同时又存在同名全局变量时是很复杂的，使用规则是：如果在函数中定义了任何东西，如果它只是在函数中使用那它就是局部的，反之就是全局变量。</p>
-<p>这意味着你不能在定义它之前把它当全局变量在函数中使用。</p>
-<p>该错误发生在如下代码中：</p>
-<pre><code>someVar = 42
-def myFunction():
-    print(someVar)
-    someVar = 100
-myFunction()
-</code></pre><p>15）尝试使用 range()创建整数列表（导致“TypeError: ‘range’ object does not support item assignment”）</p>
-<p>有时你想要得到一个有序的整数列表，所以 range() 看上去是生成此列表的不错方式。然而，你需要记住 range() 返回的是 “range object”，而不是实际的 list 值。</p>
-<p>该错误发生在如下代码中：</p>
-<pre><code>spam = range(10)
-spam[4] = -1
-</code></pre><p>也许这才是你想做：</p>
-<pre><code>spam = list(range(10))
-spam[4] = -1
-</code></pre><p>（注意：在 Python 2 中 spam = range(10) 是能行的，因为在 Python 2 中 range() 返回的是list值，但是在 Python 3 中就会产生以上错误）</p>
-<p>16）不错在 ++ 或者 – 自增自减操作符。（导致“SyntaxError: invalid syntax”）</p>
-<p>如果你习惯于例如 C++ , Java , PHP 等其他的语言，也许你会想要尝试使用 ++ 或者 – 自增自减一个变量。在Python中是没有这样的操作符的。</p>
-<p>该错误发生在如下代码中：</p>
-<pre><code>spam = 1
-spam++
-</code></pre><p>也许这才是你想做的：</p>
-<pre><code>spam = 1
-spam += 1
-</code></pre><p>17）忘记为方法的第一个参数添加self参数（导致“TypeError: myMethod() takes no arguments (1 given)”）</p>
-<p>该错误发生在如下代码中：</p>
-<pre><code>class Foo():
-    def myMethod():
-        print(&apos;Hello!&apos;)
-a = Foo()
-a.myMethod()
-</code></pre><p>原文链接：<a href="http://www.oschina.net/question/89964_62779" target="_blank" rel="external">http://www.oschina.net/question/89964_62779</a></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/1.png">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/2.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">产品</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2017/09/05/新手常见的17个Python运行时错误/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/02/19/INSPIRED-启示录-笔记/" class="archive-article-date">
+  	<time datetime="2019-02-19T03:24:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-19</time>
+</a>
+        </div>
+    	 
   
-    <a href="/2017/09/19/跟着崔岩老师学Java/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          跟着崔岩老师学Java
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/08/28/OK-天津/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">OK 天津</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
-  
-
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/02/19/INSPIRED-启示录-笔记/">INSPIRED 启示录 笔记</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">产品</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
   
+  
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -474,9 +275,9 @@ a.myMethod()
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",
