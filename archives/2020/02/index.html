@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>重温数据结构和算法 LinkedList | Leooel</title>
+  <title>Archives: 2020/2 | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="有关链表常考面试题：单链表反转、检测链表中的环、有序链表合并、删除链表倒数第 k 个结点、求链表中间结点">
-<meta name="keywords" content="数据结构与算法">
-<meta property="og:type" content="article">
-<meta property="og:title" content="重温数据结构和算法 LinkedList">
-<meta property="og:url" content="http://leo.dropsec.xyz/2019/03/02/重温数据结构和算法-LinkedList/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Leooel">
+<meta property="og:url" content="http://leo.dropsec.xyz/archives/2020/02/index.html">
 <meta property="og:site_name" content="Leooel">
-<meta property="og:description" content="有关链表常考面试题：单链表反转、检测链表中的环、有序链表合并、删除链表倒数第 k 个结点、求链表中间结点">
-<meta property="og:updated_time" content="2019-03-02T07:15:27.726Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="重温数据结构和算法 LinkedList">
-<meta name="twitter:description" content="有关链表常考面试题：单链表反转、检测链表中的环、有序链表合并、删除链表倒数第 k 个结点、求链表中间结点">
+<meta name="twitter:title" content="Leooel">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -156,176 +151,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-重温数据结构和算法-LinkedList" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      重温数据结构和算法 LinkedList
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/02/12/俞军产品方法论-笔记/" class="archive-article-date">
+  	<time datetime="2020-02-11T17:01:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-12</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/02/12/俞军产品方法论-笔记/">俞军产品方法论 笔记</a>
     </h1>
   
 
-        
-        <a href="/2019/03/02/重温数据结构和算法-LinkedList/" class="archive-article-date">
-  	<time datetime="2019-03-02T07:04:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有关链表常考面试题：单链表反转、检测链表中的环、有序链表合并、删除链表倒数第 k 个结点、求链表中间结点</p>
-<a id="more"></a>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> data;</div><div class="line">    <span class="keyword">private</span> Node next;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> data)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data = data;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="单链表反转"><a href="#单链表反转" class="headerlink" title="单链表反转"></a>单链表反转</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 单链表反转 方法一：非递归方法</span></div><div class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">reverse</span><span class="params">(Node head)</span> </span>&#123;</div><div class="line"></div><div class="line">    Node preNode = <span class="keyword">null</span>;</div><div class="line">    Node curNode = head;</div><div class="line">    Node newhead = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (curNode != <span class="keyword">null</span>) &#123;</div><div class="line">        Node nextNode = curNode.next;</div><div class="line">        <span class="keyword">if</span> (nextNode == <span class="keyword">null</span>) &#123;</div><div class="line">            newhead = curNode;</div><div class="line">        &#125;</div><div class="line">        curNode.next = preNode;</div><div class="line">        preNode = curNode;</div><div class="line">        curNode = nextNode;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> newhead;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 单链表反转 方法二：递归方法</span></div><div class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">diguiReverse</span><span class="params">(Node head)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</div><div class="line"></div><div class="line">    Node newhead = diguiReverse(head.next);</div><div class="line">    head.next.next = head;</div><div class="line">    head.next = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> newhead;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="链表中环的检测"><a href="#链表中环的检测" class="headerlink" title="链表中环的检测"></a>链表中环的检测</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 链表中环的检测 快慢指针法</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkCircle</span><span class="params">(Node head)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    Node fast = head;</div><div class="line">    Node slow = head;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>) &#123;</div><div class="line">        fast = fast.next.next;</div><div class="line">        slow = slow.next;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (fast == slow) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="两个有序链表的合并"><a href="#两个有序链表的合并" class="headerlink" title="两个有序链表的合并"></a>两个有序链表的合并</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 两个有序链表的合并 递归法</span></div><div class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">mergeSortedLinkLists</span><span class="params">(Node la, Node lb)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (la == <span class="keyword">null</span>) <span class="keyword">return</span> lb;</div><div class="line">    <span class="keyword">if</span> (lb == <span class="keyword">null</span>) <span class="keyword">return</span> la;</div><div class="line"></div><div class="line">    Node newHead = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (la.data &lt; lb.data) &#123;</div><div class="line">        newHead = la;</div><div class="line">        newHead.next = mergeSortedLinkLists(la.next, lb);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        newHead = lb;</div><div class="line">        newHead.next = mergeSortedLinkLists(lb.next, la);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> newHead;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="删除链表倒数第n个结点"><a href="#删除链表倒数第n个结点" class="headerlink" title="删除链表倒数第n个结点"></a>删除链表倒数第n个结点</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 删除链表倒数第n个结点；快慢指针法找到倒数第 k 个结点的前一个结点，即倒数 k + 1 个结点</span></div><div class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">deleteLastKth</span><span class="params">(Node head, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || k &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    Node fast = head;</div><div class="line">    Node slow = head;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (k + <span class="number">1</span> ) - <span class="number">1</span>; ++i) &#123;</div><div class="line">        <span class="keyword">if</span> (fast.next != <span class="keyword">null</span>)</div><div class="line">            fast = fast.next;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (fast.next != <span class="keyword">null</span>) &#123;</div><div class="line">        fast = fast.next;</div><div class="line">        slow = slow.next;</div><div class="line">    &#125;</div><div class="line">    slow.next = slow.next.next;</div><div class="line">    <span class="keyword">return</span> head;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="求链表的中间结点"><a href="#求链表的中间结点" class="headerlink" title="求链表的中间结点"></a>求链表的中间结点</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 求链表的中间结点</span></div><div class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">findMiddleNode</span><span class="params">(Node head)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    Node fast = head;</div><div class="line">    Node slow = head;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (fast.next != <span class="keyword">null</span> &amp;&amp; fast.next.next != <span class="keyword">null</span>) &#123;</div><div class="line">        fast = fast.next.next;</div><div class="line">        slow = slow.next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> slow;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请Leo吃糖果哦<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/1.png">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/2.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">产品</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2019/03/02/重温数据结构和算法-LinkedList/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/03/07/重温数据结构和算法-Stack-Queue/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          重温数据结构和算法 Stack &amp; Queue
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/02/26/重温数据结构和算法-Array-ArrayList/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">重温数据结构和算法 Array &amp; ArrayList</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -348,8 +227,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

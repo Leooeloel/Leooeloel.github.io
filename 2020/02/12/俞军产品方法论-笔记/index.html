@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://leo.dropsec.xyz">
-  <title>重温数据结构和算法 LinkedList | Leooel</title>
+  <title>俞军产品方法论 笔记 | Leooel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="有关链表常考面试题：单链表反转、检测链表中的环、有序链表合并、删除链表倒数第 k 个结点、求链表中间结点">
-<meta name="keywords" content="数据结构与算法">
+  <meta name="description" content="产品经理要在实践中理解用户模型和交易模型，设计产品促成更多交易，以创造有利可图的用户价值。">
+<meta name="keywords" content="产品">
 <meta property="og:type" content="article">
-<meta property="og:title" content="重温数据结构和算法 LinkedList">
-<meta property="og:url" content="http://leo.dropsec.xyz/2019/03/02/重温数据结构和算法-LinkedList/index.html">
+<meta property="og:title" content="俞军产品方法论 笔记">
+<meta property="og:url" content="http://leo.dropsec.xyz/2020/02/12/俞军产品方法论-笔记/index.html">
 <meta property="og:site_name" content="Leooel">
-<meta property="og:description" content="有关链表常考面试题：单链表反转、检测链表中的环、有序链表合并、删除链表倒数第 k 个结点、求链表中间结点">
-<meta property="og:updated_time" content="2019-03-02T07:15:27.726Z">
+<meta property="og:description" content="产品经理要在实践中理解用户模型和交易模型，设计产品促成更多交易，以创造有利可图的用户价值。">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7298770-e6236b0e2f5903b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2020-02-11T17:05:37.868Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="重温数据结构和算法 LinkedList">
-<meta name="twitter:description" content="有关链表常考面试题：单链表反转、检测链表中的环、有序链表合并、删除链表倒数第 k 个结点、求链表中间结点">
+<meta name="twitter:title" content="俞军产品方法论 笔记">
+<meta name="twitter:description" content="产品经理要在实践中理解用户模型和交易模型，设计产品促成更多交易，以创造有利可图的用户价值。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7298770-e6236b0e2f5903b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="Leooel" type="application/atom+xml">
   
@@ -156,35 +158,118 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-重温数据结构和算法-LinkedList" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-俞军产品方法论-笔记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      重温数据结构和算法 LinkedList
+      俞军产品方法论 笔记
     </h1>
   
 
         
-        <a href="/2019/03/02/重温数据结构和算法-LinkedList/" class="archive-article-date">
-  	<time datetime="2019-03-02T07:04:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-02</time>
+        <a href="/2020/02/12/俞军产品方法论-笔记/" class="archive-article-date">
+  	<time datetime="2020-02-11T17:01:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>有关链表常考面试题：单链表反转、检测链表中的环、有序链表合并、删除链表倒数第 k 个结点、求链表中间结点</p>
+        <p>产品经理要在实践中理解用户模型和交易模型，设计产品促成更多交易，以创造有利可图的用户价值。</p>
 <a id="more"></a>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> data;</div><div class="line">    <span class="keyword">private</span> Node next;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> data)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data = data;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="单链表反转"><a href="#单链表反转" class="headerlink" title="单链表反转"></a>单链表反转</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 单链表反转 方法一：非递归方法</span></div><div class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">reverse</span><span class="params">(Node head)</span> </span>&#123;</div><div class="line"></div><div class="line">    Node preNode = <span class="keyword">null</span>;</div><div class="line">    Node curNode = head;</div><div class="line">    Node newhead = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (curNode != <span class="keyword">null</span>) &#123;</div><div class="line">        Node nextNode = curNode.next;</div><div class="line">        <span class="keyword">if</span> (nextNode == <span class="keyword">null</span>) &#123;</div><div class="line">            newhead = curNode;</div><div class="line">        &#125;</div><div class="line">        curNode.next = preNode;</div><div class="line">        preNode = curNode;</div><div class="line">        curNode = nextNode;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> newhead;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 单链表反转 方法二：递归方法</span></div><div class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">diguiReverse</span><span class="params">(Node head)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</div><div class="line"></div><div class="line">    Node newhead = diguiReverse(head.next);</div><div class="line">    head.next.next = head;</div><div class="line">    head.next = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> newhead;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="链表中环的检测"><a href="#链表中环的检测" class="headerlink" title="链表中环的检测"></a>链表中环的检测</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 链表中环的检测 快慢指针法</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkCircle</span><span class="params">(Node head)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    Node fast = head;</div><div class="line">    Node slow = head;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>) &#123;</div><div class="line">        fast = fast.next.next;</div><div class="line">        slow = slow.next;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (fast == slow) <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="两个有序链表的合并"><a href="#两个有序链表的合并" class="headerlink" title="两个有序链表的合并"></a>两个有序链表的合并</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 两个有序链表的合并 递归法</span></div><div class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">mergeSortedLinkLists</span><span class="params">(Node la, Node lb)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (la == <span class="keyword">null</span>) <span class="keyword">return</span> lb;</div><div class="line">    <span class="keyword">if</span> (lb == <span class="keyword">null</span>) <span class="keyword">return</span> la;</div><div class="line"></div><div class="line">    Node newHead = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (la.data &lt; lb.data) &#123;</div><div class="line">        newHead = la;</div><div class="line">        newHead.next = mergeSortedLinkLists(la.next, lb);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        newHead = lb;</div><div class="line">        newHead.next = mergeSortedLinkLists(lb.next, la);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> newHead;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="删除链表倒数第n个结点"><a href="#删除链表倒数第n个结点" class="headerlink" title="删除链表倒数第n个结点"></a>删除链表倒数第n个结点</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 删除链表倒数第n个结点；快慢指针法找到倒数第 k 个结点的前一个结点，即倒数 k + 1 个结点</span></div><div class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">deleteLastKth</span><span class="params">(Node head, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || k &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    Node fast = head;</div><div class="line">    Node slow = head;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (k + <span class="number">1</span> ) - <span class="number">1</span>; ++i) &#123;</div><div class="line">        <span class="keyword">if</span> (fast.next != <span class="keyword">null</span>)</div><div class="line">            fast = fast.next;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (fast.next != <span class="keyword">null</span>) &#123;</div><div class="line">        fast = fast.next;</div><div class="line">        slow = slow.next;</div><div class="line">    &#125;</div><div class="line">    slow.next = slow.next.next;</div><div class="line">    <span class="keyword">return</span> head;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="求链表的中间结点"><a href="#求链表的中间结点" class="headerlink" title="求链表的中间结点"></a>求链表的中间结点</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 求链表的中间结点</span></div><div class="line"><span class="function"><span class="keyword">public</span> Node <span class="title">findMiddleNode</span><span class="params">(Node head)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line"></div><div class="line">    Node fast = head;</div><div class="line">    Node slow = head;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (fast.next != <span class="keyword">null</span> &amp;&amp; fast.next.next != <span class="keyword">null</span>) &#123;</div><div class="line">        fast = fast.next.next;</div><div class="line">        slow = slow.next;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> slow;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="1-什么是产品经理"><a href="#1-什么是产品经理" class="headerlink" title="1. 什么是产品经理"></a>1. 什么是产品经理</h1><h2 id="1-1-历史上的产品经理"><a href="#1-1-历史上的产品经理" class="headerlink" title="1.1 历史上的产品经理"></a>1.1 历史上的产品经理</h2><p>一个职业能够诞生并留存下来，必然是因为它优化了企业分工，提高了企业收益，产品经理也不例外。</p>
+<p><strong>快速消费品时代</strong>，产品经理其实是品牌经理，他的主要职责是负责这个品牌的市场定位、营销推广、渠道建设等等。产品本身是高度同质化的，一个产品究竟是一亿量级还是十亿量级，取决于产品经理的品牌营销能力。</p>
+<p><strong>软件时代</strong>，产品经理偏重于进行项目管理和推进，按照客户的要求准时上线产品。对产品设计能力的要求达到60分即可。</p>
+<h2 id="1-2-不一样的互联网产品经理"><a href="#1-2-不一样的互联网产品经理" class="headerlink" title="1.2 不一样的互联网产品经理"></a>1.2 不一样的互联网产品经理</h2><p>互联网时代特性之一：信息复制分发的边际成本低、用户量巨大</p>
+<p>互联网时代特性之二：快速迭代、数据、AB测试</p>
+<p>互联网时代特性之三：体验设计价值增大</p>
+<p><strong>互联网时代</strong>，产品经理的核心能力变成了“<strong>需求洞察</strong>”。你必须从宏观层面和微观场景去深刻理解用户的真实需求，精确捕捉用户的“痛点、爽点和痒点”</p>
+<p>除了洞察用户需求，互联网时代的产品经理还必须<strong>对用户体验高度敏感</strong>。</p>
+<blockquote>
+<p>实际上，最近一两年来，产品经理的角色又发生了新的变化，他们成了这个社会不可或缺的“<strong>连接器</strong>”。一种以个人为节点的新连接方式崛起了，他们所使用的互联网产品以及背后的产品经理，就是帮助他们匹配资源的高效“连接器”。这时候，产品经理实际上成为了社会新基础设施的设计者，这就是产品经理对于这个时代的重大意义。</p>
+</blockquote>
+<h2 id="1-3-产品经理做什么"><a href="#1-3-产品经理做什么" class="headerlink" title="1.3 产品经理做什么"></a>1.3 产品经理做什么</h2><p>需求、生产、销售、协调</p>
+<p>产品经理应该去深入研究两类重要的模型，分别是<strong>用户模型</strong>和<strong>交易模型</strong>。</p>
+<p>用户模型：研究用户行为及其背后的原理。</p>
+<blockquote>
+<p>积累用户模型时最理想的状态，是基于每个场景、每个行为背后的每次需求来思考，然后基于需求进行深度的样本积累和分类，这样总结出的用户模型才是可靠的。</p>
+</blockquote>
+<p>掌握一个领域的用户模型是产品经理的合格线，而产品经理的进阶之路，就是要进一步去研究交易模型。</p>
+<p>交易模型：产品经理发现和设计的合理机制，它能促成用户做出某种行为（即交易），且可持续。</p>
+<blockquote>
+<p>交易模型继续拆解，它其实包括两个重点：第一，搞清楚各利益相关方在交易中的利害得失；第二，创造有利可图的用户价值。</p>
+</blockquote>
+<h1 id="2-企业、用户、产品"><a href="#2-企业、用户、产品" class="headerlink" title="2. 企业、用户、产品"></a>2. 企业、用户、产品</h1><h2 id="2-1-企业、用户与产品的关系"><a href="#2-1-企业、用户与产品的关系" class="headerlink" title="2.1 企业、用户与产品的关系"></a>2.1 企业、用户与产品的关系</h2><p>用户价值与企业价值的关系：企业以产品为媒介，与用户进行价值交换，达成创造商业价值的目的。</p>
+<h2 id="2-2-如何理解用户"><a href="#2-2-如何理解用户" class="headerlink" title="2.2 如何理解用户"></a>2.2 如何理解用户</h2><p>从产品经理的视角来看，<strong>用户不是自然人，而是需求的集合</strong>。</p>
+<p>用户的5个属性：</p>
+<ul>
+<li><p>异质性：用户的特点千差万别，几乎很难找到两个完全一样的用户。因为用户的偏好、认知、所拥有的资源是不一样的，所以不能把用户统一成一个单一的用户画像。</p>
+</li>
+<li><p>情境性：用户的行为受情境的影响，没有情境就没有用户。</p>
+</li>
+<li><p>可塑性：用户是可变的，其偏好和认知会随着外界不同的信息刺激发生变化和演化。</p>
+</li>
+<li><p>自利性：用户追求个人总效用最大化。</p>
+</li>
+<li><p>有限理性：用户虽然追求理性，但他的能力是有限的，其判断经常出错，也经常被骗，所以只能做到有限的程度。</p>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7298770-e6236b0e2f5903b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="用户行为背后的机制分析"></p>
+<p>用户感知到的价值才是用户价值。怎么理解用户价值？</p>
+<p>用户价值 = 新体验 - 旧体验 - 替换成本</p>
+<h2 id="2-3-如何理解产品"><a href="#2-3-如何理解产品" class="headerlink" title="2.3 如何理解产品"></a>2.3 如何理解产品</h2><p>产品是一种价值交换的媒介，企业用产品与用户交换价值。</p>
+<p>分析产品的重点是弄明白这个产品利从何来、利往哪去，它创造了什么价值，价值是怎么分配的。从价值的角度分析，才能推演它的趋势，才能理解用户的需求。</p>
+<p>一个好的产品应该有三个属性：有效用、有利润、可持续。</p>
+<h2 id="2-4-如何理解企业"><a href="#2-4-如何理解企业" class="headerlink" title="2.4 如何理解企业"></a>2.4 如何理解企业</h2><p>企业的本质在于两点：发现市场获利机会、生产效率高于市场。</p>
+<p>一般来说，大型的市场获利机会，一是源于市场环境和制度变化，二是源于关键新技术，三是长期关键因素——组织建设能力。</p>
+<p>企业是通过<strong>权威</strong>来提高效率代替市场的。权威在这里可以理解为掌握专业知识的员工，自上而下，用自己的专业知识在各个岗位上做出超过市场平均水准的更优决策。这些专业知识，就是企业的核心竞争力来源。</p>
+<p>詹森生产函数：Q = Fr(L，K，M，C：T)</p>
+<p>Q：产量、r：外部规则、T：技术、L：劳动力、K：资本、M：原材料、C：内部规则</p>
+<blockquote>
+<p>首先企业的产量 Q 是变量外部规则 r 的函数，给定一组外部规则时，存在一个被外部规则约束的产出边界。其次，在外部规则 r 给定的前提下，企业的产量 Q 主要是变量技术 T 的函数，给定一种技术时，存在一个生产技术约束的产出边界。最后，L、K、M 分别代表劳动力、资本、原材料的投入程度。C 是内部规则，比如产权、组织形式、利润分配、激励体系、公司文化价值观等。</p>
+</blockquote>
+<p>对产品来说，最核心的价值概念是：使用价值、交换价值。</p>
+<p>没有使用价值的东西不能成为产品，有使用价值的产品不一定有交换价值。</p>
+<p>交换价值（价格）有三个属性：有效用、被认知、稀缺性。</p>
+<p>创造价值的 5 大路径：劳动、分工、交易、新技术、制度。</p>
+<h2 id="2-5-如何更好地用产品进行“价值交换”"><a href="#2-5-如何更好地用产品进行“价值交换”" class="headerlink" title="2.5 如何更好地用产品进行“价值交换”"></a>2.5 如何更好地用产品进行“价值交换”</h2><p>将商品看作交易：在企业、产品、用户的三方框架下去认知和定义产品，以始为终，产品一开始就应该为了企业和用户间的交易（价值交换）而存在，<strong>产品即交易</strong>。这里的“交易”是把人的任何有意识行为，看作付出预期代价购买预期收益。</p>
+<p>企业的一切行为，应该围绕“让交换行为更多地发生”。</p>
+<h1 id="3-交易"><a href="#3-交易" class="headerlink" title="3. 交易"></a>3. 交易</h1><h2 id="3-1-交易与交易模型"><a href="#3-1-交易与交易模型" class="headerlink" title="3.1 交易与交易模型"></a>3.1 交易与交易模型</h2><p>世界无时不刻在发生交易的原因是：交易创造价值。一个企业的核心目标就应该是创造价值。</p>
+<p>交易模型：产品经理发现和设计的合理机制，它能促成用户做出某种行为（即交易），且可持续。</p>
+<blockquote>
+<p>交易模型继续拆解，它其实包括两个重点：第一，搞清楚各利益相关方在交易中的利害得失；第二，创造有利可图的用户价值。</p>
+</blockquote>
+<p>产品经理最终要做的，是持续不断地发现市场上高于用户支付代价的用户价值，并设计合适的交易模型把它固化为产品。</p>
+<h2 id="3-2-效用"><a href="#3-2-效用" class="headerlink" title="3.2 效用"></a>3.2 效用</h2><p><strong>效用是欲望的满足程度</strong>，人通过消费物品和劳务来满足欲望。</p>
+<p>边际效用递减原理：一个人对于财富的占有多多益善；但随着财富的增加，满足程度的增加速度不断下降。</p>
+<p>最大效用原理：在风险和不确定条件下，个人的决策行为准则是为了获得最大期望效用值，而非最大期望金额值。</p>
+<h2 id="3-3-边际"><a href="#3-3-边际" class="headerlink" title="3.3 边际"></a>3.3 边际</h2><p>边际效用：消费者对某种物品的消费量每增加一单位所增加的额外满足程度。</p>
+<p>边际成本：比如制造业企业，其生产的时候一开始有规模效应，边际成本是逐步降低的。但到了某一个临界点后，其边际成本反而有可能会变高。</p>
+<p>边际利润：在一个给定的约束条件下，再多做一笔交易，增加的额外利润。</p>
+<h2 id="3-4-成本"><a href="#3-4-成本" class="headerlink" title="3.4 成本"></a>3.4 成本</h2><p>机会成本：从事某项经营活动而放弃另一项经营活动的机会，或利用一定资源获得某种收入时所放弃的另一种收入。零一项经营活动应取得收益或另一种收入，即为正在从事的经营活动的机会成本。</p>
+<p>交易成本：完成一笔交易时，交易双方在买卖前后所产生的各种与此交易相关的成本。</p>
+<h2 id="3-5-供需定律"><a href="#3-5-供需定律" class="headerlink" title="3.5 供需定律"></a>3.5 供需定律</h2><p>在其他条件不变时，一种物品的价格上升，对该物品的需求量减少；一种物品的价格下降，对该物品的需求增加。</p>
+<h2 id="3-6-相对价格"><a href="#3-6-相对价格" class="headerlink" title="3.6 相对价格"></a>3.6 相对价格</h2><p>人间第一定律：相对价格 = （直接成本 + 交易成本） / 效用组合</p>
+<p>人间第一定律是方便产品经理分析产品的工具，起这个名字是因为它的强大解释能力。它跟供需定律的区别：一是把价格明确地细分成了直接成本和各类交易成本，二是把“默认不变的商品”这个抽象概念明确地定义成了用户视角的产品效用组合，也就是把“在其他条件不变时”经常变化的“产品变化”也考虑了进来。</p>
+<h1 id="4-决策"><a href="#4-决策" class="headerlink" title="4. 决策"></a>4. 决策</h1><h2 id="4-1-理性决策"><a href="#4-1-理性决策" class="headerlink" title="4.1 理性决策"></a>4.1 理性决策</h2><p>人类的决策天生就是不理性的：信息获取能力有限、信息处理能力有限、禀赋偏好导致的个体差异、环境的不确定性导致决策偏误。</p>
+<p>理性决策三要素：</p>
+<p>理性的信念：即与真实世界一致的信念，可以理解为理性地理解自身认知能力的局限性。</p>
+<p>理性的目标：约束条件下价值（总效用）最大化。保持对当前目标的反思：我对目标理性吗？为什么不能是其他目标？从确立这个目标到现在，有什么关键变量（约束条件）已发生变化或将会发生变化？</p>
+<p>理性的行动：给定目标下，寻找最优决策方案。</p>
+<p>前两项相对于第三项更加重要。如果第三项有所成就，决策边际收益更依赖于前两项。如果目标错了，在错误目标下得到的最优解，跑的越快，也只是错的更多。</p>
+<p>将新要素引入原有生产或生活方式，如能有效应用，即可创造大量新价值——这也是<strong>创新的本质含义</strong>。</p>
+<p>产品经理应追求新体验最大化。产品经理的职责，就是加速新要素的应用与普及。</p>
+<h2 id="4-2-常见的决策方法和误区"><a href="#4-2-常见的决策方法和误区" class="headerlink" title="4.2 常见的决策方法和误区"></a>4.2 常见的决策方法和误区</h2><p>常见的决策方法：数据决策、逻辑决策、主观判断决策</p>
+<p>常见的决策误区之<strong>常见的认知偏误</strong>：归因偏误、锚定偏误、选择性注意、刻板印象、自我中心偏误、信念偏误、决策类偏误</p>
+<p>常见的决策误区之<strong>偏离方法论上的个人主义</strong>：产品经理需要理解的“用户”，应该不是一个具体的群体或具体的人，而是一个特定情境下的需求组合。</p>
+<h2 id="4-3-能落地的决策才有价值"><a href="#4-3-能落地的决策才有价值" class="headerlink" title="4.3 能落地的决策才有价值"></a>4.3 能落地的决策才有价值</h2><p>能落地的决策才有价值。</p>
+<p>一个人对另一个人的影响力，主要来自对另一个人创造价值或造成伤害的能力，这个能力有多大，影响力就有多大。所以，要提高自己影响力，关键是提高自己为他人创造价值的能力，并能充分分析各方诉求，<strong>寻找有较多共同利益的方案和视角</strong>，然后让对方理解推动这事能给他创造的价值，或这事推不动会带给他的伤害。</p>
+<h1 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h1><p>在读这本书的过程中，一边读一边感叹俞军前辈的产品功力深厚。俞军前辈结合心理学、经济学的视角来讲产品工作的方法论，内容较为抽象，不过又恰到好处，如果有产品工作的经验再来读这本书感受会更多，收获也会更大。</p>
+<p>产品是一门实践性质的社会学科，一边实践一边思考。</p>
+
       
 
       
@@ -228,7 +313,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据结构与算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">产品</a>
         		</li>
       		
 		</ul>
@@ -284,7 +369,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2019/03/02/重温数据结构和算法-LinkedList/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://leo.dropsec.xyz/2020/02/12/俞军产品方法论-笔记/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -298,18 +383,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/07/重温数据结构和算法-Stack-Queue/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          重温数据结构和算法 Stack &amp; Queue
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/26/重温数据结构和算法-Array-ArrayList/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">重温数据结构和算法 Array &amp; ArrayList</div>
+    <a href="/2020/01/31/腾讯产品启示录-笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">腾讯产品启示录 笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
